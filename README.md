@@ -33,7 +33,7 @@ The available packages are :
 <dt>gaml-linear</dt> <dd>Linear learning (LASSO and LARS) with gaml.</dd>
 <dt>gaml-libsvm</dt> <dd><a href="http://www.csie.ntu.edu.tw/~cjlin/libsvm">Libsvm</a> support. libsvm should be installed first.</dd>
 <dt>gaml-xtree</dt> <dd>Extreme decision trees support.</dd>
-<dt>gaml-mlp</dt> <dd>Multi-layer perceptron support. <a href="https://github.com/jeremyfix/easykf">easykf</a>should be installed first.</dd>
+<dt>gaml-mlp</dt> <dd>Multi-layer perceptron support. <a href="https://github.com/jeremyfix/easykf">easykf</a> should be installed first.</dd>
 <dt>gaml-kvq</dt> <dd>Kernelized vector quantization support, by linking with <a href="https://github.com/HerveFrezza-Buet/vq2">vq2</a>. vq2 should be installed first. Notes that the basics for kernelized vector quantization are available in the core gaml package (the span namespace).</dd>
 </dl>
 
@@ -44,5 +44,5 @@ The available packages are :
 <dt><a href="http://www.csie.ntu.edu.tw/~cjlin/libsvm">Libsvm</a></dt> <dd>SVM algorithms.</dd>
 <dt><a href="https://github.com/jeremyfix/easykf">easykf</a></dt> <dd>C++ kalman filtering</dd>
 <dt><a href="https://github.com/HerveFrezza-Buet/vq2">vq2</a></dt> <dd>C++ generic vector quantization</dd>
-<dt><a href="https://github.com/HerveFrezza-Buet/vq2">RLlib</a></dt>C++ generic reinforcement learning</dt> <dd></dd>
+<dt><a href="https://github.com/HerveFrezza-Buet/vq2">RLlib</a></dt> <dd>C++ generic reinforcement learning</dd>
 </dl>
