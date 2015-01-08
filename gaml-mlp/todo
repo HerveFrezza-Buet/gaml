@@ -1,0 +1,5 @@
+// A verifier:
+// - constructeur par r value reference
+// TODO:
+// - faire une copie des données avant l'apprentissage (parce qu'on les shuffle, on aura peut être envie de les normaliser, ...)
+// - j'ai l'impression que l'interface avec easykf est un peu trop compliquée..

@@ -1,0 +1,6 @@
+set terminal postscript color
+set output "example-005.ps"
+plot 'example-005-samples.data' using 1:2 title "Samples", 'example-005-regression.data' using 1:2 title "Oracle" with lines, 'example-005-regression.data' using 1:3 title "Prediction" with lines
+
+
+

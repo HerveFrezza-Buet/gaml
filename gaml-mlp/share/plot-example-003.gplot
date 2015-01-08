@@ -1,0 +1,3 @@
+set terminal postscript color
+set output "example-003.ps"
+plot 'example-003.data' using 1:2 title "input data", 'example-003.data' using 1:3 title "MLP output"
