@@ -1,0 +1,43 @@
+GET LIBSVM FIRST
+================
+
+The libsvm library has to be installed first
+(http://www.csie.ntu.edu.tw/~cjlin/libsvm/). A version greather than
+3.17 is required. The gaml-libsvm headers include the libsvm header
+file like this
+
+#include <libsvm/svm.h>
+
+and the linking required the flag -lsvm, i.e. libsvm.so has to be in a
+standard library directory.
+
+
+BASIC INSTALLATION
+==================
+
+The library is made of headers only. Put all the src/gaml-libsvm*.hpp
+files where your compiler can find them, and the basic installation is
+done.
+
+
+UNIX INSTALLATION
+=================
+
+
+For a 32bit architecture, as root, go in this directory, and type
+
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+make install
+
+For a 64bit architecture, as root, go in this directory, and type
+
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DLIB_SUFFIX=64
+make install
+
+pkg-config is available for compiling your code
+
+g++ -c example.cc `pkg-config --cflags rl`
+g++ -o example.bin example.cc `pkg-config --libs rl`
+
