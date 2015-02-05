@@ -1,0 +1,6 @@
+\form#0:$d \in S$
+\form#1:$S$
+\form#2:$S^+ = \{d \in S :\; \mathrm{test}(d) = \mathrm{true}\}$
+\form#3:$S^- = S \setminus S^+$
+\form#4:$\mathrm{var}(X) = \mathrm{variance}(\{\mathrm{value}(d) :\; d \in X\})$
+\form#5:$\frac{\mathrm{var}(S) - \frac{|S^+|}{|S|}\mathrm{var}(S^+)- \frac{|S^-|}{|S|}\mathrm{var}(S^-)}{\mathrm{var}(S)}$
