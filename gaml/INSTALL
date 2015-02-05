@@ -1,0 +1,45 @@
+
+BASIC INSTALLATION
+==================
+
+The library is made of headers only. Put all the src/gaml*.hpp files
+where your compiler can find them, and the basic installation is done.
+
+
+UNIX INSTALLATION
+=================
+
+
+For a 32bit architecture, as root, go in this directory, and type
+
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+make install
+
+For a 64bit architecture, as root, go in this directory, and type
+
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DLIB_SUFFIX=64
+make install
+
+pkg-config is available for compiling your code
+
+g++ -c example.cc `pkg-config --cflags rl`
+g++ -o example.bin example.cc `pkg-config --libs rl`
+
+WINDOWS INSTALLATION
+====================
+
+
+Compilation on Windows (MS VisualC++) is supported.
+
+Untar the archive file.
+Then in the project root directory, type:
+
+cd build
+cmake ..
+make
+
+For a complete, system installation, type:
+
+make install
