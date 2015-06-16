@@ -28,7 +28,7 @@ sudo make install
 cd ../..
 ```
 
-For a 64bit architecture:
+For a Fedora-64bit architecture:
 
 ```
 mkdir -p gaml/build
