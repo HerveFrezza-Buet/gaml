@@ -1348,7 +1348,8 @@ namespace gaml {
 		    std::copy(y.begin(),y.end(),yi->data);
 	    
 		    // Make a step of UKF
-		    ukf_iterate(p, s, 
+		    
+		    ::ukf::parameter::ukf_iterate(p, s, 
 				my_func,
 				xi, yi);
 
