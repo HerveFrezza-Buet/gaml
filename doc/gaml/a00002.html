@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: example-001-001-parser.cpp</title>
+<title>gaml-1.14: example-001-001-parser.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -89,7 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><span class="preprocessor">#include &lt;iterator&gt;</span> </div>
 <div class="line"></div>
 <div class="line"><span class="comment">// The ml library.</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00142.html">gaml.hpp</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00157.html">gaml.hpp</a>&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
 <div class="line"><span class="comment"> * About this example :</span></div>
@@ -184,27 +184,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">                <span class="comment">// From parsers, output streams can be made, from existing</span></div>
 <div class="line">                <span class="comment">// streams. Let us use std::cout here, with the two parsers.</span></div>
 <div class="line"></div>
-<div class="line">                <span class="keyword">auto</span> output_customer_stream_1 = <a name="a0"></a><a class="code" href="a00171.html#a2addf6f6d613b40c6f598ed3d68bf12a">gaml::make_output_data_stream</a>(std::cout,</div>
+<div class="line">                <span class="keyword">auto</span> output_customer_stream_1 = <a name="a0"></a><a class="code" href="a00187.html#a2addf6f6d613b40c6f598ed3d68bf12a">gaml::make_output_data_stream</a>(std::cout,</div>
 <div class="line">                                JSON_parser);</div>
-<div class="line">                <span class="keyword">auto</span> output_customer_stream_2 = <a class="code" href="a00171.html#a2addf6f6d613b40c6f598ed3d68bf12a">gaml::make_output_data_stream</a>(std::cout,</div>
+<div class="line">                <span class="keyword">auto</span> output_customer_stream_2 = <a class="code" href="a00187.html#a2addf6f6d613b40c6f598ed3d68bf12a">gaml::make_output_data_stream</a>(std::cout,</div>
 <div class="line">                                custom_parser);</div>
 <div class="line"></div>
 <div class="line">                <span class="comment">// We use an output iterator to write in the streams.</span></div>
 <div class="line"></div>
-<div class="line">                <span class="keyword">auto</span> out1 = <a name="a1"></a><a class="code" href="a00171.html#a0b23f6891f675d9e85f308c75a3d69bf">gaml::make_output_iterator</a>(output_customer_stream_1);</div>
+<div class="line">                <span class="keyword">auto</span> out1 = <a name="a1"></a><a class="code" href="a00187.html#a0b23f6891f675d9e85f308c75a3d69bf">gaml::make_output_iterator</a>(output_customer_stream_1);</div>
 <div class="line">                std::cout &lt;&lt; std::endl &lt;&lt; <span class="stringliteral">&quot;JSON built-in output parser&quot;</span> &lt;&lt; std::endl</div>
 <div class="line">                                &lt;&lt; std::endl;</div>
 <div class="line">                std::copy(data.begin(), data.end(), out1);</div>
 <div class="line"></div>
-<div class="line">                <span class="keyword">auto</span> out2 = <a class="code" href="a00171.html#a0b23f6891f675d9e85f308c75a3d69bf">gaml::make_output_iterator</a>(output_customer_stream_2);</div>
+<div class="line">                <span class="keyword">auto</span> out2 = <a class="code" href="a00187.html#a0b23f6891f675d9e85f308c75a3d69bf">gaml::make_output_iterator</a>(output_customer_stream_2);</div>
 <div class="line">                std::cout &lt;&lt; std::endl &lt;&lt; <span class="stringliteral">&quot;Custom output parser&quot;</span> &lt;&lt; std::endl</div>
 <div class="line">                                &lt;&lt; std::endl;</div>
 <div class="line">                std::copy(data.begin(), data.end(), out2);</div>
 <div class="line"></div>
 <div class="line">                <span class="comment">// Let us serialize this data into a file, using the JSON syntax.</span></div>
 <div class="line">                std::ofstream ofile(CUSTOMERS_DATA_FILE);</div>
-<div class="line">                <span class="keyword">auto</span> output_stream = <a class="code" href="a00171.html#a2addf6f6d613b40c6f598ed3d68bf12a">gaml::make_output_data_stream</a>(ofile, JSON_parser);</div>
-<div class="line">                <span class="keyword">auto</span> out = <a class="code" href="a00171.html#a0b23f6891f675d9e85f308c75a3d69bf">gaml::make_output_iterator</a>(output_stream);</div>
+<div class="line">                <span class="keyword">auto</span> output_stream = <a class="code" href="a00187.html#a2addf6f6d613b40c6f598ed3d68bf12a">gaml::make_output_data_stream</a>(ofile, JSON_parser);</div>
+<div class="line">                <span class="keyword">auto</span> out = <a class="code" href="a00187.html#a0b23f6891f675d9e85f308c75a3d69bf">gaml::make_output_iterator</a>(output_stream);</div>
 <div class="line">                std::copy(data.begin(), data.end(), out);</div>
 <div class="line">                ofile.close();</div>
 <div class="line"></div>
@@ -214,10 +214,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">                ifile.exceptions(</div>
 <div class="line">                                std::ios::failbit | std::ios::badbit | std::ios::eofbit);</div>
 <div class="line">                ifile.open(CUSTOMERS_DATA_FILE);</div>
-<div class="line">                <span class="keyword">auto</span> input_customer_stream = <a name="a2"></a><a class="code" href="a00171.html#a9d1e8fc702741244acca28fcb66a43cf">gaml::make_input_data_stream</a>(ifile,</div>
+<div class="line">                <span class="keyword">auto</span> input_customer_stream = <a name="a2"></a><a class="code" href="a00187.html#a9d1e8fc702741244acca28fcb66a43cf">gaml::make_input_data_stream</a>(ifile,</div>
 <div class="line">                                JSON_parser);</div>
-<div class="line">                <span class="keyword">auto</span> begin = <a name="a3"></a><a class="code" href="a00171.html#ab7d484df343150af7f8008d5ce9f1a09">gaml::make_input_data_begin</a>(input_customer_stream);</div>
-<div class="line">                <span class="keyword">auto</span> end = <a name="a4"></a><a class="code" href="a00171.html#a5a6f1a715ac4002315332304c17eee36">gaml::make_input_data_end</a>(input_customer_stream);</div>
+<div class="line">                <span class="keyword">auto</span> begin = <a name="a3"></a><a class="code" href="a00187.html#ab7d484df343150af7f8008d5ce9f1a09">gaml::make_input_data_begin</a>(input_customer_stream);</div>
+<div class="line">                <span class="keyword">auto</span> end = <a name="a4"></a><a class="code" href="a00187.html#a5a6f1a715ac4002315332304c17eee36">gaml::make_input_data_end</a>(input_customer_stream);</div>
 <div class="line">                std::copy(begin, end, std::back_inserter(data));</div>
 <div class="line">                ifile.close();</div>
 <div class="line"></div>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::Split&lt; Iterator &gt; Class Template Reference</title>
+<title>gaml-1.14: gaml::SequenceParser&lt; Seq &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,68 +82,95 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00130.html">Split</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00130.html">SequenceParser</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="a00250.html">List of all members</a>  </div>
+<a href="a00243.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::Split&lt; Iterator &gt; Class Template Reference</div>  </div>
+<div class="title">gaml::SequenceParser&lt; Seq &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00165_source.html">gamlSplit.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00171_source.html">gamlJSONParser.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for gaml::SequenceParser&lt; Seq &gt;:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="a00130.png" usemap="#gaml::SequenceParser&lt; Seq &gt;_map" alt=""/>
+  <map id="gaml::SequenceParser&lt; Seq &gt;_map" name="gaml::SequenceParser&lt; Seq &gt;_map">
+<area href="a00100.html" alt="gaml::ParserBase" shape="rect" coords="0,0,183,24"/>
+</map>
+ </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:af569cb7589508b41995f731f11522331"><td class="memItemLeft" align="right" valign="top">typedef Seq&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00130.html#af569cb7589508b41995f731f11522331">value_type</a></td></tr>
+<tr class="separator:af569cb7589508b41995f731f11522331"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af14d8bd00010a0f5e2db8d72bb8982f0"><td class="memTemplParams" colspan="2">template&lt;typename Test &gt; </td></tr>
-<tr class="memitem:af14d8bd00010a0f5e2db8d72bb8982f0"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00130.html#af14d8bd00010a0f5e2db8d72bb8982f0">Split</a> (const Iterator &amp;begin_iter, const Iterator &amp;end_iter, const Test &amp;test)</td></tr>
-<tr class="separator:af14d8bd00010a0f5e2db8d72bb8982f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb41c1aa8b1492c211ea8615f58aa579"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00130.html#adb41c1aa8b1492c211ea8615f58aa579">read</a> (std::istream &amp;is, Seq &amp;seq) const </td></tr>
+<tr class="separator:adb41c1aa8b1492c211ea8615f58aa579"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a825bc942cdd709767117a0b9636a4c00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00130.html#a825bc942cdd709767117a0b9636a4c00">write</a> (std::ostream &amp;os, const Seq &amp;seq) const </td></tr>
+<tr class="separator:a825bc942cdd709767117a0b9636a4c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:aa92725e185e0c6a921740c8b83e720a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00131.html">Tabular</a>&lt; Iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00130.html#aa92725e185e0c6a921740c8b83e720a4">true_values</a></td></tr>
-<tr class="separator:aa92725e185e0c6a921740c8b83e720a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a42838d921cf746db21eea623e32e10"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00131.html">Tabular</a>&lt; Iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00130.html#a9a42838d921cf746db21eea623e32e10">false_values</a></td></tr>
-<tr class="separator:a9a42838d921cf746db21eea623e32e10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_static_methods_a00100"><td colspan="2" onclick="javascript:toggleInherit('pro_static_methods_a00100')"><img src="closed.png" alt="-"/>&#160;Static Protected Member Functions inherited from <a class="el" href="a00100.html">gaml::ParserBase</a></td></tr>
+<tr class="memitem:ac3f98339e32c26644702f9fc6df3742f inherit pro_static_methods_a00100"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="a00060.html">FormatException</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#ac3f98339e32c26644702f9fc6df3742f">formatError</a> (std::istream &amp;is, std::string msg)</td></tr>
+<tr class="separator:ac3f98339e32c26644702f9fc6df3742f inherit pro_static_methods_a00100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45e217295b5433dc07ea06ef5f06256b inherit pro_static_methods_a00100"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="a00060.html">FormatException</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a45e217295b5433dc07ea06ef5f06256b">formatError</a> (std::istream &amp;is, const char *msg)</td></tr>
+<tr class="separator:a45e217295b5433dc07ea06ef5f06256b inherit pro_static_methods_a00100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a571af184506a2660c522f945abd98c78 inherit pro_static_methods_a00100"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a571af184506a2660c522f945abd98c78">expect</a> (std::istream &amp;is, const char *chars, const char *msg=0)</td></tr>
+<tr class="separator:a571af184506a2660c522f945abd98c78 inherit pro_static_methods_a00100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f2e0fc39f579366a68a58c7e9fea1ab inherit pro_static_methods_a00100"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a5f2e0fc39f579366a68a58c7e9fea1ab">expect</a> (std::istream &amp;is, const std::vector&lt; const char * &gt; &amp;words)</td></tr>
+<tr class="separator:a5f2e0fc39f579366a68a58c7e9fea1ab inherit pro_static_methods_a00100"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="af14d8bd00010a0f5e2db8d72bb8982f0"></a>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="af569cb7589508b41995f731f11522331"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
+template&lt;typename Seq&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef Seq <a class="el" href="a00130.html">gaml::SequenceParser</a>&lt; Seq &gt;::<a class="el" href="a00130.html#af569cb7589508b41995f731f11522331">value_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="adb41c1aa8b1492c211ea8615f58aa579"></a>
+<div class="memitem">
+<div class="memproto">
 <div class="memtemplate">
-template&lt;typename Test &gt; </div>
+template&lt;typename Seq&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00130.html">gaml::Split</a>&lt; Iterator &gt;::<a class="el" href="a00130.html">Split</a> </td>
+          <td class="memname">void <a class="el" href="a00130.html">gaml::SequenceParser</a>&lt; Seq &gt;::read </td>
           <td>(</td>
-          <td class="paramtype">const Iterator &amp;&#160;</td>
-          <td class="paramname"><em>begin_iter</em>, </td>
+          <td class="paramtype">std::istream &amp;&#160;</td>
+          <td class="paramname"><em>is</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Iterator &amp;&#160;</td>
-          <td class="paramname"><em>end_iter</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const Test &amp;&#160;</td>
-          <td class="paramname"><em>test</em>&#160;</td>
+          <td class="paramtype">Seq &amp;&#160;</td>
+          <td class="paramname"><em>seq</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td> const</td>
         </tr>
       </table>
   </td>
@@ -155,37 +182,44 @@ template&lt;typename Test &gt; </div>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a9a42838d921cf746db21eea623e32e10"></a>
+<a class="anchor" id="a825bc942cdd709767117a0b9636a4c00"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
+template&lt;typename Seq&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00131.html">Tabular</a>&lt;Iterator&gt; <a class="el" href="a00130.html">gaml::Split</a>&lt; Iterator &gt;::false_values</td>
+          <td class="memname">void <a class="el" href="a00130.html">gaml::SequenceParser</a>&lt; Seq &gt;::write </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
         </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="aa92725e185e0c6a921740c8b83e720a4"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-      <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00131.html">Tabular</a>&lt;Iterator&gt; <a class="el" href="a00130.html">gaml::Split</a>&lt; Iterator &gt;::true_values</td>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Seq &amp;&#160;</td>
+          <td class="paramname"><em>seq</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="a00165_source.html">gamlSplit.hpp</a></li>
+<li><a class="el" href="a00171_source.html">gamlJSONParser.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

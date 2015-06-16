@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::Identity&lt; Iterator &gt; Class Template Reference</title>
+<title>gaml-1.14: gaml::Frequencies&lt; VALUE, COMP &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,146 +82,65 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00061.html">Identity</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00061.html">Frequencies</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00211.html">List of all members</a>  </div>
+<a href="a00209.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::Identity&lt; Iterator &gt; Class Template Reference</div>  </div>
+<div class="title">gaml::Frequencies&lt; VALUE, COMP &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00153_source.html">gamlIdentity.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00158_source.html">gamlAlgorithms.hpp</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:a5179a08379c638a0b78ee2630ffcdf1e"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00062.html">IdentityIterator</a><br class="typebreak"/>
-&lt; typename <br class="typebreak"/>
-std::iterator_traits&lt; Iterator &gt;<br class="typebreak"/>
-::iterator_category, Iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.html#a5179a08379c638a0b78ee2630ffcdf1e">iterator</a></td></tr>
-<tr class="separator:a5179a08379c638a0b78ee2630ffcdf1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cf6b0afa12d033fc594bbd9c8ab5b7f"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00062.html#a4321baaba7a07dbc264cc81f77b65f61">iterator::value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.html#a0cf6b0afa12d033fc594bbd9c8ab5b7f">value_type</a></td></tr>
-<tr class="separator:a0cf6b0afa12d033fc594bbd9c8ab5b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aecf6e81d6187282dc471e4b176284f4f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.html#aecf6e81d6187282dc471e4b176284f4f">Identity</a> (const Iterator &amp;begin_iter, const Iterator &amp;end_iter)</td></tr>
-<tr class="separator:aecf6e81d6187282dc471e4b176284f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac7d652e2d9a5c4b16b4a34261605588"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00061.html#a5179a08379c638a0b78ee2630ffcdf1e">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.html#aac7d652e2d9a5c4b16b4a34261605588">begin</a> () const </td></tr>
-<tr class="separator:aac7d652e2d9a5c4b16b4a34261605588"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51fc5b2d999e85568cefef10518b16ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00061.html#a5179a08379c638a0b78ee2630ffcdf1e">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.html#a51fc5b2d999e85568cefef10518b16ee">end</a> () const </td></tr>
-<tr class="separator:a51fc5b2d999e85568cefef10518b16ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac58679afa6015161497b9052dd8284d4"><td class="memTemplParams" colspan="2">template&lt;typename DataIterator , typename ValueOf &gt; </td></tr>
+<tr class="memitem:ac58679afa6015161497b9052dd8284d4"><td class="memTemplItemLeft" align="right" valign="top">std::map&lt; VALUE, double, COMP &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00061.html#ac58679afa6015161497b9052dd8284d4">operator()</a> (const DataIterator &amp;begin, const DataIterator &amp;end, const ValueOf &amp;value_of) const </td></tr>
+<tr class="separator:ac58679afa6015161497b9052dd8284d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a5179a08379c638a0b78ee2630ffcdf1e"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="a00062.html">IdentityIterator</a>&lt;typename std::iterator_traits&lt;Iterator&gt;::iterator_category,Iterator&gt; <a class="el" href="a00061.html">gaml::Identity</a>&lt; Iterator &gt;::<a class="el" href="a00061.html#a5179a08379c638a0b78ee2630ffcdf1e">iterator</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename VALUE, typename COMP = by_default::LesserThan&lt;VALUE&gt;&gt;<br/>
+class gaml::Frequencies&lt; VALUE, COMP &gt;</h3>
 
-</div>
-</div>
-<a class="anchor" id="a0cf6b0afa12d033fc594bbd9c8ab5b7f"></a>
+<p>Functor </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ac58679afa6015161497b9052dd8284d4"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="a00062.html#a4321baaba7a07dbc264cc81f77b65f61">iterator::value_type</a> <a class="el" href="a00061.html">gaml::Identity</a>&lt; Iterator &gt;::<a class="el" href="a00061.html#a0cf6b0afa12d033fc594bbd9c8ab5b7f">value_type</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="aecf6e81d6187282dc471e4b176284f4f"></a>
-<div class="memitem">
-<div class="memproto">
+template&lt;typename VALUE, typename COMP = by_default::LesserThan&lt;VALUE&gt;&gt; </div>
 <div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
+template&lt;typename DataIterator , typename ValueOf &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00061.html">gaml::Identity</a>&lt; Iterator &gt;::<a class="el" href="a00061.html">Identity</a> </td>
+          <td class="memname">std::map&lt;VALUE,double,COMP&gt; <a class="el" href="a00061.html">gaml::Frequencies</a>&lt; VALUE, COMP &gt;::operator() </td>
           <td>(</td>
-          <td class="paramtype">const Iterator &amp;&#160;</td>
-          <td class="paramname"><em>begin_iter</em>, </td>
+          <td class="paramtype">const DataIterator &amp;&#160;</td>
+          <td class="paramname"><em>begin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Iterator &amp;&#160;</td>
-          <td class="paramname"><em>end_iter</em>&#160;</td>
+          <td class="paramtype">const DataIterator &amp;&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ValueOf &amp;&#160;</td>
+          <td class="paramname"><em>value_of</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="aac7d652e2d9a5c4b16b4a34261605588"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00061.html#a5179a08379c638a0b78ee2630ffcdf1e">iterator</a> <a class="el" href="a00061.html">gaml::Identity</a>&lt; Iterator &gt;::begin </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a51fc5b2d999e85568cefef10518b16ee"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00061.html#a5179a08379c638a0b78ee2630ffcdf1e">iterator</a> <a class="el" href="a00061.html">gaml::Identity</a>&lt; Iterator &gt;::end </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td></td><td> const</td>
         </tr>
       </table>
   </td>
@@ -234,7 +153,7 @@ template&lt;typename Iterator&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="a00153_source.html">gamlIdentity.hpp</a></li>
+<li><a class="el" href="a00158_source.html">gamlAlgorithms.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

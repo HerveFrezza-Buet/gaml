@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::partition::internal::Chunk Class Reference</title>
+<title>gaml-1.14: gaml::OutputDataStream&lt; Parser &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,46 +82,92 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00181.html">partition</a></li><li class="navelem"><a class="el" href="a00182.html">internal</a></li><li class="navelem"><a class="el" href="a00098.html">Chunk</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00098.html">OutputDataStream</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00289.html">List of all members</a>  </div>
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="a00277.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::partition::internal::Chunk Class Reference</div>  </div>
+<div class="title">gaml::OutputDataStream&lt; Parser &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00160_source.html">gamlPartition.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00182_source.html">gamlStreamer.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for gaml::OutputDataStream&lt; Parser &gt;:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="a00098.png" usemap="#gaml::OutputDataStream&lt; Parser &gt;_map" alt=""/>
+  <map id="gaml::OutputDataStream&lt; Parser &gt;_map" name="gaml::OutputDataStream&lt; Parser &gt;_map">
+</map>
+ </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a50bb6e89bced051b3a974ef90ba6d3da"><td class="memItemLeft" align="right" valign="top">typedef Parser::value_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00098.html#a50bb6e89bced051b3a974ef90ba6d3da">value_type</a></td></tr>
+<tr class="separator:a50bb6e89bced051b3a974ef90ba6d3da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa7c287208935e98c83407a16bb589e03"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00098.html#aa7c287208935e98c83407a16bb589e03">Chunk</a> (unsigned int nb)</td></tr>
-<tr class="separator:aa7c287208935e98c83407a16bb589e03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad91f5aedc1ea02458dc4fb873693a1c7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00098.html#ad91f5aedc1ea02458dc4fb873693a1c7">Chunk</a> (const <a class="el" href="a00098.html">Chunk</a> &amp;other)</td></tr>
-<tr class="separator:ad91f5aedc1ea02458dc4fb873693a1c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1390ceefe06cc9d41c98a7c7398faf59"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00098.html">Chunk</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00098.html#a1390ceefe06cc9d41c98a7c7398faf59">operator=</a> (const <a class="el" href="a00098.html">Chunk</a> &amp;other)</td></tr>
-<tr class="separator:a1390ceefe06cc9d41c98a7c7398faf59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa474d961ad02356baf717c65f69e9e2"><td class="memTemplParams" colspan="2">template&lt;typename DataIterator &gt; </td></tr>
-<tr class="memitem:aaa474d961ad02356baf717c65f69e9e2"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00097.html">gaml::partition::Chunk</a><br class="typebreak"/>
-&lt; DataIterator &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00098.html#aaa474d961ad02356baf717c65f69e9e2">build</a> (const DataIterator &amp;data_begin, const DataIterator &amp;data_end) const </td></tr>
-<tr class="separator:aaa474d961ad02356baf717c65f69e9e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7528beb33491ae1afd56167620170703"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00098.html#a7528beb33491ae1afd56167620170703">OutputDataStream</a> (std::ostream &amp;os)</td></tr>
+<tr class="separator:a7528beb33491ae1afd56167620170703"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bd153e106c72478b60a4ced4e244d83"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00098.html#a5bd153e106c72478b60a4ced4e244d83">OutputDataStream</a> (std::ostream &amp;os, const Parser &amp;parser)</td></tr>
+<tr class="separator:a5bd153e106c72478b60a4ced4e244d83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a251206bd9b6b06d603801d10aaf86911"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00098.html#a251206bd9b6b06d603801d10aaf86911">OutputDataStream</a> (const <a class="el" href="a00098.html">OutputDataStream</a> &amp;other)</td></tr>
+<tr class="separator:a251206bd9b6b06d603801d10aaf86911"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3772f475bd2c6c12751223daf431407c"><td class="memTemplParams" colspan="2">template&lt;typename Value &gt; </td></tr>
+<tr class="memitem:a3772f475bd2c6c12751223daf431407c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00098.html">OutputDataStream</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00098.html#a3772f475bd2c6c12751223daf431407c">operator&lt;&lt;</a> (const Value &amp;data)</td></tr>
+<tr class="separator:a3772f475bd2c6c12751223daf431407c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e98e0938bd2b328d0ab975e20e1dcfd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00098.html">OutputDataStream</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00098.html#a0e98e0938bd2b328d0ab975e20e1dcfd">operator&lt;&lt;</a> (std::ios &amp;(*pf)(std::ios &amp;))</td></tr>
+<tr class="separator:a0e98e0938bd2b328d0ab975e20e1dcfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22b78f578ccc25eb13a12f5a375c0895"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00098.html">OutputDataStream</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00098.html#a22b78f578ccc25eb13a12f5a375c0895">operator&lt;&lt;</a> (std::ios_base &amp;(*pf)(std::ios_base &amp;))</td></tr>
+<tr class="separator:a22b78f578ccc25eb13a12f5a375c0895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1984557585bcee545306dbf699f3fc42"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00098.html">OutputDataStream</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00098.html#a1984557585bcee545306dbf699f3fc42">operator&lt;&lt;</a> (std::ostream &amp;(*pf)(std::ostream &amp;))</td></tr>
+<tr class="separator:a1984557585bcee545306dbf699f3fc42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec852e6f08fefdfa1e683689dbae9c4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00098.html">OutputDataStream</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00098.html#aec852e6f08fefdfa1e683689dbae9c4f">operator&lt;&lt;</a> (const <a class="el" href="a00098.html#a50bb6e89bced051b3a974ef90ba6d3da">value_type</a> &amp;data)</td></tr>
+<tr class="separator:aec852e6f08fefdfa1e683689dbae9c4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47ba54b7f3e38c006002e419c1e814e8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00098.html#a47ba54b7f3e38c006002e419c1e814e8">operator!=</a> (const <a class="el" href="a00098.html">OutputDataStream</a> &amp;other) const </td></tr>
+<tr class="separator:a47ba54b7f3e38c006002e419c1e814e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a562879a7641aca816b8f25737887f75e"><td class="memItemLeft" align="right" valign="top">std::ostream *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00098.html#a562879a7641aca816b8f25737887f75e">os_</a></td></tr>
+<tr class="separator:a562879a7641aca816b8f25737887f75e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="aa7c287208935e98c83407a16bb589e03"></a>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="a50bb6e89bced051b3a974ef90ba6d3da"></a>
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename Parser&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef Parser::value_type <a class="el" href="a00098.html">gaml::OutputDataStream</a>&lt; Parser &gt;::<a class="el" href="a00098.html#a50bb6e89bced051b3a974ef90ba6d3da">value_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a7528beb33491ae1afd56167620170703"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Parser&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">gaml::partition::internal::Chunk::Chunk </td>
+          <td class="memname"><a class="el" href="a00098.html">gaml::OutputDataStream</a>&lt; Parser &gt;::<a class="el" href="a00098.html">OutputDataStream</a> </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>nb</em></td><td>)</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -134,17 +180,55 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad91f5aedc1ea02458dc4fb873693a1c7"></a>
+<a class="anchor" id="a5bd153e106c72478b60a4ced4e244d83"></a>
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename Parser&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">gaml::partition::internal::Chunk::Chunk </td>
+          <td class="memname"><a class="el" href="a00098.html">gaml::OutputDataStream</a>&lt; Parser &gt;::<a class="el" href="a00098.html">OutputDataStream</a> </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00098.html">Chunk</a> &amp;&#160;</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Parser &amp;&#160;</td>
+          <td class="paramname"><em>parser</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a251206bd9b6b06d603801d10aaf86911"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Parser&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00098.html">gaml::OutputDataStream</a>&lt; Parser &gt;::<a class="el" href="a00098.html">OutputDataStream</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00098.html">OutputDataStream</a>&lt; Parser &gt; &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
           <td></td>
         </tr>
@@ -159,31 +243,21 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="aaa474d961ad02356baf717c65f69e9e2"></a>
+<a class="anchor" id="a47ba54b7f3e38c006002e419c1e814e8"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename DataIterator &gt; </div>
+template&lt;typename Parser&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00097.html">gaml::partition::Chunk</a>&lt;DataIterator&gt; gaml::partition::internal::Chunk::build </td>
+          <td class="memname">bool <a class="el" href="a00098.html">gaml::OutputDataStream</a>&lt; Parser &gt;::operator!= </td>
           <td>(</td>
-          <td class="paramtype">const DataIterator &amp;&#160;</td>
-          <td class="paramname"><em>data_begin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const DataIterator &amp;&#160;</td>
-          <td class="paramname"><em>data_end</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
+          <td class="paramtype">const <a class="el" href="a00098.html">OutputDataStream</a>&lt; Parser &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -195,18 +269,22 @@ template&lt;typename DataIterator &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a1390ceefe06cc9d41c98a7c7398faf59"></a>
+<a class="anchor" id="a3772f475bd2c6c12751223daf431407c"></a>
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename Parser&gt; </div>
+<div class="memtemplate">
+template&lt;typename Value &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00098.html">Chunk</a>&amp; gaml::partition::internal::Chunk::operator= </td>
+          <td class="memname"><a class="el" href="a00098.html">OutputDataStream</a>&amp; <a class="el" href="a00098.html">gaml::OutputDataStream</a>&lt; Parser &gt;::operator&lt;&lt; </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00098.html">Chunk</a> &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
+          <td class="paramtype">const Value &amp;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -215,12 +293,131 @@ template&lt;typename DataIterator &gt; </div>
 <span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0e98e0938bd2b328d0ab975e20e1dcfd"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Parser&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00098.html">OutputDataStream</a>&amp; <a class="el" href="a00098.html">gaml::OutputDataStream</a>&lt; Parser &gt;::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ios &amp;(*)(std::ios &amp;)&#160;</td>
+          <td class="paramname"><em>pf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a22b78f578ccc25eb13a12f5a375c0895"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Parser&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00098.html">OutputDataStream</a>&amp; <a class="el" href="a00098.html">gaml::OutputDataStream</a>&lt; Parser &gt;::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ios_base &amp;(*)(std::ios_base &amp;)&#160;</td>
+          <td class="paramname"><em>pf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1984557585bcee545306dbf699f3fc42"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Parser&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00098.html">OutputDataStream</a>&amp; <a class="el" href="a00098.html">gaml::OutputDataStream</a>&lt; Parser &gt;::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;(*)(std::ostream &amp;)&#160;</td>
+          <td class="paramname"><em>pf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aec852e6f08fefdfa1e683689dbae9c4f"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Parser&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00098.html">OutputDataStream</a>&amp; <a class="el" href="a00098.html">gaml::OutputDataStream</a>&lt; Parser &gt;::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00098.html#a50bb6e89bced051b3a974ef90ba6d3da">value_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a562879a7641aca816b8f25737887f75e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Parser&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream* <a class="el" href="a00098.html">gaml::OutputDataStream</a>&lt; Parser &gt;::os_</td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="a00160_source.html">gamlPartition.hpp</a></li>
+<li><a class="el" href="a00182_source.html">gamlStreamer.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

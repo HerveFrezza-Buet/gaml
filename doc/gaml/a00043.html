@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::concept::Predictor Class Reference</title>
+<title>gaml-1.14: gaml::concept::LearningAlgorithm&lt; Input &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,119 +82,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00176.html">concept</a></li><li class="navelem"><a class="el" href="a00043.html">Predictor</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00192.html">concept</a></li><li class="navelem"><a class="el" href="a00043.html">LearningAlgorithm</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00265.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::concept::Predictor Class Reference</div>  </div>
+<div class="title">gaml::concept::LearningAlgorithm&lt; Input &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This predicts a label from an input.  
- <a href="a00043.html#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="a00143_source.html">gamlAlgorithms.hpp</a>&gt;</code></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:ab94a2761df161e374f003c73f5f30b5a"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00176.html#a06c853d8e4709b57bb11c9413214ec01">any</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#ab94a2761df161e374f003c73f5f30b5a">input_type</a></td></tr>
-<tr class="separator:ab94a2761df161e374f003c73f5f30b5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc35f0d07e049ae4ad28c1d54a4bb91b"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00176.html#a06c853d8e4709b57bb11c9413214ec01">any</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#abc35f0d07e049ae4ad28c1d54a4bb91b">output_type</a></td></tr>
-<tr class="separator:abc35f0d07e049ae4ad28c1d54a4bb91b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a2e8c6b61ba82bc726ff08a00e6c51586"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a2e8c6b61ba82bc726ff08a00e6c51586">Predictor</a> (const <a class="el" href="a00043.html">Predictor</a> &amp;other)</td></tr>
-<tr class="separator:a2e8c6b61ba82bc726ff08a00e6c51586"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6e4fc6fcff739cc22d6903ae3ddfdb1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00043.html">Predictor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#ae6e4fc6fcff739cc22d6903ae3ddfdb1">operator=</a> (const <a class="el" href="a00043.html">Predictor</a> &amp;other)</td></tr>
-<tr class="separator:ae6e4fc6fcff739cc22d6903ae3ddfdb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a851b18e87245345734f897edb029a85f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00043.html#abc35f0d07e049ae4ad28c1d54a4bb91b">output_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html#a851b18e87245345734f897edb029a85f">operator()</a> (const <a class="el" href="a00043.html#ab94a2761df161e374f003c73f5f30b5a">input_type</a> &amp;x) const </td></tr>
-<tr class="separator:a851b18e87245345734f897edb029a85f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
+<p><code>#include &lt;<a class="el" href="a00186_source.html">gamlWrapper.hpp</a>&gt;</code></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This predicts a label from an input. </p>
-</div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="ab94a2761df161e374f003c73f5f30b5a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="a00176.html#a06c853d8e4709b57bb11c9413214ec01">any</a> <a class="el" href="a00043.html#ab94a2761df161e374f003c73f5f30b5a">gaml::concept::Predictor::input_type</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<div class="textblock"><h3>template&lt;typename Input&gt;<br/>
+class gaml::concept::LearningAlgorithm&lt; Input &gt;</h3>
 
-</div>
-</div>
-<a class="anchor" id="abc35f0d07e049ae4ad28c1d54a4bb91b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="a00176.html#a06c853d8e4709b57bb11c9413214ec01">any</a> <a class="el" href="a00043.html#abc35f0d07e049ae4ad28c1d54a4bb91b">gaml::concept::Predictor::output_type</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a2e8c6b61ba82bc726ff08a00e6c51586"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">gaml::concept::Predictor::Predictor </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00043.html">Predictor</a> &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a851b18e87245345734f897edb029a85f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00043.html#abc35f0d07e049ae4ad28c1d54a4bb91b">output_type</a> gaml::concept::Predictor::operator() </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00043.html#ab94a2761df161e374f003c73f5f30b5a">input_type</a> &amp;&#160;</td>
-          <td class="paramname"><em>x</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ae6e4fc6fcff739cc22d6903ae3ddfdb1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00043.html">Predictor</a>&amp; gaml::concept::Predictor::operator= </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00043.html">Predictor</a> &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="a00143_source.html">gamlAlgorithms.hpp</a></li>
+<p>Selection variable wrapper needs to compute learning algorithms for different kind of inputs. The <a class="el" href="a00043.html">LearningAlgorithm</a> type used by this concept has to fit <a class="el" href="a00041.html" title="This learns from a data set.">gaml::concept::Learner</a>. </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="a00186_source.html">gamlWrapper.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

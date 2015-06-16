@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: example-silly.hpp</title>
+<title>gaml-1.14: example-ratio.hpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -76,7 +76,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">example-silly.hpp</div>  </div>
+<div class="title">example-ratio.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><span class="preprocessor">#pragma once</span></div>
@@ -87,40 +87,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &lt;iterator&gt;</span></div>
 <div class="line"></div>
-<div class="line"><span class="keyword">namespace </span>silly {</div>
+<div class="line"><span class="keyword">namespace </span>ratio {</div>
 <div class="line"></div>
-<div class="line">  <span class="comment">// Let us define a silly regressor, that uses a hypothesis set made of</span></div>
-<div class="line">  <span class="comment">// constant functions. The predicted label is thus constant, whatever</span></div>
-<div class="line">  <span class="comment">// the input. </span></div>
+<div class="line">  <span class="comment">// Let us define a regressor, that uses a hypothesis set made y =</span></div>
+<div class="line">  <span class="comment">// a*x functions.</span></div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// This fits the gaml::concept::Predictor concept.</span></div>
 <div class="line">  <span class="keyword">class </span>Predictor {</div>
-<div class="line">  <span class="keyword">private</span>:</div>
-<div class="line">  </div>
-<div class="line">    <span class="keywordtype">double</span> constant_label;</div>
-<div class="line">  </div>
 <div class="line">  <span class="keyword">public</span>:</div>
 <div class="line"></div>
-<div class="line">    <span class="keyword">typedef</span> <span class="keywordtype">int</span>    input_type;</div>
+<div class="line">    <span class="keyword">typedef</span> <span class="keywordtype">double</span> input_type;</div>
 <div class="line">    <span class="keyword">typedef</span> <span class="keywordtype">double</span> output_type;</div>
 <div class="line"></div>
-<div class="line">    Predictor(<span class="keywordtype">double</span> label) : constant_label(label) {}</div>
+<div class="line">    <span class="keywordtype">double</span> a;</div>
+<div class="line">    Predictor(<span class="keywordtype">double</span> coef) : a(coef) {}</div>
 <div class="line"></div>
-<div class="line">    Predictor(<span class="keyword">const</span> Predictor&amp; other) : constant_label(other.constant_label) {}</div>
+<div class="line">    Predictor(<span class="keyword">const</span> Predictor&amp; other) : a(other.a) {}</div>
 <div class="line">    Predictor&amp; operator=(<span class="keyword">const</span> Predictor&amp; other) {</div>
 <div class="line">      <span class="keywordflow">if</span>(<span class="keyword">this</span> != &amp;other)</div>
-<div class="line">        constant_label = other.constant_label;</div>
+<div class="line">        a = other.a;</div>
 <div class="line">      <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line">    }</div>
 <div class="line">  </div>
 <div class="line">    <span class="comment">// This does the prediction.</span></div>
-<div class="line">    output_type operator()(<span class="keyword">const</span> input_type&amp; x)<span class="keyword"> const </span>{<span class="keywordflow">return</span> constant_label;}</div>
+<div class="line">    output_type operator()(<span class="keyword">const</span> input_type&amp; x)<span class="keyword"> const </span>{<span class="keywordflow">return</span> a*x;}</div>
 <div class="line">  };</div>
 <div class="line"></div>
 <div class="line"></div>
-<div class="line">  <span class="comment">// The learner class for this type of regressor is also a silly</span></div>
-<div class="line">  <span class="comment">// algorithm. It consists of computing the average of all the the</span></div>
-<div class="line">  <span class="comment">// labels in the dataset.</span></div>
+<div class="line">  <span class="comment">// The learner class for this type of regressor consists in</span></div>
+<div class="line">  <span class="comment">// computing the average of all the ratios.</span></div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// This fits the gaml::concept::Learner concept.</span></div>
 <div class="line">  <span class="keyword">class </span>Learner {</div>
@@ -135,11 +130,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    <span class="comment">// This does the learning, and returns a predictor from the data.</span></div>
 <div class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DataIterator, <span class="keyword">typename</span> InputOf, <span class="keyword">typename</span> OutputOf&gt; </div>
 <div class="line">    Predictor operator()(<span class="keyword">const</span> DataIterator&amp; begin, <span class="keyword">const</span> DataIterator&amp; end,</div>
-<div class="line">                         <span class="keyword">const</span> InputOf&amp;, <span class="keyword">const</span> OutputOf&amp; label_of)<span class="keyword"> const </span>{</div>
-<div class="line"></div>
+<div class="line">                         <span class="keyword">const</span> InputOf&amp; input_of, <span class="keyword">const</span> OutputOf&amp; label_of)<span class="keyword"> const </span>{</div>
 <div class="line">      <span class="keywordtype">double</span> mean = 0;</div>
-<div class="line">      <span class="keywordflow">for</span>(DataIterator it = begin; it != end; ++it) </div>
-<div class="line">        mean += label_of(*it); <span class="comment">// We retrieve the label from the current data.</span></div>
+<div class="line">      <span class="keywordflow">for</span>(DataIterator it = begin; it != end; ++it) {</div>
+<div class="line">        <span class="keyword">auto</span> x = input_of(*it);</div>
+<div class="line">        <span class="keywordflow">if</span>(x != 0) {</div>
+<div class="line">          <span class="keyword">auto</span> y = label_of(*it);</div>
+<div class="line">          mean += y/x; </div>
+<div class="line">        }</div>
+<div class="line">      }</div>
 <div class="line">      <span class="keyword">auto</span> nb_elem = std::distance(begin,end);</div>
 <div class="line">      <span class="keywordflow">if</span>(nb_elem &gt; 0) mean /= nb_elem;</div>
 <div class="line">      <span class="keywordflow">return</span> Predictor(mean);</div>
@@ -147,11 +146,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  };</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// These are useful type definitions.</span></div>
-<div class="line">  <span class="keyword">typedef</span> std::pair&lt;int,double&gt; Data;    <span class="comment">// We learn from sample/label pairs (int/double here).</span></div>
-<div class="line">  <span class="keyword">typedef</span> std::vector&lt;Data&gt;     DataSet; <span class="comment">// We decide to use a vector for the data set.</span></div>
+<div class="line">  <span class="keyword">typedef</span> std::pair&lt;double,double&gt; Data;    <span class="comment">// We learn from sample/label pairs (int/double here).</span></div>
+<div class="line">  <span class="keyword">typedef</span> std::vector&lt;Data&gt;        DataSet; <span class="comment">// We decide to use a vector for the data set.</span></div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// We need functions to extract input and output from the data.</span></div>
-<div class="line">  <span class="keywordtype">int</span>     input_of_data(<span class="keyword">const</span> Data&amp; data) {<span class="keywordflow">return</span> data.first;}</div>
+<div class="line">  <span class="keywordtype">double</span> input_of_data (<span class="keyword">const</span> Data&amp; data) {<span class="keywordflow">return</span> data.first;}</div>
 <div class="line">  <span class="keywordtype">double</span> output_of_data(<span class="keyword">const</span> Data&amp; data) {<span class="keywordflow">return</span> data.second;}</div>
 <div class="line"></div>
 <div class="line">}</div>

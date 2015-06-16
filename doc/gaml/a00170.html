@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gamlWrapper.hpp File Reference</title>
+<title>gaml-1.14: gamlIterator.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -86,49 +86,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
-<div class="title">gamlWrapper.hpp File Reference</div>  </div>
+<div class="title">gamlIterator.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="a00148_source.html">gamlDimensions.hpp</a>&gt;</code><br/>
-<code>#include &lt;vector&gt;</code><br/>
-<code>#include &lt;algorithm&gt;</code><br/>
-<code>#include &lt;limits&gt;</code><br/>
-<code>#include &lt;iterator&gt;</code><br/>
-<code>#include &lt;utility&gt;</code><br/>
+<div class="textblock"><code>#include &lt;iterator&gt;</code><br/>
+<code>#include &lt;type_traits&gt;</code><br/>
+<code>#include &lt;string&gt;</code><br/>
 </div>
 <p><a href="a00170_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00040.html">gaml::concept::LearningAlgorithm&lt; Input &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00073.html">gaml::is_virtual</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00037.html">gaml::concept::GenericLearner</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.html">gaml::is_tabular</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00135.html">gaml::varsel::WrapperEvaluator&lt; GenericLearner, LearnerEvaluator, DataIterator, InputOf, OutputOf &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00112.html">gaml::regular_iterator_tag</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00136.html">gaml::varsel::WrapperEvaluator&lt; GenericLearner, LearnerEvaluator, DataIterator, InputOf, OutputOf &gt;::projection_types&lt; AttributeIterator &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00155.html">gaml::virtualized_iterator_tag</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00139.html">gaml::tabular_iterator_tag</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00150.html">gaml::virtual_category_of&lt; Iterator, False &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00151.html">gaml::virtual_category_of&lt; Iterator, std::true_type &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00037.html">gaml::category_of&lt; Iterator, False &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00038.html">gaml::category_of&lt; Iterator, std::true_type &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00075.html">gaml::iterator_traits&lt; Iterator &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:a00171"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00171.html">gaml</a></td></tr>
+<tr class="memitem:a00187"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00187.html">gaml</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00176"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00176.html">gaml::concept</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00188"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00188.html">gaml::varsel</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a2b141b9fc3d65e2dd23bc86b6759b857"><td class="memTemplParams" colspan="2">template&lt;typename GenericLearner , typename LearnerEvaluator , typename DataIterator , typename InputOf , typename OutputOf &gt; </td></tr>
-<tr class="memitem:a2b141b9fc3d65e2dd23bc86b6759b857"><td class="memTemplItemLeft" align="right" valign="top">WrapperEvaluator<br class="typebreak"/>
-&lt; GenericLearner, <br class="typebreak"/>
-LearnerEvaluator, DataIterator, <br class="typebreak"/>
-InputOf, OutputOf &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00188.html#a2b141b9fc3d65e2dd23bc86b6759b857">gaml::varsel::make_wrapper_evaluator</a> (GenericLearner &amp;genericLearner, const LearnerEvaluator &amp;evaluator, const DataIterator &amp;dataBegin, const DataIterator &amp;dataEnd, const InputOf &amp;inputOf, const OutputOf &amp;outputOf)</td></tr>
-<tr class="separator:a2b141b9fc3d65e2dd23bc86b6759b857"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

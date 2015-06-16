@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: example-002-005-bagging.cpp</title>
+<title>gaml-1.14: example-002-005-bagging.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -79,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">example-002-005-bagging.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00142.html">gaml.hpp</a>&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00157.html">gaml.hpp</a>&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &lt;array&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
@@ -105,10 +105,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><span class="preprocessor"></span><span class="preprocessor">#define XMAX  1</span></div>
 <div class="line"><span class="preprocessor"></span><span class="preprocessor">#define NOISE .1</span></div>
 <div class="line"><span class="preprocessor"></span>Data sample() {</div>
-<div class="line">  X x = {{<a name="a0"></a><a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(XMIN,XMAX),</div>
-<div class="line">          <a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(XMIN,XMAX)}};</div>
+<div class="line">  X x = {{<a name="a0"></a><a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(XMIN,XMAX),</div>
+<div class="line">          <a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(XMIN,XMAX)}};</div>
 <div class="line">  Y y = oracle(x);</div>
-<div class="line">  <span class="keywordflow">if</span>(<a name="a1"></a><a class="code" href="a00183.html#a50561031870af4d865de65f89c677916">gaml::random::proba</a>(NOISE))</div>
+<div class="line">  <span class="keywordflow">if</span>(<a name="a1"></a><a class="code" href="a00199.html#a50561031870af4d865de65f89c677916">gaml::random::proba</a>(NOISE))</div>
 <div class="line">    y = !y;</div>
 <div class="line">  <span class="keywordflow">return</span> {x,y};</div>
 <div class="line">}</div>
@@ -167,14 +167,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    <span class="comment">// sample in each.</span></div>
 <div class="line"></div>
 <div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> pos;</div>
-<div class="line">    <span class="keyword">auto</span> trues  = <a name="a2"></a><a class="code" href="a00171.html#aa198a26fbd9d27b0abde3327879f4e7e">gaml::filter</a>(begin,end,output_of);</div>
-<div class="line">    pos = <a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(std::distance(trues.begin(),trues.end()));</div>
+<div class="line">    <span class="keyword">auto</span> trues  = <a name="a2"></a><a class="code" href="a00187.html#aa198a26fbd9d27b0abde3327879f4e7e">gaml::filter</a>(begin,end,output_of);</div>
+<div class="line">    pos = <a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(std::distance(trues.begin(),trues.end()));</div>
 <div class="line">    <span class="keyword">auto</span> it_true = trues.begin();</div>
 <div class="line">    std::advance(it_true,pos);</div>
 <div class="line">    X x_true = input_of(*it_true);</div>
 <div class="line"></div>
-<div class="line">    <span class="keyword">auto</span> falses  = <a name="a3"></a><a class="code" href="a00171.html#a27c22eca370af18af16f13f64695a576">gaml::reject</a>(begin,end,output_of);</div>
-<div class="line">    pos = <a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(std::distance(falses.begin(),falses.end()));</div>
+<div class="line">    <span class="keyword">auto</span> falses  = <a name="a3"></a><a class="code" href="a00187.html#a27c22eca370af18af16f13f64695a576">gaml::reject</a>(begin,end,output_of);</div>
+<div class="line">    pos = <a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(std::distance(falses.begin(),falses.end()));</div>
 <div class="line">    <span class="keyword">auto</span> it_false = falses.begin();</div>
 <div class="line">    std::advance(it_false,pos);</div>
 <div class="line">    X x_false = input_of(*it_false);</div>
@@ -213,8 +213,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><span class="keyword">class </span>SillyRandomizer {</div>
 <div class="line">  <span class="keyword">public</span>:</div>
 <div class="line">  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DataIterator&gt; </div>
-<div class="line">  <a name="_a4"></a><a class="code" href="a00126.html">gaml::Shuffle&lt;DataIterator&gt;</a> operator()(<span class="keyword">const</span> DataIterator&amp; begin, <span class="keyword">const</span> DataIterator&amp; end)<span class="keyword"> const </span>{</div>
-<div class="line">    <span class="keywordflow">return</span> <a name="a5"></a><a class="code" href="a00171.html#ab7c3864d053ea06547b3c34eb12b9132">gaml::shuffle</a>(begin,end);</div>
+<div class="line">  <a name="_a4"></a><a class="code" href="a00131.html">gaml::Shuffle&lt;DataIterator&gt;</a> operator()(<span class="keyword">const</span> DataIterator&amp; begin, <span class="keyword">const</span> DataIterator&amp; end)<span class="keyword"> const </span>{</div>
+<div class="line">    <span class="keywordflow">return</span> <a name="a5"></a><a class="code" href="a00187.html#ab7c3864d053ea06547b3c34eb12b9132">gaml::shuffle</a>(begin,end);</div>
 <div class="line">  }</div>
 <div class="line">};</div>
 <div class="line"></div>
@@ -232,11 +232,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; data : basis) data = sample();</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Let us set up a weak predictor from the data.</span></div>
-<div class="line">  Learner <a name="a6"></a><a class="code" href="a00172.html#a94145476ec3c62d9314841ce88ad24e5">learner</a>;</div>
-<div class="line">  <span class="keyword">auto</span> weak = <a class="code" href="a00172.html#a94145476ec3c62d9314841ce88ad24e5">learner</a>(basis.begin(), basis.end(), input_of, output_of);</div>
+<div class="line">  Learner <a name="a6"></a><a class="code" href="a00188.html#a94145476ec3c62d9314841ce88ad24e5">learner</a>;</div>
+<div class="line">  <span class="keyword">auto</span> weak = <a class="code" href="a00188.html#a94145476ec3c62d9314841ce88ad24e5">learner</a>(basis.begin(), basis.end(), input_of, output_of);</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Let us measure its empirical risk.</span></div>
-<div class="line">  <span class="keyword">auto</span> evaluator = <a name="a7"></a><a class="code" href="a00184.html#a6d9973bf3290ec3c9e0eccc57a63ad46">gaml::risk::empirical</a>(<a name="_a8"></a><a class="code" href="a00082.html" title="Classification loss.">gaml::loss::Classification&lt;Y&gt;</a>());</div>
+<div class="line">  <span class="keyword">auto</span> evaluator = <a name="a7"></a><a class="code" href="a00200.html#a6d9973bf3290ec3c9e0eccc57a63ad46">gaml::risk::empirical</a>(<a name="_a8"></a><a class="code" href="a00086.html" title="Classification loss.">gaml::loss::Classification&lt;Y&gt;</a>());</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;Weak risk = &quot;</span> </div>
 <div class="line">            &lt;&lt; evaluator(weak,basis.begin(), basis.end(), input_of, output_of)</div>
 <div class="line">            &lt;&lt; std::endl;</div>
@@ -244,7 +244,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  <span class="comment">// Now, let us use bagging with many of such weak predictors. For</span></div>
 <div class="line">  <span class="comment">// the sake illustration, let us dot this with our silly templates.</span></div>
 <div class="line">  </div>
-<div class="line">  <span class="keyword">auto</span> silly_bag_learner = <a class="code" href="a00172.html#a94145476ec3c62d9314841ce88ad24e5">gaml::bag::learner</a>(learner, </div>
+<div class="line">  <span class="keyword">auto</span> silly_bag_learner = <a class="code" href="a00188.html#a94145476ec3c62d9314841ce88ad24e5">gaml::bag::learner</a>(learner, </div>
 <div class="line">                                              SillyMerge(), </div>
 <div class="line">                                              SillyRandomizer(), </div>
 <div class="line">                                              BAG_SIZE,</div>
@@ -257,9 +257,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  <span class="comment">// Indeed, more clever ready-to-use templates are available in the</span></div>
 <div class="line">  <span class="comment">// library. Their design is similar to the design of the Silly*</span></div>
 <div class="line">  <span class="comment">// classes of this example.</span></div>
-<div class="line">  <span class="keyword">auto</span> clever1_bag_learner = <a class="code" href="a00172.html#a94145476ec3c62d9314841ce88ad24e5">gaml::bag::learner</a>(learner, </div>
-<div class="line">                                                <a name="_a9"></a><a class="code" href="a00090.html">gaml::MostFrequent&lt;Y&gt;</a>(),</div>
-<div class="line">                                                <a name="_a10"></a><a class="code" href="a00028.html">gaml::bag::set::Identity</a>(), </div>
+<div class="line">  <span class="keyword">auto</span> clever1_bag_learner = <a class="code" href="a00188.html#a94145476ec3c62d9314841ce88ad24e5">gaml::bag::learner</a>(learner, </div>
+<div class="line">                                                <a name="_a9"></a><a class="code" href="a00094.html">gaml::MostFrequent&lt;Y&gt;</a>(),</div>
+<div class="line">                                                <a name="_a10"></a><a class="code" href="a00029.html">gaml::bag::set::Identity</a>(), </div>
 <div class="line">                                                BAG_SIZE,</div>
 <div class="line">                                                <span class="keyword">false</span>);</div>
 <div class="line">  <span class="keyword">auto</span> clever1 = clever1_bag_learner(basis.begin(), basis.end(), input_of, output_of);</div>
@@ -271,9 +271,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  <span class="comment">// library. Their design is similar to the design of the Silly*</span></div>
 <div class="line">  <span class="comment">// classes of this example.</span></div>
 <div class="line"><span class="preprocessor">#define BOOTSTRAP_SIZE 200</span></div>
-<div class="line"><span class="preprocessor"></span>  <span class="keyword">auto</span> clever2_bag_learner = <a class="code" href="a00172.html#a94145476ec3c62d9314841ce88ad24e5">gaml::bag::learner</a>(learner, </div>
-<div class="line">                                                <a class="code" href="a00090.html">gaml::MostFrequent&lt;Y&gt;</a>(),</div>
-<div class="line">                                                <a name="_a11"></a><a class="code" href="a00027.html">gaml::bag::set::Bootstrap</a>(200), </div>
+<div class="line"><span class="preprocessor"></span>  <span class="keyword">auto</span> clever2_bag_learner = <a class="code" href="a00188.html#a94145476ec3c62d9314841ce88ad24e5">gaml::bag::learner</a>(learner, </div>
+<div class="line">                                                <a class="code" href="a00094.html">gaml::MostFrequent&lt;Y&gt;</a>(),</div>
+<div class="line">                                                <a name="_a11"></a><a class="code" href="a00028.html">gaml::bag::set::Bootstrap</a>(200), </div>
 <div class="line">                                                BAG_SIZE,</div>
 <div class="line">                                                <span class="keyword">false</span>);</div>
 <div class="line">  <span class="keyword">auto</span> clever2 = clever2_bag_learner(basis.begin(), basis.end(), input_of, output_of);</div>

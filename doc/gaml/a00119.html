@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::Search&lt; minimize &gt;::Complement Class Reference</title>
+<title>gaml-1.14: gaml::score::RelativeVarianceReduction&lt; DataIterator, Test, ValueOf &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,74 +82,63 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00115.html">Search</a></li><li class="navelem"><a class="el" href="a00119.html">Complement</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00202.html">score</a></li><li class="navelem"><a class="el" href="a00119.html">RelativeVarianceReduction</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00239.html">List of all members</a>  </div>
+<a href="a00324.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::Search&lt; minimize &gt;::Complement Class Reference</div>  </div>
+<div class="title">gaml::score::RelativeVarianceReduction&lt; DataIterator, Test, ValueOf &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00162_source.html">gamlSearch.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00177_source.html">gamlScore.hpp</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:a41cc7c6cbbb6c0d722cee45ec93db6a1"><td class="memItemLeft" align="right" valign="top">typedef Iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00119.html#a41cc7c6cbbb6c0d722cee45ec93db6a1">iterator</a></td></tr>
-<tr class="separator:a41cc7c6cbbb6c0d722cee45ec93db6a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7a6a13173563bb71628897f35b8bdb95"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00119.html#a7a6a13173563bb71628897f35b8bdb95">Complement</a> (const <a class="el" href="a00115.html#ac831b64fefa47c7ede3595f67ac335ad">elts_set_type</a> &amp;set, int n)</td></tr>
-<tr class="separator:a7a6a13173563bb71628897f35b8bdb95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a2bc83e7c2688b55ec790bb048c88cb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00119.html#a6a2bc83e7c2688b55ec790bb048c88cb">Complement</a> (const <a class="el" href="a00119.html">Complement</a> &amp;other)</td></tr>
-<tr class="separator:a6a2bc83e7c2688b55ec790bb048c88cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43d4b882bdd477b270e6335a4a46d49a"><td class="memItemLeft" align="right" valign="top">Iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00119.html#a43d4b882bdd477b270e6335a4a46d49a">begin</a> ()</td></tr>
-<tr class="separator:a43d4b882bdd477b270e6335a4a46d49a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f443d00b34021b9a33b271f27e3d120"><td class="memItemLeft" align="right" valign="top">Iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00119.html#a1f443d00b34021b9a33b271f27e3d120">end</a> ()</td></tr>
-<tr class="separator:a1f443d00b34021b9a33b271f27e3d120"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38b1481b7cd98c80f74161b0cdac5809"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00119.html#a38b1481b7cd98c80f74161b0cdac5809">operator()</a> (const DataIterator &amp;begin, const DataIterator &amp;end, const Test &amp;test, const ValueOf &amp;value_of)</td></tr>
+<tr class="separator:a38b1481b7cd98c80f74161b0cdac5809"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a41cc7c6cbbb6c0d722cee45ec93db6a1"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;bool minimize = true&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef Iterator <a class="el" href="a00115.html">gaml::Search</a>&lt; minimize &gt;::<a class="el" href="a00119.html#a41cc7c6cbbb6c0d722cee45ec93db6a1">Complement::iterator</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename DataIterator, typename Test, typename ValueOf&gt;<br/>
+class gaml::score::RelativeVarianceReduction&lt; DataIterator, Test, ValueOf &gt;</h3>
 
-</div>
-</div>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a7a6a13173563bb71628897f35b8bdb95"></a>
+<p>This can be used as a "template template" argument for algorithms whose scoring function is a parameter. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a38b1481b7cd98c80f74161b0cdac5809"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;bool minimize = true&gt; </div>
+template&lt;typename DataIterator, typename Test, typename ValueOf&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00115.html">gaml::Search</a>&lt; minimize &gt;::Complement::Complement </td>
+          <td class="memname">double <a class="el" href="a00119.html">gaml::score::RelativeVarianceReduction</a>&lt; DataIterator, Test, ValueOf &gt;::operator() </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00115.html#ac831b64fefa47c7ede3595f67ac335ad">elts_set_type</a> &amp;&#160;</td>
-          <td class="paramname"><em>set</em>, </td>
+          <td class="paramtype">const DataIterator &amp;&#160;</td>
+          <td class="paramname"><em>begin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>n</em>&#160;</td>
+          <td class="paramtype">const DataIterator &amp;&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Test &amp;&#160;</td>
+          <td class="paramname"><em>test</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ValueOf &amp;&#160;</td>
+          <td class="paramname"><em>value_of</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -166,85 +155,8 @@ template&lt;bool minimize = true&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a6a2bc83e7c2688b55ec790bb048c88cb"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;bool minimize = true&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00115.html">gaml::Search</a>&lt; minimize &gt;::Complement::Complement </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00119.html">Complement</a> &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a43d4b882bdd477b270e6335a4a46d49a"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;bool minimize = true&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Iterator <a class="el" href="a00115.html">gaml::Search</a>&lt; minimize &gt;::Complement::begin </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a1f443d00b34021b9a33b271f27e3d120"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;bool minimize = true&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Iterator <a class="el" href="a00115.html">gaml::Search</a>&lt; minimize &gt;::Complement::end </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="a00162_source.html">gamlSearch.hpp</a></li>
+<li><a class="el" href="a00177_source.html">gamlScore.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

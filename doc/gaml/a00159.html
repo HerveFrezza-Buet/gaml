@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gamlMultiDim.hpp File Reference</title>
+<title>gaml-1.14: gamlBag.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -89,36 +89,45 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">gamlMultiDim.hpp File Reference</div>  </div>
+<div class="title">gamlBag.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;array&gt;</code><br/>
-<code>#include &lt;list&gt;</code><br/>
-<code>#include &lt;functional&gt;</code><br/>
-<code>#include &lt;exception&gt;</code><br/>
-<code>#include &lt;sstream&gt;</code><br/>
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br/>
+<code>#include &lt;iomanip&gt;</code><br/>
+<code>#include &lt;vector&gt;</code><br/>
+<code>#include &lt;iterator&gt;</code><br/>
+<code>#include &lt;<a class="el" href="a00168_source.html">gamlIdentity.hpp</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="a00160_source.html">gamlBootstrap.hpp</a>&gt;</code><br/>
 </div>
 <p><a href="a00159_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00092.html">gaml::multidim::Predictor&lt; OUTPUT, PREDICTOR, DIM &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00027.html">gaml::bag::Predictor&lt; MergeOutput, ElementaryPredictor &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html">gaml::multidim::Learner&lt; DIM, LEARNER, OUTPUT &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html">gaml::bag::Learner&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00029.html">gaml::bag::set::Identity</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00028.html">gaml::bag::set::Bootstrap</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:a00171"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00171.html">gaml</a></td></tr>
+<tr class="memitem:a00187"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00187.html">gaml</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00180"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00180.html">gaml::multidim</a></td></tr>
+<tr class="memitem:a00188"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00188.html">gaml::bag</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00189"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00189.html">gaml::bag::set</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a89a33b6f1d995b64df36b9dca77039db"><td class="memTemplParams" colspan="2">template&lt;typename OUTPUT , int DIM, typename LEARNER &gt; </td></tr>
-<tr class="memitem:a89a33b6f1d995b64df36b9dca77039db"><td class="memTemplItemLeft" align="right" valign="top">Learner&lt; DIM, LEARNER, OUTPUT &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00180.html#a89a33b6f1d995b64df36b9dca77039db">gaml::multidim::learner</a> (const LEARNER &amp;learner, const typename Learner&lt; DIM, LEARNER, OUTPUT &gt;::to_array_type &amp;array_of_output, const typename Learner&lt; DIM, LEARNER, OUTPUT &gt;::to_output_type &amp;output_of_array)</td></tr>
-<tr class="separator:a89a33b6f1d995b64df36b9dca77039db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94145476ec3c62d9314841ce88ad24e5"><td class="memTemplParams" colspan="2">template&lt;typename MergeOutput , typename BasisRandomizer , typename ElementaryLearner &gt; </td></tr>
+<tr class="memitem:a94145476ec3c62d9314841ce88ad24e5"><td class="memTemplItemLeft" align="right" valign="top">Learner&lt; MergeOutput, <br class="typebreak"/>
+BasisRandomizer, <br class="typebreak"/>
+ElementaryLearner &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00188.html#a94145476ec3c62d9314841ce88ad24e5">gaml::bag::learner</a> (const ElementaryLearner &amp;l, const MergeOutput &amp;output_merger, const BasisRandomizer &amp;dataset_randomizer, unsigned int size, bool is_verbose)</td></tr>
+<tr class="separator:a94145476ec3c62d9314841ce88ad24e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

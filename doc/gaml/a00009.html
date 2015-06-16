@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: example-002-001-confusion.cpp</title>
+<title>gaml-1.14: example-002-001-confusion.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -79,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">example-002-001-confusion.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00142.html">gaml.hpp</a>&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00157.html">gaml.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;utility&gt;</span></div>
@@ -112,7 +112,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  <span class="keyword">typedef</span> U output_type;</div>
 <div class="line"></div>
 <div class="line">  output_type operator() (<span class="keyword">const</span> input_type &amp;x)<span class="keyword"> const </span>{</div>
-<div class="line">    <span class="keywordtype">bool</span> confused = <a name="a0"></a><a class="code" href="a00183.html#a50561031870af4d865de65f89c677916">gaml::random::proba</a>(CONFUSION_PROBABILITY);</div>
+<div class="line">    <span class="keywordtype">bool</span> confused = <a name="a0"></a><a class="code" href="a00199.html#a50561031870af4d865de65f89c677916">gaml::random::proba</a>(CONFUSION_PROBABILITY);</div>
 <div class="line">    U lbl = (int)x;</div>
 <div class="line">    U tmp;</div>
 <div class="line"></div>
@@ -121,11 +121,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">      <span class="keywordflow">switch</span>(tmp) {</div>
 <div class="line">      <span class="keywordflow">case</span> 0:<span class="keywordflow">case</span> 2:<span class="keywordflow">case</span> 4:<span class="keywordflow">case</span> 6:<span class="keywordflow">case</span> 8:  <span class="comment">// Even labels</span></div>
 <div class="line">        <span class="keywordflow">while</span>(lbl==tmp)</div>
-<div class="line">          lbl = 2*((int)(<a name="a1"></a><a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(0,5)));</div>
+<div class="line">          lbl = 2*((int)(<a name="a1"></a><a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(0,5)));</div>
 <div class="line">        <span class="keywordflow">break</span>;</div>
 <div class="line">      <span class="keywordflow">default</span>: <span class="comment">// Odd labels</span></div>
 <div class="line">        <span class="keywordflow">while</span>(lbl==tmp)</div>
-<div class="line">          lbl = 2*((int)(<a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(0,5)))+1;</div>
+<div class="line">          lbl = 2*((int)(<a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(0,5)))+1;</div>
 <div class="line">        <span class="keywordflow">break</span>;</div>
 <div class="line">      };</div>
 <div class="line">    }</div>
@@ -140,7 +140,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  basis.resize(BASIS_SIZE);</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; data : basis) {</div>
-<div class="line">    <span class="keywordtype">double</span>  tmp = <a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(0,10);</div>
+<div class="line">    <span class="keywordtype">double</span>  tmp = <a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(0,10);</div>
 <div class="line">    data.first  = tmp;</div>
 <div class="line">    data.second = (int)tmp;</div>
 <div class="line">  }</div>
@@ -154,25 +154,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  <span class="keywordflow">try</span> {</div>
 <div class="line">    <span class="comment">// Let us set up a classifier and its confusion matrix.</span></div>
 <div class="line">    Classifier                         classifier;</div>
-<div class="line">    <a name="_a2"></a><a class="code" href="a00036.html" title="This computes a confusion matrix.">gaml::classification::Confusion&lt;U&gt;</a> matrix;</div>
-<div class="line">    matrix.<a name="a3"></a><a class="code" href="a00036.html#ae0d9ed24a04a3d49655de786756997e9">clear</a>();</div>
-<div class="line">    matrix.<a name="a4"></a><a class="code" href="a00036.html#a1c71aa1eab57cb0e771dc1e3546e9fe4">update</a>(classifier,</div>
+<div class="line">    <a name="_a2"></a><a class="code" href="a00039.html" title="This computes a confusion matrix.">gaml::classification::Confusion&lt;U&gt;</a> matrix;</div>
+<div class="line">    matrix.<a name="a3"></a><a class="code" href="a00039.html#ae0d9ed24a04a3d49655de786756997e9">clear</a>();</div>
+<div class="line">    matrix.<a name="a4"></a><a class="code" href="a00039.html#a1c71aa1eab57cb0e771dc1e3546e9fe4">update</a>(classifier,</div>
 <div class="line">                  basis.begin(), basis.end(),</div>
 <div class="line">                  input_of_data, output_of_data, class_of_label);</div>
 <div class="line">  </div>
 <div class="line">    <span class="comment">// Now, let us display the confusion matrix.</span></div>
-<div class="line">    matrix.<a name="a5"></a><a class="code" href="a00036.html#a8bf6743ac3e71ca8957665ab86526da8">display</a>(std::cout);</div>
+<div class="line">    matrix.<a name="a5"></a><a class="code" href="a00039.html#a8bf6743ac3e71ca8957665ab86526da8">display</a>(std::cout);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// Let us access to some data in the matrix.</span></div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Probability of saying 7 while class is actually 5 : &quot;</span> &lt;&lt; matrix.<a name="a6"></a><a class="code" href="a00036.html#a831abcbb8de536a7fef4fbf68c66116f">confusion</a>(5,7)         &lt;&lt; std::endl</div>
-<div class="line">              &lt;&lt; <span class="stringliteral">&quot;Probability of saying 7                           : &quot;</span> &lt;&lt; matrix.<a name="a7"></a><a class="code" href="a00036.html#acd66fd07c3d9cbdf766f1d52de6a956d">predictionFrequency</a>(7) &lt;&lt; std::endl</div>
-<div class="line">              &lt;&lt; <span class="stringliteral">&quot;Probability of having class 5                     : &quot;</span> &lt;&lt; matrix.<a name="a8"></a><a class="code" href="a00036.html#a8be95152f4642d7e7621a6ee9357e77f">truthFrequency</a>(5)      &lt;&lt; std::endl</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Probability of saying 7 while class is actually 5 : &quot;</span> &lt;&lt; matrix.<a name="a6"></a><a class="code" href="a00039.html#a831abcbb8de536a7fef4fbf68c66116f">confusion</a>(5,7)         &lt;&lt; std::endl</div>
+<div class="line">              &lt;&lt; <span class="stringliteral">&quot;Probability of saying 7                           : &quot;</span> &lt;&lt; matrix.<a name="a7"></a><a class="code" href="a00039.html#acd66fd07c3d9cbdf766f1d52de6a956d">predictionFrequency</a>(7) &lt;&lt; std::endl</div>
+<div class="line">              &lt;&lt; <span class="stringliteral">&quot;Probability of having class 5                     : &quot;</span> &lt;&lt; matrix.<a name="a8"></a><a class="code" href="a00039.html#a8be95152f4642d7e7621a6ee9357e77f">truthFrequency</a>(5)      &lt;&lt; std::endl</div>
 <div class="line">              &lt;&lt; std::endl;</div>
 <div class="line">  </div>
 <div class="line">    <span class="comment">// Let us list the classes that are actually used in the confusion</span></div>
 <div class="line">    <span class="comment">// matrix (some classes may have never appeared in the examples nore</span></div>
 <div class="line">    <span class="comment">// in the predictions).</span></div>
-<div class="line">    <span class="keyword">auto</span> actual_classes = matrix.<a name="a9"></a><a class="code" href="a00036.html#a025ba8099f6074944768962d447f4332">classes</a>();</div>
+<div class="line">    <span class="keyword">auto</span> actual_classes = matrix.<a name="a9"></a><a class="code" href="a00039.html#a025ba8099f6074944768962d447f4332">classes</a>();</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Those classes are actually used :&quot;</span>;</div>
 <div class="line">    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; used_class : actual_classes) std::cout &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; used_class;</div>
 <div class="line">    std::cout &lt;&lt; std::endl &lt;&lt; std::endl;</div>
@@ -184,11 +184,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    ofile.close();</div>
 <div class="line"></div>
 <div class="line">    std::ifstream ifile;</div>
-<div class="line">    <a class="code" href="a00036.html" title="This computes a confusion matrix.">gaml::classification::Confusion&lt;U&gt;</a> loaded;</div>
+<div class="line">    <a class="code" href="a00039.html" title="This computes a confusion matrix.">gaml::classification::Confusion&lt;U&gt;</a> loaded;</div>
 <div class="line">    ifile.open(<span class="stringliteral">&quot;Confusion.data&quot;</span>);</div>
 <div class="line">    ifile &gt;&gt; loaded;</div>
 <div class="line">    ifile.close();</div>
-<div class="line">    loaded.<a class="code" href="a00036.html#a8bf6743ac3e71ca8957665ab86526da8">display</a>(std::cout);</div>
+<div class="line">    loaded.<a class="code" href="a00039.html#a8bf6743ac3e71ca8957665ab86526da8">display</a>(std::cout);</div>
 <div class="line">  }</div>
 <div class="line">  <span class="keywordflow">catch</span>(<span class="keyword">const</span> std::exception&amp; e) {</div>
 <div class="line">    std::cout &lt;&lt; e.what() &lt;&lt; std::endl;</div>

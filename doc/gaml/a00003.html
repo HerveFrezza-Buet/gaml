@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: example-001-002-indexed-dataset.cpp</title>
+<title>gaml-1.14: example-001-002-indexed-dataset.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -115,7 +115,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// The gaml library.</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00142.html">gaml.hpp</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00157.html">gaml.hpp</a>&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// Read this file.</span></div>
 <div class="line"><span class="preprocessor">#include &lt;example-customer.hpp&gt;</span></div>
@@ -132,18 +132,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    {</div>
 <div class="line">      <span class="keyword">auto</span> data = customer::make_data();</div>
 <div class="line">      std::ofstream ofile(CUSTOMERS_DATA_FILE);</div>
-<div class="line">      <span class="keyword">auto</span> output_stream = <a name="a0"></a><a class="code" href="a00171.html#a2addf6f6d613b40c6f598ed3d68bf12a">gaml::make_output_data_stream</a>(ofile, parser);</div>
-<div class="line">      <span class="keyword">auto</span> out           = <a name="a1"></a><a class="code" href="a00171.html#a0b23f6891f675d9e85f308c75a3d69bf">gaml::make_output_iterator</a>   (output_stream);</div>
+<div class="line">      <span class="keyword">auto</span> output_stream = <a name="a0"></a><a class="code" href="a00187.html#a2addf6f6d613b40c6f598ed3d68bf12a">gaml::make_output_data_stream</a>(ofile, parser);</div>
+<div class="line">      <span class="keyword">auto</span> out           = <a name="a1"></a><a class="code" href="a00187.html#a0b23f6891f675d9e85f308c75a3d69bf">gaml::make_output_iterator</a>   (output_stream);</div>
 <div class="line">      std::copy(data.begin(), data.end(), out);</div>
 <div class="line">      ofile.close();</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// This displays customers on the standard output.</span></div>
-<div class="line">    <span class="keyword">auto</span> output_stream = <a class="code" href="a00171.html#a2addf6f6d613b40c6f598ed3d68bf12a">gaml::make_output_data_stream</a>(std::cout, parser);</div>
-<div class="line">    <span class="keyword">auto</span> out           = <a class="code" href="a00171.html#a0b23f6891f675d9e85f308c75a3d69bf">gaml::make_output_iterator</a>   (output_stream);</div>
+<div class="line">    <span class="keyword">auto</span> output_stream = <a class="code" href="a00187.html#a2addf6f6d613b40c6f598ed3d68bf12a">gaml::make_output_data_stream</a>(std::cout, parser);</div>
+<div class="line">    <span class="keyword">auto</span> out           = <a class="code" href="a00187.html#a0b23f6891f675d9e85f308c75a3d69bf">gaml::make_output_iterator</a>   (output_stream);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// Now we can set up an indexed dataset easily...</span></div>
-<div class="line">    <span class="keyword">auto</span> indexed = <a name="a2"></a><a class="code" href="a00171.html#a6f27ba60caebb3559f4ac81e2cc1e644">gaml::make_indexed_dataset</a>(parser, </div>
+<div class="line">    <span class="keyword">auto</span> indexed = <a name="a2"></a><a class="code" href="a00187.html#a6f27ba60caebb3559f4ac81e2cc1e644">gaml::make_indexed_dataset</a>(parser, </div>
 <div class="line">                                              CUSTOMERS_DATA_FILE, </div>
 <div class="line">                                              CUSTOMERS_INDEX_FILE);</div>
 <div class="line">    </div>
@@ -173,8 +173,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    customer::Data     dat2 {<span class="keyword">false</span>, 44, {{pur1, pur2}}, rat1};</div>
 <div class="line">    </div>
 <div class="line">    std::ofstream ofile(CUSTOMERS_DATA_FILE, std::fstream::app);</div>
-<div class="line">    <span class="keyword">auto</span> append_stream = <a class="code" href="a00171.html#a2addf6f6d613b40c6f598ed3d68bf12a">gaml::make_output_data_stream</a>(ofile, parser);</div>
-<div class="line">    <span class="keyword">auto</span> app_out       = <a class="code" href="a00171.html#a0b23f6891f675d9e85f308c75a3d69bf">gaml::make_output_iterator</a>   (append_stream);</div>
+<div class="line">    <span class="keyword">auto</span> append_stream = <a class="code" href="a00187.html#a2addf6f6d613b40c6f598ed3d68bf12a">gaml::make_output_data_stream</a>(ofile, parser);</div>
+<div class="line">    <span class="keyword">auto</span> app_out       = <a class="code" href="a00187.html#a0b23f6891f675d9e85f308c75a3d69bf">gaml::make_output_iterator</a>   (append_stream);</div>
 <div class="line">    *(app_out++)       = dat1;</div>
 <div class="line">    *(app_out++)       = dat2;</div>
 <div class="line">    ofile.close();</div>

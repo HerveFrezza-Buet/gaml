@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: Member List</title>
+<title>gaml-1.14: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,20 +82,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00077.html">JSONParser< std::tuple< Args...> ></a></li><li class="navelem"><a class="el" href="a00078.html">ComponentParser< i, 0 ></a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00067.html">IndexedDataset</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">gaml::JSONParser&lt; std::tuple&lt; Args...&gt; &gt;::ComponentParser&lt; i, 0 &gt; Member List</div>  </div>
+<div class="title">gaml::IndexedDataset&lt; Parser &gt; Member List</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This is the complete list of members for <a class="el" href="a00078.html">gaml::JSONParser&lt; std::tuple&lt; Args...&gt; &gt;::ComponentParser&lt; i, 0 &gt;</a>, including all inherited members.</p>
+<p>This is the complete list of members for <a class="el" href="a00067.html">gaml::IndexedDataset&lt; Parser &gt;</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="a00078.html#a86793ea37bdf07f360d9f07cfb4434b2">ComponentParser</a>(std::istream &amp;is)</td><td class="entry"><a class="el" href="a00078.html">gaml::JSONParser&lt; std::tuple&lt; Args...&gt; &gt;::ComponentParser&lt; i, 0 &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="a00078.html#a05be5a2e3591cc9c7df0e1f00a729ff7">read</a>(std::istream &amp;, tuple_type &amp;) const </td><td class="entry"><a class="el" href="a00078.html">gaml::JSONParser&lt; std::tuple&lt; Args...&gt; &gt;::ComponentParser&lt; i, 0 &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00078.html#ac463ae1b09a157fa340660aca1483080">write</a>(std::ostream &amp;, const tuple_type &amp;) const </td><td class="entry"><a class="el" href="a00078.html">gaml::JSONParser&lt; std::tuple&lt; Args...&gt; &gt;::ComponentParser&lt; i, 0 &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="a00067.html#a3bcaad3c0db396c414278f67f909b60a">begin</a>()</td><td class="entry"><a class="el" href="a00067.html">gaml::IndexedDataset&lt; Parser &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="a00067.html#a1cb4bea456853627f5797fd5120c0503">end</a>()</td><td class="entry"><a class="el" href="a00067.html">gaml::IndexedDataset&lt; Parser &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="a00067.html#ae68a9d430950612b54e52165a140214e">IndexedDataset</a>(const data_file_parser_type &amp;parser, const char *dataFileName, const char *indexFileName)</td><td class="entry"><a class="el" href="a00067.html">gaml::IndexedDataset&lt; Parser &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="a00067.html#a2752ed88a482c32296f076535373520a">IndexedDataset</a>(const IndexedDataset &amp;other)</td><td class="entry"><a class="el" href="a00067.html">gaml::IndexedDataset&lt; Parser &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="a00067.html#a67171474c4da6cc8efe0c7fafefd2b2d">iterator</a> class</td><td class="entry"><a class="el" href="a00067.html">gaml::IndexedDataset&lt; Parser &gt;</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+  <tr><td class="entry"><a class="el" href="a00067.html#aab050ffd28411dc5c5b41f0a63f0ca39">operator[]</a>(std::size_t index) const </td><td class="entry"><a class="el" href="a00067.html">gaml::IndexedDataset&lt; Parser &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="a00067.html#aded4346fe2a85385d84d3a28eee90bbf">push_back</a>(const value_type &amp;value)</td><td class="entry"><a class="el" href="a00067.html">gaml::IndexedDataset&lt; Parser &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="a00067.html#adf9d51e96303b81d07362d7fa925e8b8">size</a>() const </td><td class="entry"><a class="el" href="a00067.html">gaml::IndexedDataset&lt; Parser &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="a00067.html#a034c78ebef0dd5c9732396a12240cc37">update</a>()</td><td class="entry"><a class="el" href="a00067.html">gaml::IndexedDataset&lt; Parser &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="a00067.html#ad12a367c67bfb9a152c99dd10b6b8d08">~IndexedDataset</a>()</td><td class="entry"><a class="el" href="a00067.html">gaml::IndexedDataset&lt; Parser &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['any',['Any',['../a00045.html',1,'gaml::exception']]],
-  ['average',['Average',['../a00024.html',1,'gaml']]]
+  ['any',['Any',['../a00048.html',1,'gaml::exception']]],
+  ['average',['Average',['../a00025.html',1,'gaml']]]
 ];

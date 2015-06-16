@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::risk::CrossValidation&lt; LOSS, PARTITION &gt; Class Template Reference</title>
+<title>gaml-1.14: gaml::projection_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt; Struct Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,158 +82,107 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00184.html">risk</a></li><li class="navelem"><a class="el" href="a00111.html">CrossValidation</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00111.html">projection_traits</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00291.html">List of all members</a>  </div>
+<a href="#pub-types">Public Types</a> &#124;
+<a href="a00218.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::risk::CrossValidation&lt; LOSS, PARTITION &gt; Class Template Reference</div>  </div>
+<div class="title">gaml::projection_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00143_source.html">gamlAlgorithms.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00163_source.html">gamlDimensions.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for gaml::projection_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="a00111.png" usemap="#gaml::projection_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;_map" alt=""/>
+  <map id="gaml::projection_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;_map" name="gaml::projection_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;_map">
+<area href="a00156.html" alt="gaml::wrapper_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR, GENERIC_LEARNER &gt;" shape="rect" coords="0,56,475,80"/>
+</map>
+ </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a7017297be2cf4932d78d623cb3646dab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00111.html#a7017297be2cf4932d78d623cb3646dab">CrossValidation</a> (const LOSS &amp;l, const PARTITION &amp;part, bool verbosity)</td></tr>
-<tr class="separator:a7017297be2cf4932d78d623cb3646dab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a863beae4d614b7371c85106ee65efd6c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00111.html#a863beae4d614b7371c85106ee65efd6c">CrossValidation</a> (const <a class="el" href="a00111.html">CrossValidation</a> &amp;other)</td></tr>
-<tr class="separator:a863beae4d614b7371c85106ee65efd6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a366be8dcf507a5ff239a55a69a80476e"><td class="memTemplParams" colspan="2">template&lt;typename Learner , typename DataIterator , typename InputOf , typename OutputOf &gt; </td></tr>
-<tr class="memitem:a366be8dcf507a5ff239a55a69a80476e"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00111.html#a366be8dcf507a5ff239a55a69a80476e">operator()</a> (const Learner &amp;learner, const DataIterator &amp;begin, const DataIterator &amp;end, const InputOf &amp;inputOf, const OutputOf &amp;outputOf) const </td></tr>
-<tr class="separator:a366be8dcf507a5ff239a55a69a80476e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a65412e3a056a0cbeace717a782522909"><td class="memItemLeft" align="right" valign="top">typedef INPUT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00111.html#a65412e3a056a0cbeace717a782522909">input_type</a></td></tr>
+<tr class="separator:a65412e3a056a0cbeace717a782522909"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a58d3cc8aca15588602d14e75199a0e"><td class="memItemLeft" align="right" valign="top">typedef OUTPUT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00111.html#a2a58d3cc8aca15588602d14e75199a0e">output_type</a></td></tr>
+<tr class="separator:a2a58d3cc8aca15588602d14e75199a0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68729c50d8544e57ff44251e04d7de24"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00105.html">ProjectedInput</a><br class="typebreak"/>
+&lt; ATTR_ITERATOR, <a class="el" href="a00111.html#a65412e3a056a0cbeace717a782522909">input_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00111.html#a68729c50d8544e57ff44251e04d7de24">projected_input_type</a></td></tr>
+<tr class="separator:a68729c50d8544e57ff44251e04d7de24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4194bf55e6656d83ffb1f79275591c91"><td class="memItemLeft" align="right" valign="top">typedef std::pair<br class="typebreak"/>
+&lt; <a class="el" href="a00111.html#a68729c50d8544e57ff44251e04d7de24">projected_input_type</a>, <br class="typebreak"/>
+<a class="el" href="a00111.html#a2a58d3cc8aca15588602d14e75199a0e">output_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00111.html#a4194bf55e6656d83ffb1f79275591c91">projected_data_type</a></td></tr>
+<tr class="separator:a4194bf55e6656d83ffb1f79275591c91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a7017297be2cf4932d78d623cb3646dab"></a>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename INPUT, typename OUTPUT, typename ATTR_ITERATOR&gt;<br/>
+struct gaml::projection_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;</h3>
+
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="a00015.html#_a3">example-004-001-variable-projection.cpp</a>.</dd>
+</dl></div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="a65412e3a056a0cbeace717a782522909"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename LOSS, typename PARTITION&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
+template&lt;typename INPUT , typename OUTPUT , typename ATTR_ITERATOR &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00111.html">gaml::risk::CrossValidation</a>&lt; LOSS, PARTITION &gt;::<a class="el" href="a00111.html">CrossValidation</a> </td>
-          <td>(</td>
-          <td class="paramtype">const LOSS &amp;&#160;</td>
-          <td class="paramname"><em>l</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const PARTITION &amp;&#160;</td>
-          <td class="paramname"><em>part</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>verbosity</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">typedef INPUT <a class="el" href="a00111.html">gaml::projection_traits</a>&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;::<a class="el" href="a00111.html#a65412e3a056a0cbeace717a782522909">input_type</a></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a863beae4d614b7371c85106ee65efd6c"></a>
+<a class="anchor" id="a2a58d3cc8aca15588602d14e75199a0e"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename LOSS, typename PARTITION&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
+template&lt;typename INPUT , typename OUTPUT , typename ATTR_ITERATOR &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00111.html">gaml::risk::CrossValidation</a>&lt; LOSS, PARTITION &gt;::<a class="el" href="a00111.html">CrossValidation</a> </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00111.html">CrossValidation</a>&lt; LOSS, PARTITION &gt; &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
-          <td></td>
+          <td class="memname">typedef OUTPUT <a class="el" href="a00111.html">gaml::projection_traits</a>&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;::<a class="el" href="a00111.html#a2a58d3cc8aca15588602d14e75199a0e">output_type</a></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a366be8dcf507a5ff239a55a69a80476e"></a>
+<a class="anchor" id="a4194bf55e6656d83ffb1f79275591c91"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename LOSS, typename PARTITION&gt; </div>
-<div class="memtemplate">
-template&lt;typename Learner , typename DataIterator , typename InputOf , typename OutputOf &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
+template&lt;typename INPUT , typename OUTPUT , typename ATTR_ITERATOR &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">double <a class="el" href="a00111.html">gaml::risk::CrossValidation</a>&lt; LOSS, PARTITION &gt;::operator() </td>
-          <td>(</td>
-          <td class="paramtype">const Learner &amp;&#160;</td>
-          <td class="paramname"><em>learner</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const DataIterator &amp;&#160;</td>
-          <td class="paramname"><em>begin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const DataIterator &amp;&#160;</td>
-          <td class="paramname"><em>end</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const InputOf &amp;&#160;</td>
-          <td class="paramname"><em>inputOf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const OutputOf &amp;&#160;</td>
-          <td class="paramname"><em>outputOf</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
+          <td class="memname">typedef std::pair&lt;<a class="el" href="a00111.html#a68729c50d8544e57ff44251e04d7de24">projected_input_type</a>, <a class="el" href="a00111.html#a2a58d3cc8aca15588602d14e75199a0e">output_type</a>&gt; <a class="el" href="a00111.html">gaml::projection_traits</a>&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;::<a class="el" href="a00111.html#a4194bf55e6656d83ffb1f79275591c91">projected_data_type</a></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="a00143_source.html">gamlAlgorithms.hpp</a></li>
+<a class="anchor" id="a68729c50d8544e57ff44251e04d7de24"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename INPUT , typename OUTPUT , typename ATTR_ITERATOR &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="a00105.html">ProjectedInput</a>&lt;ATTR_ITERATOR, <a class="el" href="a00111.html#a65412e3a056a0cbeace717a782522909">input_type</a>&gt; <a class="el" href="a00111.html">gaml::projection_traits</a>&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;::<a class="el" href="a00111.html#a68729c50d8544e57ff44251e04d7de24">projected_input_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li><a class="el" href="a00163_source.html">gamlDimensions.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

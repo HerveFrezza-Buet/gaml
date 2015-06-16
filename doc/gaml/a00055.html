@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::Filter&lt; Iterator &gt; Class Template Reference</title>
+<title>gaml-1.14: gaml::exception::NoNegativePrediction Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,158 +82,61 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00055.html">Filter</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00193.html">exception</a></li><li class="navelem"><a class="el" href="a00055.html">NoNegativePrediction</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00208.html">List of all members</a>  </div>
+<a href="a00310.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::Filter&lt; Iterator &gt; Class Template Reference</div>  </div>
+<div class="title">gaml::exception::NoNegativePrediction Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00150_source.html">gamlFilter.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00164_source.html">gamlException.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for gaml::exception::NoNegativePrediction:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="a00055.png" usemap="#gaml::exception::NoNegativePrediction_map" alt=""/>
+  <map id="gaml::exception::NoNegativePrediction_map" name="gaml::exception::NoNegativePrediction_map">
+<area href="a00050.html" alt="gaml::exception::ConfusionMatrix" shape="rect" coords="0,112,227,136"/>
+<area href="a00048.html" alt="gaml::exception::Any" shape="rect" coords="0,56,227,80"/>
+</map>
+ </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:a37527f4c7a3ce13c643902f0201f63b5"><td class="memItemLeft" align="right" valign="top">typedef Iterator::value_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00055.html#a37527f4c7a3ce13c643902f0201f63b5">value_type</a></td></tr>
-<tr class="separator:a37527f4c7a3ce13c643902f0201f63b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab87c85d71788b4e06e5b78b93d5f58a9"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00056.html">FilterIterator</a>&lt; Iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00055.html#ab87c85d71788b4e06e5b78b93d5f58a9">iterator</a></td></tr>
-<tr class="separator:ab87c85d71788b4e06e5b78b93d5f58a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a989da9708b2160779252c81f12dabf71"><td class="memTemplParams" colspan="2">template&lt;typename fctFilter &gt; </td></tr>
-<tr class="memitem:a989da9708b2160779252c81f12dabf71"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00055.html#a989da9708b2160779252c81f12dabf71">Filter</a> (const Iterator &amp;<a class="el" href="a00055.html#a4a676e5085f5e064d9265c41f51c16d0">begin</a>, const Iterator &amp;<a class="el" href="a00055.html#a03e31014e852ff7d2690e1d95541a4c0">end</a>, const fctFilter &amp;fct_filter, bool keep_true)</td></tr>
-<tr class="separator:a989da9708b2160779252c81f12dabf71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a676e5085f5e064d9265c41f51c16d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00055.html#ab87c85d71788b4e06e5b78b93d5f58a9">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00055.html#a4a676e5085f5e064d9265c41f51c16d0">begin</a> () const </td></tr>
-<tr class="separator:a4a676e5085f5e064d9265c41f51c16d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03e31014e852ff7d2690e1d95541a4c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00055.html#ab87c85d71788b4e06e5b78b93d5f58a9">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00055.html#a03e31014e852ff7d2690e1d95541a4c0">end</a> () const </td></tr>
-<tr class="separator:a03e31014e852ff7d2690e1d95541a4c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a918a07c60f00eb8f3a38637276285774"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00055.html#a918a07c60f00eb8f3a38637276285774">NoNegativePrediction</a> (const std::string &amp;msg)</td></tr>
+<tr class="separator:a918a07c60f00eb8f3a38637276285774"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_a00050"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_a00050')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="a00050.html">gaml::exception::ConfusionMatrix</a></td></tr>
+<tr class="memitem:a8ea408ad4ce98f5740efa3c6a3efc762 inherit pub_methods_a00050"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00050.html#a8ea408ad4ce98f5740efa3c6a3efc762">ConfusionMatrix</a> (const std::string &amp;msg)</td></tr>
+<tr class="separator:a8ea408ad4ce98f5740efa3c6a3efc762 inherit pub_methods_a00050"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83857d3044b2f2db610373d627821e58 inherit pub_methods_a00050"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00050.html#a83857d3044b2f2db610373d627821e58">ConfusionMatrix</a> (const std::string &amp;kind, const std::string &amp;msg)</td></tr>
+<tr class="separator:a83857d3044b2f2db610373d627821e58 inherit pub_methods_a00050"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_a00048"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_a00048')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="a00048.html">gaml::exception::Any</a></td></tr>
+<tr class="memitem:af1b4c276e8a2f74b55723feff137a287 inherit pub_methods_a00048"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00048.html#af1b4c276e8a2f74b55723feff137a287">Any</a> (const std::string &amp;kind, const std::string &amp;msg)</td></tr>
+<tr class="separator:af1b4c276e8a2f74b55723feff137a287 inherit pub_methods_a00048"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e6d3273706b86bfc68ac82c552f8e18 inherit pub_methods_a00048"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00048.html#a6e6d3273706b86bfc68ac82c552f8e18">~Any</a> (void)  throw ()</td></tr>
+<tr class="separator:a6e6d3273706b86bfc68ac82c552f8e18 inherit pub_methods_a00048"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73980eae9b8d106e169745923f6f2507 inherit pub_methods_a00048"><td class="memItemLeft" align="right" valign="top">virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00048.html#a73980eae9b8d106e169745923f6f2507">what</a> (void) const   throw ()</td></tr>
+<tr class="separator:a73980eae9b8d106e169745923f6f2507 inherit pub_methods_a00048"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="ab87c85d71788b4e06e5b78b93d5f58a9"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="a00056.html">FilterIterator</a>&lt;Iterator&gt; <a class="el" href="a00055.html">gaml::Filter</a>&lt; Iterator &gt;::<a class="el" href="a00055.html#ab87c85d71788b4e06e5b78b93d5f58a9">iterator</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a37527f4c7a3ce13c643902f0201f63b5"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef Iterator::value_type <a class="el" href="a00055.html">gaml::Filter</a>&lt; Iterator &gt;::<a class="el" href="a00055.html#a37527f4c7a3ce13c643902f0201f63b5">value_type</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a989da9708b2160779252c81f12dabf71"></a>
+<a class="anchor" id="a918a07c60f00eb8f3a38637276285774"></a>
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-<div class="memtemplate">
-template&lt;typename fctFilter &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00055.html">gaml::Filter</a>&lt; Iterator &gt;::<a class="el" href="a00055.html">Filter</a> </td>
+          <td class="memname">gaml::exception::NoNegativePrediction::NoNegativePrediction </td>
           <td>(</td>
-          <td class="paramtype">const Iterator &amp;&#160;</td>
-          <td class="paramname"><em>begin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">const Iterator &amp;&#160;</td>
-          <td class="paramname"><em>end</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const fctFilter&lt; Iterator &gt; &amp;&#160;</td>
-          <td class="paramname"><em>fct_filter</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>keep_true</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a4a676e5085f5e064d9265c41f51c16d0"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00055.html#ab87c85d71788b4e06e5b78b93d5f58a9">iterator</a> <a class="el" href="a00055.html">gaml::Filter</a>&lt; Iterator &gt;::begin </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a03e31014e852ff7d2690e1d95541a4c0"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00055.html#ab87c85d71788b4e06e5b78b93d5f58a9">iterator</a> <a class="el" href="a00055.html">gaml::Filter</a>&lt; Iterator &gt;::end </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
         </tr>
       </table>
   </td>
@@ -246,7 +149,7 @@ template&lt;typename Iterator&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="a00150_source.html">gamlFilter.hpp</a></li>
+<li><a class="el" href="a00164_source.html">gamlException.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

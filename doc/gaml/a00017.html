@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: example-004-003-wrapper-based-selection.cpp</title>
+<title>gaml-1.14: example-004-003-wrapper-based-selection.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -79,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">example-004-003-wrapper-based-selection.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00142.html">gaml.hpp</a>&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00157.html">gaml.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;utility&gt;</span></div>
@@ -189,10 +189,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  GenericLearner generic_learner;</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// We need a real risk estimator for evaluating the algorithms when variables are selected.</span></div>
-<div class="line">  <span class="keyword">auto</span> real_risk_estimator = <a name="a0"></a><a class="code" href="a00184.html#adf7f5a2dee85281e5a0b604b588e9560">gaml::risk::cross_validation</a>(<a name="_a1"></a><a class="code" href="a00083.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a>(), <a name="a2"></a><a class="code" href="a00181.html#a5b2281c25f57d3fbf33b397453f425e7">gaml::partition::kfold</a>(10), <span class="keyword">false</span>);</div>
+<div class="line">  <span class="keyword">auto</span> real_risk_estimator = <a name="a0"></a><a class="code" href="a00200.html#adf7f5a2dee85281e5a0b604b588e9560">gaml::risk::cross_validation</a>(<a name="_a1"></a><a class="code" href="a00087.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a>(), <a name="a2"></a><a class="code" href="a00197.html#a5b2281c25f57d3fbf33b397453f425e7">gaml::partition::kfold</a>(10), <span class="keyword">false</span>);</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Wrapping evaluator</span></div>
-<div class="line">  <span class="keyword">auto</span> evaluator = <a name="a3"></a><a class="code" href="a00188.html#a2b141b9fc3d65e2dd23bc86b6759b857">gaml::varsel::make_wrapper_evaluator</a>(generic_learner, real_risk_estimator, </div>
+<div class="line">  <span class="keyword">auto</span> evaluator = <a name="a3"></a><a class="code" href="a00204.html#a2b141b9fc3d65e2dd23bc86b6759b857">gaml::varsel::make_wrapper_evaluator</a>(generic_learner, real_risk_estimator, </div>
 <div class="line">                                                        dataset.begin(), dataset.end(),</div>
 <div class="line">                                                        dummy::input_of_data, dummy::output_of_data);</div>
 <div class="line"></div>
@@ -216,10 +216,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  <span class="keywordtype">double</span> best_risk;                 <span class="comment">// It will store the lowest risk of the best found subset of variables.</span></div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">switch</span>(choice) {</div>
-<div class="line">  <span class="keywordflow">case</span> 1 : best_risk = <a name="a4"></a><a class="code" href="a00188.html#a1b3c96d59787abd9546ff317096fd3f7">gaml::varsel::SFS</a> (evaluator, variable_subset, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Forward Selection.</span></div>
-<div class="line">  <span class="keywordflow">case</span> 2 : best_risk = <a name="a5"></a><a class="code" href="a00188.html#a367ede0d19e4754c2510a7d4cd76170d">gaml::varsel::SBS</a> (evaluator, variable_subset, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Backward Selection.</span></div>
-<div class="line">  <span class="keywordflow">case</span> 3 : best_risk = <a name="a6"></a><a class="code" href="a00188.html#a406be0b466d45889075be091d165f0e8">gaml::varsel::SFFS</a>(evaluator, variable_subset, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Floating Forward Selection.</span></div>
-<div class="line">  <span class="keywordflow">case</span> 4 : best_risk = <a name="a7"></a><a class="code" href="a00188.html#a49b57f623b1500ae750f58aea95620fc">gaml::varsel::SFBS</a>(evaluator, variable_subset, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Floating Backward Selection.</span></div>
+<div class="line">  <span class="keywordflow">case</span> 1 : best_risk = <a name="a4"></a><a class="code" href="a00204.html#a1b3c96d59787abd9546ff317096fd3f7">gaml::varsel::SFS</a> (evaluator, variable_subset, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Forward Selection.</span></div>
+<div class="line">  <span class="keywordflow">case</span> 2 : best_risk = <a name="a5"></a><a class="code" href="a00204.html#a367ede0d19e4754c2510a7d4cd76170d">gaml::varsel::SBS</a> (evaluator, variable_subset, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Backward Selection.</span></div>
+<div class="line">  <span class="keywordflow">case</span> 3 : best_risk = <a name="a6"></a><a class="code" href="a00204.html#a406be0b466d45889075be091d165f0e8">gaml::varsel::SFFS</a>(evaluator, variable_subset, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Floating Forward Selection.</span></div>
+<div class="line">  <span class="keywordflow">case</span> 4 : best_risk = <a name="a7"></a><a class="code" href="a00204.html#a49b57f623b1500ae750f58aea95620fc">gaml::varsel::SFBS</a>(evaluator, variable_subset, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Floating Backward Selection.</span></div>
 <div class="line">  <span class="keywordflow">case</span> 5 :</div>
 <div class="line">  <span class="keywordflow">case</span> 6 :</div>
 <div class="line">    <span class="comment">// K best first search </span></div>
@@ -229,8 +229,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    <span class="comment">// far multiplied by R.</span></div>
 <div class="line">    <span class="keywordtype">double</span> filtering_ratio = ask&lt;double&gt;(<span class="stringliteral">&quot;Enter filtering ratio R (0 &lt;= R &lt;= 1) &gt; &quot;</span>, 0, 1);</div>
 <div class="line">    <span class="keywordflow">switch</span>(choice) {</div>
-<div class="line">    <span class="keywordflow">case</span> 5 : best_risk = <a name="a8"></a><a class="code" href="a00188.html#af34ab6c109a7ef1a7f4cf34b7482292c">gaml::varsel::SBFS</a>(evaluator, variable_subset, k, filtering_ratio, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Beam Forward Selection.</span></div>
-<div class="line">    <span class="keywordflow">case</span> 6 : best_risk = <a name="a9"></a><a class="code" href="a00188.html#a2e3005977928f04293d1cbb51f5f6e91">gaml::varsel::SBBS</a>(evaluator, variable_subset, k, filtering_ratio, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Beam Backward Selection</span></div>
+<div class="line">    <span class="keywordflow">case</span> 5 : best_risk = <a name="a8"></a><a class="code" href="a00204.html#af34ab6c109a7ef1a7f4cf34b7482292c">gaml::varsel::SBFS</a>(evaluator, variable_subset, k, filtering_ratio, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Beam Forward Selection.</span></div>
+<div class="line">    <span class="keywordflow">case</span> 6 : best_risk = <a name="a9"></a><a class="code" href="a00204.html#a2e3005977928f04293d1cbb51f5f6e91">gaml::varsel::SBBS</a>(evaluator, variable_subset, k, filtering_ratio, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Beam Backward Selection</span></div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">break</span>;</div>
 <div class="line">  }</div>
@@ -258,13 +258,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  <span class="comment">// Builds the predictor based on variable_subset, i.e. the best subset of variables found</span></div>
 <div class="line">  <span class="comment">//</span></div>
 <div class="line">  <span class="comment">// To do this, first build the dataset view restricted to the variable subset variable_subset</span></div>
-<div class="line">  <span class="keyword">auto</span> projection = <a name="a10"></a><a class="code" href="a00171.html#a1ddb76665b6c96d816346adde7067e5f">gaml::project</a>(dataset.begin(), dataset.end(), variable_subset.begin(), variable_subset.end(), dummy::input_of_data, dummy::output_of_data);</div>
+<div class="line">  <span class="keyword">auto</span> projection = <a name="a10"></a><a class="code" href="a00187.html#a1ddb76665b6c96d816346adde7067e5f">gaml::project</a>(dataset.begin(), dataset.end(), variable_subset.begin(), variable_subset.end(), dummy::input_of_data, dummy::output_of_data);</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Then applies the generic learner to the dataset restricted to the selected variables</span></div>
 <div class="line">  <span class="keyword">auto</span> predictor = projection.teach(generic_learner);</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Finally evaluates the empirical risk on the learning examples</span></div>
-<div class="line">  <span class="keyword">auto</span> predictor_evaluator = <a name="a11"></a><a class="code" href="a00184.html#a6d9973bf3290ec3c9e0eccc57a63ad46">gaml::risk::empirical</a>(<a class="code" href="a00083.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a>());</div>
+<div class="line">  <span class="keyword">auto</span> predictor_evaluator = <a name="a11"></a><a class="code" href="a00200.html#a6d9973bf3290ec3c9e0eccc57a63ad46">gaml::risk::empirical</a>(<a class="code" href="a00087.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a>());</div>
 <div class="line">  <span class="keywordtype">double</span> risk = predictor_evaluator(predictor,</div>
 <div class="line">                                    dataset.begin(), dataset.end(), dummy::input_of_data, dummy::output_of_data);</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;Empirical risk on the whole dataset = &quot;</span> &lt;&lt; risk &lt;&lt; std::endl;</div>

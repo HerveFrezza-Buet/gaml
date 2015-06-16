@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: example-001-004-span.cpp</title>
+<title>gaml-1.14: example-001-004-span.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -79,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">example-001-004-span.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00142.html">gaml.hpp</a>&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00157.html">gaml.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;utility&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cmath&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;fstream&gt;</span></div>
@@ -144,11 +144,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line">Point get_sample() {</div>
-<div class="line">  <span class="keywordtype">double</span> x  = <a name="a0"></a><a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(-AREA_RADIUS,AREA_RADIUS);</div>
-<div class="line">  <span class="keywordtype">double</span> y  = <a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(-AREA_RADIUS,AREA_RADIUS);</div>
+<div class="line">  <span class="keywordtype">double</span> x  = <a name="a0"></a><a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(-AREA_RADIUS,AREA_RADIUS);</div>
+<div class="line">  <span class="keywordtype">double</span> y  = <a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(-AREA_RADIUS,AREA_RADIUS);</div>
 <div class="line">  <span class="keywordflow">while</span>(!inside(x,y)) {</div>
-<div class="line">    x=<a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(-AREA_RADIUS,AREA_RADIUS);</div>
-<div class="line">    y=<a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(-AREA_RADIUS,AREA_RADIUS);</div>
+<div class="line">    x=<a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(-AREA_RADIUS,AREA_RADIUS);</div>
+<div class="line">    y=<a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(-AREA_RADIUS,AREA_RADIUS);</div>
 <div class="line">  }</div>
 <div class="line">  <span class="keywordflow">return</span> {x,y};</div>
 <div class="line">}</div>
@@ -164,7 +164,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line">  <span class="comment">// Let us create a dictionary (by default, the * operator is the dot</span></div>
 <div class="line">  <span class="comment">// product)</span></div>
-<div class="line">  <span class="keyword">auto</span> dict = gaml::span::dictionary&lt;Point&gt;(NU);</div>
+<div class="line">  <span class="keyword">auto</span> dict = gaml::span::dictionary&lt;Point&gt;(NU, [] (<span class="keyword">const</span> Point&amp; x1, <span class="keyword">const</span> Point&amp; x2) -&gt; <span class="keywordtype">double</span> { <span class="keywordflow">return</span> x1 * x2; });</div>
 <div class="line"></div>
 <div class="line">  std::array&lt;std::string, 3&gt; </div>
 <div class="line">    filenames = {{std::string(<span class="stringliteral">&quot;span-linear.ppm&quot;</span>), <span class="stringliteral">&quot;span-polynomial.ppm&quot;</span>, <span class="stringliteral">&quot;span-gaussian.ppm&quot;</span>}};</div>
@@ -211,8 +211,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    <span class="comment">// The type gaml::span::Vector&lt;Point&gt; supports all vector operation</span></div>
 <div class="line">    <span class="comment">// (including the dot product).</span></div>
 <div class="line"></div>
-<div class="line">    <span class="keyword">auto</span> dist2 = [](<span class="keyword">const</span> <a name="_a1"></a><a class="code" href="a00129.html">gaml::span::Vector&lt;Point&gt;</a>&amp; x,</div>
-<div class="line">                    <span class="keyword">const</span> <a class="code" href="a00129.html">gaml::span::Vector&lt;Point&gt;</a>&amp; y) -&gt; <span class="keywordtype">double</span> {</div>
+<div class="line">    <span class="keyword">auto</span> dist2 = [](<span class="keyword">const</span> <a name="_a1"></a><a class="code" href="a00134.html">gaml::span::Vector&lt;Point&gt;</a>&amp; x,</div>
+<div class="line">                    <span class="keyword">const</span> <a class="code" href="a00134.html">gaml::span::Vector&lt;Point&gt;</a>&amp; y) -&gt; <span class="keywordtype">double</span> {</div>
 <div class="line">      <span class="keyword">auto</span> diff = x-y;</div>
 <div class="line">      <span class="keywordflow">return</span> diff*diff;</div>
 <div class="line">    };</div>
@@ -223,8 +223,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">      <span class="comment">// Let us find the prototype closest to xi.</span></div>
 <div class="line">      <span class="keyword">auto</span> best_proto_it = std::min_element(prototypes.begin(),</div>
 <div class="line">                                            prototypes.end(),</div>
-<div class="line">                                            [&amp;xi,dist2](<span class="keyword">const</span> <a class="code" href="a00129.html">gaml::span::Vector&lt;Point&gt;</a>&amp; x,</div>
-<div class="line">                                                        <span class="keyword">const</span> <a class="code" href="a00129.html">gaml::span::Vector&lt;Point&gt;</a>&amp; y) -&gt; <span class="keywordtype">bool</span> {<span class="keywordflow">return</span> dist2(x,xi) &lt; dist2(y,xi);});</div>
+<div class="line">                                            [&amp;xi,dist2](<span class="keyword">const</span> <a class="code" href="a00134.html">gaml::span::Vector&lt;Point&gt;</a>&amp; x,</div>
+<div class="line">                                                        <span class="keyword">const</span> <a class="code" href="a00134.html">gaml::span::Vector&lt;Point&gt;</a>&amp; y) -&gt; <span class="keywordtype">bool</span> {<span class="keywordflow">return</span> dist2(x,xi) &lt; dist2(y,xi);});</div>
 <div class="line">      <span class="keyword">auto</span>&amp; best_proto = *best_proto_it;</div>
 <div class="line">      <span class="comment">// Let us move that prototype toward xi.</span></div>
 <div class="line">      best_proto += ALPHA*(xi -  best_proto);</div>
@@ -253,8 +253,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">        <span class="comment">// Let us find the prototype closest to xi.</span></div>
 <div class="line">        <span class="keyword">auto</span> best_proto_it = std::min_element(prototypes.begin(),</div>
 <div class="line">                                              prototypes.end(),</div>
-<div class="line">                                              [&amp;xi,dist2](<span class="keyword">const</span> <a class="code" href="a00129.html">gaml::span::Vector&lt;Point&gt;</a>&amp; x,</div>
-<div class="line">                                                          <span class="keyword">const</span> <a class="code" href="a00129.html">gaml::span::Vector&lt;Point&gt;</a>&amp; y) -&gt; <span class="keywordtype">bool</span> {<span class="keywordflow">return</span> dist2(x,xi) &lt; dist2(y,xi);});</div>
+<div class="line">                                              [&amp;xi,dist2](<span class="keyword">const</span> <a class="code" href="a00134.html">gaml::span::Vector&lt;Point&gt;</a>&amp; x,</div>
+<div class="line">                                                          <span class="keyword">const</span> <a class="code" href="a00134.html">gaml::span::Vector&lt;Point&gt;</a>&amp; y) -&gt; <span class="keywordtype">bool</span> {<span class="keywordflow">return</span> dist2(x,xi) &lt; dist2(y,xi);});</div>
 <div class="line">        <span class="keyword">auto</span> k = best_proto_it - prototypes.begin();</div>
 <div class="line">        <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> color_level = (<span class="keywordtype">unsigned</span> char)(255*k/(K-1.0)+.5);</div>
 <div class="line">        <span class="keywordflow">if</span>(inside(x,y)) </div>

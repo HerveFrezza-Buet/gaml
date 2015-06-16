@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::partition::Chunk&lt; DataIterator &gt; Class Template Reference</title>
+<title>gaml-1.14: gaml::ostream_iterator&lt; T, OutputDataStream, Distance &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,108 +82,65 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00181.html">partition</a></li><li class="navelem"><a class="el" href="a00097.html">Chunk</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00097.html">ostream_iterator</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00287.html">List of all members</a>  </div>
+<a href="a00280.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::partition::Chunk&lt; DataIterator &gt; Class Template Reference</div>  </div>
+<div class="title">gaml::ostream_iterator&lt; T, OutputDataStream, Distance &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00160_source.html">gamlPartition.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00182_source.html">gamlStreamer.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for gaml::ostream_iterator&lt; T, OutputDataStream, Distance &gt;:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="a00097.png" usemap="#gaml::ostream_iterator&lt; T, OutputDataStream, Distance &gt;_map" alt=""/>
+  <map id="gaml::ostream_iterator&lt; T, OutputDataStream, Distance &gt;_map" name="gaml::ostream_iterator&lt; T, OutputDataStream, Distance &gt;_map">
+</map>
+ </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:a5b276388629d03171356f6e7844e2491"><td class="memItemLeft" align="right" valign="top">typedef DataIterator::value_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#a5b276388629d03171356f6e7844e2491">value_type</a></td></tr>
-<tr class="separator:a5b276388629d03171356f6e7844e2491"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9867b0754fde9042cfed9784ea80c80"><td class="memItemLeft" align="right" valign="top">typedef DataIterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#ac9867b0754fde9042cfed9784ea80c80">iterator</a></td></tr>
-<tr class="separator:ac9867b0754fde9042cfed9784ea80c80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4d935613e993a2a47c260ef38a8dd91"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00089.html">gaml::MergeIterator</a><br class="typebreak"/>
-&lt; DataIterator, DataIterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#aa4d935613e993a2a47c260ef38a8dd91">complement_iterator</a></td></tr>
-<tr class="separator:aa4d935613e993a2a47c260ef38a8dd91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a19c337a825d25dad6f0a78c981b97ef6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#a19c337a825d25dad6f0a78c981b97ef6">Chunk</a> (const <a class="el" href="a00097.html">Chunk</a> &amp;cp)</td></tr>
-<tr class="separator:a19c337a825d25dad6f0a78c981b97ef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0dc00e19925fce81c712bf593127c53c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#a0dc00e19925fce81c712bf593127c53c">Chunk</a> (const <a class="el" href="a00097.html#ac9867b0754fde9042cfed9784ea80c80">iterator</a> &amp;data_begin, const <a class="el" href="a00097.html#ac9867b0754fde9042cfed9784ea80c80">iterator</a> &amp;data_end, unsigned int chunk_size)</td></tr>
-<tr class="separator:a0dc00e19925fce81c712bf593127c53c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecd6ec73f1e0a11cc853721cf4e75536"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#aecd6ec73f1e0a11cc853721cf4e75536">size</a> (void) const </td></tr>
-<tr class="separator:aecd6ec73f1e0a11cc853721cf4e75536"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3cb253c113291b779eae156379dd645"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#ae3cb253c113291b779eae156379dd645">data_size</a> (void) const </td></tr>
-<tr class="separator:ae3cb253c113291b779eae156379dd645"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42165a40e0ac153c1027ccf61023cbac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00097.html#ac9867b0754fde9042cfed9784ea80c80">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#a42165a40e0ac153c1027ccf61023cbac">begin</a> (unsigned int i) const </td></tr>
-<tr class="separator:a42165a40e0ac153c1027ccf61023cbac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29637b29ccdb195822a7f821f0940e90"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00097.html#ac9867b0754fde9042cfed9784ea80c80">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#a29637b29ccdb195822a7f821f0940e90">end</a> (unsigned int i) const </td></tr>
-<tr class="separator:a29637b29ccdb195822a7f821f0940e90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d82ac23f854aa0448a209f5f0c113bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00097.html#aa4d935613e993a2a47c260ef38a8dd91">complement_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#a5d82ac23f854aa0448a209f5f0c113bb">complement_begin</a> (unsigned int i) const </td></tr>
-<tr class="separator:a5d82ac23f854aa0448a209f5f0c113bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a1dc8d6981e2b3a47c5e799ef06e7ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00097.html#aa4d935613e993a2a47c260ef38a8dd91">complement_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#a8a1dc8d6981e2b3a47c5e799ef06e7ea">complement_end</a> (unsigned int i) const </td></tr>
-<tr class="separator:a8a1dc8d6981e2b3a47c5e799ef06e7ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4aa327c9d143e4c4fe5aee82cdecdff5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#a4aa327c9d143e4c4fe5aee82cdecdff5">ostream_iterator</a> ()</td></tr>
+<tr class="separator:a4aa327c9d143e4c4fe5aee82cdecdff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74261b15bf94df8726832fa6dd16d5de"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#a74261b15bf94df8726832fa6dd16d5de">ostream_iterator</a> (<a class="el" href="a00098.html">OutputDataStream</a> &amp;stream, char separator= '\n')</td></tr>
+<tr class="separator:a74261b15bf94df8726832fa6dd16d5de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b8581ea43e32bc68fca0c60b12e35b4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#a1b8581ea43e32bc68fca0c60b12e35b4">ostream_iterator</a> (const <a class="el" href="a00097.html">ostream_iterator</a> &amp;other)</td></tr>
+<tr class="separator:a1b8581ea43e32bc68fca0c60b12e35b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38fd8e43fe97bfce444e597a13527dcf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#a38fd8e43fe97bfce444e597a13527dcf">~ostream_iterator</a> ()</td></tr>
+<tr class="separator:a38fd8e43fe97bfce444e597a13527dcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ba5846af49a469cac6ce81e83573f08"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#a5ba5846af49a469cac6ce81e83573f08">operator*</a> ()</td></tr>
+<tr class="separator:a5ba5846af49a469cac6ce81e83573f08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a148b105b6dfa2965a35b9abc2c939dbc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00097.html">ostream_iterator</a>&lt; T, <br class="typebreak"/>
+<a class="el" href="a00098.html">OutputDataStream</a>, Distance &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#a148b105b6dfa2965a35b9abc2c939dbc">operator++</a> ()</td></tr>
+<tr class="separator:a148b105b6dfa2965a35b9abc2c939dbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acab579ba456fbbe4dd59d2d101bc6be6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00097.html">ostream_iterator</a>&lt; T, <br class="typebreak"/>
+<a class="el" href="a00098.html">OutputDataStream</a>, Distance &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#acab579ba456fbbe4dd59d2d101bc6be6">operator++</a> (int)</td></tr>
+<tr class="separator:acab579ba456fbbe4dd59d2d101bc6be6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36a20a93b477fc435214162868fa10b8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#a36a20a93b477fc435214162868fa10b8">operator!=</a> (const <a class="el" href="a00097.html">ostream_iterator</a> &amp;other) const </td></tr>
+<tr class="separator:a36a20a93b477fc435214162868fa10b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9357f4824bd638246e541f06f3e114b2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00097.html#a9357f4824bd638246e541f06f3e114b2">operator==</a> (const <a class="el" href="a00097.html">ostream_iterator</a> &amp;other) const </td></tr>
+<tr class="separator:a9357f4824bd638246e541f06f3e114b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="aa4d935613e993a2a47c260ef38a8dd91"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename DataIterator&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="a00089.html">gaml::MergeIterator</a>&lt;DataIterator,DataIterator&gt; <a class="el" href="a00097.html">gaml::partition::Chunk</a>&lt; DataIterator &gt;::<a class="el" href="a00097.html#aa4d935613e993a2a47c260ef38a8dd91">complement_iterator</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ac9867b0754fde9042cfed9784ea80c80"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename DataIterator&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef DataIterator <a class="el" href="a00097.html">gaml::partition::Chunk</a>&lt; DataIterator &gt;::<a class="el" href="a00097.html#ac9867b0754fde9042cfed9784ea80c80">iterator</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a5b276388629d03171356f6e7844e2491"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename DataIterator&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef DataIterator::value_type <a class="el" href="a00097.html">gaml::partition::Chunk</a>&lt; DataIterator &gt;::<a class="el" href="a00097.html#a5b276388629d03171356f6e7844e2491">value_type</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a19c337a825d25dad6f0a78c981b97ef6"></a>
+<a class="anchor" id="a4aa327c9d143e4c4fe5aee82cdecdff5"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename DataIterator&gt; </div>
+template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00097.html">gaml::partition::Chunk</a>&lt; DataIterator &gt;::<a class="el" href="a00097.html">Chunk</a> </td>
+          <td class="memname"><a class="el" href="a00097.html">gaml::ostream_iterator</a>&lt; T, <a class="el" href="a00098.html">OutputDataStream</a>, Distance &gt;::<a class="el" href="a00097.html">ostream_iterator</a> </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00097.html">Chunk</a>&lt; DataIterator &gt; &amp;&#160;</td>
-          <td class="paramname"><em>cp</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -196,32 +153,26 @@ template&lt;typename DataIterator&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a0dc00e19925fce81c712bf593127c53c"></a>
+<a class="anchor" id="a74261b15bf94df8726832fa6dd16d5de"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename DataIterator&gt; </div>
+template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00097.html">gaml::partition::Chunk</a>&lt; DataIterator &gt;::<a class="el" href="a00097.html">Chunk</a> </td>
+          <td class="memname"><a class="el" href="a00097.html">gaml::ostream_iterator</a>&lt; T, <a class="el" href="a00098.html">OutputDataStream</a>, Distance &gt;::<a class="el" href="a00097.html">ostream_iterator</a> </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00097.html#ac9867b0754fde9042cfed9784ea80c80">iterator</a> &amp;&#160;</td>
-          <td class="paramname"><em>data_begin</em>, </td>
+          <td class="paramtype"><a class="el" href="a00098.html">OutputDataStream</a> &amp;&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="a00097.html#ac9867b0754fde9042cfed9784ea80c80">iterator</a> &amp;&#160;</td>
-          <td class="paramname"><em>data_end</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>chunk_size</em>&#160;</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>separator</em> = <code>'\n'</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -235,31 +186,75 @@ template&lt;typename DataIterator&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>This fits <a class="el" href="a00042.html">gaml::concept::Partition</a> </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">chunk_size</td><td>The size of each chunk. The last one may be smaller. </td></tr>
-  </table>
-  </dd>
-</dl>
+
+</div>
+</div>
+<a class="anchor" id="a1b8581ea43e32bc68fca0c60b12e35b4"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00097.html">gaml::ostream_iterator</a>&lt; T, <a class="el" href="a00098.html">OutputDataStream</a>, Distance &gt;::<a class="el" href="a00097.html">ostream_iterator</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00097.html">ostream_iterator</a>&lt; T, <a class="el" href="a00098.html">OutputDataStream</a>, Distance &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a38fd8e43fe97bfce444e597a13527dcf"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00097.html">gaml::ostream_iterator</a>&lt; T, <a class="el" href="a00098.html">OutputDataStream</a>, Distance &gt;::~<a class="el" href="a00097.html">ostream_iterator</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a42165a40e0ac153c1027ccf61023cbac"></a>
+<a class="anchor" id="a36a20a93b477fc435214162868fa10b8"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename DataIterator&gt; </div>
+template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00097.html#ac9867b0754fde9042cfed9784ea80c80">iterator</a> <a class="el" href="a00097.html">gaml::partition::Chunk</a>&lt; DataIterator &gt;::begin </td>
+          <td class="memname">bool <a class="el" href="a00097.html">gaml::ostream_iterator</a>&lt; T, <a class="el" href="a00098.html">OutputDataStream</a>, Distance &gt;::operator!= </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>i</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="a00097.html">ostream_iterator</a>&lt; T, <a class="el" href="a00098.html">OutputDataStream</a>, Distance &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -272,73 +267,21 @@ template&lt;typename DataIterator&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a5d82ac23f854aa0448a209f5f0c113bb"></a>
+<a class="anchor" id="a5ba5846af49a469cac6ce81e83573f08"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename DataIterator&gt; </div>
+template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00097.html#aa4d935613e993a2a47c260ef38a8dd91">complement_iterator</a> <a class="el" href="a00097.html">gaml::partition::Chunk</a>&lt; DataIterator &gt;::complement_begin </td>
-          <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>i</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a8a1dc8d6981e2b3a47c5e799ef06e7ea"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename DataIterator&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00097.html#aa4d935613e993a2a47c260ef38a8dd91">complement_iterator</a> <a class="el" href="a00097.html">gaml::partition::Chunk</a>&lt; DataIterator &gt;::complement_end </td>
-          <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>i</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ae3cb253c113291b779eae156379dd645"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename DataIterator&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int <a class="el" href="a00097.html">gaml::partition::Chunk</a>&lt; DataIterator &gt;::data_size </td>
+          <td class="memname">T&amp; <a class="el" href="a00097.html">gaml::ostream_iterator</a>&lt; T, <a class="el" href="a00098.html">OutputDataStream</a>, Distance &gt;::operator* </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -350,46 +293,72 @@ template&lt;typename DataIterator&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a29637b29ccdb195822a7f821f0940e90"></a>
+<a class="anchor" id="a148b105b6dfa2965a35b9abc2c939dbc"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename DataIterator&gt; </div>
+template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00097.html#ac9867b0754fde9042cfed9784ea80c80">iterator</a> <a class="el" href="a00097.html">gaml::partition::Chunk</a>&lt; DataIterator &gt;::end </td>
-          <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>i</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="aecd6ec73f1e0a11cc853721cf4e75536"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename DataIterator&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int <a class="el" href="a00097.html">gaml::partition::Chunk</a>&lt; DataIterator &gt;::size </td>
+          <td class="memname"><a class="el" href="a00097.html">ostream_iterator</a>&lt;T, <a class="el" href="a00098.html">OutputDataStream</a>, Distance&gt;&amp; <a class="el" href="a00097.html">gaml::ostream_iterator</a>&lt; T, <a class="el" href="a00098.html">OutputDataStream</a>, Distance &gt;::operator++ </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="acab579ba456fbbe4dd59d2d101bc6be6"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00097.html">ostream_iterator</a>&lt;T, <a class="el" href="a00098.html">OutputDataStream</a>, Distance&gt; <a class="el" href="a00097.html">gaml::ostream_iterator</a>&lt; T, <a class="el" href="a00098.html">OutputDataStream</a>, Distance &gt;::operator++ </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a9357f4824bd638246e541f06f3e114b2"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="a00097.html">gaml::ostream_iterator</a>&lt; T, <a class="el" href="a00098.html">OutputDataStream</a>, Distance &gt;::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00097.html">ostream_iterator</a>&lt; T, <a class="el" href="a00098.html">OutputDataStream</a>, Distance &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -403,7 +372,7 @@ template&lt;typename DataIterator&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="a00160_source.html">gamlPartition.hpp</a></li>
+<li><a class="el" href="a00182_source.html">gamlStreamer.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::score::NormalizedInformationGain&lt; DataIterator, Test, ValueOf &gt; Class Template Reference</title>
+<title>gaml-1.14: gaml::risk::bootstrap::LeaveOneOut&lt; LOSS &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,63 +82,57 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00186.html">score</a></li><li class="navelem"><a class="el" href="a00113.html">NormalizedInformationGain</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00200.html">risk</a></li><li class="navelem"><a class="el" href="a00201.html">bootstrap</a></li><li class="navelem"><a class="el" href="a00113.html">LeaveOneOut</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00296.html">List of all members</a>  </div>
+<a href="a00321.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::score::NormalizedInformationGain&lt; DataIterator, Test, ValueOf &gt; Class Template Reference</div>  </div>
+<div class="title">gaml::risk::bootstrap::LeaveOneOut&lt; LOSS &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00161_source.html">gamlScore.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00160_source.html">gamlBootstrap.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a622297a7bc9247754af61c20fbb1b396"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00113.html#a622297a7bc9247754af61c20fbb1b396">operator()</a> (const DataIterator &amp;begin, const DataIterator &amp;end, const Test &amp;test, const ValueOf &amp;value_of)</td></tr>
-<tr class="separator:a622297a7bc9247754af61c20fbb1b396"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82013cc339b7ce1ed88fccd1d1480f38"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00113.html#a82013cc339b7ce1ed88fccd1d1480f38">LeaveOneOut</a> (const LOSS &amp;l, unsigned int nb_bootstrapped_sets, bool verbosity)</td></tr>
+<tr class="separator:a82013cc339b7ce1ed88fccd1d1480f38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af74d84542370505bf76182c32b550702"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00113.html#af74d84542370505bf76182c32b550702">LeaveOneOut</a> (const <a class="el" href="a00113.html">LeaveOneOut</a> &amp;other)</td></tr>
+<tr class="separator:af74d84542370505bf76182c32b550702"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ccdbf2e8c5771effd595729dd9c8160"><td class="memTemplParams" colspan="2">template&lt;typename Learner , typename DataIterator , typename InputOf , typename OutputOf &gt; </td></tr>
+<tr class="memitem:a3ccdbf2e8c5771effd595729dd9c8160"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00113.html#a3ccdbf2e8c5771effd595729dd9c8160">operator()</a> (const Learner &amp;learner, const DataIterator &amp;begin, const DataIterator &amp;end, const InputOf &amp;inputOf, const OutputOf &amp;outputOf) const </td></tr>
+<tr class="separator:a3ccdbf2e8c5771effd595729dd9c8160"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename DataIterator, typename Test, typename ValueOf&gt;<br/>
-class gaml::score::NormalizedInformationGain&lt; DataIterator, Test, ValueOf &gt;</h3>
-
-<p>This can be used as a "template template" argument for algorithms whose scoring function is a parameter. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a622297a7bc9247754af61c20fbb1b396"></a>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a82013cc339b7ce1ed88fccd1d1480f38"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename DataIterator, typename Test, typename ValueOf&gt; </div>
+template&lt;typename LOSS&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">double <a class="el" href="a00113.html">gaml::score::NormalizedInformationGain</a>&lt; DataIterator, Test, ValueOf &gt;::operator() </td>
+          <td class="memname"><a class="el" href="a00113.html">gaml::risk::bootstrap::LeaveOneOut</a>&lt; LOSS &gt;::<a class="el" href="a00113.html">LeaveOneOut</a> </td>
           <td>(</td>
-          <td class="paramtype">const DataIterator &amp;&#160;</td>
-          <td class="paramname"><em>begin</em>, </td>
+          <td class="paramtype">const LOSS &amp;&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const DataIterator &amp;&#160;</td>
-          <td class="paramname"><em>end</em>, </td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>nb_bootstrapped_sets</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Test &amp;&#160;</td>
-          <td class="paramname"><em>test</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const ValueOf &amp;&#160;</td>
-          <td class="paramname"><em>value_of</em>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>verbosity</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -155,8 +149,91 @@ template&lt;typename DataIterator, typename Test, typename ValueOf&gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="af74d84542370505bf76182c32b550702"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename LOSS&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00113.html">gaml::risk::bootstrap::LeaveOneOut</a>&lt; LOSS &gt;::<a class="el" href="a00113.html">LeaveOneOut</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00113.html">LeaveOneOut</a>&lt; LOSS &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a3ccdbf2e8c5771effd595729dd9c8160"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename LOSS&gt; </div>
+<div class="memtemplate">
+template&lt;typename Learner , typename DataIterator , typename InputOf , typename OutputOf &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="a00113.html">gaml::risk::bootstrap::LeaveOneOut</a>&lt; LOSS &gt;::operator() </td>
+          <td>(</td>
+          <td class="paramtype">const Learner &amp;&#160;</td>
+          <td class="paramname"><em>learner</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const DataIterator &amp;&#160;</td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const DataIterator &amp;&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const InputOf &amp;&#160;</td>
+          <td class="paramname"><em>inputOf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const OutputOf &amp;&#160;</td>
+          <td class="paramname"><em>outputOf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="a00161_source.html">gamlScore.hpp</a></li>
+<li><a class="el" href="a00160_source.html">gamlBootstrap.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::Frequencies&lt; VALUE, COMP &gt; Class Template Reference</title>
+<title>gaml-1.14: gaml::Filter&lt; Iterator &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,65 +82,158 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00058.html">Frequencies</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00058.html">Filter</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00193.html">List of all members</a>  </div>
+<a href="a00224.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::Frequencies&lt; VALUE, COMP &gt; Class Template Reference</div>  </div>
+<div class="title">gaml::Filter&lt; Iterator &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00143_source.html">gamlAlgorithms.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00165_source.html">gamlFilter.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a37527f4c7a3ce13c643902f0201f63b5"><td class="memItemLeft" align="right" valign="top">typedef Iterator::value_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#a37527f4c7a3ce13c643902f0201f63b5">value_type</a></td></tr>
+<tr class="separator:a37527f4c7a3ce13c643902f0201f63b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab87c85d71788b4e06e5b78b93d5f58a9"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00059.html">FilterIterator</a>&lt; Iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ab87c85d71788b4e06e5b78b93d5f58a9">iterator</a></td></tr>
+<tr class="separator:ab87c85d71788b4e06e5b78b93d5f58a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac58679afa6015161497b9052dd8284d4"><td class="memTemplParams" colspan="2">template&lt;typename DataIterator , typename ValueOf &gt; </td></tr>
-<tr class="memitem:ac58679afa6015161497b9052dd8284d4"><td class="memTemplItemLeft" align="right" valign="top">std::map&lt; VALUE, double, COMP &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00058.html#ac58679afa6015161497b9052dd8284d4">operator()</a> (const DataIterator &amp;begin, const DataIterator &amp;end, const ValueOf &amp;value_of) const </td></tr>
-<tr class="separator:ac58679afa6015161497b9052dd8284d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a989da9708b2160779252c81f12dabf71"><td class="memTemplParams" colspan="2">template&lt;typename fctFilter &gt; </td></tr>
+<tr class="memitem:a989da9708b2160779252c81f12dabf71"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00058.html#a989da9708b2160779252c81f12dabf71">Filter</a> (const Iterator &amp;<a class="el" href="a00058.html#a4a676e5085f5e064d9265c41f51c16d0">begin</a>, const Iterator &amp;<a class="el" href="a00058.html#a03e31014e852ff7d2690e1d95541a4c0">end</a>, const fctFilter &amp;fct_filter, bool keep_true)</td></tr>
+<tr class="separator:a989da9708b2160779252c81f12dabf71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a676e5085f5e064d9265c41f51c16d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00058.html#ab87c85d71788b4e06e5b78b93d5f58a9">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#a4a676e5085f5e064d9265c41f51c16d0">begin</a> () const </td></tr>
+<tr class="separator:a4a676e5085f5e064d9265c41f51c16d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03e31014e852ff7d2690e1d95541a4c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00058.html#ab87c85d71788b4e06e5b78b93d5f58a9">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#a03e31014e852ff7d2690e1d95541a4c0">end</a> () const </td></tr>
+<tr class="separator:a03e31014e852ff7d2690e1d95541a4c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename VALUE, typename COMP = by_default::LesserThan&lt;VALUE&gt;&gt;<br/>
-class gaml::Frequencies&lt; VALUE, COMP &gt;</h3>
-
-<p>Functor </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="ac58679afa6015161497b9052dd8284d4"></a>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="ab87c85d71788b4e06e5b78b93d5f58a9"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename VALUE, typename COMP = by_default::LesserThan&lt;VALUE&gt;&gt; </div>
+template&lt;typename Iterator&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="a00059.html">FilterIterator</a>&lt;Iterator&gt; <a class="el" href="a00058.html">gaml::Filter</a>&lt; Iterator &gt;::<a class="el" href="a00058.html#ab87c85d71788b4e06e5b78b93d5f58a9">iterator</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a37527f4c7a3ce13c643902f0201f63b5"></a>
+<div class="memitem">
+<div class="memproto">
 <div class="memtemplate">
-template&lt;typename DataIterator , typename ValueOf &gt; </div>
+template&lt;typename Iterator&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef Iterator::value_type <a class="el" href="a00058.html">gaml::Filter</a>&lt; Iterator &gt;::<a class="el" href="a00058.html#a37527f4c7a3ce13c643902f0201f63b5">value_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a989da9708b2160779252c81f12dabf71"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator&gt; </div>
+<div class="memtemplate">
+template&lt;typename fctFilter &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt;VALUE,double,COMP&gt; <a class="el" href="a00058.html">gaml::Frequencies</a>&lt; VALUE, COMP &gt;::operator() </td>
+          <td class="memname"><a class="el" href="a00058.html">gaml::Filter</a>&lt; Iterator &gt;::<a class="el" href="a00058.html">Filter</a> </td>
           <td>(</td>
-          <td class="paramtype">const DataIterator &amp;&#160;</td>
+          <td class="paramtype">const Iterator &amp;&#160;</td>
           <td class="paramname"><em>begin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const DataIterator &amp;&#160;</td>
+          <td class="paramtype">const Iterator &amp;&#160;</td>
           <td class="paramname"><em>end</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const ValueOf &amp;&#160;</td>
-          <td class="paramname"><em>value_of</em>&#160;</td>
+          <td class="paramtype">const fctFilter&lt; Iterator &gt; &amp;&#160;</td>
+          <td class="paramname"><em>fct_filter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>keep_true</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td> const</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a4a676e5085f5e064d9265c41f51c16d0"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00058.html#ab87c85d71788b4e06e5b78b93d5f58a9">iterator</a> <a class="el" href="a00058.html">gaml::Filter</a>&lt; Iterator &gt;::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a03e31014e852ff7d2690e1d95541a4c0"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00058.html#ab87c85d71788b4e06e5b78b93d5f58a9">iterator</a> <a class="el" href="a00058.html">gaml::Filter</a>&lt; Iterator &gt;::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -153,7 +246,7 @@ template&lt;typename DataIterator , typename ValueOf &gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="a00143_source.html">gamlAlgorithms.hpp</a></li>
+<li><a class="el" href="a00165_source.html">gamlFilter.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

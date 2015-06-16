@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::multidim::Learner&lt; DIM, LEARNER, OUTPUT &gt; Class Template Reference</title>
+<title>gaml-1.14: gaml::MapParser&lt; Map &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,229 +82,90 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00180.html">multidim</a></li><li class="navelem"><a class="el" href="a00091.html">Learner</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00091.html">MapParser</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00285.html">List of all members</a>  </div>
+<a href="a00247.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::multidim::Learner&lt; DIM, LEARNER, OUTPUT &gt; Class Template Reference</div>  </div>
+<div class="title">gaml::MapParser&lt; Map &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00159_source.html">gamlMultiDim.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00171_source.html">gamlJSONParser.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for gaml::MapParser&lt; Map &gt;:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="a00091.png" usemap="#gaml::MapParser&lt; Map &gt;_map" alt=""/>
+  <map id="gaml::MapParser&lt; Map &gt;_map" name="gaml::MapParser&lt; Map &gt;_map">
+<area href="a00100.html" alt="gaml::ParserBase" shape="rect" coords="0,0,156,24"/>
+</map>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a4e764765ac6d66bcb16e47a7a38973d0"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
-LEARNER::predictor_type::input_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html#a4e764765ac6d66bcb16e47a7a38973d0">input_type</a></td></tr>
-<tr class="separator:a4e764765ac6d66bcb16e47a7a38973d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f22696a7e83e3637ac312d0f1a727e1"><td class="memItemLeft" align="right" valign="top">typedef OUTPUT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html#a6f22696a7e83e3637ac312d0f1a727e1">output_type</a></td></tr>
-<tr class="separator:a6f22696a7e83e3637ac312d0f1a727e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ccd8a232523384ab55d873235b751e3"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
-<a class="el" href="a00092.html">gaml::multidim::Predictor</a><br class="typebreak"/>
-&lt; <a class="el" href="a00091.html#a6f22696a7e83e3637ac312d0f1a727e1">output_type</a>, typename <br class="typebreak"/>
-LEARNER::predictor_type, DIM &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html#a8ccd8a232523384ab55d873235b751e3">predictor_type</a></td></tr>
-<tr class="separator:a8ccd8a232523384ab55d873235b751e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97b1691473788545f620aaefb9c590b3"><td class="memItemLeft" align="right" valign="top">typedef std::function<br class="typebreak"/>
-&lt; typename <br class="typebreak"/>
-<a class="el" href="a00092.html#a361ac5269abc8aefb67e5831bf290bc3">predictor_type::result_type</a>(<a class="el" href="a00091.html#a6f22696a7e83e3637ac312d0f1a727e1">output_type</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html#a97b1691473788545f620aaefb9c590b3">to_array_type</a></td></tr>
-<tr class="separator:a97b1691473788545f620aaefb9c590b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae348c2bd695014f0b23d8bd873dc154"><td class="memItemLeft" align="right" valign="top">typedef std::function<br class="typebreak"/>
-&lt; <a class="el" href="a00091.html#a6f22696a7e83e3637ac312d0f1a727e1">output_type</a>(typename <br class="typebreak"/>
-<a class="el" href="a00092.html#a361ac5269abc8aefb67e5831bf290bc3">predictor_type::result_type</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html#aae348c2bd695014f0b23d8bd873dc154">to_output_type</a></td></tr>
-<tr class="separator:aae348c2bd695014f0b23d8bd873dc154"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a833a7fbd886d0113b3b6ad9a9b1c68bb"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00088.html">Map</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html#a833a7fbd886d0113b3b6ad9a9b1c68bb">value_type</a></td></tr>
+<tr class="separator:a833a7fbd886d0113b3b6ad9a9b1c68bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8ce85f0df76c22d8c7f3d8a69556870d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html#a8ce85f0df76c22d8c7f3d8a69556870d">Learner</a> (const LEARNER &amp;<a class="el" href="a00180.html#a89a33b6f1d995b64df36b9dca77039db">learner</a>, const <a class="el" href="a00091.html#a97b1691473788545f620aaefb9c590b3">to_array_type</a> &amp;array_of_output, const <a class="el" href="a00091.html#aae348c2bd695014f0b23d8bd873dc154">to_output_type</a> &amp;output_of_array)</td></tr>
-<tr class="separator:a8ce85f0df76c22d8c7f3d8a69556870d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada106d5fde7be64e75704598d05cb8be"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html#ada106d5fde7be64e75704598d05cb8be">Learner</a> (const <a class="el" href="a00091.html">Learner</a> &amp;other)</td></tr>
-<tr class="separator:ada106d5fde7be64e75704598d05cb8be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac02ece9a42dafc5442c7402584bd6564"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00091.html">Learner</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html#ac02ece9a42dafc5442c7402584bd6564">operator=</a> (const <a class="el" href="a00091.html">Learner</a> &amp;other)</td></tr>
-<tr class="separator:ac02ece9a42dafc5442c7402584bd6564"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92281548a0f86b0c8531bd7606890399"><td class="memTemplParams" colspan="2">template&lt;typename DataIterator , typename InputOf , typename OutputOf &gt; </td></tr>
-<tr class="memitem:a92281548a0f86b0c8531bd7606890399"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00091.html#a8ccd8a232523384ab55d873235b751e3">predictor_type</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00091.html#a92281548a0f86b0c8531bd7606890399">operator()</a> (const DataIterator &amp;begin, const DataIterator &amp;end, const InputOf &amp;input_of, const OutputOf &amp;output_of) const </td></tr>
-<tr class="separator:a92281548a0f86b0c8531bd7606890399"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50aadd5e4036044815efb9537f1eaff0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html#a50aadd5e4036044815efb9537f1eaff0">read</a> (std::istream &amp;is, <a class="el" href="a00088.html">Map</a> &amp;<a class="el" href="a00187.html#ac4358877d7d3320c00e84b1d2d082e11">map</a>) const </td></tr>
+<tr class="separator:a50aadd5e4036044815efb9537f1eaff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fa253e9b33da6b3f5c25369861adf0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html#a6fa253e9b33da6b3f5c25369861adf0e">write</a> (std::ostream &amp;os, const <a class="el" href="a00088.html">Map</a> &amp;<a class="el" href="a00187.html#ac4358877d7d3320c00e84b1d2d082e11">map</a>) const </td></tr>
+<tr class="separator:a6fa253e9b33da6b3f5c25369861adf0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_static_methods_a00100"><td colspan="2" onclick="javascript:toggleInherit('pro_static_methods_a00100')"><img src="closed.png" alt="-"/>&#160;Static Protected Member Functions inherited from <a class="el" href="a00100.html">gaml::ParserBase</a></td></tr>
+<tr class="memitem:ac3f98339e32c26644702f9fc6df3742f inherit pro_static_methods_a00100"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="a00060.html">FormatException</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#ac3f98339e32c26644702f9fc6df3742f">formatError</a> (std::istream &amp;is, std::string msg)</td></tr>
+<tr class="separator:ac3f98339e32c26644702f9fc6df3742f inherit pro_static_methods_a00100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45e217295b5433dc07ea06ef5f06256b inherit pro_static_methods_a00100"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="a00060.html">FormatException</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a45e217295b5433dc07ea06ef5f06256b">formatError</a> (std::istream &amp;is, const char *msg)</td></tr>
+<tr class="separator:a45e217295b5433dc07ea06ef5f06256b inherit pro_static_methods_a00100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a571af184506a2660c522f945abd98c78 inherit pro_static_methods_a00100"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a571af184506a2660c522f945abd98c78">expect</a> (std::istream &amp;is, const char *chars, const char *msg=0)</td></tr>
+<tr class="separator:a571af184506a2660c522f945abd98c78 inherit pro_static_methods_a00100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f2e0fc39f579366a68a58c7e9fea1ab inherit pro_static_methods_a00100"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a5f2e0fc39f579366a68a58c7e9fea1ab">expect</a> (std::istream &amp;is, const std::vector&lt; const char * &gt; &amp;words)</td></tr>
+<tr class="separator:a5f2e0fc39f579366a68a58c7e9fea1ab inherit pro_static_methods_a00100"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a4e764765ac6d66bcb16e47a7a38973d0"></a>
+<a class="anchor" id="a833a7fbd886d0113b3b6ad9a9b1c68bb"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int DIM, typename LEARNER, typename OUTPUT&gt; </div>
+template&lt;typename Map&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef LEARNER::predictor_type::input_type <a class="el" href="a00091.html">gaml::multidim::Learner</a>&lt; DIM, LEARNER, OUTPUT &gt;::<a class="el" href="a00091.html#a4e764765ac6d66bcb16e47a7a38973d0">input_type</a></td>
+          <td class="memname">typedef <a class="el" href="a00088.html">Map</a> <a class="el" href="a00091.html">gaml::MapParser</a>&lt; <a class="el" href="a00088.html">Map</a> &gt;::<a class="el" href="a00091.html#a833a7fbd886d0113b3b6ad9a9b1c68bb">value_type</a></td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a6f22696a7e83e3637ac312d0f1a727e1"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int DIM, typename LEARNER, typename OUTPUT&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef OUTPUT <a class="el" href="a00091.html">gaml::multidim::Learner</a>&lt; DIM, LEARNER, OUTPUT &gt;::<a class="el" href="a00091.html#a6f22696a7e83e3637ac312d0f1a727e1">output_type</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a8ccd8a232523384ab55d873235b751e3"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int DIM, typename LEARNER, typename OUTPUT&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="a00092.html">gaml::multidim::Predictor</a>&lt;<a class="el" href="a00091.html#a6f22696a7e83e3637ac312d0f1a727e1">output_type</a>,typename LEARNER::predictor_type,DIM&gt; <a class="el" href="a00091.html">gaml::multidim::Learner</a>&lt; DIM, LEARNER, OUTPUT &gt;::<a class="el" href="a00091.html#a8ccd8a232523384ab55d873235b751e3">predictor_type</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a97b1691473788545f620aaefb9c590b3"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int DIM, typename LEARNER, typename OUTPUT&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef std::function&lt;typename <a class="el" href="a00092.html#a361ac5269abc8aefb67e5831bf290bc3">predictor_type::result_type</a> (<a class="el" href="a00091.html#a6f22696a7e83e3637ac312d0f1a727e1">output_type</a>)&gt; <a class="el" href="a00091.html">gaml::multidim::Learner</a>&lt; DIM, LEARNER, OUTPUT &gt;::<a class="el" href="a00091.html#a97b1691473788545f620aaefb9c590b3">to_array_type</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="aae348c2bd695014f0b23d8bd873dc154"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int DIM, typename LEARNER, typename OUTPUT&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef std::function&lt;<a class="el" href="a00091.html#a6f22696a7e83e3637ac312d0f1a727e1">output_type</a> (typename <a class="el" href="a00092.html#a361ac5269abc8aefb67e5831bf290bc3">predictor_type::result_type</a>)&gt; <a class="el" href="a00091.html">gaml::multidim::Learner</a>&lt; DIM, LEARNER, OUTPUT &gt;::<a class="el" href="a00091.html#aae348c2bd695014f0b23d8bd873dc154">to_output_type</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a8ce85f0df76c22d8c7f3d8a69556870d"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int DIM, typename LEARNER, typename OUTPUT&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00091.html">gaml::multidim::Learner</a>&lt; DIM, LEARNER, OUTPUT &gt;::<a class="el" href="a00091.html">Learner</a> </td>
-          <td>(</td>
-          <td class="paramtype">const LEARNER &amp;&#160;</td>
-          <td class="paramname"><em>learner</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="a00091.html#a97b1691473788545f620aaefb9c590b3">to_array_type</a> &amp;&#160;</td>
-          <td class="paramname"><em>array_of_output</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="a00091.html#aae348c2bd695014f0b23d8bd873dc154">to_output_type</a> &amp;&#160;</td>
-          <td class="paramname"><em>output_of_array</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ada106d5fde7be64e75704598d05cb8be"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int DIM, typename LEARNER, typename OUTPUT&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00091.html">gaml::multidim::Learner</a>&lt; DIM, LEARNER, OUTPUT &gt;::<a class="el" href="a00091.html">Learner</a> </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00091.html">Learner</a>&lt; DIM, LEARNER, OUTPUT &gt; &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a92281548a0f86b0c8531bd7606890399"></a>
+<a class="anchor" id="a50aadd5e4036044815efb9537f1eaff0"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int DIM, typename LEARNER, typename OUTPUT&gt; </div>
-<div class="memtemplate">
-template&lt;typename DataIterator , typename InputOf , typename OutputOf &gt; </div>
+template&lt;typename Map&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00091.html#a8ccd8a232523384ab55d873235b751e3">predictor_type</a> <a class="el" href="a00091.html">gaml::multidim::Learner</a>&lt; DIM, LEARNER, OUTPUT &gt;::operator() </td>
+          <td class="memname">void <a class="el" href="a00091.html">gaml::MapParser</a>&lt; <a class="el" href="a00088.html">Map</a> &gt;::read </td>
           <td>(</td>
-          <td class="paramtype">const DataIterator &amp;&#160;</td>
-          <td class="paramname"><em>begin</em>, </td>
+          <td class="paramtype">std::istream &amp;&#160;</td>
+          <td class="paramname"><em>is</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const DataIterator &amp;&#160;</td>
-          <td class="paramname"><em>end</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const InputOf &amp;&#160;</td>
-          <td class="paramname"><em>input_of</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const OutputOf &amp;&#160;</td>
-          <td class="paramname"><em>output_of</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="a00088.html">Map</a> &amp;&#160;</td>
+          <td class="paramname"><em>map</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -321,21 +182,31 @@ template&lt;typename DataIterator , typename InputOf , typename OutputOf &gt; </
 
 </div>
 </div>
-<a class="anchor" id="ac02ece9a42dafc5442c7402584bd6564"></a>
+<a class="anchor" id="a6fa253e9b33da6b3f5c25369861adf0e"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int DIM, typename LEARNER, typename OUTPUT&gt; </div>
+template&lt;typename Map&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00091.html">Learner</a>&amp; <a class="el" href="a00091.html">gaml::multidim::Learner</a>&lt; DIM, LEARNER, OUTPUT &gt;::operator= </td>
+          <td class="memname">void <a class="el" href="a00091.html">gaml::MapParser</a>&lt; <a class="el" href="a00088.html">Map</a> &gt;::write </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00091.html">Learner</a>&lt; DIM, LEARNER, OUTPUT &gt; &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="a00088.html">Map</a> &amp;&#160;</td>
+          <td class="paramname"><em>map</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
   </td>
@@ -348,7 +219,7 @@ template&lt;int DIM, typename LEARNER, typename OUTPUT&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="a00159_source.html">gamlMultiDim.hpp</a></li>
+<li><a class="el" href="a00171_source.html">gamlJSONParser.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::bag::Learner&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt; Class Template Reference</title>
+<title>gaml-1.14: gaml::Average Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,169 +82,59 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00172.html">bag</a></li><li class="navelem"><a class="el" href="a00025.html">Learner</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00025.html">Average</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="a00259.html">List of all members</a>  </div>
+<a href="a00207.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::bag::Learner&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt; Class Template Reference</div>  </div>
+<div class="title">gaml::Average Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00144_source.html">gamlBag.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00158_source.html">gamlAlgorithms.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a6705c7c5d70d706d75281428416eef33"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00026.html">gaml::bag::Predictor</a><br class="typebreak"/>
-&lt; MergeOutput, typename <br class="typebreak"/>
-ElementaryLearner::predictor_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a6705c7c5d70d706d75281428416eef33">predictor_type</a></td></tr>
-<tr class="separator:a6705c7c5d70d706d75281428416eef33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a781ea94ff07bd61c1e673be49b151c8e"><td class="memItemLeft" align="right" valign="top">typedef double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a781ea94ff07bd61c1e673be49b151c8e">output_type</a></td></tr>
+<tr class="separator:a781ea94ff07bd61c1e673be49b151c8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8b1f6071fe2012a7006b0aedb7b56265"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a8b1f6071fe2012a7006b0aedb7b56265">Learner</a> (const ElementaryLearner &amp;l, const MergeOutput &amp;output_merger, const BasisRandomizer &amp;dataset_randomizer, unsigned int size, bool is_verbose)</td></tr>
-<tr class="separator:a8b1f6071fe2012a7006b0aedb7b56265"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4035edf5fb7e97347c78561ea2f7539"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#ac4035edf5fb7e97347c78561ea2f7539">Learner</a> (const <a class="el" href="a00025.html">Learner</a> &amp;other)</td></tr>
-<tr class="separator:ac4035edf5fb7e97347c78561ea2f7539"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f227508ebad47964d92f301101312f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00025.html">Learner</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a0f227508ebad47964d92f301101312f7">operator=</a> (const <a class="el" href="a00025.html">Learner</a> &amp;other)</td></tr>
-<tr class="separator:a0f227508ebad47964d92f301101312f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaffc294ae3a7c7bb71317d69e8911a14"><td class="memTemplParams" colspan="2">template&lt;typename DataIterator , typename InputOf , typename OutputOf &gt; </td></tr>
-<tr class="memitem:aaffc294ae3a7c7bb71317d69e8911a14"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00025.html#a6705c7c5d70d706d75281428416eef33">predictor_type</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00025.html#aaffc294ae3a7c7bb71317d69e8911a14">operator()</a> (const DataIterator &amp;begin, const DataIterator &amp;end, const InputOf &amp;input_of, const OutputOf &amp;output_of) const </td></tr>
-<tr class="separator:aaffc294ae3a7c7bb71317d69e8911a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:ac855e727a5cc34ddf21c763f3f72e5fd"><td class="memItemLeft" align="right" valign="top">ElementaryLearner&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#ac855e727a5cc34ddf21c763f3f72e5fd">learner</a></td></tr>
-<tr class="separator:ac855e727a5cc34ddf21c763f3f72e5fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54bc723d3c66aa208fc13b9dfea32552"><td class="memItemLeft" align="right" valign="top">MergeOutput&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a54bc723d3c66aa208fc13b9dfea32552">merger</a></td></tr>
-<tr class="separator:a54bc723d3c66aa208fc13b9dfea32552"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98db4329fd66ecc76f77dafdb01d5e4f"><td class="memItemLeft" align="right" valign="top">BasisRandomizer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a98db4329fd66ecc76f77dafdb01d5e4f">randomizer</a></td></tr>
-<tr class="separator:a98db4329fd66ecc76f77dafdb01d5e4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0cbc1b35561011055c2639bda8f1bb8"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#af0cbc1b35561011055c2639bda8f1bb8">nb_predictors</a></td></tr>
-<tr class="separator:af0cbc1b35561011055c2639bda8f1bb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c6f857d0a00c742f39e4793664872c7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a5c6f857d0a00c742f39e4793664872c7">verbosity</a></td></tr>
-<tr class="separator:a5c6f857d0a00c742f39e4793664872c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53548f2fa7eb18606aab18b817909eed"><td class="memTemplParams" colspan="2">template&lt;typename DataIterator , typename ValueOf &gt; </td></tr>
+<tr class="memitem:a53548f2fa7eb18606aab18b817909eed"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00025.html#a53548f2fa7eb18606aab18b817909eed">operator()</a> (const DataIterator &amp;begin, const DataIterator &amp;end, const ValueOf &amp;value_of) const </td></tr>
+<tr class="separator:a53548f2fa7eb18606aab18b817909eed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt;<br/>
-class gaml::bag::Learner&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;</h3>
-
-<p>This learner produces a collection of predictors by learning each one from a randomization of the input data set. </p>
+<div class="textblock"><p>Functor </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a6705c7c5d70d706d75281428416eef33"></a>
+<a class="anchor" id="a781ea94ff07bd61c1e673be49b151c8e"></a>
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="a00026.html">gaml::bag::Predictor</a>&lt;MergeOutput, typename ElementaryLearner::predictor_type&gt; <a class="el" href="a00025.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::<a class="el" href="a00025.html#a6705c7c5d70d706d75281428416eef33">predictor_type</a></td>
+          <td class="memname">typedef double <a class="el" href="a00025.html#a781ea94ff07bd61c1e673be49b151c8e">gaml::Average::output_type</a></td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a8b1f6071fe2012a7006b0aedb7b56265"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00025.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::<a class="el" href="a00025.html">Learner</a> </td>
-          <td>(</td>
-          <td class="paramtype">const ElementaryLearner&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt; &amp;&#160;</td>
-          <td class="paramname"><em>l</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const MergeOutput &amp;&#160;</td>
-          <td class="paramname"><em>output_merger</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const BasisRandomizer &amp;&#160;</td>
-          <td class="paramname"><em>dataset_randomizer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>size</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>is_verbose</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ac4035edf5fb7e97347c78561ea2f7539"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00025.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::<a class="el" href="a00025.html">Learner</a> </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00025.html">Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt; &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="aaffc294ae3a7c7bb71317d69e8911a14"></a>
+<a class="anchor" id="a53548f2fa7eb18606aab18b817909eed"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
-<div class="memtemplate">
-template&lt;typename DataIterator , typename InputOf , typename OutputOf &gt; </div>
+template&lt;typename DataIterator , typename ValueOf &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00025.html#a6705c7c5d70d706d75281428416eef33">predictor_type</a> <a class="el" href="a00025.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::operator() </td>
+          <td class="memname">double gaml::Average::operator() </td>
           <td>(</td>
           <td class="paramtype">const DataIterator &amp;&#160;</td>
           <td class="paramname"><em>begin</em>, </td>
@@ -258,14 +148,8 @@ template&lt;typename DataIterator , typename InputOf , typename OutputOf &gt; </
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const InputOf &amp;&#160;</td>
-          <td class="paramname"><em>input_of</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const OutputOf &amp;&#160;</td>
-          <td class="paramname"><em>output_of</em>&#160;</td>
+          <td class="paramtype">const ValueOf &amp;&#160;</td>
+          <td class="paramname"><em>value_of</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -282,105 +166,8 @@ template&lt;typename DataIterator , typename InputOf , typename OutputOf &gt; </
 
 </div>
 </div>
-<a class="anchor" id="a0f227508ebad47964d92f301101312f7"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00025.html">Learner</a>&amp; <a class="el" href="a00025.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::operator= </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00025.html">Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt; &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="ac855e727a5cc34ddf21c763f3f72e5fd"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">ElementaryLearner <a class="el" href="a00025.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::learner</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a54bc723d3c66aa208fc13b9dfea32552"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">MergeOutput <a class="el" href="a00025.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::merger</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="af0cbc1b35561011055c2639bda8f1bb8"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int <a class="el" href="a00025.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::nb_predictors</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a98db4329fd66ecc76f77dafdb01d5e4f"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">BasisRandomizer <a class="el" href="a00025.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::randomizer</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a5c6f857d0a00c742f39e4793664872c7"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="a00025.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::verbosity</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="a00144_source.html">gamlBag.hpp</a></li>
+<li><a class="el" href="a00158_source.html">gamlAlgorithms.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

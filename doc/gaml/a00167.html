@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gamlTabular.hpp File Reference</title>
+<title>gaml-1.14: gamlGnuplot.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -85,29 +85,46 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">gamlTabular.hpp File Reference</div>  </div>
+<div class="title">gamlGnuplot.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;iterator&gt;</code><br/>
-<code>#include &lt;<a class="el" href="a00169_source.html">gamlVirtual.hpp</a>&gt;</code><br/>
-<code>#include &lt;vector&gt;</code><br/>
+<div class="textblock"><code>#include &lt;fstream&gt;</code><br/>
+<code>#include &lt;string&gt;</code><br/>
+<code>#include &lt;<a class="el" href="a00164_source.html">gamlException.hpp</a>&gt;</code><br/>
 </div>
 <p><a href="a00167_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00132.html">gaml::TabularIterator&lt; Iterator, IndexIterator &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html">gaml::Tabular&lt; Iterator &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:a00171"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00171.html">gaml</a></td></tr>
+<tr class="memitem:a00187"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00187.html">gaml</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00194"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00194.html">gaml::gnuplot</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ac957141cad5d14a2dd5b6f6d05515d2c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00194.html#ac957141cad5d14a2dd5b6f6d05515d2c">gaml::gnuplot::Terminal</a> { <a class="el" href="a00194.html#ac957141cad5d14a2dd5b6f6d05515d2cacf8f535f9c0d4ee0a18046a8a1ea5889">gaml::gnuplot::termFig</a>, 
+<a class="el" href="a00194.html#ac957141cad5d14a2dd5b6f6d05515d2cae1378367fcb11318770759e0c422a00a">gaml::gnuplot::termX11</a>
+ }</td></tr>
+<tr class="separator:ac957141cad5d14a2dd5b6f6d05515d2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6f9c6046673fb38b3447ddec3e4d12c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00194.html#af6f9c6046673fb38b3447ddec3e4d12c">gaml::gnuplot::Style</a> { <a class="el" href="a00194.html#af6f9c6046673fb38b3447ddec3e4d12ca6b28461753dc6f5f7583110e35ad799b">gaml::gnuplot::styleLine</a>, 
+<a class="el" href="a00194.html#af6f9c6046673fb38b3447ddec3e4d12ca83ab756ae8061af0b158e3f04b9b85a8">gaml::gnuplot::styleDots</a>
+ }</td></tr>
+<tr class="separator:af6f9c6046673fb38b3447ddec3e4d12c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4fb2ae726e92f7d1af1ce8d475b3b11"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00194.html#ae4fb2ae726e92f7d1af1ce8d475b3b11">gaml::gnuplot::Verbosity</a> { <a class="el" href="a00194.html#ae4fb2ae726e92f7d1af1ce8d475b3b11a52b0352b8a0d5b2a859a46c2fbde4e07">gaml::gnuplot::verboseOn</a>, 
+<a class="el" href="a00194.html#ae4fb2ae726e92f7d1af1ce8d475b3b11abe9696ca7529293b257b8017fe935360">gaml::gnuplot::verboseOff</a>
+ }</td></tr>
+<tr class="separator:ae4fb2ae726e92f7d1af1ce8d475b3b11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a8bfcc05cb2847a210eb3acfb0ade89ba"><td class="memTemplParams" colspan="2">template&lt;int GNUPLOT_TERMINAL, int GNUPLOT_STYLE, int GNUPLOT_VERBOSITY&gt; </td></tr>
+<tr class="memitem:a8bfcc05cb2847a210eb3acfb0ade89ba"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00194.html#a8bfcc05cb2847a210eb3acfb0ade89ba">gaml::gnuplot::ROC</a> (std::string plot_file_radix, std::string data_file, std::string title)</td></tr>
+<tr class="separator:a8bfcc05cb2847a210eb3acfb0ade89ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

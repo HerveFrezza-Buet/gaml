@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: example-001-003-set-manipulations.cpp</title>
+<title>gaml-1.14: example-001-003-set-manipulations.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -79,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">example-001-003-set-manipulations.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00142.html">gaml.hpp</a>&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00157.html">gaml.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iterator&gt;</span></div>
@@ -118,8 +118,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  <span class="comment">// gaml::integer are iterable integer values. They are used here as</span></div>
 <div class="line">  <span class="comment">// the native sequence of values, from which more complex sequences</span></div>
 <div class="line">  <span class="comment">// are built.</span></div>
-<div class="line">  <a name="_a0"></a><a class="code" href="a00068.html">gaml::integer</a> begin = 0;</div>
-<div class="line">  <a class="code" href="a00068.html">gaml::integer</a> end   = 50;</div>
+<div class="line">  <a name="_a0"></a><a class="code" href="a00071.html">gaml::integer</a> begin = 0;</div>
+<div class="line">  <a class="code" href="a00071.html">gaml::integer</a> end   = 50;</div>
 <div class="line"></div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;Basic subset&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"></div>
@@ -129,48 +129,50 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  display(begin,end);</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Identity.... This may sound useless here, but it can help the</span></div>
-<div class="line">  <span class="comment">// writing of degenerated cases in some templates.</span></div>
+<div class="line">  <span class="comment">// writing of degenerated cases in some templates. Moreover,</span></div>
+<div class="line">  <span class="comment">// identity provides virtualized iterators that can be uses for</span></div>
+<div class="line">  <span class="comment">// building up gaml::virtualized::sequence (see further examples).</span></div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;Identity&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line">  <span class="keyword">auto</span> <a name="a1"></a><a class="code" href="a00171.html#aad891ba661cb98b79b317dcc9143ad4e">identity</a> = <a class="code" href="a00171.html#aad891ba661cb98b79b317dcc9143ad4e">gaml::identity</a>(begin,end);</div>
-<div class="line">  display(<a class="code" href="a00171.html#aad891ba661cb98b79b317dcc9143ad4e">identity</a>.begin(),<a class="code" href="a00171.html#aad891ba661cb98b79b317dcc9143ad4e">identity</a>.end());</div>
+<div class="line">  <span class="keyword">auto</span> <a name="a1"></a><a class="code" href="a00187.html#aad891ba661cb98b79b317dcc9143ad4e">identity</a> = <a class="code" href="a00187.html#aad891ba661cb98b79b317dcc9143ad4e">gaml::identity</a>(begin,end);</div>
+<div class="line">  display(<a class="code" href="a00187.html#aad891ba661cb98b79b317dcc9143ad4e">identity</a>.begin(),<a class="code" href="a00187.html#aad891ba661cb98b79b317dcc9143ad4e">identity</a>.end());</div>
 <div class="line"></div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;Merging non overlapping subsets&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// This merges two chunks into a single set (union of non</span></div>
 <div class="line">  <span class="comment">// overlapping sets).</span></div>
-<div class="line">  <span class="keyword">auto</span> <a name="a2"></a><a class="code" href="a00171.html#a32ca9e4f8a3765fe57c85735d2f92899">merge</a> = <a class="code" href="a00171.html#a32ca9e4f8a3765fe57c85735d2f92899">gaml::merge</a>(begin +  2, begin + 10,</div>
+<div class="line">  <span class="keyword">auto</span> <a name="a2"></a><a class="code" href="a00187.html#a32ca9e4f8a3765fe57c85735d2f92899">merge</a> = <a class="code" href="a00187.html#a32ca9e4f8a3765fe57c85735d2f92899">gaml::merge</a>(begin +  2, begin + 10,</div>
 <div class="line">                           begin + 23, begin + 47);</div>
-<div class="line">  display(<a class="code" href="a00171.html#a32ca9e4f8a3765fe57c85735d2f92899">merge</a>.begin(),<a class="code" href="a00171.html#a32ca9e4f8a3765fe57c85735d2f92899">merge</a>.end());</div>
+<div class="line">  display(<a class="code" href="a00187.html#a32ca9e4f8a3765fe57c85735d2f92899">merge</a>.begin(),<a class="code" href="a00187.html#a32ca9e4f8a3765fe57c85735d2f92899">merge</a>.end());</div>
 <div class="line"></div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;Mapping a function&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">  </div>
 <div class="line">  <span class="comment">// This is lazy, since the function is applied only when *iter is</span></div>
 <div class="line">  <span class="comment">// invoked.</span></div>
-<div class="line">  <span class="keyword">auto</span> <a name="a3"></a><a class="code" href="a00171.html#ac4358877d7d3320c00e84b1d2d082e11">map</a> = <a class="code" href="a00171.html#ac4358877d7d3320c00e84b1d2d082e11">gaml::map</a>(begin,begin+10,</div>
+<div class="line">  <span class="keyword">auto</span> <a name="a3"></a><a class="code" href="a00187.html#ac4358877d7d3320c00e84b1d2d082e11">map</a> = <a class="code" href="a00187.html#ac4358877d7d3320c00e84b1d2d082e11">gaml::map</a>(begin,begin+10,</div>
 <div class="line">                       [] (<span class="keyword">const</span> <span class="keywordtype">int</span>&amp; x) -&gt; <span class="keywordtype">int</span> {<span class="keywordflow">return</span> x*x;});</div>
-<div class="line">  display(<a class="code" href="a00171.html#ac4358877d7d3320c00e84b1d2d082e11">map</a>.begin(),<a class="code" href="a00171.html#ac4358877d7d3320c00e84b1d2d082e11">map</a>.end());</div>
+<div class="line">  display(<a class="code" href="a00187.html#ac4358877d7d3320c00e84b1d2d082e11">map</a>.begin(),<a class="code" href="a00187.html#ac4358877d7d3320c00e84b1d2d082e11">map</a>.end());</div>
 <div class="line"></div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;Bootstrap [0,10]&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">  </div>
 <div class="line">  <span class="comment">// The bootstrap consists in taking 20 samples randomly from [begin,</span></div>
 <div class="line">  <span class="comment">// begin+10[.</span></div>
-<div class="line">  <span class="keyword">auto</span> <a name="a4"></a><a class="code" href="a00171.html#aaf25f90967186d46c65dee0338ef785c">bootstrap</a> = <a class="code" href="a00171.html#aaf25f90967186d46c65dee0338ef785c">gaml::bootstrap</a>(begin,begin+10,20);</div>
-<div class="line">  display(<a class="code" href="a00171.html#aaf25f90967186d46c65dee0338ef785c">bootstrap</a>.begin(),<a class="code" href="a00171.html#aaf25f90967186d46c65dee0338ef785c">bootstrap</a>.end());</div>
+<div class="line">  <span class="keyword">auto</span> <a name="a4"></a><a class="code" href="a00187.html#aaf25f90967186d46c65dee0338ef785c">bootstrap</a> = <a class="code" href="a00187.html#aaf25f90967186d46c65dee0338ef785c">gaml::bootstrap</a>(begin,begin+10,20);</div>
+<div class="line">  display(<a class="code" href="a00187.html#aaf25f90967186d46c65dee0338ef785c">bootstrap</a>.begin(),<a class="code" href="a00187.html#aaf25f90967186d46c65dee0338ef785c">bootstrap</a>.end());</div>
 <div class="line"></div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;Shuffle&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">  </div>
 <div class="line">  <span class="comment">// This computes an acces to the elements as if the initial set were</span></div>
 <div class="line">  <span class="comment">// shuffled.</span></div>
-<div class="line">  <span class="keyword">auto</span> <a name="a5"></a><a class="code" href="a00171.html#ab7c3864d053ea06547b3c34eb12b9132">shuffle</a> = <a class="code" href="a00171.html#ab7c3864d053ea06547b3c34eb12b9132">gaml::shuffle</a>(begin,begin+20);</div>
-<div class="line">  display(<a class="code" href="a00171.html#ab7c3864d053ea06547b3c34eb12b9132">shuffle</a>.begin(),<a class="code" href="a00171.html#ab7c3864d053ea06547b3c34eb12b9132">shuffle</a>.end());</div>
+<div class="line">  <span class="keyword">auto</span> <a name="a5"></a><a class="code" href="a00187.html#ab7c3864d053ea06547b3c34eb12b9132">shuffle</a> = <a class="code" href="a00187.html#ab7c3864d053ea06547b3c34eb12b9132">gaml::shuffle</a>(begin,begin+20);</div>
+<div class="line">  display(<a class="code" href="a00187.html#ab7c3864d053ea06547b3c34eb12b9132">shuffle</a>.begin(),<a class="code" href="a00187.html#ab7c3864d053ea06547b3c34eb12b9132">shuffle</a>.end());</div>
 <div class="line"></div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;Packed shuffle&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">  </div>
 <div class="line">  <span class="comment">// This performs a shuffle tkat keeps some kind of locality, for</span></div>
 <div class="line">  <span class="comment">// memory efficiency reasons. This may be needed if some cache</span></div>
 <div class="line">  <span class="comment">// mecanism is involved.</span></div>
-<div class="line">  <span class="keyword">auto</span> <a name="a6"></a><a class="code" href="a00171.html#a624cdaf7d9af40428721c61c24af7c6f">packed_shuffle</a> = <a class="code" href="a00171.html#a624cdaf7d9af40428721c61c24af7c6f">gaml::packed_shuffle</a>(begin,begin+45,10);</div>
-<div class="line">  display(<a class="code" href="a00171.html#a624cdaf7d9af40428721c61c24af7c6f">packed_shuffle</a>.begin(),<a class="code" href="a00171.html#a624cdaf7d9af40428721c61c24af7c6f">packed_shuffle</a>.end());</div>
+<div class="line">  <span class="keyword">auto</span> <a name="a6"></a><a class="code" href="a00187.html#a624cdaf7d9af40428721c61c24af7c6f">packed_shuffle</a> = <a class="code" href="a00187.html#a624cdaf7d9af40428721c61c24af7c6f">gaml::packed_shuffle</a>(begin,begin+45,10);</div>
+<div class="line">  display(<a class="code" href="a00187.html#a624cdaf7d9af40428721c61c24af7c6f">packed_shuffle</a>.begin(),<a class="code" href="a00187.html#a624cdaf7d9af40428721c61c24af7c6f">packed_shuffle</a>.end());</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// We can filter the data according to a boolean function. The</span></div>
 <div class="line">  <span class="comment">// function gaml::filter and gaml::reject provide lazy iterators. It</span></div>
@@ -179,9 +181,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  <span class="comment">// and makes the test at each time).</span></div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;Filter&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"></div>
-<div class="line">  <span class="keyword">auto</span> <a name="a7"></a><a class="code" href="a00171.html#aa198a26fbd9d27b0abde3327879f4e7e">filter</a> = <a class="code" href="a00171.html#aa198a26fbd9d27b0abde3327879f4e7e">gaml::filter</a>(<a class="code" href="a00171.html#ab7c3864d053ea06547b3c34eb12b9132">shuffle</a>.begin(), <a class="code" href="a00171.html#ab7c3864d053ea06547b3c34eb12b9132">shuffle</a>.end(),</div>
+<div class="line">  <span class="keyword">auto</span> <a name="a7"></a><a class="code" href="a00187.html#aa198a26fbd9d27b0abde3327879f4e7e">filter</a> = <a class="code" href="a00187.html#aa198a26fbd9d27b0abde3327879f4e7e">gaml::filter</a>(<a class="code" href="a00187.html#ab7c3864d053ea06547b3c34eb12b9132">shuffle</a>.begin(), <a class="code" href="a00187.html#ab7c3864d053ea06547b3c34eb12b9132">shuffle</a>.end(),</div>
 <div class="line">                             [](<span class="keywordtype">int</span> i) -&gt; <span class="keywordtype">bool</span> {<span class="keywordflow">return</span> i % 2 == 0;});</div>
-<div class="line">  display(<a class="code" href="a00171.html#aa198a26fbd9d27b0abde3327879f4e7e">filter</a>.begin(),<a class="code" href="a00171.html#aa198a26fbd9d27b0abde3327879f4e7e">filter</a>.end());</div>
+<div class="line">  display(<a class="code" href="a00187.html#aa198a26fbd9d27b0abde3327879f4e7e">filter</a>.begin(),<a class="code" href="a00187.html#aa198a26fbd9d27b0abde3327879f4e7e">filter</a>.end());</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Split is similar to gaml::filter and gaml::reject, but the</span></div>
 <div class="line">  <span class="comment">// collection is iterated once when gaml::split is called, in order</span></div>
@@ -190,22 +192,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  <span class="comment">// any iteration on the data.</span></div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;Split&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"></div>
-<div class="line">  <span class="keyword">auto</span> <a name="a8"></a><a class="code" href="a00171.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">split</a> = <a class="code" href="a00171.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">gaml::split</a>(<a class="code" href="a00171.html#ab7c3864d053ea06547b3c34eb12b9132">shuffle</a>.begin(), <a class="code" href="a00171.html#ab7c3864d053ea06547b3c34eb12b9132">shuffle</a>.end(),</div>
+<div class="line">  <span class="keyword">auto</span> <a name="a8"></a><a class="code" href="a00187.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">split</a> = <a class="code" href="a00187.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">gaml::split</a>(<a class="code" href="a00187.html#ab7c3864d053ea06547b3c34eb12b9132">shuffle</a>.begin(), <a class="code" href="a00187.html#ab7c3864d053ea06547b3c34eb12b9132">shuffle</a>.end(),</div>
 <div class="line">                           [](<span class="keywordtype">int</span> i) -&gt; <span class="keywordtype">bool</span> {<span class="keywordflow">return</span> i % 2 == 0;});</div>
-<div class="line">  display(<a class="code" href="a00171.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">split</a>.true_values.begin(), <a class="code" href="a00171.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">split</a>.true_values.end());</div>
-<div class="line">  display(<a class="code" href="a00171.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">split</a>.false_values.begin(),<a class="code" href="a00171.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">split</a>.false_values.end());</div>
+<div class="line">  display(<a class="code" href="a00187.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">split</a>.true_values.begin(), <a class="code" href="a00187.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">split</a>.true_values.end());</div>
+<div class="line">  display(<a class="code" href="a00187.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">split</a>.false_values.begin(),<a class="code" href="a00187.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">split</a>.false_values.end());</div>
 <div class="line">  </div>
 <div class="line"></div>
-<div class="line">  <span class="comment">// Let us try to make intricated interations. As opposed to the</span></div>
+<div class="line">  <span class="comment">// Let us try to make intricated iterations. As opposed to the</span></div>
 <div class="line">  <span class="comment">// previous use of gaml::shuffle on gaml::integer, for which the</span></div>
 <div class="line">  <span class="comment">// size of the range can be computed directly from the (end-begin),</span></div>
 <div class="line">  <span class="comment">// the shuffle here, when it is created, has to iterate explicitly</span></div>
 <div class="line">  <span class="comment">// all the fsq content, since gaml::filter/gaml::reject iterator do</span></div>
 <div class="line">  <span class="comment">// not allow for instantaneous (end-begin) size computation.</span></div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;Intrication&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line">  <span class="keyword">auto</span> sq   = <a class="code" href="a00171.html#ac4358877d7d3320c00e84b1d2d082e11">gaml::map</a>     (begin,       begin+20,  [] (<span class="keywordtype">int</span> x) -&gt; <span class="keywordtype">int</span>  {<span class="keywordflow">return</span> x*x;       });</div>
-<div class="line">  <span class="keyword">auto</span> fsq  = <a name="a9"></a><a class="code" href="a00171.html#a27c22eca370af18af16f13f64695a576">gaml::reject</a>  (sq.begin(),  sq.end(),  [] (<span class="keywordtype">int</span> i) -&gt; <span class="keywordtype">bool</span> {<span class="keywordflow">return</span> i % 4 != 0;});</div>
-<div class="line">  <span class="keyword">auto</span> fsqs = <a class="code" href="a00171.html#ab7c3864d053ea06547b3c34eb12b9132">gaml::shuffle</a> (fsq.begin(), fsq.end()                                         );</div>
+<div class="line">  <span class="keyword">auto</span> sq   = <a class="code" href="a00187.html#ac4358877d7d3320c00e84b1d2d082e11">gaml::map</a>     (begin,       begin+20,  [] (<span class="keywordtype">int</span> x) -&gt; <span class="keywordtype">int</span>  {<span class="keywordflow">return</span> x*x;       });</div>
+<div class="line">  <span class="keyword">auto</span> fsq  = <a name="a9"></a><a class="code" href="a00187.html#a27c22eca370af18af16f13f64695a576">gaml::reject</a>  (sq.begin(),  sq.end(),  [] (<span class="keywordtype">int</span> i) -&gt; <span class="keywordtype">bool</span> {<span class="keywordflow">return</span> i % 4 != 0;});</div>
+<div class="line">  <span class="keyword">auto</span> fsqs = <a class="code" href="a00187.html#ab7c3864d053ea06547b3c34eb12b9132">gaml::shuffle</a> (fsq.begin(), fsq.end()                                         );</div>
 <div class="line">  display(fsqs.begin(),fsqs.end());</div>
 <div class="line"></div>
 <div class="line">  std::cout &lt;&lt; std::endl</div>
@@ -218,14 +220,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  <span class="comment">// Let us define a mapped collection, the mapped function being</span></div>
 <div class="line">  <span class="comment">// verbose, so that one can see when the computation is actually</span></div>
 <div class="line">  <span class="comment">// invoked.</span></div>
-<div class="line">  <span class="keyword">auto</span> squares = <a class="code" href="a00171.html#ac4358877d7d3320c00e84b1d2d082e11">gaml::map</a>(begin,begin+20,</div>
+<div class="line">  <span class="keyword">auto</span> squares = <a class="code" href="a00187.html#ac4358877d7d3320c00e84b1d2d082e11">gaml::map</a>(begin,begin+20,</div>
 <div class="line">                           [] (<span class="keywordtype">int</span> x) -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line">                             std::cout &lt;&lt; <span class="stringliteral">&quot; (&quot;</span> &lt;&lt; x*x &lt;&lt; <span class="charliteral">&#39;)&#39;</span>;</div>
 <div class="line">                             <span class="keywordflow">return</span> x*x;</div>
 <div class="line">                           });</div>
 <div class="line">  <span class="comment">// Let us now use a cache in order to pre-compute values within</span></div>
 <div class="line">  <span class="comment">// pages.</span></div>
-<div class="line">  <span class="keyword">auto</span> cached_squares = <a name="a10"></a><a class="code" href="a00171.html#a2613c3bae4a11e8a81a09db41dbfb67d">gaml::cache</a>(squares.begin(),squares.end(),</div>
+<div class="line">  <span class="keyword">auto</span> cached_squares = <a name="a10"></a><a class="code" href="a00187.html#a2613c3bae4a11e8a81a09db41dbfb67d">gaml::cache</a>(squares.begin(),squares.end(),</div>
 <div class="line">                                    7,  <span class="comment">// page size</span></div>
 <div class="line">                                    2); <span class="comment">// number of pages in the cache.</span></div>
 <div class="line"></div>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::concept::GenericLearner Class Reference</title>
+<title>gaml-1.14: gaml::category_of&lt; Iterator, False &gt; Struct Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,47 +82,51 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00176.html">concept</a></li><li class="navelem"><a class="el" href="a00037.html">GenericLearner</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00037.html">category_of</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00271.html">List of all members</a>  </div>
+<a href="#pub-types">Public Types</a> &#124;
+<a href="a00235.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::concept::GenericLearner Class Reference</div>  </div>
+<div class="title">gaml::category_of&lt; Iterator, False &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00170_source.html">gamlWrapper.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00170_source.html">gamlIterator.hpp</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a1549b74db6f5b41973c40556174e8f73"><td class="memTemplParams" colspan="2">template&lt;typename Input &gt; </td></tr>
-<tr class="memitem:a1549b74db6f5b41973c40556174e8f73"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00040.html">LearningAlgorithm</a>&lt; Input &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00037.html#a1549b74db6f5b41973c40556174e8f73">make</a> () const </td></tr>
-<tr class="separator:a1549b74db6f5b41973c40556174e8f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a9c8070c36a1bf0c978aadcfeb7a6078a"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00150.html">virtual_category_of</a><br class="typebreak"/>
+&lt; Iterator, typename <br class="typebreak"/>
+std::is_base_of<br class="typebreak"/>
+&lt; <a class="el" href="a00073.html">gaml::is_virtual</a>, Iterator &gt;<br class="typebreak"/>
+::type &gt;::<a class="el" href="a00037.html#a9c8070c36a1bf0c978aadcfeb7a6078a">tag_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00037.html#a9c8070c36a1bf0c978aadcfeb7a6078a">tag_type</a></td></tr>
+<tr class="separator:a9c8070c36a1bf0c978aadcfeb7a6078a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a1549b74db6f5b41973c40556174e8f73"></a>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename Iterator, typename False&gt;<br/>
+struct gaml::category_of&lt; Iterator, False &gt;</h3>
+
+<p>For internal use </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="a9c8070c36a1bf0c978aadcfeb7a6078a"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Input &gt; </div>
+template&lt;typename Iterator , typename False &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00040.html">LearningAlgorithm</a>&lt;Input&gt; gaml::concept::GenericLearner::make </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="memname">typedef <a class="el" href="a00150.html">virtual_category_of</a>&lt;Iterator, typename std::is_base_of&lt;<a class="el" href="a00073.html">gaml::is_virtual</a>, Iterator&gt;::type&gt;::<a class="el" href="a00037.html#a9c8070c36a1bf0c978aadcfeb7a6078a">tag_type</a> <a class="el" href="a00037.html">gaml::category_of</a>&lt; Iterator, False &gt;::<a class="el" href="a00037.html#a9c8070c36a1bf0c978aadcfeb7a6078a">tag_type</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>a learner for the input type. </dd></dl>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="a00170_source.html">gamlWrapper.hpp</a></li>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li><a class="el" href="a00170_source.html">gamlIterator.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

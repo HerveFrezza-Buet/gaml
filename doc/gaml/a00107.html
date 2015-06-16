@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::projection_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt; Struct Template Reference</title>
+<title>gaml-1.14: gaml::ProjectedInput&lt; AttrIterator, Input &gt;::WrappingPredictor&lt; Predictor &gt; Struct Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,99 +82,223 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00107.html">projection_traits</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00105.html">ProjectedInput</a></li><li class="navelem"><a class="el" href="a00107.html">WrappingPredictor</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
-<a href="a00202.html">List of all members</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="a00217.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::projection_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt; Struct Template Reference</div>  </div>
+<div class="title">gaml::ProjectedInput&lt; AttrIterator, Input &gt;::WrappingPredictor&lt; Predictor &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00148_source.html">gamlDimensions.hpp</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for gaml::projection_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="a00107.png" usemap="#gaml::projection_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;_map" alt=""/>
-  <map id="gaml::projection_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;_map" name="gaml::projection_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;_map">
-<area href="a00141.html" alt="gaml::wrapper_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR, GENERIC_LEARNER &gt;" shape="rect" coords="0,56,475,80"/>
-</map>
- </div></div>
+<p><code>#include &lt;<a class="el" href="a00163_source.html">gamlDimensions.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a65412e3a056a0cbeace717a782522909"><td class="memItemLeft" align="right" valign="top">typedef INPUT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00107.html#a65412e3a056a0cbeace717a782522909">input_type</a></td></tr>
-<tr class="separator:a65412e3a056a0cbeace717a782522909"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a58d3cc8aca15588602d14e75199a0e"><td class="memItemLeft" align="right" valign="top">typedef OUTPUT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00107.html#a2a58d3cc8aca15588602d14e75199a0e">output_type</a></td></tr>
-<tr class="separator:a2a58d3cc8aca15588602d14e75199a0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68729c50d8544e57ff44251e04d7de24"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00101.html">ProjectedInput</a><br class="typebreak"/>
-&lt; ATTR_ITERATOR, <a class="el" href="a00107.html#a65412e3a056a0cbeace717a782522909">input_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00107.html#a68729c50d8544e57ff44251e04d7de24">projected_input_type</a></td></tr>
-<tr class="separator:a68729c50d8544e57ff44251e04d7de24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4194bf55e6656d83ffb1f79275591c91"><td class="memItemLeft" align="right" valign="top">typedef std::pair<br class="typebreak"/>
-&lt; <a class="el" href="a00107.html#a68729c50d8544e57ff44251e04d7de24">projected_input_type</a>, <br class="typebreak"/>
-<a class="el" href="a00107.html#a2a58d3cc8aca15588602d14e75199a0e">output_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00107.html#a4194bf55e6656d83ffb1f79275591c91">projected_data_type</a></td></tr>
-<tr class="separator:a4194bf55e6656d83ffb1f79275591c91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace2e2e961256623eccdc36ba7ab45278"><td class="memItemLeft" align="right" valign="top">typedef Predictor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00107.html#ace2e2e961256623eccdc36ba7ab45278">internal_predictor_type</a></td></tr>
+<tr class="separator:ace2e2e961256623eccdc36ba7ab45278"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ed1ec2a62d9ba9a59d89f7a2a4a3525"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+internal_predictor_type::input_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00107.html#a3ed1ec2a62d9ba9a59d89f7a2a4a3525">projected_input_type</a></td></tr>
+<tr class="separator:a3ed1ec2a62d9ba9a59d89f7a2a4a3525"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a109da4bb7ddcfb300089f8d9e6b1259a"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+internal_predictor_type::output_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00107.html#a109da4bb7ddcfb300089f8d9e6b1259a">output_type</a></td></tr>
+<tr class="separator:a109da4bb7ddcfb300089f8d9e6b1259a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a015d4c6fb4f78193325d01609d8b0132"><td class="memItemLeft" align="right" valign="top">typedef Input&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00107.html#a015d4c6fb4f78193325d01609d8b0132">input_type</a></td></tr>
+<tr class="separator:a015d4c6fb4f78193325d01609d8b0132"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a790068be988e6e426bff83b1c0ec0921"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00107.html#a790068be988e6e426bff83b1c0ec0921">WrappingPredictor</a> (const AttrIterator &amp;<a class="el" href="a00105.html#a08a4d04a286ab4919f1282000e053157">begin</a>, const AttrIterator &amp;<a class="el" href="a00105.html#ad9ed9059367765d8ed1b367d64965972">end</a>, const Predictor &amp;projectedPredictor)</td></tr>
+<tr class="separator:a790068be988e6e426bff83b1c0ec0921"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f44e2ec400c50b713d81c5d454e7c57"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00107.html#a109da4bb7ddcfb300089f8d9e6b1259a">output_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00107.html#a1f44e2ec400c50b713d81c5d454e7c57">operator()</a> (const <a class="el" href="a00107.html#a015d4c6fb4f78193325d01609d8b0132">input_type</a> &amp;input) const </td></tr>
+<tr class="separator:a1f44e2ec400c50b713d81c5d454e7c57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:aa274852a0ddeff813ebcabd4b339bf7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00107.html#a3ed1ec2a62d9ba9a59d89f7a2a4a3525">projected_input_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00107.html#aa274852a0ddeff813ebcabd4b339bf7c">projectedInput_</a></td></tr>
+<tr class="separator:aa274852a0ddeff813ebcabd4b339bf7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a157314ca89f2495810d8ddf133951949"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00107.html#ace2e2e961256623eccdc36ba7ab45278">internal_predictor_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00107.html#a157314ca89f2495810d8ddf133951949">projectedPredictor_</a></td></tr>
+<tr class="separator:a157314ca89f2495810d8ddf133951949"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename INPUT, typename OUTPUT, typename ATTR_ITERATOR&gt;<br/>
-struct gaml::projection_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;</h3>
-
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="a00015.html#_a3">example-004-001-variable-projection.cpp</a>.</dd>
-</dl></div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a65412e3a056a0cbeace717a782522909"></a>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="a015d4c6fb4f78193325d01609d8b0132"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename INPUT , typename OUTPUT , typename ATTR_ITERATOR &gt; </div>
+template&lt;typename AttrIterator , typename Input &gt; </div>
+<div class="memtemplate">
+template&lt;typename Predictor &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef INPUT <a class="el" href="a00107.html">gaml::projection_traits</a>&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;::<a class="el" href="a00107.html#a65412e3a056a0cbeace717a782522909">input_type</a></td>
+          <td class="memname">typedef Input <a class="el" href="a00105.html">gaml::ProjectedInput</a>&lt; AttrIterator, Input &gt;::<a class="el" href="a00107.html">WrappingPredictor</a>&lt; Predictor &gt;::<a class="el" href="a00107.html#a015d4c6fb4f78193325d01609d8b0132">input_type</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a2a58d3cc8aca15588602d14e75199a0e"></a>
+<a class="anchor" id="ace2e2e961256623eccdc36ba7ab45278"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename INPUT , typename OUTPUT , typename ATTR_ITERATOR &gt; </div>
+template&lt;typename AttrIterator , typename Input &gt; </div>
+<div class="memtemplate">
+template&lt;typename Predictor &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef OUTPUT <a class="el" href="a00107.html">gaml::projection_traits</a>&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;::<a class="el" href="a00107.html#a2a58d3cc8aca15588602d14e75199a0e">output_type</a></td>
+          <td class="memname">typedef Predictor <a class="el" href="a00105.html">gaml::ProjectedInput</a>&lt; AttrIterator, Input &gt;::<a class="el" href="a00107.html">WrappingPredictor</a>&lt; Predictor &gt;::<a class="el" href="a00107.html#ace2e2e961256623eccdc36ba7ab45278">internal_predictor_type</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a4194bf55e6656d83ffb1f79275591c91"></a>
+<a class="anchor" id="a109da4bb7ddcfb300089f8d9e6b1259a"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename INPUT , typename OUTPUT , typename ATTR_ITERATOR &gt; </div>
+template&lt;typename AttrIterator , typename Input &gt; </div>
+<div class="memtemplate">
+template&lt;typename Predictor &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef std::pair&lt;<a class="el" href="a00107.html#a68729c50d8544e57ff44251e04d7de24">projected_input_type</a>, <a class="el" href="a00107.html#a2a58d3cc8aca15588602d14e75199a0e">output_type</a>&gt; <a class="el" href="a00107.html">gaml::projection_traits</a>&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;::<a class="el" href="a00107.html#a4194bf55e6656d83ffb1f79275591c91">projected_data_type</a></td>
+          <td class="memname">typedef internal_predictor_type::output_type <a class="el" href="a00105.html">gaml::ProjectedInput</a>&lt; AttrIterator, Input &gt;::<a class="el" href="a00107.html">WrappingPredictor</a>&lt; Predictor &gt;::<a class="el" href="a00107.html#a109da4bb7ddcfb300089f8d9e6b1259a">output_type</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a68729c50d8544e57ff44251e04d7de24"></a>
+<a class="anchor" id="a3ed1ec2a62d9ba9a59d89f7a2a4a3525"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename INPUT , typename OUTPUT , typename ATTR_ITERATOR &gt; </div>
+template&lt;typename AttrIterator , typename Input &gt; </div>
+<div class="memtemplate">
+template&lt;typename Predictor &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="a00101.html">ProjectedInput</a>&lt;ATTR_ITERATOR, <a class="el" href="a00107.html#a65412e3a056a0cbeace717a782522909">input_type</a>&gt; <a class="el" href="a00107.html">gaml::projection_traits</a>&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;::<a class="el" href="a00107.html#a68729c50d8544e57ff44251e04d7de24">projected_input_type</a></td>
+          <td class="memname">typedef internal_predictor_type::input_type <a class="el" href="a00105.html">gaml::ProjectedInput</a>&lt; AttrIterator, Input &gt;::<a class="el" href="a00107.html">WrappingPredictor</a>&lt; Predictor &gt;::<a class="el" href="a00107.html#a3ed1ec2a62d9ba9a59d89f7a2a4a3525">projected_input_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a790068be988e6e426bff83b1c0ec0921"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename AttrIterator , typename Input &gt; </div>
+<div class="memtemplate">
+template&lt;typename Predictor &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00105.html">gaml::ProjectedInput</a>&lt; AttrIterator, Input &gt;::<a class="el" href="a00107.html">WrappingPredictor</a>&lt; Predictor &gt;::<a class="el" href="a00107.html">WrappingPredictor</a> </td>
+          <td>(</td>
+          <td class="paramtype">const AttrIterator &amp;&#160;</td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const AttrIterator &amp;&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Predictor &amp;&#160;</td>
+          <td class="paramname"><em>projectedPredictor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a1f44e2ec400c50b713d81c5d454e7c57"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename AttrIterator , typename Input &gt; </div>
+<div class="memtemplate">
+template&lt;typename Predictor &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00107.html#a109da4bb7ddcfb300089f8d9e6b1259a">output_type</a> <a class="el" href="a00105.html">gaml::ProjectedInput</a>&lt; AttrIterator, Input &gt;::<a class="el" href="a00107.html">WrappingPredictor</a>&lt; Predictor &gt;::operator() </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00107.html#a015d4c6fb4f78193325d01609d8b0132">input_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="aa274852a0ddeff813ebcabd4b339bf7c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename AttrIterator , typename Input &gt; </div>
+<div class="memtemplate">
+template&lt;typename Predictor &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00107.html#a3ed1ec2a62d9ba9a59d89f7a2a4a3525">projected_input_type</a> <a class="el" href="a00105.html">gaml::ProjectedInput</a>&lt; AttrIterator, Input &gt;::<a class="el" href="a00107.html">WrappingPredictor</a>&lt; Predictor &gt;::projectedInput_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">mutable</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a157314ca89f2495810d8ddf133951949"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename AttrIterator , typename Input &gt; </div>
+<div class="memtemplate">
+template&lt;typename Predictor &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00107.html#ace2e2e961256623eccdc36ba7ab45278">internal_predictor_type</a> <a class="el" href="a00105.html">gaml::ProjectedInput</a>&lt; AttrIterator, Input &gt;::<a class="el" href="a00107.html">WrappingPredictor</a>&lt; Predictor &gt;::projectedPredictor_</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -182,7 +306,7 @@ template&lt;typename INPUT , typename OUTPUT , typename ATTR_ITERATOR &gt; </div
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="a00148_source.html">gamlDimensions.hpp</a></li>
+<li><a class="el" href="a00163_source.html">gamlDimensions.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

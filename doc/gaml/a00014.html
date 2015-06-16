@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: example-003-001-multidimension.cpp</title>
+<title>gaml-1.14: example-003-001-multidimension.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -79,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">example-003-001-multidimension.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00142.html">gaml.hpp</a>&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00157.html">gaml.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;utility&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;array&gt;</span></div>
 <div class="line"></div>
@@ -127,7 +127,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><span class="keyword">public</span>:</div>
 <div class="line">  <span class="keyword">typedef</span> Y output_type;</div>
 <div class="line">  <span class="keywordtype">double</span> operator()(<span class="keyword">const</span> output_type&amp; l1, <span class="keyword">const</span> output_type&amp; l2)<span class="keyword"> const </span>{</div>
-<div class="line">    <a name="_a0"></a><a class="code" href="a00083.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a> loss;</div>
+<div class="line">    <a name="_a0"></a><a class="code" href="a00087.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a> loss;</div>
 <div class="line">    <span class="keywordflow">return</span> loss(l1.x, l2.x) + loss(l1.y, l2.y) + loss(l1.z, l2.z);</div>
 <div class="line">  }</div>
 <div class="line">};</div>
@@ -143,7 +143,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  <span class="keyword">typedef</span> silly::Predictor scalar_predictor_type;</div>
 <div class="line">  </div>
 <div class="line">  <span class="comment">// Let us define a 3D predictor.</span></div>
-<div class="line">  <span class="keyword">typedef</span> <a name="_a1"></a><a class="code" href="a00092.html">gaml::multidim::Predictor&lt;Y,scalar_predictor_type,3&gt;</a> predictor_type;</div>
+<div class="line">  <span class="keyword">typedef</span> <a name="_a1"></a><a class="code" href="a00096.html">gaml::multidim::Predictor&lt;Y,scalar_predictor_type,3&gt;</a> predictor_type;</div>
 <div class="line">  </div>
 <div class="line">  Learner(<span class="keywordtype">void</span>) {}</div>
 <div class="line"></div>
@@ -183,17 +183,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  <span class="keywordtype">int</span> i=0;</div>
 <div class="line">  <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; data : basis) {</div>
 <div class="line">    data.first    = i++;</div>
-<div class="line">    data.second.x = 1 + <a name="a2"></a><a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(-1,1);</div>
-<div class="line">    data.second.y = 2 + <a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(-1,1);</div>
-<div class="line">    data.second.z = 3 + <a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(-1,1);</div>
+<div class="line">    data.second.x = 1 + <a name="a2"></a><a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(-1,1);</div>
+<div class="line">    data.second.y = 2 + <a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(-1,1);</div>
+<div class="line">    data.second.z = 3 + <a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(-1,1);</div>
 <div class="line">  }</div>
 <div class="line"></div>
-<div class="line">  <span class="keyword">auto</span> kfold_evaluator = <a name="a3"></a><a class="code" href="a00184.html#adf7f5a2dee85281e5a0b604b588e9560">gaml::risk::cross_validation</a>(Loss(), <a name="a4"></a><a class="code" href="a00181.html#a5b2281c25f57d3fbf33b397453f425e7">gaml::partition::kfold</a>(6), <span class="keyword">true</span>);</div>
+<div class="line">  <span class="keyword">auto</span> kfold_evaluator = <a name="a3"></a><a class="code" href="a00200.html#adf7f5a2dee85281e5a0b604b588e9560">gaml::risk::cross_validation</a>(Loss(), <a name="a4"></a><a class="code" href="a00197.html#a5b2281c25f57d3fbf33b397453f425e7">gaml::partition::kfold</a>(6), <span class="keyword">true</span>);</div>
 <div class="line">  silly::Learner scalar_learner;</div>
-<div class="line">  <span class="keyword">auto</span> <a name="a5"></a><a class="code" href="a00172.html#a94145476ec3c62d9314841ce88ad24e5">learner</a> = gaml::multidim::learner&lt;Y,3&gt;(scalar_learner, array_of_output, output_of_array);</div>
+<div class="line">  <span class="keyword">auto</span> <a name="a5"></a><a class="code" href="a00188.html#a94145476ec3c62d9314841ce88ad24e5">learner</a> = gaml::multidim::learner&lt;Y,3&gt;(scalar_learner, array_of_output, output_of_array);</div>
 <div class="line"></div>
-<div class="line">  <span class="keywordtype">double</span>    risk = kfold_evaluator(<a class="code" href="a00172.html#a94145476ec3c62d9314841ce88ad24e5">learner</a>, basis.begin(), basis.end(), input_of_data, output_of_data);</div>
-<div class="line">  <span class="keyword">auto</span> predictor = <a class="code" href="a00172.html#a94145476ec3c62d9314841ce88ad24e5">learner</a>(basis.begin(), basis.end(), input_of_data, output_of_data);</div>
+<div class="line">  <span class="keywordtype">double</span>    risk = kfold_evaluator(<a class="code" href="a00188.html#a94145476ec3c62d9314841ce88ad24e5">learner</a>, basis.begin(), basis.end(), input_of_data, output_of_data);</div>
+<div class="line">  <span class="keyword">auto</span> predictor = <a class="code" href="a00188.html#a94145476ec3c62d9314841ce88ad24e5">learner</a>(basis.begin(), basis.end(), input_of_data, output_of_data);</div>
 <div class="line">  Y output       = predictor(0);</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;output : {&quot;</span> &lt;&lt; output.x &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; output.y &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; output.z &lt;&lt; <span class="stringliteral">&quot;}&quot;</span> &lt;&lt; std::endl</div>
 <div class="line">            &lt;&lt; <span class="stringliteral">&quot;risk = &quot;</span> &lt;&lt; risk &lt;&lt; std::endl;</div>

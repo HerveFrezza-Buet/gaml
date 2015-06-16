@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gamlAlgorithms.hpp File Reference</title>
+<title>gaml-1.14: gaml::TupleComponentParser&lt; Tuple, i, c &gt; Struct Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -38,8 +38,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -61,7 +61,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -80,131 +82,200 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00143.html">TupleComponentParser</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="a00251.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gamlAlgorithms.hpp File Reference</div>  </div>
+<div class="title">gaml::TupleComponentParser&lt; Tuple, i, c &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;iostream&gt;</code><br/>
-<code>#include &lt;string&gt;</code><br/>
-<code>#include &lt;vector&gt;</code><br/>
-<code>#include &lt;map&gt;</code><br/>
-<code>#include &lt;list&gt;</code><br/>
-<code>#include &lt;array&gt;</code><br/>
-<code>#include &lt;tuple&gt;</code><br/>
-<code>#include &lt;stdexcept&gt;</code><br/>
-<code>#include &lt;iterator&gt;</code><br/>
-<code>#include &lt;utility&gt;</code><br/>
-<code>#include &lt;numeric&gt;</code><br/>
-<code>#include &lt;algorithm&gt;</code><br/>
-<code>#include &lt;cmath&gt;</code><br/>
-<code>#include &lt;cstdlib&gt;</code><br/>
-<code>#include &lt;<a class="el" href="a00158_source.html">gamlMerge.hpp</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="a00160_source.html">gamlPartition.hpp</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="a00157_source.html">gamlMap.hpp</a>&gt;</code><br/>
-<code>#include &lt;iomanip&gt;</code><br/>
-</div>
-<p><a href="a00143_source.html">Go to the source code of this file.</a></p>
+
+<p><code>#include &lt;<a class="el" href="a00171_source.html">gamlJSONParser.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for gaml::TupleComponentParser&lt; Tuple, i, c &gt;:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="a00143.png" usemap="#gaml::TupleComponentParser&lt; Tuple, i, c &gt;_map" alt=""/>
+  <map id="gaml::TupleComponentParser&lt; Tuple, i, c &gt;_map" name="gaml::TupleComponentParser&lt; Tuple, i, c &gt;_map">
+<area href="a00100.html" alt="gaml::ParserBase" shape="rect" coords="0,0,259,24"/>
+</map>
+ </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00043.html">gaml::concept::Predictor</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This predicts a label from an input.  <a href="a00043.html#details">More...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00038.html">gaml::concept::Learner</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This learns from a data set.  <a href="a00038.html#details">More...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00044.html">gaml::concept::PredictorEvaluator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluation of a predictor on a data set.  <a href="a00044.html#details">More...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00039.html">gaml::concept::LearnerEvaluator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluation of a predictor on a data set.  <a href="a00039.html#details">More...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00112.html">gaml::risk::Empirical&lt; LOSS &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00111.html">gaml::risk::CrossValidation&lt; LOSS, PARTITION &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html">gaml::integer</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html">gaml::Average</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00133.html">gaml::Variance</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00033.html">gaml::by_default::LesserThan&lt; VALUE &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html">gaml::Frequencies&lt; VALUE, COMP &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00090.html">gaml::MostFrequent&lt; VALUE, COMP &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00060.html">gaml::HighestCumulatedFrequency&lt; VALUE &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a12243c349c7e68801db1514c858d2594"><td class="memItemLeft" align="right" valign="top">typedef Tuple&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00143.html#a12243c349c7e68801db1514c858d2594">tuple_type</a></td></tr>
+<tr class="separator:a12243c349c7e68801db1514c858d2594"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc40d071c49c6c137dd507d032436e55"><td class="memItemLeft" align="right" valign="top">typedef std::tuple_element&lt; i, <br class="typebreak"/>
+<a class="el" href="a00143.html#a12243c349c7e68801db1514c858d2594">tuple_type</a> &gt;::type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00143.html#afc40d071c49c6c137dd507d032436e55">element_type</a></td></tr>
+<tr class="separator:afc40d071c49c6c137dd507d032436e55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:a00171"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00171.html">gaml</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00183"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00183.html">gaml::random</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00176"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00176.html">gaml::concept</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00184"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00184.html">gaml::risk</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00174"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00174.html">gaml::by_default</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a49fb8a1840c4f38c95054046335ddc4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00143.html#a49fb8a1840c4f38c95054046335ddc4e">read</a> (std::istream &amp;is, <a class="el" href="a00143.html#a12243c349c7e68801db1514c858d2594">tuple_type</a> &amp;t) const </td></tr>
+<tr class="separator:a49fb8a1840c4f38c95054046335ddc4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cebb6f8c40a5118f4d2b4b323eb232f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00143.html#a7cebb6f8c40a5118f4d2b4b323eb232f">write</a> (std::ostream &amp;os, const <a class="el" href="a00143.html#a12243c349c7e68801db1514c858d2594">tuple_type</a> &amp;t) const </td></tr>
+<tr class="separator:a7cebb6f8c40a5118f4d2b4b323eb232f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:a06c853d8e4709b57bb11c9413214ec01"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00176.html#a06c853d8e4709b57bb11c9413214ec01">gaml::concept::any</a></td></tr>
-<tr class="separator:a06c853d8e4709b57bb11c9413214ec01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:ae43ea0e4b5b83be7427f6ff650bed39e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00076.html">JSONParser</a>&lt; <a class="el" href="a00143.html#afc40d071c49c6c137dd507d032436e55">element_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00143.html#ae43ea0e4b5b83be7427f6ff650bed39e">headParser_</a></td></tr>
+<tr class="separator:ae43ea0e4b5b83be7427f6ff650bed39e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3afb5d577d546dc6e41980426096180"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00143.html">TupleComponentParser</a>&lt; Tuple, i+1, <br class="typebreak"/>
+c-1 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00143.html#ae3afb5d577d546dc6e41980426096180">tailParser_</a></td></tr>
+<tr class="separator:ae3afb5d577d546dc6e41980426096180"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a63a869d5b9fe61b984623e3ecd99a033"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a> (double min, double max)</td></tr>
-<tr class="separator:a63a869d5b9fe61b984623e3ecd99a033"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f375b14819f83ac9393b17d1cdb2904"><td class="memTemplParams" colspan="2">template&lt;typename VALUE &gt; </td></tr>
-<tr class="memitem:a9f375b14819f83ac9393b17d1cdb2904"><td class="memTemplItemLeft" align="right" valign="top">VALUE&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00183.html#a9f375b14819f83ac9393b17d1cdb2904">gaml::random::uniform</a> (VALUE max)</td></tr>
-<tr class="separator:a9f375b14819f83ac9393b17d1cdb2904"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50561031870af4d865de65f89c677916"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00183.html#a50561031870af4d865de65f89c677916">gaml::random::proba</a> (double p)</td></tr>
-<tr class="separator:a50561031870af4d865de65f89c677916"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a345ecf68a70400b74c311859bfe0264d"><td class="memTemplParams" colspan="2">template&lt;typename Predictor , typename DataIterator , typename InputOf , typename OutputOf , typename Loss , typename AccumIterator &gt; </td></tr>
-<tr class="memitem:a345ecf68a70400b74c311859bfe0264d"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00184.html#a345ecf68a70400b74c311859bfe0264d">gaml::risk::accumulation</a> (const Predictor &amp;predictor, const DataIterator &amp;begin, const DataIterator &amp;end, const InputOf &amp;inputOf, const OutputOf &amp;outputOf, const Loss &amp;loss, AccumIterator &amp;acc)</td></tr>
-<tr class="separator:a345ecf68a70400b74c311859bfe0264d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d9973bf3290ec3c9e0eccc57a63ad46"><td class="memTemplParams" colspan="2">template&lt;typename LOSS &gt; </td></tr>
-<tr class="memitem:a6d9973bf3290ec3c9e0eccc57a63ad46"><td class="memTemplItemLeft" align="right" valign="top">Empirical&lt; LOSS &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00184.html#a6d9973bf3290ec3c9e0eccc57a63ad46">gaml::risk::empirical</a> (const LOSS &amp;loss)</td></tr>
-<tr class="separator:a6d9973bf3290ec3c9e0eccc57a63ad46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf7f5a2dee85281e5a0b604b588e9560"><td class="memTemplParams" colspan="2">template&lt;typename LOSS , typename PARTITION &gt; </td></tr>
-<tr class="memitem:adf7f5a2dee85281e5a0b604b588e9560"><td class="memTemplItemLeft" align="right" valign="top">CrossValidation&lt; LOSS, PARTITION &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00184.html#adf7f5a2dee85281e5a0b604b588e9560">gaml::risk::cross_validation</a> (const LOSS &amp;l, const PARTITION &amp;part, bool verbosity)</td></tr>
-<tr class="separator:adf7f5a2dee85281e5a0b604b588e9560"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8196de5eb952adc1d0ff250d0b307a20"><td class="memTemplParams" colspan="2">template&lt;typename DataIterator , typename ValueOf &gt; </td></tr>
-<tr class="memitem:a8196de5eb952adc1d0ff250d0b307a20"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00171.html#a8196de5eb952adc1d0ff250d0b307a20">gaml::average</a> (const DataIterator &amp;begin, const DataIterator &amp;end, const ValueOf &amp;value_of)</td></tr>
-<tr class="separator:a8196de5eb952adc1d0ff250d0b307a20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed9339c3d0aee2527e03aed013a349a3"><td class="memTemplParams" colspan="2">template&lt;typename DataIterator , typename ValueOf &gt; </td></tr>
-<tr class="memitem:aed9339c3d0aee2527e03aed013a349a3"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00171.html#aed9339c3d0aee2527e03aed013a349a3">gaml::variance</a> (const DataIterator &amp;begin, const DataIterator &amp;end, const ValueOf &amp;value_of)</td></tr>
-<tr class="separator:aed9339c3d0aee2527e03aed013a349a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7beb154c21c006a22475bc283917eb8f"><td class="memTemplParams" colspan="2">template&lt;typename VALUE , typename COMP  = by_default::LesserThan&lt;VALUE&gt;, typename DataIterator , typename ValueOf &gt; </td></tr>
-<tr class="memitem:a7beb154c21c006a22475bc283917eb8f"><td class="memTemplItemLeft" align="right" valign="top">std::map&lt; VALUE, double, COMP &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00171.html#a7beb154c21c006a22475bc283917eb8f">gaml::frequencies</a> (const DataIterator &amp;begin, const DataIterator &amp;end, const ValueOf &amp;value_of)</td></tr>
-<tr class="separator:a7beb154c21c006a22475bc283917eb8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a898aef7a96547de3e06469fbebaec19b"><td class="memTemplParams" colspan="2">template&lt;typename Map &gt; </td></tr>
-<tr class="memitem:a898aef7a96547de3e06469fbebaec19b"><td class="memTemplItemLeft" align="right" valign="top">Map::key_type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00171.html#a898aef7a96547de3e06469fbebaec19b">gaml::most_frequent</a> (const Map &amp;frequencies)</td></tr>
-<tr class="separator:a898aef7a96547de3e06469fbebaec19b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f88bace790d153f3ba7e2201ed25557"><td class="memTemplParams" colspan="2">template&lt;typename VALUE , typename COMP  = by_default::LesserThan&lt;VALUE&gt;, typename DataIterator , typename ValueOf &gt; </td></tr>
-<tr class="memitem:a1f88bace790d153f3ba7e2201ed25557"><td class="memTemplItemLeft" align="right" valign="top">VALUE&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00171.html#a1f88bace790d153f3ba7e2201ed25557">gaml::most_frequent</a> (const DataIterator &amp;begin, const DataIterator &amp;end, const ValueOf &amp;value_of)</td></tr>
-<tr class="separator:a1f88bace790d153f3ba7e2201ed25557"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac467701ef9fad77ac819e7bbac6b7540"><td class="memTemplParams" colspan="2">template&lt;typename VALUE , typename DataIterator , typename ValueOf &gt; </td></tr>
-<tr class="memitem:ac467701ef9fad77ac819e7bbac6b7540"><td class="memTemplItemLeft" align="right" valign="top">VALUE&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00171.html#ac467701ef9fad77ac819e7bbac6b7540">gaml::highest_cumulated_frequency</a> (const DataIterator &amp;begin, const DataIterator &amp;end, const ValueOf &amp;value_of)</td></tr>
-<tr class="separator:ac467701ef9fad77ac819e7bbac6b7540"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58ccc99c1b246fb7127e0100be6fd8d2"><td class="memTemplParams" colspan="2">template&lt;typename Class , typename DataIterator , typename ClassComp  = by_default::LesserThan&lt;Class&gt;, typename ClassOf &gt; </td></tr>
-<tr class="memitem:a58ccc99c1b246fb7127e0100be6fd8d2"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00171.html#a58ccc99c1b246fb7127e0100be6fd8d2">gaml::classification_entropy</a> (const DataIterator &amp;begin, const DataIterator &amp;end, const ClassOf &amp;class_of)</td></tr>
-<tr class="separator:a58ccc99c1b246fb7127e0100be6fd8d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_static_methods_a00100"><td colspan="2" onclick="javascript:toggleInherit('pro_static_methods_a00100')"><img src="closed.png" alt="-"/>&#160;Static Protected Member Functions inherited from <a class="el" href="a00100.html">gaml::ParserBase</a></td></tr>
+<tr class="memitem:ac3f98339e32c26644702f9fc6df3742f inherit pro_static_methods_a00100"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="a00060.html">FormatException</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#ac3f98339e32c26644702f9fc6df3742f">formatError</a> (std::istream &amp;is, std::string msg)</td></tr>
+<tr class="separator:ac3f98339e32c26644702f9fc6df3742f inherit pro_static_methods_a00100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45e217295b5433dc07ea06ef5f06256b inherit pro_static_methods_a00100"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="a00060.html">FormatException</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a45e217295b5433dc07ea06ef5f06256b">formatError</a> (std::istream &amp;is, const char *msg)</td></tr>
+<tr class="separator:a45e217295b5433dc07ea06ef5f06256b inherit pro_static_methods_a00100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a571af184506a2660c522f945abd98c78 inherit pro_static_methods_a00100"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a571af184506a2660c522f945abd98c78">expect</a> (std::istream &amp;is, const char *chars, const char *msg=0)</td></tr>
+<tr class="separator:a571af184506a2660c522f945abd98c78 inherit pro_static_methods_a00100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f2e0fc39f579366a68a58c7e9fea1ab inherit pro_static_methods_a00100"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a5f2e0fc39f579366a68a58c7e9fea1ab">expect</a> (std::istream &amp;is, const std::vector&lt; const char * &gt; &amp;words)</td></tr>
+<tr class="separator:a5f2e0fc39f579366a68a58c7e9fea1ab inherit pro_static_methods_a00100"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="afc40d071c49c6c137dd507d032436e55"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tuple, int i, int c&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::tuple_element&lt;i, <a class="el" href="a00143.html#a12243c349c7e68801db1514c858d2594">tuple_type</a>&gt;::type <a class="el" href="a00143.html">gaml::TupleComponentParser</a>&lt; Tuple, i, c &gt;::<a class="el" href="a00143.html#afc40d071c49c6c137dd507d032436e55">element_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a12243c349c7e68801db1514c858d2594"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tuple, int i, int c&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef Tuple <a class="el" href="a00143.html">gaml::TupleComponentParser</a>&lt; Tuple, i, c &gt;::<a class="el" href="a00143.html#a12243c349c7e68801db1514c858d2594">tuple_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a49fb8a1840c4f38c95054046335ddc4e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tuple, int i, int c&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="a00143.html">gaml::TupleComponentParser</a>&lt; Tuple, i, c &gt;::read </td>
+          <td>(</td>
+          <td class="paramtype">std::istream &amp;&#160;</td>
+          <td class="paramname"><em>is</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00143.html#a12243c349c7e68801db1514c858d2594">tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7cebb6f8c40a5118f4d2b4b323eb232f"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tuple, int i, int c&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="a00143.html">gaml::TupleComponentParser</a>&lt; Tuple, i, c &gt;::write </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00143.html#a12243c349c7e68801db1514c858d2594">tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ae43ea0e4b5b83be7427f6ff650bed39e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tuple, int i, int c&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00076.html">JSONParser</a>&lt;<a class="el" href="a00143.html#afc40d071c49c6c137dd507d032436e55">element_type</a>&gt; <a class="el" href="a00143.html">gaml::TupleComponentParser</a>&lt; Tuple, i, c &gt;::headParser_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae3afb5d577d546dc6e41980426096180"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tuple, int i, int c&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00143.html">TupleComponentParser</a>&lt;Tuple, i + 1, c - 1&gt; <a class="el" href="a00143.html">gaml::TupleComponentParser</a>&lt; Tuple, i, c &gt;::tailParser_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li><a class="el" href="a00171_source.html">gamlJSONParser.hpp</a></li>
+</ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

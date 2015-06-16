@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::wrapper_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR, GENERIC_LEARNER &gt; Struct Template Reference</title>
+<title>gaml-1.14: gaml::TabularIterator&lt; Iterator, gaml::tabular_iterator_tag &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,129 +82,949 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00141.html">wrapper_traits</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00141.html">TabularIterator< Iterator, gaml::tabular_iterator_tag ></a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="a00203.html">List of all members</a>  </div>
+<a href="a00282.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::wrapper_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR, GENERIC_LEARNER &gt; Struct Template Reference</div>  </div>
+<div class="title">gaml::TabularIterator&lt; Iterator, gaml::tabular_iterator_tag &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00148_source.html">gamlDimensions.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00183_source.html">gamlTabular.hpp</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for gaml::wrapper_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR, GENERIC_LEARNER &gt;:</div>
+Inheritance diagram for gaml::TabularIterator&lt; Iterator, gaml::tabular_iterator_tag &gt;:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="a00141.png" usemap="#gaml::wrapper_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR, GENERIC_LEARNER &gt;_map" alt=""/>
-  <map id="gaml::wrapper_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR, GENERIC_LEARNER &gt;_map" name="gaml::wrapper_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR, GENERIC_LEARNER &gt;_map">
-<area href="a00107.html" alt="gaml::projection_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;" shape="rect" coords="0,0,475,24"/>
+  <img src="a00141.png" usemap="#gaml::TabularIterator&lt; Iterator, gaml::tabular_iterator_tag &gt;_map" alt=""/>
+  <map id="gaml::TabularIterator&lt; Iterator, gaml::tabular_iterator_tag &gt;_map" name="gaml::TabularIterator&lt; Iterator, gaml::tabular_iterator_tag &gt;_map">
+<area href="a00154.html" alt="gaml::virtualized::tabular_base_iterator&lt; std::iterator_traits&lt; Iterator &gt;::value_type &gt;" shape="rect" coords="608,112,1206,136"/>
+<area href="a00024.html" alt="gaml::virtualized::base_iterator&lt; std::iterator_traits&lt; Iterator &gt;::value_type &gt;" shape="rect" coords="304,56,902,80"/>
+<area href="a00072.html" alt="gaml::is_tabular" shape="rect" coords="912,56,1510,80"/>
+<area href="a00073.html" alt="gaml::is_virtual" shape="rect" coords="304,0,902,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:af787eae863a2d71ac12d40b4e881976f"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00107.html">projection_traits</a><br class="typebreak"/>
-&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#af787eae863a2d71ac12d40b4e881976f">parent_type</a></td></tr>
-<tr class="separator:af787eae863a2d71ac12d40b4e881976f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a393a71764c2c851ba5ff243291a01e35"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
-projected_learner_type::predictor_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a393a71764c2c851ba5ff243291a01e35">projected_predictor_type</a></td></tr>
-<tr class="separator:a393a71764c2c851ba5ff243291a01e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f0a28d9c882ee8892d0164ee41afbef"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
-parent_type::projected_input_type::template <br class="typebreak"/>
-WrappingPredictor<br class="typebreak"/>
-&lt; <a class="el" href="a00141.html#a393a71764c2c851ba5ff243291a01e35">projected_predictor_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a0f0a28d9c882ee8892d0164ee41afbef">wrapping_predictor_type</a></td></tr>
-<tr class="separator:a0f0a28d9c882ee8892d0164ee41afbef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_types_a00107"><td colspan="2" onclick="javascript:toggleInherit('pub_types_a00107')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="a00107.html">gaml::projection_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR &gt;</a></td></tr>
-<tr class="memitem:a65412e3a056a0cbeace717a782522909 inherit pub_types_a00107"><td class="memItemLeft" align="right" valign="top">typedef INPUT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00107.html#a65412e3a056a0cbeace717a782522909">input_type</a></td></tr>
-<tr class="separator:a65412e3a056a0cbeace717a782522909 inherit pub_types_a00107"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a58d3cc8aca15588602d14e75199a0e inherit pub_types_a00107"><td class="memItemLeft" align="right" valign="top">typedef OUTPUT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00107.html#a2a58d3cc8aca15588602d14e75199a0e">output_type</a></td></tr>
-<tr class="separator:a2a58d3cc8aca15588602d14e75199a0e inherit pub_types_a00107"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68729c50d8544e57ff44251e04d7de24 inherit pub_types_a00107"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00101.html">ProjectedInput</a><br class="typebreak"/>
-&lt; ATTR_ITERATOR, <a class="el" href="a00107.html#a65412e3a056a0cbeace717a782522909">input_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00107.html#a68729c50d8544e57ff44251e04d7de24">projected_input_type</a></td></tr>
-<tr class="separator:a68729c50d8544e57ff44251e04d7de24 inherit pub_types_a00107"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4194bf55e6656d83ffb1f79275591c91 inherit pub_types_a00107"><td class="memItemLeft" align="right" valign="top">typedef std::pair<br class="typebreak"/>
-&lt; <a class="el" href="a00107.html#a68729c50d8544e57ff44251e04d7de24">projected_input_type</a>, <br class="typebreak"/>
-<a class="el" href="a00107.html#a2a58d3cc8aca15588602d14e75199a0e">output_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00107.html#a4194bf55e6656d83ffb1f79275591c91">projected_data_type</a></td></tr>
-<tr class="separator:a4194bf55e6656d83ffb1f79275591c91 inherit pub_types_a00107"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed0835cc58675f9fb76f4cebaa7510da"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+Iterator::original_iterator_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#aed0835cc58675f9fb76f4cebaa7510da">original_iterator_type</a></td></tr>
+<tr class="separator:aed0835cc58675f9fb76f4cebaa7510da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade79404bf7e35fa3f284ce05965cddf5"><td class="memItemLeft" align="right" valign="top">typedef std::iterator_traits<br class="typebreak"/>
+&lt; <a class="el" href="a00141.html#aed0835cc58675f9fb76f4cebaa7510da">original_iterator_type</a> &gt;<br class="typebreak"/>
+::<a class="el" href="a00141.html#ade79404bf7e35fa3f284ce05965cddf5">value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#ade79404bf7e35fa3f284ce05965cddf5">value_type</a></td></tr>
+<tr class="separator:ade79404bf7e35fa3f284ce05965cddf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65d914cc744b0a856fef6949bdea41b7"><td class="memItemLeft" align="right" valign="top">typedef std::iterator_traits<br class="typebreak"/>
+&lt; <a class="el" href="a00141.html#aed0835cc58675f9fb76f4cebaa7510da">original_iterator_type</a> &gt;<br class="typebreak"/>
+::<a class="el" href="a00141.html#a65d914cc744b0a856fef6949bdea41b7">difference_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a65d914cc744b0a856fef6949bdea41b7">difference_type</a></td></tr>
+<tr class="separator:a65d914cc744b0a856fef6949bdea41b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9814869dcf76cc109d3403342c4d7bdf"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; unsigned <br class="typebreak"/>
+int &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a9814869dcf76cc109d3403342c4d7bdf">index_iterator</a></td></tr>
+<tr class="separator:a9814869dcf76cc109d3403342c4d7bdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67a0c451920304ca28c4a3202860fe76"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+<a class="el" href="a00154.html">gaml::virtualized::tabular_base_iterator</a><br class="typebreak"/>
+&lt; <a class="el" href="a00141.html#ade79404bf7e35fa3f284ce05965cddf5">value_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a67a0c451920304ca28c4a3202860fe76">base_type</a></td></tr>
+<tr class="separator:a67a0c451920304ca28c4a3202860fe76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_types_a00154"><td colspan="2" onclick="javascript:toggleInherit('pub_types_a00154')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="a00154.html">gaml::virtualized::tabular_base_iterator&lt; std::iterator_traits&lt; Iterator &gt;::value_type &gt;</a></td></tr>
+<tr class="memitem:ac20b32352bc757b8e3dd60c8909088fd inherit pub_types_a00154"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+<a class="el" href="a00024.html">gaml::virtualized::base_iterator</a><br class="typebreak"/>
+&lt; std::iterator_traits<br class="typebreak"/>
+&lt; Iterator &gt;::<a class="el" href="a00024.html#a990bd015bcc14bad1e980b7b7fc53412">value_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00154.html#ac20b32352bc757b8e3dd60c8909088fd">super_type</a></td></tr>
+<tr class="separator:ac20b32352bc757b8e3dd60c8909088fd inherit pub_types_a00154"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5c0bfe7d62c7872f7bd81fc992ae936 inherit pub_types_a00154"><td class="memItemLeft" align="right" valign="top">typedef std::iterator_traits<br class="typebreak"/>
+&lt; Iterator &gt;::<a class="el" href="a00024.html#a990bd015bcc14bad1e980b7b7fc53412">value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00154.html#af5c0bfe7d62c7872f7bd81fc992ae936">value_type</a></td></tr>
+<tr class="separator:af5c0bfe7d62c7872f7bd81fc992ae936 inherit pub_types_a00154"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_types_a00024"><td colspan="2" onclick="javascript:toggleInherit('pub_types_a00024')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="a00024.html">gaml::virtualized::base_iterator&lt; std::iterator_traits&lt; Iterator &gt;::value_type &gt;</a></td></tr>
+<tr class="memitem:a990bd015bcc14bad1e980b7b7fc53412 inherit pub_types_a00024"><td class="memItemLeft" align="right" valign="top">typedef std::iterator_traits<br class="typebreak"/>
+&lt; Iterator &gt;::<a class="el" href="a00024.html#a990bd015bcc14bad1e980b7b7fc53412">value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#a990bd015bcc14bad1e980b7b7fc53412">value_type</a></td></tr>
+<tr class="separator:a990bd015bcc14bad1e980b7b7fc53412 inherit pub_types_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a9afb7679e1ea9771d7dfae9668dc159a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a9afb7679e1ea9771d7dfae9668dc159a">TabularIterator</a> (void)</td></tr>
+<tr class="separator:a9afb7679e1ea9771d7dfae9668dc159a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6b5ceb9379c8edb6d5215dc78be6348"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#ad6b5ceb9379c8edb6d5215dc78be6348">TabularIterator</a> (const Iterator &amp;iter, const <a class="el" href="a00141.html#a9814869dcf76cc109d3403342c4d7bdf">index_iterator</a> &amp;index_iter)</td></tr>
+<tr class="separator:ad6b5ceb9379c8edb6d5215dc78be6348"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cdb14d4440bb892a0f1e39c97ab670f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a2cdb14d4440bb892a0f1e39c97ab670f">TabularIterator</a> (const <a class="el" href="a00140.html">TabularIterator</a> &amp;cp)</td></tr>
+<tr class="separator:a2cdb14d4440bb892a0f1e39c97ab670f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34326d9bc7313114c110cc3052457a48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00140.html">TabularIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a34326d9bc7313114c110cc3052457a48">operator=</a> (const <a class="el" href="a00140.html">TabularIterator</a> &amp;cp)</td></tr>
+<tr class="separator:a34326d9bc7313114c110cc3052457a48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ec2cc8a5f8e8132dd8d7d6da6d481a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00140.html">TabularIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a0ec2cc8a5f8e8132dd8d7d6da6d481a5">operator++</a> ()</td></tr>
+<tr class="separator:a0ec2cc8a5f8e8132dd8d7d6da6d481a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9469f6339e80e85823eb05f42e73be2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00140.html">TabularIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a9469f6339e80e85823eb05f42e73be2c">operator--</a> ()</td></tr>
+<tr class="separator:a9469f6339e80e85823eb05f42e73be2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ed221e14bc69c28b355473f14571485"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00140.html">TabularIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a5ed221e14bc69c28b355473f14571485">operator+=</a> (<a class="el" href="a00141.html#a65d914cc744b0a856fef6949bdea41b7">difference_type</a> diff)</td></tr>
+<tr class="separator:a5ed221e14bc69c28b355473f14571485"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade0f628a9f31953faff66285ff5a087a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00140.html">TabularIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#ade0f628a9f31953faff66285ff5a087a">operator-=</a> (int diff)</td></tr>
+<tr class="separator:ade0f628a9f31953faff66285ff5a087a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add776a15a8d0193d3e86ff1f33b4e73a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00140.html">TabularIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#add776a15a8d0193d3e86ff1f33b4e73a">operator++</a> (int)</td></tr>
+<tr class="separator:add776a15a8d0193d3e86ff1f33b4e73a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a546cbe697edabe0fac785da5f463d8de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00140.html">TabularIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a546cbe697edabe0fac785da5f463d8de">operator--</a> (int)</td></tr>
+<tr class="separator:a546cbe697edabe0fac785da5f463d8de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef2933411058b3ef085fc5a6bbd4ce3b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00141.html#a65d914cc744b0a856fef6949bdea41b7">difference_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#aef2933411058b3ef085fc5a6bbd4ce3b">operator-</a> (const <a class="el" href="a00140.html">TabularIterator</a> &amp;i) const </td></tr>
+<tr class="separator:aef2933411058b3ef085fc5a6bbd4ce3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2876ed79428f9e245e939a95df231150"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00140.html">TabularIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a2876ed79428f9e245e939a95df231150">operator+</a> (<a class="el" href="a00141.html#a65d914cc744b0a856fef6949bdea41b7">difference_type</a> i) const </td></tr>
+<tr class="separator:a2876ed79428f9e245e939a95df231150"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a87203ddb6e4677ebe16aa850943c5e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00140.html">TabularIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a3a87203ddb6e4677ebe16aa850943c5e">operator-</a> (<a class="el" href="a00141.html#a65d914cc744b0a856fef6949bdea41b7">difference_type</a> i) const </td></tr>
+<tr class="separator:a3a87203ddb6e4677ebe16aa850943c5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06834f26097491ddcb437eed61b7a5ad"><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="a00141.html#ade79404bf7e35fa3f284ce05965cddf5">value_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a06834f26097491ddcb437eed61b7a5ad">get_ith_from_root</a> (int i) const override</td></tr>
+<tr class="separator:a06834f26097491ddcb437eed61b7a5ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20e83b16a3198e2e450ad62a8214ca3c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00141.html#ade79404bf7e35fa3f284ce05965cddf5">value_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a20e83b16a3198e2e450ad62a8214ca3c">operator*</a> (void) const </td></tr>
+<tr class="separator:a20e83b16a3198e2e450ad62a8214ca3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a015b4d0c3311bb58088a6c571fdd1e15"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a015b4d0c3311bb58088a6c571fdd1e15">operator==</a> (const <a class="el" href="a00140.html">TabularIterator</a> &amp;i) const </td></tr>
+<tr class="separator:a015b4d0c3311bb58088a6c571fdd1e15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5aa2dfcb563e28928d99837024ba548b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a5aa2dfcb563e28928d99837024ba548b">operator!=</a> (const <a class="el" href="a00140.html">TabularIterator</a> &amp;i) const </td></tr>
+<tr class="separator:a5aa2dfcb563e28928d99837024ba548b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff62eb2294679e485cc6e1d16c561043"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="a00154.html#ac20b32352bc757b8e3dd60c8909088fd">base_type::super_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#aff62eb2294679e485cc6e1d16c561043">clone</a> () const override</td></tr>
+<tr class="separator:aff62eb2294679e485cc6e1d16c561043"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51669de1a86859411f1a7f52c1f025ef"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; unsigned <br class="typebreak"/>
+int &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a51669de1a86859411f1a7f52c1f025ef">idx_iter</a> () const override</td></tr>
+<tr class="separator:a51669de1a86859411f1a7f52c1f025ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac733fecf50c284f5ad6eb494721e913"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#aac733fecf50c284f5ad6eb494721e913">increment</a> (void) override</td></tr>
+<tr class="separator:aac733fecf50c284f5ad6eb494721e913"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75a0bf195ac4031f3ec9fa46ed6ac96b"><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="a00141.html#ade79404bf7e35fa3f284ce05965cddf5">value_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a75a0bf195ac4031f3ec9fa46ed6ac96b">get</a> () const override</td></tr>
+<tr class="separator:a75a0bf195ac4031f3ec9fa46ed6ac96b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18a65dbb7a6e9bd476c5bac4317cd371"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a18a65dbb7a6e9bd476c5bac4317cd371">is_equal</a> (const typename <a class="el" href="a00154.html#ac20b32352bc757b8e3dd60c8909088fd">base_type::super_type</a> &amp;other) const override</td></tr>
+<tr class="separator:a18a65dbb7a6e9bd476c5bac4317cd371"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1f557fad920f179db65ff2a0106185f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#ac1f557fad920f179db65ff2a0106185f">decrement</a> (void) override</td></tr>
+<tr class="separator:ac1f557fad920f179db65ff2a0106185f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fdedf5995d49fd3c9148e309dae2f6d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a6fdedf5995d49fd3c9148e309dae2f6d">increment</a> (int i) override</td></tr>
+<tr class="separator:a6fdedf5995d49fd3c9148e309dae2f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefdb7f2f03de5df3062b92040107fb4a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#aefdb7f2f03de5df3062b92040107fb4a">decrement</a> (int i) override</td></tr>
+<tr class="separator:aefdb7f2f03de5df3062b92040107fb4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a519d18580a6798747d990133a56052ca"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a519d18580a6798747d990133a56052ca">distance</a> (const typename <a class="el" href="a00154.html#ac20b32352bc757b8e3dd60c8909088fd">base_type::super_type</a> &amp;other) override</td></tr>
+<tr class="separator:a519d18580a6798747d990133a56052ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_a00154"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_a00154')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="a00154.html">gaml::virtualized::tabular_base_iterator&lt; std::iterator_traits&lt; Iterator &gt;::value_type &gt;</a></td></tr>
+<tr class="memitem:a78373ccaf9661ef29046acc4e36d6686 inherit pub_methods_a00154"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00154.html#a78373ccaf9661ef29046acc4e36d6686">is_a_tabular_iterator</a> () const override</td></tr>
+<tr class="separator:a78373ccaf9661ef29046acc4e36d6686 inherit pub_methods_a00154"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_a00024"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_a00024')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="a00024.html">gaml::virtualized::base_iterator&lt; std::iterator_traits&lt; Iterator &gt;::value_type &gt;</a></td></tr>
+<tr class="memitem:af0906563edf8dbca9f07c457d5595fce inherit pub_methods_a00024"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#af0906563edf8dbca9f07c457d5595fce">base_iterator</a> ()</td></tr>
+<tr class="separator:af0906563edf8dbca9f07c457d5595fce inherit pub_methods_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ebd7dcfa7922fb628813fa9b44cb429 inherit pub_methods_a00024"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#a2ebd7dcfa7922fb628813fa9b44cb429">base_iterator</a> (const <a class="el" href="a00024.html">base_iterator</a> &amp;cp)</td></tr>
+<tr class="separator:a2ebd7dcfa7922fb628813fa9b44cb429 inherit pub_methods_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb68368085f3f21aed2a972d74da61dc inherit pub_methods_a00024"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#adb68368085f3f21aed2a972d74da61dc">~base_iterator</a> ()</td></tr>
+<tr class="separator:adb68368085f3f21aed2a972d74da61dc inherit pub_methods_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a452660074ff7b29505933a23194d77 inherit pub_methods_a00024"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#a7a452660074ff7b29505933a23194d77">is_equal</a> (const <a class="el" href="a00024.html">base_iterator</a> &amp;other) const =0</td></tr>
+<tr class="separator:a7a452660074ff7b29505933a23194d77 inherit pub_methods_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf1b5bafaec33cc07d9b1f49ce1385c2 inherit pub_methods_a00024"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="a00024.html">base_iterator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#abf1b5bafaec33cc07d9b1f49ce1385c2">root_clone</a> () const</td></tr>
+<tr class="separator:abf1b5bafaec33cc07d9b1f49ce1385c2 inherit pub_methods_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93e2690dfaf48e14c4bb9ca76f23bdac inherit pub_methods_a00024"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#a93e2690dfaf48e14c4bb9ca76f23bdac">distance</a> (const <a class="el" href="a00024.html">base_iterator</a> &amp;other)</td></tr>
+<tr class="separator:a93e2690dfaf48e14c4bb9ca76f23bdac inherit pub_methods_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a2c84af4563e2fc46dc8630a62b2a6781"><td class="memItemLeft" align="right" valign="top">decltype(GENERIC_LEARNER().template <br class="typebreak"/>
-make&lt; typename <br class="typebreak"/>
-<a class="el" href="a00107.html#a68729c50d8544e57ff44251e04d7de24">parent_type::projected_input_type</a> &gt;<br class="typebreak"/>
-()) typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#a2c84af4563e2fc46dc8630a62b2a6781">projected_learner_type</a></td></tr>
-<tr class="separator:a2c84af4563e2fc46dc8630a62b2a6781"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacecd580dafd26cc7e4f7232bd95d675"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00141.html#aed0835cc58675f9fb76f4cebaa7510da">original_iterator_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#aacecd580dafd26cc7e4f7232bd95d675">it</a></td></tr>
+<tr class="separator:aacecd580dafd26cc7e4f7232bd95d675"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2f964fafbc5167835572abd90cff092"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00141.html#a9814869dcf76cc109d3403342c4d7bdf">index_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00141.html#af2f964fafbc5167835572abd90cff092">idx</a></td></tr>
+<tr class="separator:af2f964fafbc5167835572abd90cff092"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename INPUT, typename OUTPUT, typename ATTR_ITERATOR, class GENERIC_LEARNER&gt;<br/>
-struct gaml::wrapper_traits&lt; INPUT, OUTPUT, ATTR_ITERATOR, GENERIC_LEARNER &gt;</h3>
-
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="a00018.html#_a1">example-005-students.cpp</a>.</dd>
-</dl></div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="af787eae863a2d71ac12d40b4e881976f"></a>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="a67a0c451920304ca28c4a3202860fe76"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename INPUT , typename OUTPUT , typename ATTR_ITERATOR , class GENERIC_LEARNER &gt; </div>
+template&lt;typename Iterator &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="a00107.html">projection_traits</a>&lt;INPUT, OUTPUT, ATTR_ITERATOR&gt; <a class="el" href="a00141.html">gaml::wrapper_traits</a>&lt; INPUT, OUTPUT, ATTR_ITERATOR, GENERIC_LEARNER &gt;::<a class="el" href="a00141.html#af787eae863a2d71ac12d40b4e881976f">parent_type</a></td>
+          <td class="memname">typedef <a class="el" href="a00154.html">gaml::virtualized::tabular_base_iterator</a>&lt;<a class="el" href="a00141.html#ade79404bf7e35fa3f284ce05965cddf5">value_type</a>&gt; <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::<a class="el" href="a00141.html#a67a0c451920304ca28c4a3202860fe76">base_type</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a393a71764c2c851ba5ff243291a01e35"></a>
+<a class="anchor" id="a65d914cc744b0a856fef6949bdea41b7"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename INPUT , typename OUTPUT , typename ATTR_ITERATOR , class GENERIC_LEARNER &gt; </div>
+template&lt;typename Iterator &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef projected_learner_type::predictor_type <a class="el" href="a00141.html">gaml::wrapper_traits</a>&lt; INPUT, OUTPUT, ATTR_ITERATOR, GENERIC_LEARNER &gt;::<a class="el" href="a00141.html#a393a71764c2c851ba5ff243291a01e35">projected_predictor_type</a></td>
+          <td class="memname">typedef std::iterator_traits&lt;<a class="el" href="a00141.html#aed0835cc58675f9fb76f4cebaa7510da">original_iterator_type</a>&gt;::<a class="el" href="a00141.html#a65d914cc744b0a856fef6949bdea41b7">difference_type</a> <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::<a class="el" href="a00141.html#a65d914cc744b0a856fef6949bdea41b7">difference_type</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a0f0a28d9c882ee8892d0164ee41afbef"></a>
+<a class="anchor" id="a9814869dcf76cc109d3403342c4d7bdf"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename INPUT , typename OUTPUT , typename ATTR_ITERATOR , class GENERIC_LEARNER &gt; </div>
+template&lt;typename Iterator &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef parent_type::projected_input_type::template WrappingPredictor&lt; <a class="el" href="a00141.html#a393a71764c2c851ba5ff243291a01e35">projected_predictor_type</a>&gt; <a class="el" href="a00141.html">gaml::wrapper_traits</a>&lt; INPUT, OUTPUT, ATTR_ITERATOR, GENERIC_LEARNER &gt;::<a class="el" href="a00141.html#a0f0a28d9c882ee8892d0164ee41afbef">wrapping_predictor_type</a></td>
+          <td class="memname">typedef std::vector&lt;unsigned int&gt;::iterator <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::<a class="el" href="a00141.html#a9814869dcf76cc109d3403342c4d7bdf">index_iterator</a></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aed0835cc58675f9fb76f4cebaa7510da"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef Iterator::original_iterator_type <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::<a class="el" href="a00141.html#aed0835cc58675f9fb76f4cebaa7510da">original_iterator_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ade79404bf7e35fa3f284ce05965cddf5"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::iterator_traits&lt;<a class="el" href="a00141.html#aed0835cc58675f9fb76f4cebaa7510da">original_iterator_type</a>&gt;::<a class="el" href="a00141.html#ade79404bf7e35fa3f284ce05965cddf5">value_type</a> <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::<a class="el" href="a00141.html#ade79404bf7e35fa3f284ce05965cddf5">value_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a9afb7679e1ea9771d7dfae9668dc159a"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::<a class="el" href="a00140.html">TabularIterator</a> </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad6b5ceb9379c8edb6d5215dc78be6348"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::<a class="el" href="a00140.html">TabularIterator</a> </td>
+          <td>(</td>
+          <td class="paramtype">const Iterator &amp;&#160;</td>
+          <td class="paramname"><em>iter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00141.html#a9814869dcf76cc109d3403342c4d7bdf">index_iterator</a> &amp;&#160;</td>
+          <td class="paramname"><em>index_iter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2cdb14d4440bb892a0f1e39c97ab670f"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::<a class="el" href="a00140.html">TabularIterator</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00140.html">TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>cp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aff62eb2294679e485cc6e1d16c561043"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="a00154.html#ac20b32352bc757b8e3dd60c8909088fd">base_type::super_type</a>* <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::clone </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="a00024.html#aae09e51dd2a655b9a848ddb6eabbe949">gaml::virtualized::base_iterator&lt; std::iterator_traits&lt; Iterator &gt;::value_type &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac1f557fad920f179db65ff2a0106185f"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::decrement </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="a00024.html#a8a9e64fd9a51e0c7ca3aef40a690de27">gaml::virtualized::base_iterator&lt; std::iterator_traits&lt; Iterator &gt;::value_type &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aefdb7f2f03de5df3062b92040107fb4a"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::decrement </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="a00024.html#aa5e917cfd58d71e970eacb996d8143c4">gaml::virtualized::base_iterator&lt; std::iterator_traits&lt; Iterator &gt;::value_type &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a519d18580a6798747d990133a56052ca"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::distance </td>
+          <td>(</td>
+          <td class="paramtype">const typename <a class="el" href="a00154.html#ac20b32352bc757b8e3dd60c8909088fd">base_type::super_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a75a0bf195ac4031f3ec9fa46ed6ac96b"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const <a class="el" href="a00141.html#ade79404bf7e35fa3f284ce05965cddf5">value_type</a>&amp; <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::get </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="a00024.html#a8ee90acce782f20a83934ecc9a915408">gaml::virtualized::base_iterator&lt; std::iterator_traits&lt; Iterator &gt;::value_type &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a06834f26097491ddcb437eed61b7a5ad"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const <a class="el" href="a00141.html#ade79404bf7e35fa3f284ce05965cddf5">value_type</a>&amp; <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::get_ith_from_root </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="a00024.html#ae507a1cfc460ada5926401a08be47396">gaml::virtualized::base_iterator&lt; std::iterator_traits&lt; Iterator &gt;::value_type &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a51669de1a86859411f1a7f52c1f025ef"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::vector&lt;unsigned int&gt;::iterator <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::idx_iter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="a00024.html#aacfa336e1db16e9e973a610c18edd049">gaml::virtualized::base_iterator&lt; std::iterator_traits&lt; Iterator &gt;::value_type &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aac733fecf50c284f5ad6eb494721e913"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::increment </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="a00024.html#ad0ce965de28358ccdba2128737e0d4d0">gaml::virtualized::base_iterator&lt; std::iterator_traits&lt; Iterator &gt;::value_type &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6fdedf5995d49fd3c9148e309dae2f6d"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::increment </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="a00024.html#a6d3f8a13d61c432e742ce965a7887125">gaml::virtualized::base_iterator&lt; std::iterator_traits&lt; Iterator &gt;::value_type &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a18a65dbb7a6e9bd476c5bac4317cd371"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::is_equal </td>
+          <td>(</td>
+          <td class="paramtype">const typename <a class="el" href="a00154.html#ac20b32352bc757b8e3dd60c8909088fd">base_type::super_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5aa2dfcb563e28928d99837024ba548b"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00140.html">TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a20e83b16a3198e2e450ad62a8214ca3c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="a00141.html#ade79404bf7e35fa3f284ce05965cddf5">value_type</a>&amp; <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::operator* </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2876ed79428f9e245e939a95df231150"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00140.html">TabularIterator</a> <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::operator+ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00141.html#a65d914cc744b0a856fef6949bdea41b7">difference_type</a>&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0ec2cc8a5f8e8132dd8d7d6da6d481a5"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00140.html">TabularIterator</a>&amp; <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::operator++ </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="add776a15a8d0193d3e86ff1f33b4e73a"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00140.html">TabularIterator</a> <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::operator++ </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5ed221e14bc69c28b355473f14571485"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00140.html">TabularIterator</a>&amp; <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::operator+= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00141.html#a65d914cc744b0a856fef6949bdea41b7">difference_type</a>&#160;</td>
+          <td class="paramname"><em>diff</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aef2933411058b3ef085fc5a6bbd4ce3b"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00141.html#a65d914cc744b0a856fef6949bdea41b7">difference_type</a> <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::operator- </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00140.html">TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3a87203ddb6e4677ebe16aa850943c5e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00140.html">TabularIterator</a> <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::operator- </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00141.html#a65d914cc744b0a856fef6949bdea41b7">difference_type</a>&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a9469f6339e80e85823eb05f42e73be2c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00140.html">TabularIterator</a>&amp; <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::operator-- </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a546cbe697edabe0fac785da5f463d8de"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00140.html">TabularIterator</a> <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::operator-- </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ade0f628a9f31953faff66285ff5a087a"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00140.html">TabularIterator</a>&amp; <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::operator-= </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>diff</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a34326d9bc7313114c110cc3052457a48"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00140.html">TabularIterator</a>&amp; <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00140.html">TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>cp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a015b4d0c3311bb58088a6c571fdd1e15"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00140.html">TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a2c84af4563e2fc46dc8630a62b2a6781"></a>
+<a class="anchor" id="af2f964fafbc5167835572abd90cff092"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename INPUT , typename OUTPUT , typename ATTR_ITERATOR , class GENERIC_LEARNER &gt; </div>
+template&lt;typename Iterator &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">decltype(GENERIC_LEARNER().template make&lt;typename <a class="el" href="a00107.html#a68729c50d8544e57ff44251e04d7de24">parent_type::projected_input_type</a>&gt;()) typedef <a class="el" href="a00141.html">gaml::wrapper_traits</a>&lt; INPUT, OUTPUT, ATTR_ITERATOR, GENERIC_LEARNER &gt;::projected_learner_type</td>
+          <td class="memname"><a class="el" href="a00141.html#a9814869dcf76cc109d3403342c4d7bdf">index_iterator</a> <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::idx</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="a00148_source.html">gamlDimensions.hpp</a></li>
+<a class="anchor" id="aacecd580dafd26cc7e4f7232bd95d675"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00141.html#aed0835cc58675f9fb76f4cebaa7510da">original_iterator_type</a> <a class="el" href="a00140.html">gaml::TabularIterator</a>&lt; Iterator, <a class="el" href="a00139.html">gaml::tabular_iterator_tag</a> &gt;::it</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="a00183_source.html">gamlTabular.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

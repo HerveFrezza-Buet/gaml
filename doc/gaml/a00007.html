@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: example-001-006-score.cpp</title>
+<title>gaml-1.14: example-001-006-score.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -79,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">example-001-006-score.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00142.html">gaml.hpp</a>&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00157.html">gaml.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;utility&gt;</span></div>
@@ -112,7 +112,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  X xmin,xmax;</div>
 <div class="line">  Y ymin,ymax;</div>
 <div class="line"></div>
-<div class="line">  <span class="keywordflow">if</span>(<a name="a0"></a><a class="code" href="a00183.html#a50561031870af4d865de65f89c677916">gaml::random::proba</a>(PROBA_A)) {</div>
+<div class="line">  <span class="keywordflow">if</span>(<a name="a0"></a><a class="code" href="a00199.html#a50561031870af4d865de65f89c677916">gaml::random::proba</a>(PROBA_A)) {</div>
 <div class="line">    xmin = A_MIN;</div>
 <div class="line">    xmax = A_MAX;</div>
 <div class="line">    ymin = A_OUT_CENTER - OUT_RADIUS;</div>
@@ -125,7 +125,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    ymax = B_OUT_CENTER + OUT_RADIUS;</div>
 <div class="line">  }</div>
 <div class="line"></div>
-<div class="line">  <span class="keywordflow">return</span> {<a name="a1"></a><a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(xmin,xmax),<a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(ymin,ymax)};</div>
+<div class="line">  <span class="keywordflow">return</span> {<a name="a1"></a><a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(xmin,xmax),<a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(ymin,ymax)};</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">// Let us use define a class which uses a score method as</span></div>
@@ -159,10 +159,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line">  <span class="comment">// Now, we can compute...</span></div>
 <div class="line">  std::cout &lt;&lt; std::endl</div>
-<div class="line">            &lt;&lt; <span class="stringliteral">&quot;mean                            = &quot;</span> &lt;&lt; <a name="a2"></a><a class="code" href="a00171.html#a8196de5eb952adc1d0ff250d0b307a20">gaml::average</a> (basis.begin(),basis.end(),output_of) &lt;&lt; std::endl</div>
-<div class="line">            &lt;&lt; <span class="stringliteral">&quot;variance                        = &quot;</span> &lt;&lt; <a name="a3"></a><a class="code" href="a00171.html#aed9339c3d0aee2527e03aed013a349a3">gaml::variance</a>(basis.begin(),basis.end(),output_of) &lt;&lt; std::endl</div>
+<div class="line">            &lt;&lt; <span class="stringliteral">&quot;mean                            = &quot;</span> &lt;&lt; <a name="a2"></a><a class="code" href="a00187.html#a8196de5eb952adc1d0ff250d0b307a20">gaml::average</a> (basis.begin(),basis.end(),output_of) &lt;&lt; std::endl</div>
+<div class="line">            &lt;&lt; <span class="stringliteral">&quot;variance                        = &quot;</span> &lt;&lt; <a name="a3"></a><a class="code" href="a00187.html#aed9339c3d0aee2527e03aed013a349a3">gaml::variance</a>(basis.begin(),basis.end(),output_of) &lt;&lt; std::endl</div>
 <div class="line">            &lt;&lt; <span class="stringliteral">&quot;relative variance reduction (1) = &quot;</span> &lt;&lt; evaluator.compute_score(basis.begin(),basis.end(),test,output_of) &lt;&lt; std::endl</div>
-<div class="line">            &lt;&lt; <span class="stringliteral">&quot;relative variance reduction (2) = &quot;</span> &lt;&lt; <a name="a4"></a><a class="code" href="a00186.html#a5908652b44e1f3b16b777bf10db082f7">gaml::score::relative_variance_reduction</a>(basis.begin(),basis.end(),test,output_of) &lt;&lt; std::endl <span class="comment">// the same as previous...</span></div>
+<div class="line">            &lt;&lt; <span class="stringliteral">&quot;relative variance reduction (2) = &quot;</span> &lt;&lt; <a name="a4"></a><a class="code" href="a00202.html#a5908652b44e1f3b16b777bf10db082f7">gaml::score::relative_variance_reduction</a>(basis.begin(),basis.end(),test,output_of) &lt;&lt; std::endl <span class="comment">// the same as previous...</span></div>
 <div class="line">            &lt;&lt; std::endl;</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>

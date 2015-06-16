@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::bag::Predictor&lt; MergeOutput, ElementaryPredictor &gt; Class Template Reference</title>
+<title>gaml-1.14: gaml::bag::Learner&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00172.html">bag</a></li><li class="navelem"><a class="el" href="a00026.html">Predictor</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00188.html">bag</a></li><li class="navelem"><a class="el" href="a00026.html">Learner</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -90,89 +90,60 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="a00258.html">List of all members</a>  </div>
+<a href="a00288.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::bag::Predictor&lt; MergeOutput, ElementaryPredictor &gt; Class Template Reference</div>  </div>
+<div class="title">gaml::bag::Learner&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00144_source.html">gamlBag.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00159_source.html">gamlBag.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:aaef7dedd8b2038d0614525f170fde4e5"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
-ElementaryPredictor::input_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#aaef7dedd8b2038d0614525f170fde4e5">input_type</a></td></tr>
-<tr class="separator:aaef7dedd8b2038d0614525f170fde4e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae002829984a1f651e9d2574ae03389b6"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
-ElementaryPredictor::output_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#ae002829984a1f651e9d2574ae03389b6">elementary_output_type</a></td></tr>
-<tr class="separator:ae002829984a1f651e9d2574ae03389b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2b36eb800283a00b9d494b94f11ec09"><td class="memItemLeft" align="right" valign="top">typedef MergeOutput::output_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#ae2b36eb800283a00b9d494b94f11ec09">output_type</a></td></tr>
-<tr class="separator:ae2b36eb800283a00b9d494b94f11ec09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6705c7c5d70d706d75281428416eef33"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00027.html">gaml::bag::Predictor</a><br class="typebreak"/>
+&lt; MergeOutput, typename <br class="typebreak"/>
+ElementaryLearner::predictor_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a6705c7c5d70d706d75281428416eef33">predictor_type</a></td></tr>
+<tr class="separator:a6705c7c5d70d706d75281428416eef33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aaa5ab84b340364d3ff80427ad10d8328"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#aaa5ab84b340364d3ff80427ad10d8328">Predictor</a> ()</td></tr>
-<tr class="separator:aaa5ab84b340364d3ff80427ad10d8328"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93b8400c96c6734eded6ef989ee79364"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a93b8400c96c6734eded6ef989ee79364">Predictor</a> (const <a class="el" href="a00026.html">Predictor</a> &amp;other)</td></tr>
-<tr class="separator:a93b8400c96c6734eded6ef989ee79364"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcae4b1465ca16cb636b067b18813f8f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#adcae4b1465ca16cb636b067b18813f8f">Predictor</a> (<a class="el" href="a00026.html">Predictor</a> &amp;&amp;other)</td></tr>
-<tr class="separator:adcae4b1465ca16cb636b067b18813f8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16ab4c5b58ffecc0e34cb9058c5bd714"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00026.html">Predictor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a16ab4c5b58ffecc0e34cb9058c5bd714">operator=</a> (const <a class="el" href="a00026.html">Predictor</a> &amp;other)</td></tr>
-<tr class="separator:a16ab4c5b58ffecc0e34cb9058c5bd714"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd57189b4f60fc3032a76216c2f58e20"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00026.html">Predictor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#acd57189b4f60fc3032a76216c2f58e20">operator=</a> (const <a class="el" href="a00026.html">Predictor</a> &amp;&amp;other)</td></tr>
-<tr class="separator:acd57189b4f60fc3032a76216c2f58e20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa255f1a330d3cba3552fdbb7d6a95006"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00026.html#ae2b36eb800283a00b9d494b94f11ec09">output_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#aa255f1a330d3cba3552fdbb7d6a95006">operator()</a> (const <a class="el" href="a00026.html#aaef7dedd8b2038d0614525f170fde4e5">input_type</a> &amp;x) const </td></tr>
-<tr class="separator:aa255f1a330d3cba3552fdbb7d6a95006"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b1f6071fe2012a7006b0aedb7b56265"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a8b1f6071fe2012a7006b0aedb7b56265">Learner</a> (const ElementaryLearner &amp;l, const MergeOutput &amp;output_merger, const BasisRandomizer &amp;dataset_randomizer, unsigned int size, bool is_verbose)</td></tr>
+<tr class="separator:a8b1f6071fe2012a7006b0aedb7b56265"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4035edf5fb7e97347c78561ea2f7539"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#ac4035edf5fb7e97347c78561ea2f7539">Learner</a> (const <a class="el" href="a00026.html">Learner</a> &amp;other)</td></tr>
+<tr class="separator:ac4035edf5fb7e97347c78561ea2f7539"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f227508ebad47964d92f301101312f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00026.html">Learner</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a0f227508ebad47964d92f301101312f7">operator=</a> (const <a class="el" href="a00026.html">Learner</a> &amp;other)</td></tr>
+<tr class="separator:a0f227508ebad47964d92f301101312f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaffc294ae3a7c7bb71317d69e8911a14"><td class="memTemplParams" colspan="2">template&lt;typename DataIterator , typename InputOf , typename OutputOf &gt; </td></tr>
+<tr class="memitem:aaffc294ae3a7c7bb71317d69e8911a14"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00026.html#a6705c7c5d70d706d75281428416eef33">predictor_type</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00026.html#aaffc294ae3a7c7bb71317d69e8911a14">operator()</a> (const DataIterator &amp;begin, const DataIterator &amp;end, const InputOf &amp;input_of, const OutputOf &amp;output_of) const </td></tr>
+<tr class="separator:aaffc294ae3a7c7bb71317d69e8911a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ac803b82af6daaf2121ce96b9cf622b6e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; ElementaryPredictor &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#ac803b82af6daaf2121ce96b9cf622b6e">predictors</a></td></tr>
-<tr class="separator:ac803b82af6daaf2121ce96b9cf622b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4fe7a4a006de4df8296b00f1cbb1c43"><td class="memItemLeft" align="right" valign="top">MergeOutput&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#aa4fe7a4a006de4df8296b00f1cbb1c43">merge</a></td></tr>
-<tr class="separator:aa4fe7a4a006de4df8296b00f1cbb1c43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac855e727a5cc34ddf21c763f3f72e5fd"><td class="memItemLeft" align="right" valign="top">ElementaryLearner&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#ac855e727a5cc34ddf21c763f3f72e5fd">learner</a></td></tr>
+<tr class="separator:ac855e727a5cc34ddf21c763f3f72e5fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54bc723d3c66aa208fc13b9dfea32552"><td class="memItemLeft" align="right" valign="top">MergeOutput&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a54bc723d3c66aa208fc13b9dfea32552">merger</a></td></tr>
+<tr class="separator:a54bc723d3c66aa208fc13b9dfea32552"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98db4329fd66ecc76f77dafdb01d5e4f"><td class="memItemLeft" align="right" valign="top">BasisRandomizer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a98db4329fd66ecc76f77dafdb01d5e4f">randomizer</a></td></tr>
+<tr class="separator:a98db4329fd66ecc76f77dafdb01d5e4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0cbc1b35561011055c2639bda8f1bb8"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#af0cbc1b35561011055c2639bda8f1bb8">nb_predictors</a></td></tr>
+<tr class="separator:af0cbc1b35561011055c2639bda8f1bb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c6f857d0a00c742f39e4793664872c7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html#a5c6f857d0a00c742f39e4793664872c7">verbosity</a></td></tr>
+<tr class="separator:a5c6f857d0a00c742f39e4793664872c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename MergeOutput, typename ElementaryPredictor&gt;<br/>
-class gaml::bag::Predictor&lt; MergeOutput, ElementaryPredictor &gt;</h3>
+<div class="textblock"><h3>template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt;<br/>
+class gaml::bag::Learner&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;</h3>
 
-<p>This predictors handles a collection of predictors. It compute the prediction from a merge of all the predictors output. </p>
+<p>This learner produces a collection of predictors by learning each one from a randomization of the input data set. </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="ae002829984a1f651e9d2574ae03389b6"></a>
+<a class="anchor" id="a6705c7c5d70d706d75281428416eef33"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename MergeOutput , typename ElementaryPredictor &gt; </div>
+template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef ElementaryPredictor::output_type <a class="el" href="a00026.html">gaml::bag::Predictor</a>&lt; MergeOutput, ElementaryPredictor &gt;::<a class="el" href="a00026.html#ae002829984a1f651e9d2574ae03389b6">elementary_output_type</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="aaef7dedd8b2038d0614525f170fde4e5"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename MergeOutput , typename ElementaryPredictor &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef ElementaryPredictor::input_type <a class="el" href="a00026.html">gaml::bag::Predictor</a>&lt; MergeOutput, ElementaryPredictor &gt;::<a class="el" href="a00026.html#aaef7dedd8b2038d0614525f170fde4e5">input_type</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ae2b36eb800283a00b9d494b94f11ec09"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename MergeOutput , typename ElementaryPredictor &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef MergeOutput::output_type <a class="el" href="a00026.html">gaml::bag::Predictor</a>&lt; MergeOutput, ElementaryPredictor &gt;::<a class="el" href="a00026.html#ae2b36eb800283a00b9d494b94f11ec09">output_type</a></td>
+          <td class="memname">typedef <a class="el" href="a00027.html">gaml::bag::Predictor</a>&lt;MergeOutput, typename ElementaryLearner::predictor_type&gt; <a class="el" href="a00026.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::<a class="el" href="a00026.html#a6705c7c5d70d706d75281428416eef33">predictor_type</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -180,20 +151,49 @@ template&lt;typename MergeOutput , typename ElementaryPredictor &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="aaa5ab84b340364d3ff80427ad10d8328"></a>
+<a class="anchor" id="a8b1f6071fe2012a7006b0aedb7b56265"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename MergeOutput , typename ElementaryPredictor &gt; </div>
+template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00026.html">gaml::bag::Predictor</a>&lt; MergeOutput, ElementaryPredictor &gt;::<a class="el" href="a00026.html">Predictor</a> </td>
+          <td class="memname"><a class="el" href="a00026.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::<a class="el" href="a00026.html">Learner</a> </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const ElementaryLearner&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt; &amp;&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const MergeOutput &amp;&#160;</td>
+          <td class="paramname"><em>output_merger</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const BasisRandomizer &amp;&#160;</td>
+          <td class="paramname"><em>dataset_randomizer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_verbose</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -205,45 +205,19 @@ template&lt;typename MergeOutput , typename ElementaryPredictor &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a93b8400c96c6734eded6ef989ee79364"></a>
+<a class="anchor" id="ac4035edf5fb7e97347c78561ea2f7539"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename MergeOutput , typename ElementaryPredictor &gt; </div>
+template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00026.html">gaml::bag::Predictor</a>&lt; MergeOutput, ElementaryPredictor &gt;::<a class="el" href="a00026.html">Predictor</a> </td>
+          <td class="memname"><a class="el" href="a00026.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::<a class="el" href="a00026.html">Learner</a> </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00026.html">Predictor</a>&lt; MergeOutput, ElementaryPredictor &gt; &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="adcae4b1465ca16cb636b067b18813f8f"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename MergeOutput , typename ElementaryPredictor &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00026.html">gaml::bag::Predictor</a>&lt; MergeOutput, ElementaryPredictor &gt;::<a class="el" href="a00026.html">Predictor</a> </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00026.html">Predictor</a>&lt; MergeOutput, ElementaryPredictor &gt; &amp;&amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="a00026.html">Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt; &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
           <td></td>
         </tr>
@@ -258,47 +232,45 @@ template&lt;typename MergeOutput , typename ElementaryPredictor &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="aa255f1a330d3cba3552fdbb7d6a95006"></a>
+<a class="anchor" id="aaffc294ae3a7c7bb71317d69e8911a14"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename MergeOutput , typename ElementaryPredictor &gt; </div>
+template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
+<div class="memtemplate">
+template&lt;typename DataIterator , typename InputOf , typename OutputOf &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00026.html#ae2b36eb800283a00b9d494b94f11ec09">output_type</a> <a class="el" href="a00026.html">gaml::bag::Predictor</a>&lt; MergeOutput, ElementaryPredictor &gt;::operator() </td>
+          <td class="memname"><a class="el" href="a00026.html#a6705c7c5d70d706d75281428416eef33">predictor_type</a> <a class="el" href="a00026.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::operator() </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00026.html#aaef7dedd8b2038d0614525f170fde4e5">input_type</a> &amp;&#160;</td>
-          <td class="paramname"><em>x</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">const DataIterator &amp;&#160;</td>
+          <td class="paramname"><em>begin</em>, </td>
         </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a16ab4c5b58ffecc0e34cb9058c5bd714"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename MergeOutput , typename ElementaryPredictor &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00026.html">Predictor</a>&amp; <a class="el" href="a00026.html">gaml::bag::Predictor</a>&lt; MergeOutput, ElementaryPredictor &gt;::operator= </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00026.html">Predictor</a>&lt; MergeOutput, ElementaryPredictor &gt; &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const DataIterator &amp;&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const InputOf &amp;&#160;</td>
+          <td class="paramname"><em>input_of</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const OutputOf &amp;&#160;</td>
+          <td class="paramname"><em>output_of</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
   </td>
@@ -310,19 +282,19 @@ template&lt;typename MergeOutput , typename ElementaryPredictor &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="acd57189b4f60fc3032a76216c2f58e20"></a>
+<a class="anchor" id="a0f227508ebad47964d92f301101312f7"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename MergeOutput , typename ElementaryPredictor &gt; </div>
+template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00026.html">Predictor</a>&amp; <a class="el" href="a00026.html">gaml::bag::Predictor</a>&lt; MergeOutput, ElementaryPredictor &gt;::operator= </td>
+          <td class="memname"><a class="el" href="a00026.html">Learner</a>&amp; <a class="el" href="a00026.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::operator= </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00026.html">Predictor</a>&lt; MergeOutput, ElementaryPredictor &gt; &amp;&amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="a00026.html">Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt; &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
           <td></td>
         </tr>
@@ -337,28 +309,70 @@ template&lt;typename MergeOutput , typename ElementaryPredictor &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="aa4fe7a4a006de4df8296b00f1cbb1c43"></a>
+<a class="anchor" id="ac855e727a5cc34ddf21c763f3f72e5fd"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename MergeOutput , typename ElementaryPredictor &gt; </div>
+template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">MergeOutput <a class="el" href="a00026.html">gaml::bag::Predictor</a>&lt; MergeOutput, ElementaryPredictor &gt;::merge</td>
+          <td class="memname">ElementaryLearner <a class="el" href="a00026.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::learner</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="ac803b82af6daaf2121ce96b9cf622b6e"></a>
+<a class="anchor" id="a54bc723d3c66aa208fc13b9dfea32552"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename MergeOutput , typename ElementaryPredictor &gt; </div>
+template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;ElementaryPredictor&gt; <a class="el" href="a00026.html">gaml::bag::Predictor</a>&lt; MergeOutput, ElementaryPredictor &gt;::predictors</td>
+          <td class="memname">MergeOutput <a class="el" href="a00026.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::merger</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af0cbc1b35561011055c2639bda8f1bb8"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="a00026.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::nb_predictors</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a98db4329fd66ecc76f77dafdb01d5e4f"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">BasisRandomizer <a class="el" href="a00026.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::randomizer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5c6f857d0a00c742f39e4793664872c7"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MergeOutput, typename BasisRandomizer, typename ElementaryLearner&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="a00026.html">gaml::bag::Learner</a>&lt; MergeOutput, BasisRandomizer, ElementaryLearner &gt;::verbosity</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -366,7 +380,7 @@ template&lt;typename MergeOutput , typename ElementaryPredictor &gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="a00144_source.html">gamlBag.hpp</a></li>
+<li><a class="el" href="a00159_source.html">gamlBag.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

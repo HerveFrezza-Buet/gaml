@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: example-001-005-virtualization.cpp</title>
+<title>gaml-1.14: example-001-005-virtualization.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -79,16 +79,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">example-001-005-virtualization.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00142.html">gaml.hpp</a>&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00157.html">gaml.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cmath&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;fstream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;ctime&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
 <div class="line"></div>
-<div class="line"></div>
+<div class="line"><span class="preprocessor">#define DEBUG</span></div>
+<div class="line"><span class="preprocessor"></span></div>
 <div class="line"><span class="comment">/*</span></div>
 <div class="line"><span class="comment">  This example shows how the use of virtualized iterators in order to</span></div>
 <div class="line"><span class="comment">  avoid infinite recursion in template instanciation at compilint</span></div>
@@ -131,36 +133,69 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  }</div>
 <div class="line">};</div>
 <div class="line"></div>
+<div class="line"><span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><span class="preprocessor"></span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Iterator&gt;</div>
+<div class="line"><span class="keywordtype">void</span> display(<span class="keyword">const</span> std::string&amp; title, <span class="keyword">const</span> Iterator&amp; begin, <span class="keyword">const</span> Iterator&amp; end) {</div>
+<div class="line">  std::cout &lt;&lt; title &lt;&lt; <span class="stringliteral">&quot; :&quot;</span> &lt;&lt; std::setprecision(3);</div>
+<div class="line">  <span class="keywordflow">for</span>(<span class="keyword">auto</span> iter = begin; iter != end; ++iter) </div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot; (&quot;</span> &lt;&lt; (*iter).first &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; (*iter).second &lt;&lt; <span class="stringliteral">&quot;)&quot;</span>;</div>
+<div class="line">  std::cout &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line"></div>
 <div class="line"><span class="comment">// The idea now is to build a decision tree from some (x,y) pairs,</span></div>
 <div class="line"><span class="comment">// gathered in a collection. Let us implement a generic function for</span></div>
 <div class="line"><span class="comment">// this purpose.</span></div>
-<div class="line"></div>
 <div class="line"></div>
 <div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Iterator, <span class="keyword">typename</span> InputOf, <span class="keyword">typename</span> OutputOf&gt;</div>
 <div class="line">std::unique_ptr&lt;Tree&gt; build_tree(<span class="keyword">const</span> Iterator&amp; begin, <span class="keyword">const</span> Iterator&amp; end,</div>
 <div class="line">                                 <span class="keyword">const</span> InputOf&amp; input_of, <span class="keyword">const</span> OutputOf&amp; output_of) {</div>
 <div class="line"></div>
 <div class="line">  <span class="keyword">auto</span> size = std::distance(begin,end);</div>
-<div class="line">  <span class="keywordflow">if</span>(size &lt; 10) {</div>
-<div class="line">    <span class="keywordflow">return</span> std::unique_ptr&lt;Tree&gt;(<span class="keyword">new</span> Tree(<a name="a0"></a><a class="code" href="a00171.html#a8196de5eb952adc1d0ff250d0b307a20">gaml::average</a>(begin,end,output_of))); </div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><span class="preprocessor"></span>  std::cout &lt;&lt; <span class="stringliteral">&quot;&gt;&gt; build_tree : &quot;</span> &lt;&lt; size &lt;&lt; <span class="stringliteral">&quot; : &quot;</span>;</div>
+<div class="line">  display(<span class="stringliteral">&quot;Args&quot;</span>,begin,end);</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line">  <span class="keywordflow">if</span>(size &lt; 4) {</div>
+<div class="line"><span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><span class="preprocessor"></span>    std::cout &lt;&lt; <span class="stringliteral">&quot;  average = &quot;</span> &lt;&lt; <a name="a0"></a><a class="code" href="a00187.html#a8196de5eb952adc1d0ff250d0b307a20">gaml::average</a>(begin,end,output_of) &lt;&lt; std::endl;</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="preprocessor"></span>    <span class="keywordflow">return</span> std::unique_ptr&lt;Tree&gt;(<span class="keyword">new</span> Tree(<a class="code" href="a00187.html#a8196de5eb952adc1d0ff250d0b307a20">gaml::average</a>(begin,end,output_of))); </div>
 <div class="line">  }</div>
 <div class="line">  <span class="keywordflow">else</span> {</div>
-<div class="line">    <span class="keyword">auto</span> x_values     = <a name="a1"></a><a class="code" href="a00171.html#ac4358877d7d3320c00e84b1d2d082e11">gaml::map</a>(begin, end, input_of);</div>
+<div class="line">    <span class="keyword">auto</span> x_values    = <a name="a1"></a><a class="code" href="a00187.html#ac4358877d7d3320c00e84b1d2d082e11">gaml::map</a>(begin, end, input_of);</div>
 <div class="line">    <span class="keyword">auto</span> bounds      = std::minmax_element(x_values.begin(), x_values.end());</div>
 <div class="line">    <span class="keywordtype">double</span> threshold = .5 * (*(bounds.first) + *(bounds.second));</div>
 <div class="line">    <span class="keyword">auto</span> test        = [threshold,input_of](<span class="keyword">const</span> <span class="keyword">typename</span> Iterator::value_type&amp; d) -&gt; <span class="keywordtype">bool</span> {<span class="keywordflow">return</span> input_of(d) &lt; threshold;};</div>
-<div class="line">    <span class="keyword">auto</span> <a name="a2"></a><a class="code" href="a00171.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">split</a>       = <a class="code" href="a00171.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">gaml::split</a>(begin, end, test);</div>
-<div class="line">    <span class="keyword">auto</span> low         = <a class="code" href="a00171.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">split</a>.true_values;</div>
-<div class="line">    <span class="keyword">auto</span> up          = <a class="code" href="a00171.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">split</a>.false_values;</div>
+<div class="line">    <span class="keyword">auto</span> <a name="a2"></a><a class="code" href="a00187.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">split</a>       = <a class="code" href="a00187.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">gaml::split</a>(begin, end, test);</div>
+<div class="line">    <span class="keyword">auto</span> low         = <a class="code" href="a00187.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">split</a>.true_values;</div>
+<div class="line">    <span class="keyword">auto</span> up          = <a class="code" href="a00187.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">split</a>.false_values;</div>
 <div class="line"></div>
+<div class="line"><span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><span class="preprocessor"></span>    std::cout &lt;&lt; <span class="stringliteral">&quot;  split at &quot;</span> &lt;&lt; threshold </div>
+<div class="line">              &lt;&lt; <span class="stringliteral">&quot; into &quot;</span> &lt;&lt; std::distance(low.begin(), low.end()) </div>
+<div class="line">              &lt;&lt; <span class="charliteral">&#39;+&#39;</span>      &lt;&lt; std::distance(up.begin(), up.end()) </div>
+<div class="line">              &lt;&lt; std::endl;</div>
+<div class="line">    display(<span class="stringliteral">&quot;  low&quot;</span>, low.begin(), low.end());</div>
+<div class="line">    display(<span class="stringliteral">&quot;   up&quot;</span>, up.begin(), up.end());</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="preprocessor"></span></div>
 <div class="line">    <span class="comment">// In the following, if we had used low and up instead of</span></div>
 <div class="line">    <span class="comment">// virtual_low and virtual_up, the template instantiation of</span></div>
 <div class="line">    <span class="comment">// build_tree would have lead to a infinite recursion at</span></div>
 <div class="line">    <span class="comment">// compilation time. Nevertheless, virtual sequences are a bit</span></div>
 <div class="line">    <span class="comment">// slower since virtual methods are called.</span></div>
 <div class="line"></div>
-<div class="line">    <span class="keyword">auto</span> virtual_low = <a name="a3"></a><a class="code" href="a00189.html#a5ed5ee0d44bf8502711371f96dfda03c">gaml::virtualized::sequence</a>(low.begin(), low.end());</div>
-<div class="line">    <span class="keyword">auto</span> virtual_up  = <a class="code" href="a00189.html#a5ed5ee0d44bf8502711371f96dfda03c">gaml::virtualized::sequence</a>(up.begin(),  up.end());</div>
+<div class="line">    <span class="keyword">auto</span> virtual_low = <a name="a3"></a><a class="code" href="a00205.html#a54eec3d283931866e53f7d1a84dc813e">gaml::virtualized::sequence</a>(low.begin(), low.end());</div>
+<div class="line">    <span class="keyword">auto</span> virtual_up  = <a class="code" href="a00205.html#a54eec3d283931866e53f7d1a84dc813e">gaml::virtualized::sequence</a>(up.begin(),  up.end());</div>
+<div class="line"><span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><span class="preprocessor"></span>    display(<span class="stringliteral">&quot; vlow&quot;</span>, virtual_low.begin(), virtual_low.end());</div>
+<div class="line">    display(<span class="stringliteral">&quot;  vup&quot;</span>, virtual_up.begin(), virtual_up.end());</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="preprocessor"></span>    </div>
 <div class="line">    <span class="keywordflow">return</span> std::unique_ptr&lt;Tree&gt;(<span class="keyword">new</span> Tree(threshold,</div>
 <div class="line">                                          build_tree(virtual_low.begin(), virtual_low.end(), input_of, output_of),</div>
 <div class="line">                                          build_tree(virtual_up.begin(),  virtual_up.end(),  input_of, output_of)));</div>
@@ -169,7 +204,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">double</span> oracle(<span class="keywordtype">double</span> x) {</div>
-<div class="line">  <span class="keywordflow">return</span> std::sin(x) + <a name="a4"></a><a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(-.2,.2);</div>
+<div class="line">  <span class="comment">// return std::sin(x) + gaml::random::uniform(-.2,.2);</span></div>
+<div class="line">  <span class="keywordflow">return</span> x;</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="keyword">typedef</span> std::pair&lt;double,double&gt; Data;</div>
@@ -180,9 +216,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  std::srand(std::time(0));</div>
 <div class="line">  </div>
 <div class="line"></div>
-<div class="line">  std::vector&lt;Data&gt; basis(200);</div>
+<div class="line">  std::vector&lt;Data&gt; basis(10);</div>
 <div class="line">  <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; xy : basis) {</div>
-<div class="line">    xy.first  = <a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(0,10);</div>
+<div class="line">    xy.first  = <a name="a4"></a><a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(0,10);</div>
 <div class="line">    xy.second = oracle(xy.first);</div>
 <div class="line">  }</div>
 <div class="line"></div>

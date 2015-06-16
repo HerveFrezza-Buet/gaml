@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gamlVariableSelection.hpp Source File</title>
+<title>gaml-1.14: gamlIdentity.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -85,7 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">gamlVariableSelection.hpp</div>  </div>
+<div class="title">gamlIdentity.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a00168.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
@@ -93,7 +93,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *   Copyright (C) 2012,  Supelec</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *   Author : Hervé Frezza-Buet, Frédéric Pennerath </span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *   Author : HervÃ© Frezza-Buet, FrÃ©dÃ©ric Pennerath </span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *   Contributor :</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
@@ -115,68 +115,201 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="a00148.html">gamlDimensions.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include&lt;exception&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include&lt;iterator&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="a00185.html">gamlVirtual.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">namespace </span>gaml {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keyword">namespace </span>varsel {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">// General variable selection algorithm</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Evaluator, <span class="keyword">typename</span> AttributeSet, <span class="keyword">typename</span> Searcher&gt; </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="a00188.html#a227f485ce8308ad7a7269d89c83bfa92">   38</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="a00188.html#a227f485ce8308ad7a7269d89c83bfa92">search</a>(Evaluator&amp; evaluator, AttributeSet&amp; variableSubset, Searcher&amp; searcher, <span class="keywordtype">bool</span> verbose) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      <span class="keywordtype">int</span> n = evaluator.getAttributeNumber();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      <span class="keywordflow">if</span>(verbose) { searcher.verbose(); }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <span class="keyword">auto</span> outputIt = std::inserter(variableSubset, variableSubset.end());</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      <span class="keywordflow">return</span> searcher(n, outputIt, evaluator);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">// Sequential Forward Selection</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Evaluator, <span class="keyword">typename</span> AttributeSet&gt; </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="a00188.html#a1b3c96d59787abd9546ff317096fd3f7">   48</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="a00188.html#a1b3c96d59787abd9546ff317096fd3f7">SFS</a>(Evaluator&amp; evaluator, AttributeSet&amp; variableSubset, <span class="keywordtype">bool</span> verbose = <span class="keyword">false</span>) {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      <a class="code" href="a00059.html">gaml::GreedySearch&lt;true, Evaluator::toMinimize&gt;</a> strategy;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="a00188.html#a227f485ce8308ad7a7269d89c83bfa92">search</a>(evaluator, variableSubset, strategy, verbose);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// Sequential Backward Selection</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Evaluator, <span class="keyword">typename</span> AttributeSet&gt; </div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="a00188.html#a367ede0d19e4754c2510a7d4cd76170d">   55</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="a00188.html#a367ede0d19e4754c2510a7d4cd76170d">SBS</a>(Evaluator&amp; evaluator, AttributeSet&amp; variableSubset, <span class="keywordtype">bool</span> verbose = <span class="keyword">false</span>) {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <a class="code" href="a00059.html">gaml::GreedySearch&lt;false, Evaluator::toMinimize&gt;</a> strategy;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="a00188.html#a227f485ce8308ad7a7269d89c83bfa92">search</a>(evaluator, variableSubset, strategy, verbose);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">// Sequential Floating Forward Selection</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Evaluator, <span class="keyword">typename</span> AttributeSet&gt; </div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="a00188.html#a406be0b466d45889075be091d165f0e8">   62</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="a00188.html#a406be0b466d45889075be091d165f0e8">SFFS</a>(Evaluator&amp; evaluator, AttributeSet&amp; variableSubset, <span class="keywordtype">bool</span> verbose = <span class="keyword">false</span>) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      <a class="code" href="a00030.html">gaml::BidirectionalGreedySearch&lt;true, Evaluator::toMinimize&gt;</a> strategy;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="a00188.html#a227f485ce8308ad7a7269d89c83bfa92">search</a>(evaluator, variableSubset, strategy, verbose);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// Sequential Floating Backward Selection</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Evaluator, <span class="keyword">typename</span> AttributeSet&gt; </div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="a00188.html#a49b57f623b1500ae750f58aea95620fc">   69</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="a00188.html#a49b57f623b1500ae750f58aea95620fc">SFBS</a>(Evaluator&amp; evaluator, AttributeSet&amp; variableSubset, <span class="keywordtype">bool</span> verbose = <span class="keyword">false</span>) {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <a class="code" href="a00030.html">gaml::BidirectionalGreedySearch&lt;false, Evaluator::toMinimize&gt;</a> strategy;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="a00188.html#a227f485ce8308ad7a7269d89c83bfa92">search</a>(evaluator, variableSubset, strategy, verbose);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> CATEGORY,<span class="keyword">typename</span> Iterator&gt;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="a00065.html">   39</a></span>&#160;  <span class="keyword">class </span><a class="code" href="a00065.html">IdentityIterator</a> </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    : <span class="keyword">public</span> std::iterator&lt;typename std::iterator_traits&lt;Iterator&gt;::iterator_category,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                           typename std::iterator_traits&lt;Iterator&gt;::value_type&gt;,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <span class="keyword">public</span> <a class="code" href="a00024.html">gaml::virtualized::base_iterator</a>&lt;typename std::iterator_traits&lt;Iterator&gt;::value_type&gt; {    </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    Iterator it;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="a00065.html#a4321baaba7a07dbc264cc81f77b65f61">   49</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">typename</span> std::iterator_traits&lt;Iterator&gt;::value_type     <a class="code" href="a00065.html#a4321baaba7a07dbc264cc81f77b65f61">value_type</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="a00065.html#a2393c0fbfb30aa11e475f24d343cd97c">   50</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">typename</span> std::iterator_traits&lt;Iterator&gt;::difference_type <a class="code" href="a00065.html#a2393c0fbfb30aa11e475f24d343cd97c">difference_type</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="a00065.html#a1c1d42a1dd678148b6c27b39d7fdaa96">   52</a></span>&#160;    <a class="code" href="a00065.html#a1c1d42a1dd678148b6c27b39d7fdaa96">IdentityIterator</a>(<span class="keywordtype">void</span>) : it() {}  </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="a00065.html#a2a60de761f1a35b19aac079c6344afc9">   53</a></span>&#160;    <a class="code" href="a00065.html#a2a60de761f1a35b19aac079c6344afc9">IdentityIterator</a>(<span class="keyword">const</span> Iterator&amp; iter) : it(iter){}</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="a00065.html#a9c16f57928c5631e79ac0b298a5667a4">   54</a></span>&#160;    <a class="code" href="a00065.html#a9c16f57928c5631e79ac0b298a5667a4">IdentityIterator</a>(<span class="keyword">const</span> <a class="code" href="a00065.html">IdentityIterator</a>&amp; cp) : it(cp.it) {}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="a00065.html#af25751ae78b468e4b8bd504033ce0f64">   56</a></span>&#160;    <a class="code" href="a00065.html">IdentityIterator</a>&amp; <a class="code" href="a00065.html#af25751ae78b468e4b8bd504033ce0f64">operator=</a>(<span class="keyword">const</span> <a class="code" href="a00065.html">IdentityIterator</a>&amp; cp)   {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      <span class="keywordflow">if</span>(<span class="keyword">this</span> != &amp;cp)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        it = cp.it;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="a00065.html#a6aaa822370193a5b85f4d3d6c6f6425f">   62</a></span>&#160;    <a class="code" href="a00065.html">IdentityIterator</a>&amp; <a class="code" href="a00065.html#a6aaa822370193a5b85f4d3d6c6f6425f">operator++</a>()  {++it; <span class="keywordflow">return</span> *<span class="keyword">this</span>;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="a00065.html#a93de4bf324cbf54e6bdd9e45171553f5">   63</a></span>&#160;    <a class="code" href="a00065.html">IdentityIterator</a>  <a class="code" href="a00065.html#a93de4bf324cbf54e6bdd9e45171553f5">operator++</a>(<span class="keywordtype">int</span>) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      <a class="code" href="a00065.html">IdentityIterator</a> res = *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      ++*<span class="keyword">this</span>; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="a00065.html#abf50cbd5f7ecb70c5c5a90c994e5f9a1">   68</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="a00065.html#a4321baaba7a07dbc264cc81f77b65f61">value_type</a>&amp; <a class="code" href="a00065.html#abf50cbd5f7ecb70c5c5a90c994e5f9a1">operator*</a>()<span class="keyword">                          const </span>{<span class="keywordflow">return</span> *it;}</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="a00065.html#a8f1f89b9e6b7f569ee14a7530d4c77e0">   69</a></span>&#160;    <span class="keywordtype">bool</span>     <a class="code" href="a00065.html#a8f1f89b9e6b7f569ee14a7530d4c77e0">operator==</a>(<span class="keyword">const</span> <a class="code" href="a00065.html">IdentityIterator</a>&amp; i)<span class="keyword">         const </span>{<span class="keywordflow">return</span> it == i.it;}</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="a00065.html#a3d07190a99faff2441e56c1f2842d1a4">   70</a></span>&#160;    <span class="keywordtype">bool</span>     <a class="code" href="a00065.html#a3d07190a99faff2441e56c1f2842d1a4">operator!=</a>(<span class="keyword">const</span> <a class="code" href="a00065.html">IdentityIterator</a>&amp; i)<span class="keyword">         const </span>{<span class="keywordflow">return</span> it != i.it;}</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">// Virtualization</span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">// Sequential Beam Forward Selection</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Evaluator, <span class="keyword">typename</span> AttributeSet&gt; </div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="code" href="a00188.html#af34ab6c109a7ef1a7f4cf34b7482292c">   76</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="a00188.html#af34ab6c109a7ef1a7f4cf34b7482292c">SBFS</a>(Evaluator&amp; evaluator, AttributeSet&amp; variableSubset, <span class="keywordtype">int</span> k, <span class="keywordtype">double</span> filteringRatio, <span class="keywordtype">bool</span> verbose = <span class="keyword">false</span>) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      <a class="code" href="a00029.html">gaml::BestFirstSearch&lt;true, Evaluator::toMinimize&gt;</a> strategy(k, filteringRatio);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="a00188.html#a227f485ce8308ad7a7269d89c83bfa92">search</a>(evaluator, variableSubset, strategy, verbose);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">// Sequential Beam Backward Selection</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Evaluator, <span class="keyword">typename</span> AttributeSet&gt; </div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="code" href="a00188.html#a2e3005977928f04293d1cbb51f5f6e91">   83</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="a00188.html#a2e3005977928f04293d1cbb51f5f6e91">SBBS</a>(Evaluator&amp; evaluator, AttributeSet&amp; variableSubset, <span class="keywordtype">int</span> k, <span class="keywordtype">double</span> filteringRatio, <span class="keywordtype">bool</span> verbose = <span class="keyword">false</span>) {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <a class="code" href="a00029.html">gaml::BestFirstSearch&lt;false, Evaluator::toMinimize&gt;</a> strategy(k, filteringRatio);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="a00188.html#a227f485ce8308ad7a7269d89c83bfa92">search</a>(evaluator, variableSubset, strategy, verbose);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="code" href="a00065.html#a0b0e2e4132b1657afdcb324f9385a154">   74</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="a00024.html">gaml::virtualized::base_iterator&lt;typename std::iterator_traits&lt;Iterator&gt;::value_type</a>&gt; <a class="code" href="a00065.html#a0b0e2e4132b1657afdcb324f9385a154">base_type</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="code" href="a00065.html#a32755e0f3011f66afdc38851940f06ce">   76</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="a00024.html">base_type</a>* <a class="code" href="a00065.html#a32755e0f3011f66afdc38851940f06ce">clone</a>()<span class="keyword"> const override </span>{</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="a00065.html">IdentityIterator&lt;CATEGORY,Iterator&gt;</a>(*this);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="a00065.html#a7f66a60b13ed6d766100bff656748f0c">   80</a></span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="a00065.html#a4321baaba7a07dbc264cc81f77b65f61">value_type</a>&amp; <a class="code" href="a00065.html#a7f66a60b13ed6d766100bff656748f0c">get_ith_from_root</a>(<span class="keywordtype">int</span> i)<span class="keyword"> const override </span>{</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#ifdef DEBUG_VIRTUALIZED</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor"></span>      std::cout &lt;&lt; <span class="stringliteral">&quot;### (&quot;</span> &lt;&lt; <span class="keyword">this</span> &lt;&lt; <span class="stringliteral">&quot;)  Identity&lt;regular&gt;::get_ith_from_root(&quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;)&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor"></span>      <span class="keyword">auto</span> iit = it;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      std::advance(iit,i);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      <span class="keywordflow">return</span> *iit;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="a00065.html#aa7c83964cfa88eab7df9f9cf648b016b">   90</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="a00065.html#aa7c83964cfa88eab7df9f9cf648b016b">increment</a>(<span class="keywordtype">void</span>)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      ++(*this);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="code" href="a00065.html#a8f4b7ed8ec5cb0f17b59ae86a10c6a48">   94</a></span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="a00065.html#a4321baaba7a07dbc264cc81f77b65f61">value_type</a>&amp; <span class="keyword">get</span>() <span class="keyword">const</span> <span class="keyword">override</span> {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      <span class="keywordflow">return</span> *(*this);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="code" href="a00065.html#a9a9ee00229e42e3e79227be3ab8d4b4c">   98</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="a00065.html#a9a9ee00229e42e3e79227be3ab8d4b4c">is_equal</a>(<span class="keyword">const</span> <a class="code" href="a00024.html">base_type</a>&amp; other)<span class="keyword"> const override </span>{</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      <span class="keyword">auto</span> p_iter = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><a class="code" href="a00065.html">IdentityIterator&lt;CATEGORY,Iterator&gt;</a>*<span class="keyword">&gt;</span>(&amp;other);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      <span class="keywordflow">return</span> (*<span class="keyword">this</span>) == (*p_iter);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  };</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Iterator&gt;</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="code" href="a00066.html">  107</a></span>&#160;  <span class="keyword">class </span><a class="code" href="a00065.html">IdentityIterator</a>&lt;std::random_access_iterator_tag,Iterator&gt; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    : <span class="keyword">public</span> std::iterator&lt;typename std::iterator_traits&lt;Iterator&gt;::iterator_category,</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                           typename std::iterator_traits&lt;Iterator&gt;::value_type&gt;,</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      <span class="keyword">public</span> <a class="code" href="a00024.html">gaml::virtualized::base_iterator</a>&lt;typename std::iterator_traits&lt;Iterator&gt;::value_type&gt; {    </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    Iterator it;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="code" href="a00066.html#aad924fbea018eb01822709f74eafc2a2">  117</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">typename</span> std::iterator_traits&lt;Iterator&gt;::value_type     <a class="code" href="a00066.html#aad924fbea018eb01822709f74eafc2a2">value_type</a>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="code" href="a00066.html#a94081506733b5b8de72a22bc6b39a84e">  118</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">typename</span> std::iterator_traits&lt;Iterator&gt;::difference_type <a class="code" href="a00066.html#a94081506733b5b8de72a22bc6b39a84e">difference_type</a>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="code" href="a00066.html#aa28cc7506dc9cbcf750b257d99112e46">  120</a></span>&#160;    <a class="code" href="a00066.html#aa28cc7506dc9cbcf750b257d99112e46">IdentityIterator</a>(<span class="keywordtype">void</span>) : it() {}  </div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="code" href="a00066.html#a95c7948646002de14e84398606728465">  121</a></span>&#160;    <a class="code" href="a00066.html#a95c7948646002de14e84398606728465">IdentityIterator</a>(<span class="keyword">const</span> Iterator&amp; iter) : it(iter){}</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="code" href="a00066.html#a71fd1cf8752f7d14d10615b76a476797">  122</a></span>&#160;    <a class="code" href="a00066.html#a71fd1cf8752f7d14d10615b76a476797">IdentityIterator</a>(<span class="keyword">const</span> <a class="code" href="a00065.html">IdentityIterator</a>&amp; cp) : it(cp.it) {}</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="code" href="a00066.html#aef4b2772e1cb7081cfec66f69db41d34">  124</a></span>&#160;    <a class="code" href="a00065.html">IdentityIterator</a>&amp; <a class="code" href="a00066.html#aef4b2772e1cb7081cfec66f69db41d34">operator=</a>(<span class="keyword">const</span> <a class="code" href="a00065.html">IdentityIterator</a>&amp; cp)   {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      <span class="keywordflow">if</span>(<span class="keyword">this</span> != &amp;cp)</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        it = cp.it;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="code" href="a00066.html#a5b424b06a74a6e2e263119014506a1fa">  130</a></span>&#160;    <a class="code" href="a00065.html">IdentityIterator</a>&amp; <a class="code" href="a00066.html#a5b424b06a74a6e2e263119014506a1fa">operator++</a>()                       {++it; <span class="keywordflow">return</span> *<span class="keyword">this</span>;}</div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="code" href="a00066.html#a9389f5328cb59241f98c1fbe7936d5c2">  131</a></span>&#160;    <a class="code" href="a00065.html">IdentityIterator</a>&amp; <a class="code" href="a00066.html#a9389f5328cb59241f98c1fbe7936d5c2">operator--</a>()                       {--it; <span class="keywordflow">return</span> *<span class="keyword">this</span>;}</div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="code" href="a00066.html#aafb677b1583b340d6eb4b348f4146502">  132</a></span>&#160;    <a class="code" href="a00065.html">IdentityIterator</a>&amp; <a class="code" href="a00066.html#aafb677b1583b340d6eb4b348f4146502">operator+=</a>(<a class="code" href="a00066.html#a94081506733b5b8de72a22bc6b39a84e">difference_type</a> diff)   {it+=diff; <span class="keywordflow">return</span> *<span class="keyword">this</span>;}</div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="code" href="a00066.html#ae7b01c815fc9d0ccbf641bb73fbdfd4d">  133</a></span>&#160;    <a class="code" href="a00065.html">IdentityIterator</a>&amp; <a class="code" href="a00066.html#ae7b01c815fc9d0ccbf641bb73fbdfd4d">operator-=</a>(<span class="keywordtype">int</span> diff)               {it-=diff; <span class="keywordflow">return</span> *<span class="keyword">this</span>;}</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="code" href="a00066.html#afe16a90f5d4b2c8fcd3267b001ead43a">  135</a></span>&#160;    <a class="code" href="a00065.html">IdentityIterator</a>  <a class="code" href="a00066.html#afe16a90f5d4b2c8fcd3267b001ead43a">operator++</a>(<span class="keywordtype">int</span>) {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;      <a class="code" href="a00065.html">IdentityIterator</a> res = *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;      ++*<span class="keyword">this</span>; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;      <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="code" href="a00066.html#acd4c943c0c8e0e4839f7fabca4cf0dd8">  141</a></span>&#160;    <a class="code" href="a00065.html">IdentityIterator</a>  <a class="code" href="a00066.html#acd4c943c0c8e0e4839f7fabca4cf0dd8">operator--</a>(<span class="keywordtype">int</span>) {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;      <a class="code" href="a00065.html">IdentityIterator</a> res = *<span class="keyword">this</span>; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;      --*<span class="keyword">this</span>; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="code" href="a00066.html#a8f903b9b9b13e76048f4c76ba0556f67">  147</a></span>&#160;    <a class="code" href="a00066.html#a94081506733b5b8de72a22bc6b39a84e">difference_type</a>   <a class="code" href="a00066.html#a8f903b9b9b13e76048f4c76ba0556f67">operator-</a>(<span class="keyword">const</span> <a class="code" href="a00065.html">IdentityIterator</a>&amp; i)<span class="keyword"> const </span>{<span class="keywordflow">return</span> it - i.it;}</div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="code" href="a00066.html#ad1e890f1d64ccfeee7f6fa1fbbf24533">  148</a></span>&#160;    <a class="code" href="a00065.html">IdentityIterator</a>       <a class="code" href="a00066.html#ad1e890f1d64ccfeee7f6fa1fbbf24533">operator+</a>(<a class="code" href="a00066.html#a94081506733b5b8de72a22bc6b39a84e">difference_type</a> i)<span class="keyword">    const </span>{<span class="keywordflow">return</span> <a class="code" href="a00065.html#a1c1d42a1dd678148b6c27b39d7fdaa96">IdentityIterator</a>(it+i);}</div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="code" href="a00066.html#a4319070d49b063337f8a6b34f4af74e5">  149</a></span>&#160;    <a class="code" href="a00065.html">IdentityIterator</a>       <a class="code" href="a00066.html#a4319070d49b063337f8a6b34f4af74e5">operator-</a>(<a class="code" href="a00066.html#a94081506733b5b8de72a22bc6b39a84e">difference_type</a> i)<span class="keyword">    const </span>{<span class="keywordflow">return</span> <a class="code" href="a00065.html#a1c1d42a1dd678148b6c27b39d7fdaa96">IdentityIterator</a>(it-i);}</div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="code" href="a00066.html#acf2398c8211abb3f4a472f54adc52ef8">  150</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="a00066.html#aad924fbea018eb01822709f74eafc2a2">value_type</a>&amp; <a class="code" href="a00066.html#acf2398c8211abb3f4a472f54adc52ef8">operator*</a>()<span class="keyword">                          const </span>{<span class="keywordflow">return</span> *it;}</div>
+<div class="line"><a name="l00151"></a><span class="lineno"><a class="code" href="a00066.html#a1b50857eec1fc5b015493463167a3df3">  151</a></span>&#160;    <span class="keywordtype">bool</span>     <a class="code" href="a00066.html#a1b50857eec1fc5b015493463167a3df3">operator==</a>(<span class="keyword">const</span> <a class="code" href="a00065.html">IdentityIterator</a>&amp; i)<span class="keyword">         const </span>{<span class="keywordflow">return</span> it == i.it;}</div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="code" href="a00066.html#a1d2707e64a16e5406211d43288c56741">  152</a></span>&#160;    <span class="keywordtype">bool</span>     <a class="code" href="a00066.html#a1d2707e64a16e5406211d43288c56741">operator!=</a>(<span class="keyword">const</span> <a class="code" href="a00065.html">IdentityIterator</a>&amp; i)<span class="keyword">         const </span>{<span class="keywordflow">return</span> it != i.it;}</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="comment">// Virtualization</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="code" href="a00066.html#a06e955d251205891840a07448b4310b3">  156</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="a00024.html">gaml::virtualized::base_iterator&lt;typename std::iterator_traits&lt;Iterator&gt;::value_type</a>&gt; <a class="code" href="a00066.html#a06e955d251205891840a07448b4310b3">base_type</a>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    </div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="code" href="a00066.html#a488eb9155f757db10fbfa51909a49cd0">  158</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="a00024.html">base_type</a>* <a class="code" href="a00066.html#a488eb9155f757db10fbfa51909a49cd0">clone</a>()<span class="keyword"> const override </span>{</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="a00066.html">IdentityIterator&lt;std::random_access_iterator_tag,Iterator&gt;</a>(*this);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="code" href="a00066.html#aff91a27676d43bab53fd4a9462048fc7">  162</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="a00066.html#aff91a27676d43bab53fd4a9462048fc7">increment</a>(<span class="keywordtype">void</span>)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;      ++(*this);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="code" href="a00066.html#a2cc67e1e4b8a2ea38f245e49f664a006">  166</a></span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="a00066.html#aad924fbea018eb01822709f74eafc2a2">value_type</a>&amp; <span class="keyword">get</span>() <span class="keyword">const</span> <span class="keyword">override</span> {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      <span class="keywordflow">return</span> *(*this);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="code" href="a00066.html#a40167462e1a2af9fd9a6956b284e46cb">  170</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="a00066.html#a40167462e1a2af9fd9a6956b284e46cb">is_equal</a>(<span class="keyword">const</span> <a class="code" href="a00024.html">base_type</a>&amp; other)<span class="keyword"> const override </span>{</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;      <span class="keyword">auto</span> p_iter = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><a class="code" href="a00066.html">IdentityIterator&lt;std::random_access_iterator_tag,Iterator&gt;</a>*<span class="keyword">&gt;</span>(&amp;other);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      <span class="keywordflow">return</span> (*<span class="keyword">this</span>) == (*p_iter);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
+<div class="line"><a name="l00175"></a><span class="lineno"><a class="code" href="a00066.html#a8b2bf9d58be7b45090677080d5ee0ebf">  175</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="a00066.html#a8b2bf9d58be7b45090677080d5ee0ebf">decrement</a>(<span class="keywordtype">void</span>)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      --(*this);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="code" href="a00066.html#a57f68184c6b408b4e9e4bc9ec3ce8fc6">  179</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="a00066.html#a57f68184c6b408b4e9e4bc9ec3ce8fc6">increment</a>(<span class="keywordtype">int</span> i)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;      (*this) += i;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="code" href="a00066.html#a4a99d746f22d0ae78e2735476808b973">  183</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="a00066.html#a4a99d746f22d0ae78e2735476808b973">decrement</a>(<span class="keywordtype">int</span> i)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;      (*this) -= i;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    }</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
+<div class="line"><a name="l00187"></a><span class="lineno"><a class="code" href="a00066.html#a4204179ecbf9390539b44decd3f963ec">  187</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="a00066.html#a4204179ecbf9390539b44decd3f963ec">distance</a>(<span class="keyword">const</span> <a class="code" href="a00024.html">base_type</a>&amp; other)<span class="keyword"> override </span>{</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;      <span class="keyword">auto</span> p_iter = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><a class="code" href="a00066.html">IdentityIterator&lt;std::random_access_iterator_tag,Iterator&gt;</a>*<span class="keyword">&gt;</span>(&amp;other);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)(std::distance(*<span class="keyword">this</span>,*p_iter));</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  };</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Iterator&gt; </div>
+<div class="line"><a name="l00198"></a><span class="lineno"><a class="code" href="a00064.html">  198</a></span>&#160;  <span class="keyword">class </span><a class="code" href="a00064.html">Identity</a> {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    Iterator _begin, _end;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00202"></a><span class="lineno"><a class="code" href="a00064.html#a5179a08379c638a0b78ee2630ffcdf1e">  202</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="a00065.html">IdentityIterator&lt;typename std::iterator_traits&lt;Iterator&gt;::iterator_category</a>,Iterator&gt;  <a class="code" href="a00064.html#a5179a08379c638a0b78ee2630ffcdf1e">iterator</a>;</div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="code" href="a00064.html#a0cf6b0afa12d033fc594bbd9c8ab5b7f">  203</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">typename</span> <a class="code" href="a00065.html#a4321baaba7a07dbc264cc81f77b65f61">iterator::value_type</a>                                                          <a class="code" href="a00064.html#a0cf6b0afa12d033fc594bbd9c8ab5b7f">value_type</a>;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
+<div class="line"><a name="l00209"></a><span class="lineno"><a class="code" href="a00064.html#aecf6e81d6187282dc471e4b176284f4f">  209</a></span>&#160;    <a class="code" href="a00064.html#aecf6e81d6187282dc471e4b176284f4f">Identity</a>(<span class="keyword">const</span> Iterator&amp; begin_iter, </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;             <span class="keyword">const</span> Iterator&amp; end_iter) : </div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;      _begin(begin_iter), _end(end_iter) {}</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    </div>
+<div class="line"><a name="l00213"></a><span class="lineno"><a class="code" href="a00064.html#aac7d652e2d9a5c4b16b4a34261605588">  213</a></span>&#160;    <a class="code" href="a00065.html">iterator</a> <a class="code" href="a00064.html#aac7d652e2d9a5c4b16b4a34261605588">begin</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="a00064.html#a5179a08379c638a0b78ee2630ffcdf1e">iterator</a>(_begin); }</div>
+<div class="line"><a name="l00214"></a><span class="lineno"><a class="code" href="a00064.html#a51fc5b2d999e85568cefef10518b16ee">  214</a></span>&#160;    <a class="code" href="a00065.html">iterator</a> <a class="code" href="a00064.html#a51fc5b2d999e85568cefef10518b16ee">end</a>()<span class="keyword"> const   </span>{<span class="keywordflow">return</span> <a class="code" href="a00064.html#a5179a08379c638a0b78ee2630ffcdf1e">iterator</a>(_end); }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  };</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  </div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Iterator&gt;</div>
+<div class="line"><a name="l00218"></a><span class="lineno"><a class="code" href="a00187.html#aad891ba661cb98b79b317dcc9143ad4e">  218</a></span>&#160;  <a class="code" href="a00064.html">Identity&lt;Iterator&gt;</a> <a class="code" href="a00187.html#aad891ba661cb98b79b317dcc9143ad4e">identity</a>(<span class="keyword">const</span> Iterator&amp; begin, <span class="keyword">const</span> Iterator&amp; end) {</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="a00064.html">Identity&lt;Iterator&gt;</a>(begin,end);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  }</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;}</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

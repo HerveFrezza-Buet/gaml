@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::Merge&lt; Iterator1, Iterator2 &gt; Class Template Reference</title>
+<title>gaml-1.14: gaml::Map&lt; Iterator, Function &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,67 +82,88 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00088.html">Merge</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00088.html">Map</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00234.html">List of all members</a>  </div>
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="a00257.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::Merge&lt; Iterator1, Iterator2 &gt; Class Template Reference</div>  </div>
+<div class="title">gaml::Map&lt; Iterator, Function &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00158_source.html">gamlMerge.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00173_source.html">gamlMap.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a8bfb036b8e6e1cb67733aefab1884472"><td class="memItemLeft" align="right" valign="top">typedef Iterator1::value_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00088.html#a8bfb036b8e6e1cb67733aefab1884472">value_type</a></td></tr>
-<tr class="separator:a8bfb036b8e6e1cb67733aefab1884472"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69d52c642ea541a56f55500f759bb8e7"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00089.html">MergeIterator</a><br class="typebreak"/>
-&lt; Iterator1, Iterator2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00088.html#a69d52c642ea541a56f55500f759bb8e7">iterator</a></td></tr>
-<tr class="separator:a69d52c642ea541a56f55500f759bb8e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad78247684b29da50e144e402be81da41"><td class="memItemLeft" align="right" valign="top">typedef std::iterator_traits<br class="typebreak"/>
+&lt; Iterator &gt;::<a class="el" href="a00088.html#a5c4488c69cf4378307ad432263637a5a">value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00088.html#ad78247684b29da50e144e402be81da41">arg_type</a></td></tr>
+<tr class="separator:ad78247684b29da50e144e402be81da41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a54cc8f1f237450d72616fa410ff4a4"><td class="memItemLeft" align="right" valign="top">typedef std::function<br class="typebreak"/>
+&lt; <a class="el" href="a00088.html#a5c4488c69cf4378307ad432263637a5a">value_type</a>(const <a class="el" href="a00088.html#ad78247684b29da50e144e402be81da41">arg_type</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00088.html#a9a54cc8f1f237450d72616fa410ff4a4">function_type</a></td></tr>
+<tr class="separator:a9a54cc8f1f237450d72616fa410ff4a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ec1dbdf7a3ac147c2e08992906e30e7"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00089.html">MapIterator</a>&lt; typename <br class="typebreak"/>
+std::iterator_traits&lt; Iterator &gt;<br class="typebreak"/>
+::iterator_category, Iterator, <br class="typebreak"/>
+<a class="el" href="a00088.html#a9a54cc8f1f237450d72616fa410ff4a4">function_type</a>, <a class="el" href="a00088.html#a5c4488c69cf4378307ad432263637a5a">value_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00088.html#a8ec1dbdf7a3ac147c2e08992906e30e7">iterator</a></td></tr>
+<tr class="separator:a8ec1dbdf7a3ac147c2e08992906e30e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7bb89c24285f32a3fe3d88b5fdc8eb68"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00088.html#a7bb89c24285f32a3fe3d88b5fdc8eb68">Merge</a> (const Iterator1 &amp;begin1, const Iterator1 &amp;end1, const Iterator2 &amp;begin2, const Iterator2 &amp;end2)</td></tr>
-<tr class="separator:a7bb89c24285f32a3fe3d88b5fdc8eb68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5386f05902303bfe1a3c7d9a8a619952"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00088.html#a5386f05902303bfe1a3c7d9a8a619952">Merge</a> (const <a class="el" href="a00088.html">Merge</a> &amp;other)</td></tr>
-<tr class="separator:a5386f05902303bfe1a3c7d9a8a619952"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d05eb7bf004ceeb515bbd27882c9e31"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00088.html#a8d05eb7bf004ceeb515bbd27882c9e31">size</a> ()</td></tr>
-<tr class="separator:a8d05eb7bf004ceeb515bbd27882c9e31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a47e6e05577031d706ec3aeb0f9992a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00088.html#a2a47e6e05577031d706ec3aeb0f9992a">empty</a> ()</td></tr>
-<tr class="separator:a2a47e6e05577031d706ec3aeb0f9992a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac539bcc85c4322d13bb0f3d64d23f203"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00088.html#a69d52c642ea541a56f55500f759bb8e7">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00088.html#ac539bcc85c4322d13bb0f3d64d23f203">begin</a> ()</td></tr>
-<tr class="separator:ac539bcc85c4322d13bb0f3d64d23f203"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c44fd225ca1d16b30114e1598eb1958"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00088.html#a69d52c642ea541a56f55500f759bb8e7">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00088.html#a0c44fd225ca1d16b30114e1598eb1958">end</a> ()</td></tr>
-<tr class="separator:a0c44fd225ca1d16b30114e1598eb1958"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ea5563e53b28bba403eaef58f16a80a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00088.html#a5ea5563e53b28bba403eaef58f16a80a">Map</a> (const Iterator &amp;begin_iter, const Iterator &amp;end_iter, const Function &amp;fun)</td></tr>
+<tr class="separator:a5ea5563e53b28bba403eaef58f16a80a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04810e634b5e3c61b059931f762b0e5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00088.html#a8ec1dbdf7a3ac147c2e08992906e30e7">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00088.html#a04810e634b5e3c61b059931f762b0e5d">begin</a> () const </td></tr>
+<tr class="separator:a04810e634b5e3c61b059931f762b0e5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af59a2d6b313b73a74dd624e71a549008"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00088.html#a8ec1dbdf7a3ac147c2e08992906e30e7">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00088.html#af59a2d6b313b73a74dd624e71a549008">end</a> () const </td></tr>
+<tr class="separator:af59a2d6b313b73a74dd624e71a549008"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a5c4488c69cf4378307ad432263637a5a"><td class="memItemLeft" align="right" valign="top">decltype((*dummy_f)(*_begin)) <br class="typebreak"/>
+typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00088.html#a5c4488c69cf4378307ad432263637a5a">value_type</a></td></tr>
+<tr class="separator:a5c4488c69cf4378307ad432263637a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a69d52c642ea541a56f55500f759bb8e7"></a>
+<a class="anchor" id="ad78247684b29da50e144e402be81da41"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Iterator1, typename Iterator2&gt; </div>
+template&lt;typename Iterator, typename Function&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="a00089.html">MergeIterator</a>&lt;Iterator1, Iterator2&gt; <a class="el" href="a00088.html">gaml::Merge</a>&lt; Iterator1, Iterator2 &gt;::<a class="el" href="a00088.html#a69d52c642ea541a56f55500f759bb8e7">iterator</a></td>
+          <td class="memname">typedef std::iterator_traits&lt;Iterator&gt;::<a class="el" href="a00088.html#a5c4488c69cf4378307ad432263637a5a">value_type</a> <a class="el" href="a00088.html">gaml::Map</a>&lt; Iterator, Function &gt;::<a class="el" href="a00088.html#ad78247684b29da50e144e402be81da41">arg_type</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a8bfb036b8e6e1cb67733aefab1884472"></a>
+<a class="anchor" id="a9a54cc8f1f237450d72616fa410ff4a4"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Iterator1, typename Iterator2&gt; </div>
+template&lt;typename Iterator, typename Function&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef Iterator1::value_type <a class="el" href="a00088.html">gaml::Merge</a>&lt; Iterator1, Iterator2 &gt;::<a class="el" href="a00088.html#a8bfb036b8e6e1cb67733aefab1884472">value_type</a></td>
+          <td class="memname">typedef std::function&lt;<a class="el" href="a00088.html#a5c4488c69cf4378307ad432263637a5a">value_type</a> (const <a class="el" href="a00088.html#ad78247684b29da50e144e402be81da41">arg_type</a>&amp;)&gt; <a class="el" href="a00088.html">gaml::Map</a>&lt; Iterator, Function &gt;::<a class="el" href="a00088.html#a9a54cc8f1f237450d72616fa410ff4a4">function_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8ec1dbdf7a3ac147c2e08992906e30e7"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator, typename Function&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="a00089.html">MapIterator</a>&lt;typename std::iterator_traits&lt;Iterator&gt;::iterator_category, Iterator, <a class="el" href="a00088.html#a9a54cc8f1f237450d72616fa410ff4a4">function_type</a>, <a class="el" href="a00088.html#a5c4488c69cf4378307ad432263637a5a">value_type</a>&gt; <a class="el" href="a00088.html">gaml::Map</a>&lt; Iterator, Function &gt;::<a class="el" href="a00088.html#a8ec1dbdf7a3ac147c2e08992906e30e7">iterator</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -150,38 +171,32 @@ template&lt;typename Iterator1, typename Iterator2&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a7bb89c24285f32a3fe3d88b5fdc8eb68"></a>
+<a class="anchor" id="a5ea5563e53b28bba403eaef58f16a80a"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Iterator1, typename Iterator2&gt; </div>
+template&lt;typename Iterator, typename Function&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00088.html">gaml::Merge</a>&lt; Iterator1, Iterator2 &gt;::<a class="el" href="a00088.html">Merge</a> </td>
+          <td class="memname"><a class="el" href="a00088.html">gaml::Map</a>&lt; Iterator, Function &gt;::<a class="el" href="a00088.html">Map</a> </td>
           <td>(</td>
-          <td class="paramtype">const Iterator1 &amp;&#160;</td>
-          <td class="paramname"><em>begin1</em>, </td>
+          <td class="paramtype">const Iterator &amp;&#160;</td>
+          <td class="paramname"><em>begin_iter</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Iterator1 &amp;&#160;</td>
-          <td class="paramname"><em>end1</em>, </td>
+          <td class="paramtype">const Iterator &amp;&#160;</td>
+          <td class="paramname"><em>end_iter</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Iterator2 &amp;&#160;</td>
-          <td class="paramname"><em>begin2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const Iterator2 &amp;&#160;</td>
-          <td class="paramname"><em>end2</em>&#160;</td>
+          <td class="paramtype">const Function &amp;&#160;</td>
+          <td class="paramname"><em>fun</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -198,47 +213,21 @@ template&lt;typename Iterator1, typename Iterator2&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a5386f05902303bfe1a3c7d9a8a619952"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator1, typename Iterator2&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00088.html">gaml::Merge</a>&lt; Iterator1, Iterator2 &gt;::<a class="el" href="a00088.html">Merge</a> </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00088.html">Merge</a>&lt; Iterator1, Iterator2 &gt; &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="ac539bcc85c4322d13bb0f3d64d23f203"></a>
+<a class="anchor" id="a04810e634b5e3c61b059931f762b0e5d"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Iterator1, typename Iterator2&gt; </div>
+template&lt;typename Iterator, typename Function&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00088.html#a69d52c642ea541a56f55500f759bb8e7">iterator</a> <a class="el" href="a00088.html">gaml::Merge</a>&lt; Iterator1, Iterator2 &gt;::begin </td>
+          <td class="memname"><a class="el" href="a00088.html#a8ec1dbdf7a3ac147c2e08992906e30e7">iterator</a> <a class="el" href="a00088.html">gaml::Map</a>&lt; Iterator, Function &gt;::begin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -250,20 +239,20 @@ template&lt;typename Iterator1, typename Iterator2&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a2a47e6e05577031d706ec3aeb0f9992a"></a>
+<a class="anchor" id="af59a2d6b313b73a74dd624e71a549008"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Iterator1, typename Iterator2&gt; </div>
+template&lt;typename Iterator, typename Function&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="a00088.html">gaml::Merge</a>&lt; Iterator1, Iterator2 &gt;::empty </td>
+          <td class="memname"><a class="el" href="a00088.html#a8ec1dbdf7a3ac147c2e08992906e30e7">iterator</a> <a class="el" href="a00088.html">gaml::Map</a>&lt; Iterator, Function &gt;::end </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -275,58 +264,23 @@ template&lt;typename Iterator1, typename Iterator2&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a0c44fd225ca1d16b30114e1598eb1958"></a>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a5c4488c69cf4378307ad432263637a5a"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Iterator1, typename Iterator2&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
+template&lt;typename Iterator, typename Function&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00088.html#a69d52c642ea541a56f55500f759bb8e7">iterator</a> <a class="el" href="a00088.html">gaml::Merge</a>&lt; Iterator1, Iterator2 &gt;::end </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="memname">decltype((*dummy_f)(*_begin)) typedef <a class="el" href="a00088.html">gaml::Map</a>&lt; Iterator, Function &gt;::value_type</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a8d05eb7bf004ceeb515bbd27882c9e31"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator1, typename Iterator2&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t <a class="el" href="a00088.html">gaml::Merge</a>&lt; Iterator1, Iterator2 &gt;::size </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="a00158_source.html">gamlMerge.hpp</a></li>
+<li><a class="el" href="a00173_source.html">gamlMap.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gamlBootstrap.hpp File Reference</title>
+<title>gaml-1.14: gaml::TupleComponentParser&lt; Tuple, i, 1 &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -38,8 +38,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -61,7 +61,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -80,66 +82,103 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00145.html">TupleComponentParser< Tuple, i, 1 ></a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="a00253.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gamlBootstrap.hpp File Reference</div>  </div>
+<div class="title">gaml::TupleComponentParser&lt; Tuple, i, 1 &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;vector&gt;</code><br/>
-<code>#include &lt;set&gt;</code><br/>
-<code>#include &lt;sstream&gt;</code><br/>
-<code>#include &lt;iterator&gt;</code><br/>
-<code>#include &lt;cstdlib&gt;</code><br/>
-<code>#include &lt;<a class="el" href="a00143_source.html">gamlAlgorithms.hpp</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="a00149_source.html">gamlException.hpp</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="a00167_source.html">gamlTabular.hpp</a>&gt;</code><br/>
-<code>#include &lt;iostream&gt;</code><br/>
-<code>#include &lt;iomanip&gt;</code><br/>
-</div>
-<p><a href="a00145_source.html">Go to the source code of this file.</a></p>
+
+<p><code>#include &lt;<a class="el" href="a00171_source.html">gamlJSONParser.hpp</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00031.html">gaml::Bootstrap&lt; Iterator &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00108.html">gaml::risk::bootstrap::LeaveOneOut&lt; LOSS &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00109.html">gaml::risk::bootstrap::R632&lt; LOSS &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00110.html">gaml::risk::bootstrap::R632Plus&lt; LOSS &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:a00171"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00171.html">gaml</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00184"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00184.html">gaml::risk</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00185"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00185.html">gaml::risk::bootstrap</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:aaf25f90967186d46c65dee0338ef785c"><td class="memTemplParams" colspan="2">template&lt;typename Iterator &gt; </td></tr>
-<tr class="memitem:aaf25f90967186d46c65dee0338ef785c"><td class="memTemplItemLeft" align="right" valign="top">Bootstrap&lt; Iterator &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00171.html#aaf25f90967186d46c65dee0338ef785c">gaml::bootstrap</a> (const Iterator &amp;begin, const Iterator &amp;end, unsigned int size)</td></tr>
-<tr class="separator:aaf25f90967186d46c65dee0338ef785c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01ac66100a1596566398441fffb1c5dd"><td class="memTemplParams" colspan="2">template&lt;typename LOSS &gt; </td></tr>
-<tr class="memitem:a01ac66100a1596566398441fffb1c5dd"><td class="memTemplItemLeft" align="right" valign="top">LeaveOneOut&lt; LOSS &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00185.html#a01ac66100a1596566398441fffb1c5dd">gaml::risk::bootstrap::leave_one_out</a> (const LOSS &amp;l, unsigned int nb_sets, bool verbosity)</td></tr>
-<tr class="separator:a01ac66100a1596566398441fffb1c5dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a8e3a40f3ab1a21805db11247fe2a1c"><td class="memTemplParams" colspan="2">template&lt;typename LOSS &gt; </td></tr>
-<tr class="memitem:a4a8e3a40f3ab1a21805db11247fe2a1c"><td class="memTemplItemLeft" align="right" valign="top">R632&lt; LOSS &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00185.html#a4a8e3a40f3ab1a21805db11247fe2a1c">gaml::risk::bootstrap::r632</a> (const LOSS &amp;l, unsigned int nb_sets, bool verbosity)</td></tr>
-<tr class="separator:a4a8e3a40f3ab1a21805db11247fe2a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae33b2cab5e4459a0dc7c03c156292982"><td class="memTemplParams" colspan="2">template&lt;typename LOSS &gt; </td></tr>
-<tr class="memitem:ae33b2cab5e4459a0dc7c03c156292982"><td class="memTemplItemLeft" align="right" valign="top">R632Plus&lt; LOSS &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00185.html#ae33b2cab5e4459a0dc7c03c156292982">gaml::risk::bootstrap::r632plus</a> (const LOSS &amp;l, unsigned int nb_sets, bool verbosity)</td></tr>
-<tr class="separator:ae33b2cab5e4459a0dc7c03c156292982"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:afd1c8011bed121515d0739703addedea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00145.html#afd1c8011bed121515d0739703addedea">read</a> (std::istream &amp;is, tuple_type &amp;t) const </td></tr>
+<tr class="separator:afd1c8011bed121515d0739703addedea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8733c7f2b5513979a8d9696fff042d51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00145.html#a8733c7f2b5513979a8d9696fff042d51">write</a> (std::ostream &amp;os, const tuple_type &amp;t) const </td></tr>
+<tr class="separator:a8733c7f2b5513979a8d9696fff042d51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="afd1c8011bed121515d0739703addedea"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tuple , int i&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="a00143.html">gaml::TupleComponentParser</a>&lt; Tuple, i, 1 &gt;::read </td>
+          <td>(</td>
+          <td class="paramtype">std::istream &amp;&#160;</td>
+          <td class="paramname"><em>is</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">tuple_type &amp;&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8733c7f2b5513979a8d9696fff042d51"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tuple , int i&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="a00143.html">gaml::TupleComponentParser</a>&lt; Tuple, i, 1 &gt;::write </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const tuple_type &amp;&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="a00171_source.html">gamlJSONParser.hpp</a></li>
+</ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['wrapper_5ftraits',['wrapper_traits',['../a00141.html',1,'gaml']]],
-  ['wrapperevaluator',['WrapperEvaluator',['../a00135.html',1,'gaml::varsel']]],
-  ['wrappingpredictor',['WrappingPredictor',['../a00103.html',1,'gaml::ProjectedInput']]]
+  ['wrapper_5ftraits',['wrapper_traits',['../a00156.html',1,'gaml']]],
+  ['wrapperevaluator',['WrapperEvaluator',['../a00148.html',1,'gaml::varsel']]],
+  ['wrappingpredictor',['WrappingPredictor',['../a00107.html',1,'gaml::ProjectedInput']]]
 ];

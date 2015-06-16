@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: Member List</title>
+<title>gaml-1.14: gaml::multidim Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -37,8 +37,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
@@ -61,9 +61,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
-      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+      <li><a href="namespaces.html"><span>Namespace&#160;List</span></a></li>
+      <li><a href="namespacemembers.html"><span>Namespace&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -82,34 +81,67 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00031.html">Bootstrap</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00196.html">multidim</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::Bootstrap&lt; Iterator &gt; Member List</div>  </div>
+<div class="title">gaml::multidim Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00096.html">Predictor</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00095.html">Learner</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a89a33b6f1d995b64df36b9dca77039db"><td class="memTemplParams" colspan="2">template&lt;typename OUTPUT , int DIM, typename LEARNER &gt; </td></tr>
+<tr class="memitem:a89a33b6f1d995b64df36b9dca77039db"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00095.html">Learner</a>&lt; DIM, LEARNER, OUTPUT &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00196.html#a89a33b6f1d995b64df36b9dca77039db">learner</a> (const LEARNER &amp;learner, const typename <a class="el" href="a00095.html">Learner</a>&lt; DIM, LEARNER, OUTPUT &gt;::to_array_type &amp;array_of_output, const typename <a class="el" href="a00095.html">Learner</a>&lt; DIM, LEARNER, OUTPUT &gt;::to_output_type &amp;output_of_array)</td></tr>
+<tr class="separator:a89a33b6f1d995b64df36b9dca77039db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a89a33b6f1d995b64df36b9dca77039db"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename OUTPUT , int DIM, typename LEARNER &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00095.html">Learner</a>&lt;DIM, LEARNER, OUTPUT&gt; gaml::multidim::learner </td>
+          <td>(</td>
+          <td class="paramtype">const LEARNER &amp;&#160;</td>
+          <td class="paramname"><em>learner</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename Learner&lt; DIM, LEARNER, OUTPUT &gt;::to_array_type &amp;&#160;</td>
+          <td class="paramname"><em>array_of_output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename Learner&lt; DIM, LEARNER, OUTPUT &gt;::to_output_type &amp;&#160;</td>
+          <td class="paramname"><em>output_of_array</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
-<p>This is the complete list of members for <a class="el" href="a00031.html">gaml::Bootstrap&lt; Iterator &gt;</a>, including all inherited members.</p>
-<table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="a00131.html#ad1763019410017dc00661e8f9e47145a">_begin</a></td><td class="entry"><a class="el" href="a00131.html">gaml::Tabular&lt; Iterator &gt;</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="a00131.html#a64d5319d81845e38aa1a9581818f6d18">begin</a>()</td><td class="entry"><a class="el" href="a00131.html">gaml::Tabular&lt; Iterator &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00031.html#a0abcde118f2a6a6015a03025d7822c65">Bootstrap</a>(void)</td><td class="entry"><a class="el" href="a00031.html">gaml::Bootstrap&lt; Iterator &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="a00031.html#af6c562bea8b7e0e0d49e67a3a583532c">Bootstrap</a>(const Bootstrap&lt; Iterator &gt; &amp;cp)</td><td class="entry"><a class="el" href="a00031.html">gaml::Bootstrap&lt; Iterator &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00031.html#a37f5d93c73e14b8af3d6ec79472dc3f4">Bootstrap</a>(const Iterator &amp;begin_iter, const Iterator &amp;end_iter, unsigned int size)</td><td class="entry"><a class="el" href="a00031.html">gaml::Bootstrap&lt; Iterator &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="a00131.html#a8eeb0a53ef751d8f5a05f38b3f81a96f">end</a>()</td><td class="entry"><a class="el" href="a00131.html">gaml::Tabular&lt; Iterator &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00031.html#afe66ddf080efea445e755384dce4eaf4">get_indices</a>(void) const </td><td class="entry"><a class="el" href="a00031.html">gaml::Bootstrap&lt; Iterator &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="a00031.html#ac4a85688b8e8e238655b20ad2dea998f">has</a>(unsigned int i)</td><td class="entry"><a class="el" href="a00031.html">gaml::Bootstrap&lt; Iterator &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00131.html#a5c88c41784ce2246af10ca61a02cb277">indices</a></td><td class="entry"><a class="el" href="a00131.html">gaml::Tabular&lt; Iterator &gt;</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="a00131.html#a2f58297a9ffde3f00d3d5b0d24091818">indices_type</a> typedef</td><td class="entry"><a class="el" href="a00131.html">gaml::Tabular&lt; Iterator &gt;</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00031.html#ac2440aebeef2eed98245ea814e9bcabf">iterator</a> typedef</td><td class="entry"><a class="el" href="a00031.html">gaml::Bootstrap&lt; Iterator &gt;</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="a00131.html#aa8fe46bc2466a337704705658c1f69ea">operator=</a>(const Tabular &amp;cp)</td><td class="entry"><a class="el" href="a00131.html">gaml::Tabular&lt; Iterator &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00131.html#a0af0bf06a8371ee3836878882f381a2f">Tabular</a>(const Iterator &amp;begin_iter)</td><td class="entry"><a class="el" href="a00131.html">gaml::Tabular&lt; Iterator &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="a00131.html#af6de634afaa653fda1f3de8a1a1cb7e4">Tabular</a>()</td><td class="entry"><a class="el" href="a00131.html">gaml::Tabular&lt; Iterator &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00131.html#a8546d8ade19a73823fd4a15e9be05579">Tabular</a>(const Tabular &amp;cp)</td><td class="entry"><a class="el" href="a00131.html">gaml::Tabular&lt; Iterator &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="a00031.html#a44874d604cd012b12da285dad7b2f62f">value_type</a> typedef</td><td class="entry"><a class="el" href="a00031.html">gaml::Bootstrap&lt; Iterator &gt;</a></td><td class="entry"></td></tr>
-</table></div><!-- contents -->
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: example-005-students.cpp</title>
+<title>gaml-1.14: example-005-students.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -79,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">example-005-students.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00142.html">gaml.hpp</a>&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00157.html">gaml.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;istream&gt;</span></div>
@@ -159,7 +159,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">      + report[Discipline::Mathematics]</div>
 <div class="line">      + report[Discipline::Physics    ];</div>
 <div class="line">    mark /= 4.0;</div>
-<div class="line">    mark += <a name="a0"></a><a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(-PANEL_EVALUATION_NOISE,</div>
+<div class="line">    mark += <a name="a0"></a><a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(-PANEL_EVALUATION_NOISE,</div>
 <div class="line">                                  PANEL_EVALUATION_NOISE);</div>
 <div class="line">  }</div>
 <div class="line">  <span class="keywordflow">return</span> std::max(std::min(mark, 1.), 0.);</div>
@@ -235,7 +235,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line"><span class="keyword">class </span>MetaLearner {</div>
 <div class="line">  <span class="keyword">typedef</span> std::vector&lt;int&gt; indices_type;</div>
-<div class="line">  <span class="keyword">typedef</span> <a name="_a1"></a><a class="code" href="a00141.html">gaml::wrapper_traits&lt;Sample, Label, indices_type::iterator, GenericLearner&gt;</a> traits;</div>
+<div class="line">  <span class="keyword">typedef</span> <a name="_a1"></a><a class="code" href="a00156.html">gaml::wrapper_traits&lt;Sample, Label, indices_type::iterator, GenericLearner&gt;</a> traits;</div>
 <div class="line"></div>
 <div class="line"><span class="keyword">public</span>:</div>
 <div class="line">  <span class="keyword">typedef</span> <span class="keyword">typename</span> traits::wrapping_predictor_type predictor_type;</div>
@@ -252,17 +252,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    GenericLearner generic_learner;</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// We need a real risk estimator for evaluating the algorithms when variables are selected.</span></div>
-<div class="line">    <span class="keyword">auto</span> real_risk_estimator = <a name="a2"></a><a class="code" href="a00184.html#adf7f5a2dee85281e5a0b604b588e9560">gaml::risk::cross_validation</a>(<a name="_a3"></a><a class="code" href="a00083.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a>(),</div>
-<div class="line">                                                            <a name="a4"></a><a class="code" href="a00181.html#a5b2281c25f57d3fbf33b397453f425e7">gaml::partition::kfold</a>(10), <span class="keyword">false</span>);</div>
+<div class="line">    <span class="keyword">auto</span> real_risk_estimator = <a name="a2"></a><a class="code" href="a00200.html#adf7f5a2dee85281e5a0b604b588e9560">gaml::risk::cross_validation</a>(<a name="_a3"></a><a class="code" href="a00087.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a>(),</div>
+<div class="line">                                                            <a name="a4"></a><a class="code" href="a00197.html#a5b2281c25f57d3fbf33b397453f425e7">gaml::partition::kfold</a>(10), <span class="keyword">false</span>);</div>
 <div class="line">    <span class="comment">// Wrapping evaluator</span></div>
-<div class="line">    <span class="keyword">auto</span> evaluator = <a name="a5"></a><a class="code" href="a00188.html#a2b141b9fc3d65e2dd23bc86b6759b857">gaml::varsel::make_wrapper_evaluator</a>(generic_learner, real_risk_estimator,</div>
+<div class="line">    <span class="keyword">auto</span> evaluator = <a name="a5"></a><a class="code" href="a00204.html#a2b141b9fc3d65e2dd23bc86b6759b857">gaml::varsel::make_wrapper_evaluator</a>(generic_learner, real_risk_estimator,</div>
 <div class="line">                                                          begin, end, input_of, label_of);</div>
 <div class="line">    <span class="comment">// Make the evaluator verbose.</span></div>
 <div class="line">    <span class="keywordflow">if</span>(verbosity) evaluator.verbose();</div>
 <div class="line">    </div>
 <div class="line">    <span class="comment">// The result of a search is a subset of variables with its risk.</span></div>
 <div class="line">    std::vector&lt;int&gt; variable_subset;</div>
-<div class="line">    <span class="keywordtype">double</span>           best_risk = <a name="a6"></a><a class="code" href="a00188.html#a406be0b466d45889075be091d165f0e8">gaml::varsel::SFFS</a>(evaluator, variable_subset, verbosity);</div>
+<div class="line">    <span class="keywordtype">double</span>           best_risk = <a name="a6"></a><a class="code" href="a00204.html#a406be0b466d45889075be091d165f0e8">gaml::varsel::SFFS</a>(evaluator, variable_subset, verbosity);</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">if</span>(verbosity) {</div>
 <div class="line">      std::cout &lt;&lt; std::endl</div>
@@ -273,7 +273,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// Let us set up the predictor from the projection of the data.</span></div>
-<div class="line">    <span class="keyword">auto</span> projection = <a name="a7"></a><a class="code" href="a00171.html#a1ddb76665b6c96d816346adde7067e5f">gaml::project</a>(begin, end, </div>
+<div class="line">    <span class="keyword">auto</span> projection = <a name="a7"></a><a class="code" href="a00187.html#a1ddb76665b6c96d816346adde7067e5f">gaml::project</a>(begin, end, </div>
 <div class="line">                                    variable_subset.begin(), variable_subset.end(), </div>
 <div class="line">                                    input_of, label_of);</div>
 <div class="line">    <span class="keywordflow">return</span> projection.teach(generic_learner); <span class="comment">// The predictor is computed here.</span></div>
@@ -307,8 +307,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    std::normal_distribution&lt;&gt; d(.6,.15);</div>
 <div class="line"> </div>
 <div class="line">    std::ofstream ofile(DATA_FILE);</div>
-<div class="line">    <span class="keyword">auto</span> ostr = <a name="a8"></a><a class="code" href="a00171.html#a2addf6f6d613b40c6f598ed3d68bf12a">gaml::make_output_data_stream</a>(ofile, parser);</div>
-<div class="line">    <span class="keyword">auto</span> out  = <a name="a9"></a><a class="code" href="a00171.html#a0b23f6891f675d9e85f308c75a3d69bf">gaml::make_output_iterator</a>(ostr);</div>
+<div class="line">    <span class="keyword">auto</span> ostr = <a name="a8"></a><a class="code" href="a00187.html#a2addf6f6d613b40c6f598ed3d68bf12a">gaml::make_output_data_stream</a>(ofile, parser);</div>
+<div class="line">    <span class="keyword">auto</span> out  = <a name="a9"></a><a class="code" href="a00187.html#a0b23f6891f675d9e85f308c75a3d69bf">gaml::make_output_iterator</a>(ostr);</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Generating students in \&quot;&quot;</span> &lt;&lt;  DATA_FILE &lt;&lt; <span class="stringliteral">&quot;\&quot;...&quot;</span> &lt;&lt; std::flush;</div>
 <div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0; i&lt; NB_DATA_IN_DATAFILE; ++i) {</div>
 <div class="line">      Report r;</div>
@@ -328,18 +328,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  <span class="comment">// Let us use an indexed file as a learning dataset.</span></div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;Binding a dataset to file \&quot;&quot;</span> &lt;&lt; DATA_FILE &lt;&lt; <span class="stringliteral">&quot;\&quot;, using \&quot;&quot;</span> </div>
 <div class="line">            &lt;&lt; INDEX_FILE &lt;&lt; <span class="stringliteral">&quot;\&quot; for indices...&quot;</span> &lt;&lt; std::flush;</div>
-<div class="line">  <span class="keyword">auto</span> dataset = <a name="a10"></a><a class="code" href="a00171.html#a6f27ba60caebb3559f4ac81e2cc1e644">gaml::make_indexed_dataset</a>(parser, DATA_FILE, INDEX_FILE);</div>
+<div class="line">  <span class="keyword">auto</span> dataset = <a name="a10"></a><a class="code" href="a00187.html#a6f27ba60caebb3559f4ac81e2cc1e644">gaml::make_indexed_dataset</a>(parser, DATA_FILE, INDEX_FILE);</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot; Done.&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// In order to reduce the file accesses, let us implement a cache.</span></div>
-<div class="line">  <span class="keyword">auto</span> cached_dataset = <a name="a11"></a><a class="code" href="a00171.html#a2613c3bae4a11e8a81a09db41dbfb67d">gaml::cache</a>(dataset.begin(),dataset.end(), CACHE_PAGE_SIZE, CACHE_NB_PAGES); </div>
+<div class="line">  <span class="keyword">auto</span> cached_dataset = <a name="a11"></a><a class="code" href="a00187.html#a2613c3bae4a11e8a81a09db41dbfb67d">gaml::cache</a>(dataset.begin(),dataset.end(), CACHE_PAGE_SIZE, CACHE_NB_PAGES); </div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Let us use learn from the whole dataset.</span></div>
-<div class="line">  MetaLearner <a name="a12"></a><a class="code" href="a00172.html#a94145476ec3c62d9314841ce88ad24e5">learner</a>;</div>
+<div class="line">  MetaLearner <a name="a12"></a><a class="code" href="a00188.html#a94145476ec3c62d9314841ce88ad24e5">learner</a>;</div>
 <div class="line">  learner.verbosity = <span class="keyword">true</span>;</div>
-<div class="line">  <span class="keyword">auto</span> pred = <a class="code" href="a00172.html#a94145476ec3c62d9314841ce88ad24e5">learner</a>(cached_dataset.begin(), cached_dataset.end(), report_of, mark_of);</div>
+<div class="line">  <span class="keyword">auto</span> pred = <a class="code" href="a00188.html#a94145476ec3c62d9314841ce88ad24e5">learner</a>(cached_dataset.begin(), cached_dataset.end(), report_of, mark_of);</div>
 <div class="line">  Report test_report;</div>
-<div class="line">  <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; mark : test_report) mark = <a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(0,1);</div>
+<div class="line">  <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; mark : test_report) mark = <a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(0,1);</div>
 <div class="line">  std::cout &lt;&lt; std::endl &lt;&lt; <span class="stringliteral">&quot;Report &quot;</span> &lt;&lt; test_report &lt;&lt; <span class="stringliteral">&quot; will be scored &quot;</span> &lt;&lt; pred(test_report) &lt;&lt; std::endl &lt;&lt; std::endl;</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Let us cross-validate the variable selection algorithm</span></div>
@@ -347,8 +347,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  <span class="comment">// involved. Indeed, the wrapper evaluation uses a</span></div>
 <div class="line">  <span class="comment">// cross-validation...</span></div>
 <div class="line">  </div>
-<div class="line">  <span class="keyword">auto</span> evaluator = <a class="code" href="a00184.html#adf7f5a2dee85281e5a0b604b588e9560">gaml::risk::cross_validation</a>(<a class="code" href="a00083.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a>(),</div>
-<div class="line">                                                <a class="code" href="a00181.html#a5b2281c25f57d3fbf33b397453f425e7">gaml::partition::kfold</a>(10), <span class="keyword">true</span>);</div>
+<div class="line">  <span class="keyword">auto</span> evaluator = <a class="code" href="a00200.html#adf7f5a2dee85281e5a0b604b588e9560">gaml::risk::cross_validation</a>(<a class="code" href="a00087.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a>(),</div>
+<div class="line">                                                <a class="code" href="a00197.html#a5b2281c25f57d3fbf33b397453f425e7">gaml::partition::kfold</a>(10), <span class="keyword">true</span>);</div>
 <div class="line">  learner.verbosity = <span class="keyword">false</span>;</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordtype">double</span> risk = evaluator(learner, cached_dataset.begin(), cached_dataset.end(), report_of, mark_of);</div>

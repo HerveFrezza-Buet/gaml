@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: example-ratio.hpp</title>
+<title>gaml-1.14: example-dummy.hpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -76,84 +76,60 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">example-ratio.hpp</div>  </div>
+<div class="title">example-dummy.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><span class="preprocessor">#pragma once</span></div>
 <div class="line"><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00157.html">gaml.hpp</a>&gt;</span></div>
+<div class="line"></div>
 <div class="line"><span class="comment">// Do not start to read this file. It is included by some of our</span></div>
 <div class="line"><span class="comment">// examples. Read the examples, and jump to this file when you are</span></div>
 <div class="line"><span class="comment">// invited to do so.</span></div>
 <div class="line"></div>
-<div class="line"><span class="preprocessor">#include &lt;iterator&gt;</span></div>
 <div class="line"></div>
-<div class="line"><span class="keyword">namespace </span>ratio {</div>
+<div class="line"><span class="keyword">namespace </span>dummy {</div>
 <div class="line"></div>
-<div class="line">  <span class="comment">// Let us define a regressor, that uses a hypothesis set made y =</span></div>
-<div class="line">  <span class="comment">// a*x functions.</span></div>
+<div class="line">  <span class="comment">// Data are artificially generated for testing the process of</span></div>
+<div class="line">  <span class="comment">// variable selection The idea is to generate a dataset with a large</span></div>
+<div class="line">  <span class="comment">// number of variables and then to consider an output which is the</span></div>
+<div class="line">  <span class="comment">// average of a small subset of variables.</span></div>
 <div class="line"></div>
-<div class="line">  <span class="comment">// This fits the gaml::concept::Predictor concept.</span></div>
-<div class="line">  <span class="keyword">class </span>Predictor {</div>
-<div class="line">  <span class="keyword">public</span>:</div>
+<div class="line">  <span class="comment">// In this dummy case, the RELEVANT_ATTRIBUTE_NUMBER first attributes</span></div>
+<div class="line">  <span class="comment">// will be relavant, by construction. Indeed, the label for each data</span></div>
+<div class="line">  <span class="comment">// is related to the sum of the RELEVANT_ATTRIBUTE_NUMBER first</span></div>
+<div class="line">  <span class="comment">// attributes, so that the remaining attributes are meaningless.</span></div>
 <div class="line"></div>
-<div class="line">    <span class="keyword">typedef</span> <span class="keywordtype">double</span> input_type;</div>
-<div class="line">    <span class="keyword">typedef</span> <span class="keywordtype">double</span> output_type;</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">int</span>    DATA_SIZE                         = 100;</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">int</span>    ATTRIBUTE_NUMBER                  = 100;</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">int</span>    RELEVANT_ATTRIBUTE_NUMBER         =   5;</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> NOISE_RATIO_ON_RELEVANT_ATTRIBUTE =   0.1;</div>
 <div class="line"></div>
-<div class="line">    <span class="keywordtype">double</span> a;</div>
-<div class="line">    Predictor(<span class="keywordtype">double</span> coef) : a(coef) {}</div>
+<div class="line">  <span class="keyword">typedef</span> std::array&lt;double,ATTRIBUTE_NUMBER&gt; input_type;</div>
+<div class="line">  <span class="keyword">typedef</span> std::pair&lt;input_type ,double&gt; data_type;</div>
+<div class="line">  <span class="keyword">typedef</span> std::vector&lt;data_type&gt; dataset_type;</div>
 <div class="line"></div>
-<div class="line">    Predictor(<span class="keyword">const</span> Predictor&amp; other) : a(other.a) {}</div>
-<div class="line">    Predictor&amp; operator=(<span class="keyword">const</span> Predictor&amp; other) {</div>
-<div class="line">      <span class="keywordflow">if</span>(<span class="keyword">this</span> != &amp;other)</div>
-<div class="line">        a = other.a;</div>
-<div class="line">      <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line">  dataset_type build_dataset(<span class="keywordtype">void</span>) {</div>
+<div class="line">    dataset_type data(DATA_SIZE);</div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; d : data)  { </div>
+<div class="line">      <span class="comment">// Let us put a random value on each attributes.</span></div>
+<div class="line">      <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; attr : d.first) attr = <a name="a0"></a><a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(0,1);</div>
+<div class="line">      <span class="comment">// let us compute the label as the sum of the first RELEVANT_ATTRIBUTE_NUMBER attributes...</span></div>
+<div class="line">      <span class="keywordtype">double</span> total = std::accumulate(d.first.begin(), d.first.begin() + RELEVANT_ATTRIBUTE_NUMBER, 0.);</div>
+<div class="line">      <span class="comment">// ... and noisify a bit the result.</span></div>
+<div class="line">      d.second = total * <a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(1-NOISE_RATIO_ON_RELEVANT_ATTRIBUTE,</div>
+<div class="line">                                               1+NOISE_RATIO_ON_RELEVANT_ATTRIBUTE);</div>
 <div class="line">    }</div>
-<div class="line">  </div>
-<div class="line">    <span class="comment">// This does the prediction.</span></div>
-<div class="line">    output_type operator()(<span class="keyword">const</span> input_type&amp; x)<span class="keyword"> const </span>{<span class="keywordflow">return</span> a*x;}</div>
-<div class="line">  };</div>
 <div class="line"></div>
+<div class="line">    <span class="keywordflow">return</span> data;</div>
+<div class="line">  }</div>
 <div class="line"></div>
-<div class="line">  <span class="comment">// The learner class for this type of regressor consists in</span></div>
-<div class="line">  <span class="comment">// computing the average of all the ratios.</span></div>
-<div class="line"></div>
-<div class="line">  <span class="comment">// This fits the gaml::concept::Learner concept.</span></div>
-<div class="line">  <span class="keyword">class </span>Learner {</div>
-<div class="line"></div>
-<div class="line">  <span class="keyword">public</span>:</div>
-<div class="line"></div>
-<div class="line">    <span class="keyword">typedef</span> Predictor predictor_type;</div>
-<div class="line"></div>
-<div class="line">    Learner(<span class="keywordtype">void</span>) {}</div>
-<div class="line">    Learner(<span class="keyword">const</span> Learner&amp; other) {}</div>
-<div class="line"></div>
-<div class="line">    <span class="comment">// This does the learning, and returns a predictor from the data.</span></div>
-<div class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DataIterator, <span class="keyword">typename</span> InputOf, <span class="keyword">typename</span> OutputOf&gt; </div>
-<div class="line">    Predictor operator()(<span class="keyword">const</span> DataIterator&amp; begin, <span class="keyword">const</span> DataIterator&amp; end,</div>
-<div class="line">                         <span class="keyword">const</span> InputOf&amp; input_of, <span class="keyword">const</span> OutputOf&amp; label_of)<span class="keyword"> const </span>{</div>
-<div class="line">      <span class="keywordtype">double</span> mean = 0;</div>
-<div class="line">      <span class="keywordflow">for</span>(DataIterator it = begin; it != end; ++it) {</div>
-<div class="line">        <span class="keyword">auto</span> x = input_of(*it);</div>
-<div class="line">        <span class="keywordflow">if</span>(x != 0) {</div>
-<div class="line">          <span class="keyword">auto</span> y = label_of(*it);</div>
-<div class="line">          mean += y/x; </div>
-<div class="line">        }</div>
-<div class="line">      }</div>
-<div class="line">      <span class="keyword">auto</span> nb_elem = std::distance(begin,end);</div>
-<div class="line">      <span class="keywordflow">if</span>(nb_elem &gt; 0) mean /= nb_elem;</div>
-<div class="line">      <span class="keywordflow">return</span> Predictor(mean);</div>
-<div class="line">    }</div>
-<div class="line">  };</div>
-<div class="line"></div>
-<div class="line">  <span class="comment">// These are useful type definitions.</span></div>
-<div class="line">  <span class="keyword">typedef</span> std::pair&lt;double,double&gt; Data;    <span class="comment">// We learn from sample/label pairs (int/double here).</span></div>
-<div class="line">  <span class="keyword">typedef</span> std::vector&lt;Data&gt;        DataSet; <span class="comment">// We decide to use a vector for the data set.</span></div>
-<div class="line"></div>
-<div class="line">  <span class="comment">// We need functions to extract input and output from the data.</span></div>
-<div class="line">  <span class="keywordtype">double</span> input_of_data (<span class="keyword">const</span> Data&amp; data) {<span class="keywordflow">return</span> data.first;}</div>
-<div class="line">  <span class="keywordtype">double</span> output_of_data(<span class="keyword">const</span> Data&amp; data) {<span class="keywordflow">return</span> data.second;}</div>
-<div class="line"></div>
+<div class="line">  <span class="keyword">const</span> input_type&amp;  input_of_data(<span class="keyword">const</span> data_type&amp; data) {<span class="keywordflow">return</span> data.first;}</div>
+<div class="line">  <span class="keywordtype">double</span>            output_of_data(<span class="keyword">const</span> data_type&amp; data) {<span class="keywordflow">return</span> data.second;}</div>
 <div class="line">}</div>
+<div class="line"></div>
+<div class="line"></div>
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

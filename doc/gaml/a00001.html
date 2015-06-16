@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: example-000-000-overview.cpp</title>
+<title>gaml-1.14: example-000-000-overview.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -79,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">example-000-000-overview.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00142.html">gaml.hpp</a>&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00157.html">gaml.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;ctime&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
@@ -104,22 +104,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line">  silly::DataSet basis(DATA_SIZE);</div>
 <div class="line">  <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; data : basis)</div>
-<div class="line">    data = {<a name="a0"></a><a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(0,100),<a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(0,1)};</div>
+<div class="line">    data = {<a name="a0"></a><a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(0,100),<a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(0,1)};</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Let us display the data, using the provided stl-like output iterators.</span></div>
 <div class="line">  <span class="keyword">auto</span> parser           = gaml::make_JSON_parser&lt;silly::Data&gt;();</div>
-<div class="line">  <span class="keyword">auto</span> outputDataStream = <a name="a1"></a><a class="code" href="a00171.html#a2addf6f6d613b40c6f598ed3d68bf12a">gaml::make_output_data_stream</a>(std::cout, parser);</div>
-<div class="line">  <span class="keyword">auto</span> out              = <a name="a2"></a><a class="code" href="a00171.html#a0b23f6891f675d9e85f308c75a3d69bf">gaml::make_output_iterator</a>(outputDataStream);</div>
+<div class="line">  <span class="keyword">auto</span> outputDataStream = <a name="a1"></a><a class="code" href="a00187.html#a2addf6f6d613b40c6f598ed3d68bf12a">gaml::make_output_data_stream</a>(std::cout, parser);</div>
+<div class="line">  <span class="keyword">auto</span> out              = <a name="a2"></a><a class="code" href="a00187.html#a0b23f6891f675d9e85f308c75a3d69bf">gaml::make_output_iterator</a>(outputDataStream);</div>
 <div class="line">  std::copy(basis.begin(),basis.end(),out);</div>
 <div class="line">  std::cout &lt;&lt; std::endl &lt;&lt; std::endl;</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Now, let us train our algorithm on this database.</span></div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// First create a learner</span></div>
-<div class="line">  silly::Learner <a name="a3"></a><a class="code" href="a00172.html#a94145476ec3c62d9314841ce88ad24e5">learner</a>;</div>
+<div class="line">  silly::Learner <a name="a3"></a><a class="code" href="a00188.html#a94145476ec3c62d9314841ce88ad24e5">learner</a>;</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Second get a predictor from the learner and the example dataset</span></div>
-<div class="line">  <span class="keyword">auto</span> predictor = <a class="code" href="a00172.html#a94145476ec3c62d9314841ce88ad24e5">learner</a>(basis.begin(),basis.end(),</div>
+<div class="line">  <span class="keyword">auto</span> predictor = <a class="code" href="a00188.html#a94145476ec3c62d9314841ce88ad24e5">learner</a>(basis.begin(),basis.end(),</div>
 <div class="line">                           silly::input_of_data,silly::output_of_data);  </div>
 <div class="line">  <span class="comment">// lambda functions could have been used instead of input_of_data and output_of_data.</span></div>
 <div class="line"></div>
@@ -131,7 +131,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line">  <span class="comment">// We use the quadratic loss to set up an predictor evaluator. It</span></div>
 <div class="line">  <span class="comment">// fits the concept gaml::concept::PredictorEvaluator.</span></div>
-<div class="line">  <span class="keyword">auto</span> predictor_evaluator = <a name="a4"></a><a class="code" href="a00184.html#a6d9973bf3290ec3c9e0eccc57a63ad46">gaml::risk::empirical</a>(<a name="_a5"></a><a class="code" href="a00083.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a>());</div>
+<div class="line">  <span class="keyword">auto</span> predictor_evaluator = <a name="a4"></a><a class="code" href="a00200.html#a6d9973bf3290ec3c9e0eccc57a63ad46">gaml::risk::empirical</a>(<a name="_a5"></a><a class="code" href="a00087.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a>());</div>
 <div class="line">  </div>
 <div class="line">  <span class="comment">// The evaluator can then evaluate our predictor on the data basis.</span></div>
 <div class="line">  <span class="keywordtype">double</span> risk = predictor_evaluator(predictor,</div>
@@ -142,8 +142,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  <span class="comment">// The library also provides tools for evaluating learning</span></div>
 <div class="line">  <span class="comment">// algorithms, instead of predictors. This is typically what cross</span></div>
 <div class="line">  <span class="comment">// validation does.</span></div>
-<div class="line">  <span class="keyword">auto</span> algo_evaluator = <a name="a6"></a><a class="code" href="a00184.html#adf7f5a2dee85281e5a0b604b588e9560">gaml::risk::cross_validation</a>(<a class="code" href="a00083.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a>(),</div>
-<div class="line">                                                     <a name="a7"></a><a class="code" href="a00181.html#a5b2281c25f57d3fbf33b397453f425e7">gaml::partition::kfold</a>(6),</div>
+<div class="line">  <span class="keyword">auto</span> algo_evaluator = <a name="a6"></a><a class="code" href="a00200.html#adf7f5a2dee85281e5a0b604b588e9560">gaml::risk::cross_validation</a>(<a class="code" href="a00087.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a>(),</div>
+<div class="line">                                                     <a name="a7"></a><a class="code" href="a00197.html#a5b2281c25f57d3fbf33b397453f425e7">gaml::partition::kfold</a>(6),</div>
 <div class="line">                                                     <span class="keyword">true</span>);</div>
 <div class="line">  <span class="keywordtype">double</span> real = algo_evaluator(learner,</div>
 <div class="line">                               basis.begin(),basis.end(),</div>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: example-004-002-filter-based-selection.cpp</title>
+<title>gaml-1.14: example-004-002-filter-based-selection.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -79,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">example-004-002-filter-based-selection.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00142.html">gaml.hpp</a>&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00157.html">gaml.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;utility&gt;</span></div>
@@ -127,7 +127,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  <span class="comment">// between every pair of variables in the subset.</span></div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Correlation evaluator</span></div>
-<div class="line">  <span class="keyword">auto</span> evaluator = <a name="a0"></a><a class="code" href="a00188.html#a7423a399127ecd855efd035d9776da3f">gaml::varsel::make_correlation_filter</a>(dataset.begin(), dataset.end(), dummy::input_of_data, dummy::output_of_data);</div>
+<div class="line">  <span class="keyword">auto</span> evaluator = <a name="a0"></a><a class="code" href="a00204.html#a7423a399127ecd855efd035d9776da3f">gaml::varsel::make_correlation_filter</a>(dataset.begin(), dataset.end(), dummy::input_of_data, dummy::output_of_data);</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Asks for the search strategy</span></div>
 <div class="line">  std::ostringstream prompt;</div>
@@ -147,10 +147,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line">  <span class="comment">// Apply the selected search strategy</span></div>
 <div class="line">  <span class="keywordflow">switch</span>(choice) {</div>
-<div class="line">  <span class="keywordflow">case</span> 1 : best_score = <a name="a1"></a><a class="code" href="a00188.html#a1b3c96d59787abd9546ff317096fd3f7">gaml::varsel::SFS</a> (evaluator, variable_subset, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Forward Selection.</span></div>
-<div class="line">  <span class="keywordflow">case</span> 2 : best_score = <a name="a2"></a><a class="code" href="a00188.html#a367ede0d19e4754c2510a7d4cd76170d">gaml::varsel::SBS</a> (evaluator, variable_subset, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Backward Selection.</span></div>
-<div class="line">  <span class="keywordflow">case</span> 3 : best_score = <a name="a3"></a><a class="code" href="a00188.html#a406be0b466d45889075be091d165f0e8">gaml::varsel::SFFS</a>(evaluator, variable_subset, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Floating Forward Selection.</span></div>
-<div class="line">  <span class="keywordflow">case</span> 4 : best_score = <a name="a4"></a><a class="code" href="a00188.html#a49b57f623b1500ae750f58aea95620fc">gaml::varsel::SFBS</a>(evaluator, variable_subset, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Floating Backward Selection.</span></div>
+<div class="line">  <span class="keywordflow">case</span> 1 : best_score = <a name="a1"></a><a class="code" href="a00204.html#a1b3c96d59787abd9546ff317096fd3f7">gaml::varsel::SFS</a> (evaluator, variable_subset, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Forward Selection.</span></div>
+<div class="line">  <span class="keywordflow">case</span> 2 : best_score = <a name="a2"></a><a class="code" href="a00204.html#a367ede0d19e4754c2510a7d4cd76170d">gaml::varsel::SBS</a> (evaluator, variable_subset, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Backward Selection.</span></div>
+<div class="line">  <span class="keywordflow">case</span> 3 : best_score = <a name="a3"></a><a class="code" href="a00204.html#a406be0b466d45889075be091d165f0e8">gaml::varsel::SFFS</a>(evaluator, variable_subset, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Floating Forward Selection.</span></div>
+<div class="line">  <span class="keywordflow">case</span> 4 : best_score = <a name="a4"></a><a class="code" href="a00204.html#a49b57f623b1500ae750f58aea95620fc">gaml::varsel::SFBS</a>(evaluator, variable_subset, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Floating Backward Selection.</span></div>
 <div class="line">  <span class="keywordflow">case</span> 5 :</div>
 <div class="line">  <span class="keywordflow">case</span> 6 :</div>
 <div class="line">    <span class="comment">// K best first search </span></div>
@@ -160,8 +160,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    <span class="comment">// far multiplied by R.</span></div>
 <div class="line">    <span class="keywordtype">double</span> filtering_ratio = ask&lt;double&gt;(<span class="stringliteral">&quot;Enter filtering ratio R (0 &lt;= R &lt;= 1) &gt; &quot;</span>, 0, 1);</div>
 <div class="line">    <span class="keywordflow">switch</span>(choice) {</div>
-<div class="line">    <span class="keywordflow">case</span> 5 : best_score = <a name="a5"></a><a class="code" href="a00188.html#af34ab6c109a7ef1a7f4cf34b7482292c">gaml::varsel::SBFS</a>(evaluator, variable_subset, k, filtering_ratio, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Beam Forward Selection.</span></div>
-<div class="line">    <span class="keywordflow">case</span> 6 : best_score = <a name="a6"></a><a class="code" href="a00188.html#a2e3005977928f04293d1cbb51f5f6e91">gaml::varsel::SBBS</a>(evaluator, variable_subset, k, filtering_ratio, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Beam Backward Selection</span></div>
+<div class="line">    <span class="keywordflow">case</span> 5 : best_score = <a name="a5"></a><a class="code" href="a00204.html#af34ab6c109a7ef1a7f4cf34b7482292c">gaml::varsel::SBFS</a>(evaluator, variable_subset, k, filtering_ratio, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Beam Forward Selection.</span></div>
+<div class="line">    <span class="keywordflow">case</span> 6 : best_score = <a name="a6"></a><a class="code" href="a00204.html#a2e3005977928f04293d1cbb51f5f6e91">gaml::varsel::SBBS</a>(evaluator, variable_subset, k, filtering_ratio, verbose); <span class="keywordflow">break</span>; <span class="comment">// Sequential Beam Backward Selection</span></div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">break</span>;</div>
 <div class="line">  }</div>

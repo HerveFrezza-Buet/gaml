@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: example-004-001-variable-projection.cpp</title>
+<title>gaml-1.14: example-004-001-variable-projection.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -79,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">example-004-001-variable-projection.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00142.html">gaml.hpp</a>&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00157.html">gaml.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;ctime&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
@@ -104,8 +104,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  dataset.resize(DATA_SIZE);</div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; d : dataset) {</div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; attr : d.first)</div>
-<div class="line">      attr = <a name="a0"></a><a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(0, 1);</div>
-<div class="line">    d.second = <a name="a1"></a><a class="code" href="a00183.html#a50561031870af4d865de65f89c677916">gaml::random::proba</a>(.5);</div>
+<div class="line">      attr = <a name="a0"></a><a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(0, 1);</div>
+<div class="line">    d.second = <a name="a1"></a><a class="code" href="a00199.html#a50561031870af4d865de65f89c677916">gaml::random::proba</a>(.5);</div>
 <div class="line">  }</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">return</span> dataset;</div>
@@ -147,7 +147,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  Idx indices = { { 3, 4, 8 } };</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Creates the projection of a dataset</span></div>
-<div class="line">  <span class="keyword">auto</span> projection = <a name="a2"></a><a class="code" href="a00171.html#a1ddb76665b6c96d816346adde7067e5f">gaml::project</a>(dataset.begin(),  dataset.end(),  <span class="comment">// Range of data</span></div>
+<div class="line">  <span class="keyword">auto</span> projection = <a name="a2"></a><a class="code" href="a00187.html#a1ddb76665b6c96d816346adde7067e5f">gaml::project</a>(dataset.begin(),  dataset.end(),  <span class="comment">// Range of data</span></div>
 <div class="line">                                  indices.cbegin(), indices.cend(), <span class="comment">// Range of indices</span></div>
 <div class="line">                                  input_of_data, output_of_data);</div>
 <div class="line"></div>
@@ -164,7 +164,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  <span class="comment">// Making a projection implies using internal types, defined by</span></div>
 <div class="line">  <span class="comment">// gaml. They can be manipulated by dedicated type traits, enabling</span></div>
 <div class="line">  <span class="comment">// to retrieve the types.</span></div>
-<div class="line">  <span class="keyword">typedef</span> <a name="_a3"></a><a class="code" href="a00107.html">gaml::projection_traits&lt;X, U, Idx::const_iterator&gt;</a> Traits;</div>
+<div class="line">  <span class="keyword">typedef</span> <a name="_a3"></a><a class="code" href="a00111.html">gaml::projection_traits&lt;X, U, Idx::const_iterator&gt;</a> Traits;</div>
 <div class="line"></div>
 <div class="line">  <span class="keyword">typedef</span> Traits::input_type           Input;          <span class="comment">// This is X here.</span></div>
 <div class="line">  <span class="keyword">typedef</span> Traits::output_type          Output;         <span class="comment">// This is the initial U which is the same before and after projection</span></div>

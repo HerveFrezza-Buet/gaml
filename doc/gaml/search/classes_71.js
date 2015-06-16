@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quadratic',['Quadratic',['../a00083.html',1,'gaml::loss']]]
+  ['quadratic',['Quadratic',['../a00087.html',1,'gaml::loss']]]
 ];

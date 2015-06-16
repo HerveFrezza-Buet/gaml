@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: example-customer.hpp</title>
+<title>gaml-1.14: example-999-001-test-virtual-tabular.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -76,95 +76,107 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">example-customer.hpp</div>  </div>
+<div class="title">example-999-001-test-virtual-tabular.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="preprocessor">#pragma once</span></div>
-<div class="line"><span class="preprocessor"></span></div>
-<div class="line"><span class="preprocessor">#include&lt;string&gt;</span></div>
-<div class="line"><span class="preprocessor">#include&lt;vector&gt;</span></div>
-<div class="line"><span class="preprocessor">#include&lt;array&gt;</span></div>
-<div class="line"><span class="preprocessor">#include&lt;tuple&gt;</span></div>
-<div class="line"></div>
-<div class="line"><span class="comment">// Do not start to read this file. It is included by some of our</span></div>
-<div class="line"><span class="comment">// examples. Read the examples, and jump to this file when you are</span></div>
-<div class="line"><span class="comment">// invited to do so.</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00157.html">gaml.hpp</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;ctime&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
-<div class="line"><span class="comment"> *</span></div>
-<div class="line"><span class="comment"> * Representation of data:</span></div>
-<div class="line"><span class="comment"> *</span></div>
-<div class="line"><span class="comment"> * Suppose we want to read a file describing customers.</span></div>
-<div class="line"><span class="comment"> * Each customer is described by the following features:</span></div>
-<div class="line"><span class="comment"> * 1) gender (boolean, true for female)</span></div>
-<div class="line"><span class="comment"> * 2) age (integer)</span></div>
-<div class="line"><span class="comment"> * 3) a variable-length list of purchases, each described by:</span></div>
-<div class="line"><span class="comment"> *   3.1) date (year, month, day) of purchase (three integers)</span></div>
-<div class="line"><span class="comment"> *   3.2) variable-length list of bought articles, each described by:</span></div>
-<div class="line"><span class="comment"> *     3.2.1) a reference name (string)</span></div>
-<div class="line"><span class="comment"> *     3.2.2) a price (double)</span></div>
-<div class="line"><span class="comment"> * 4) a variable-length map of product ratings</span></div>
-<div class="line"><span class="comment"> *</span></div>
-<div class="line"><span class="comment"> * Unless one wants to code a special class to describe customers,</span></div>
-<div class="line"><span class="comment"> * with a special parser, the simplest and most natural way in C++ is</span></div>
-<div class="line"><span class="comment"> * to handle data in memory consists in storing every datum in a</span></div>
-<div class="line"><span class="comment"> * variable of type Data, made of standard C++ types:</span></div>
-<div class="line"><span class="comment"> *</span></div>
-<div class="line"><span class="comment"> * Notes:</span></div>
-<div class="line"><span class="comment"> * - Dynamic arrays (std::vector) are equivalent to linked lists (std::list)</span></div>
-<div class="line"><span class="comment"> * - Pairs (std::pair) are equivalent to two-element tuples (std::tuple)</span></div>
-<div class="line"><span class="comment"> * - Fixed size arrays (std::array) can be replaced by variable-length</span></div>
-<div class="line"><span class="comment"> *   containers (std::vector or std::list) . However using arrays</span></div>
-<div class="line"><span class="comment"> *   ensure the number of elements provided for every data is fixed as</span></div>
-<div class="line"><span class="comment"> *   expected.</span></div>
-<div class="line"><span class="comment"> *</span></div>
-<div class="line"><span class="comment"> */</span></div>
+<div class="line"><span class="comment">  This example shows how the use of iterators allows a convenient</span></div>
+<div class="line"><span class="comment">  manupilation of sets, through the tools proposed in the gaml</span></div>
+<div class="line"><span class="comment">  library. </span></div>
+<div class="line"><span class="comment">*/</span></div>
 <div class="line"></div>
-<div class="line"><span class="keyword">namespace </span>customer {</div>
 <div class="line"></div>
-<div class="line"><span class="keyword">typedef</span> <span class="keywordtype">bool</span> Gender;         <span class="comment">// true = female, false = male.</span></div>
-<div class="line"><span class="keyword">typedef</span> <span class="keywordtype">int</span> Age;</div>
-<div class="line"><span class="keyword">typedef</span> std::array&lt;int, 3&gt; Date;           <span class="comment">// (year, month, day)</span></div>
-<div class="line"><span class="keyword">typedef</span> std::pair&lt;std::string, double&gt; Article;       <span class="comment">// (reference name, price)</span></div>
-<div class="line"><span class="keyword">typedef</span> std::vector&lt;Article&gt; ShoppingBasket; <span class="comment">// A std::list could also have been used.</span></div>
-<div class="line"><span class="keyword">typedef</span> std::tuple&lt;Date, ShoppingBasket&gt; Purchase;</div>
-<div class="line"><span class="keyword">typedef</span> std::map&lt;std::string, int&gt; Ratings;</div>
-<div class="line"><span class="keyword">typedef</span> std::tuple&lt;Gender, Age, std::vector&lt;Purchase&gt;, Ratings&gt; Data;</div>
-<div class="line"></div>
-<div class="line">std::vector&lt;Data&gt; make_data() {</div>
-<div class="line">        Article art1 { <span class="stringliteral">&quot;black tea&quot;</span>, 4.2 };</div>
-<div class="line">        Article art2 { <span class="stringliteral">&quot;pu-erh tea&quot;</span>, 7.1 };</div>
-<div class="line">        Article art3 { <span class="stringliteral">&quot;green tea&quot;</span>, 1.3 };</div>
-<div class="line">        Article art4 { <span class="stringliteral">&quot;oolong tea&quot;</span>, 5.0 };</div>
-<div class="line"></div>
-<div class="line">        Date day1 { { 2014, 1, 2 } };</div>
-<div class="line">        Date day2 { { 2014, 1, 21 } };</div>
-<div class="line">        Date day3 { { 2014, 2, 14 } };</div>
-<div class="line">        Date day4 { { 2014, 3, 15 } };</div>
-<div class="line">        Date day5 { { 2014, 5, 1 } };</div>
-<div class="line"></div>
-<div class="line">        Purchase pur1 { day1, { { art1, art2 } } };</div>
-<div class="line">        Purchase pur2 { day3, { { art3 } } };</div>
-<div class="line">        Purchase pur3 { day5, { { art4, art1 } } };</div>
-<div class="line">        Purchase pur4 { day4, { { art4, art1, art2 } } };</div>
-<div class="line">        Purchase pur5 { day3, { { art4, art2 } } };</div>
-<div class="line">        Purchase pur6 { day2, { { art2, art1, art4 } } };</div>
-<div class="line">        Purchase pur7 { day1, { { art2, art1, art3 } } };</div>
-<div class="line">        Purchase pur8 { day5, { { art3, art3, } } };</div>
-<div class="line">        Purchase pur9 { day5, { { art4 } } };</div>
-<div class="line"></div>
-<div class="line">        Ratings rat1 { { <span class="stringliteral">&quot;black tea&quot;</span>, 3 }, { <span class="stringliteral">&quot;oolong tea&quot;</span>, 5 } };</div>
-<div class="line">        Ratings rat2 { { <span class="stringliteral">&quot;black tea&quot;</span>, 2 }, { <span class="stringliteral">&quot;green tea&quot;</span>, 5 } };</div>
-<div class="line"></div>
-<div class="line">        Data dat1 { <span class="keyword">true</span>, 37, { { pur1, pur2, pur3 } }, rat1 };</div>
-<div class="line">        Data dat2 { <span class="keyword">false</span>, 54, { { pur3, pur4 } }, { } };</div>
-<div class="line">        Data dat3 { <span class="keyword">true</span>, 25, { { pur5 } }, { } };</div>
-<div class="line">        Data dat4 { <span class="keyword">true</span>, 43, { { pur6, pur7 } }, { } };</div>
-<div class="line">        Data dat5 { <span class="keyword">true</span>, 75, { { pur8 } }, rat2 };</div>
-<div class="line">        Data dat6 { <span class="keyword">false</span>, 19, { { pur9 } }, { } };</div>
-<div class="line"></div>
-<div class="line">        <span class="keywordflow">return</span> { {dat1, dat2, dat3, dat4, dat5, dat6}};</div>
+<div class="line"><span class="comment">// This template function displays values from begin to end.</span></div>
+<div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Iterator&gt;</div>
+<div class="line"><span class="keywordtype">void</span> display(Iterator begin, Iterator end) {</div>
+<div class="line">  std::cout &lt;&lt; gaml::iterator_traits&lt;Iterator&gt;::tag_type::to_string() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="charliteral">&#39;[&#39;</span>;</div>
+<div class="line">  <span class="keywordflow">for</span>(Iterator iter = begin; iter != end; ++iter)</div>
+<div class="line">    std::cout &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; *iter;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot; ] (i.e. &quot;</span> &lt;&lt; std::distance(begin,end) &lt;&lt; <span class="stringliteral">&quot; elements)&quot;</span> &lt;&lt; std::endl</div>
+<div class="line">            &lt;&lt; std::endl;</div>
 <div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// This template function displays values from begin to end.</span></div>
+<div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Iterator&gt;</div>
+<div class="line"><span class="keywordtype">void</span> display_idx(Iterator begin, Iterator end) {</div>
+<div class="line">  std::cout &lt;&lt; gaml::iterator_traits&lt;Iterator&gt;::tag_type::to_string() &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="charliteral">&#39;[&#39;</span>;</div>
+<div class="line">  <span class="keywordflow">for</span>(Iterator iter = begin; iter != end; ++iter)</div>
+<div class="line">    std::cout &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; *iter;</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot; ] (i.e. &quot;</span> &lt;&lt; std::distance(begin,end) &lt;&lt; <span class="stringliteral">&quot; elements)&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">  std::cout &lt;&lt; <span class="charliteral">&#39;[&#39;</span>;</div>
+<div class="line">  <span class="keywordflow">for</span>(Iterator iter = begin; iter != end; ++iter)</div>
+<div class="line">    std::cout &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; *(iter.idx_iter());</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot; ]&quot;</span> &lt;&lt; std::endl</div>
+<div class="line">            &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"></div>
+<div class="line"><span class="comment">// Iterators are a lazy way to compute values. It means that the value</span></div>
+<div class="line"><span class="comment">// is computed when *iter is called. Of course, if *iter is an acces</span></div>
+<div class="line"><span class="comment">// to a previously stored collection of values, this on demand</span></div>
+<div class="line"><span class="comment">// evaluation is just a memory access. Nevertheless, iterators are</span></div>
+<div class="line"><span class="comment">// more general, as the ones provided by gaml for set manipulation</span></div>
+<div class="line"><span class="comment">// show.</span></div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[]) {</div>
+<div class="line"></div>
+<div class="line">  <span class="comment">// random seed initialization</span></div>
+<div class="line">  std::srand(std::time(0));</div>
+<div class="line">  </div>
+<div class="line">  <a name="_a0"></a><a class="code" href="a00071.html">gaml::integer</a> begin = 0;</div>
+<div class="line">  <a class="code" href="a00071.html">gaml::integer</a> end   = 50;</div>
+<div class="line"></div>
+<div class="line">  display(begin,end);</div>
+<div class="line"></div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;split1&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">auto</span> split1 = <a name="a1"></a><a class="code" href="a00187.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">gaml::split</a>(begin, end,</div>
+<div class="line">                           [](<span class="keywordtype">int</span> i) -&gt; <span class="keywordtype">bool</span> {<span class="keywordflow">return</span> i % 2 == 0;});</div>
+<div class="line">  display_idx(split1.true_values.begin(), split1.true_values.end());</div>
+<div class="line"></div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;split2&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">auto</span> split2 = <a class="code" href="a00187.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">gaml::split</a>(split1.true_values.begin(), split1.true_values.end(),</div>
+<div class="line">                           [](<span class="keywordtype">int</span> i) -&gt; <span class="keywordtype">bool</span> {<span class="keywordflow">return</span> i &lt; 25 ;});</div>
+<div class="line">  display_idx(split2.true_values.begin(), split2.true_values.end());</div>
+<div class="line"></div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;split3&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">auto</span> split3 = <a class="code" href="a00187.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">gaml::split</a>(split2.true_values.begin(), split2.true_values.end(),</div>
+<div class="line">                           [](<span class="keywordtype">int</span> i) -&gt; <span class="keywordtype">bool</span> {<span class="keywordflow">return</span> i % 3 == 0 ;});</div>
+<div class="line">  display_idx(split3.true_values.begin(), split3.true_values.end());</div>
+<div class="line"></div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;seq1&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">auto</span> seq1 = <a name="a2"></a><a class="code" href="a00205.html#a54eec3d283931866e53f7d1a84dc813e">gaml::virtualized::sequence</a>(split1.true_values.begin(),split1.true_values.end());</div>
+<div class="line">  display_idx(seq1.begin(), seq1.end());</div>
+<div class="line"></div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;split4&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">auto</span> split4 = <a class="code" href="a00187.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">gaml::split</a>(seq1.begin(), seq1.end(),</div>
+<div class="line">                           [](<span class="keywordtype">int</span> i) -&gt; <span class="keywordtype">bool</span> {<span class="keywordflow">return</span> i % 3 == 0 ;});</div>
+<div class="line">  display_idx(split4.true_values.begin(), split4.true_values.end());</div>
+<div class="line"></div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;seq2&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">auto</span> <span class="keywordtype">id</span>   = <a name="a3"></a><a class="code" href="a00187.html#aad891ba661cb98b79b317dcc9143ad4e">gaml::identity</a>(begin,end);</div>
+<div class="line">  <span class="keyword">auto</span> seq2 = <a class="code" href="a00205.html#a54eec3d283931866e53f7d1a84dc813e">gaml::virtualized::sequence</a>(<span class="keywordtype">id</span>.begin(),<span class="keywordtype">id</span>.end());</div>
+<div class="line">  display(seq2.begin(), seq2.end());</div>
+<div class="line"></div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;split5&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">auto</span> split5 = <a class="code" href="a00187.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">gaml::split</a>(seq2.begin(), seq2.end(),</div>
+<div class="line">                           [](<span class="keywordtype">int</span> i) -&gt; <span class="keywordtype">bool</span> {<span class="keywordflow">return</span> i % 5 == 0 ;});</div>
+<div class="line">  display_idx(split5.true_values.begin(), split5.true_values.end());</div>
+<div class="line"></div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;split6&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">  <span class="keyword">auto</span> split6 = <a class="code" href="a00187.html#a7c96ffc4f2e15d8e20bad0ff22918bfe">gaml::split</a>(split5.true_values.begin(), split5.true_values.end(),</div>
+<div class="line">                           [](<span class="keywordtype">int</span> i) -&gt; <span class="keywordtype">bool</span> {<span class="keywordflow">return</span> i % 2 == 0 ;});</div>
+<div class="line">  display_idx(split6.true_values.begin(), split6.true_values.end());</div>
+<div class="line">  </div>
+<div class="line">  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->

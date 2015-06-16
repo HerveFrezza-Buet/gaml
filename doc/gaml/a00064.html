@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::IndexedDataset&lt; Parser &gt; Class Template Reference</title>
+<title>gaml-1.14: gaml::Identity&lt; Iterator &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,80 +82,90 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00064.html">IndexedDataset</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00064.html">Identity</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#friends">Friends</a> &#124;
-<a href="a00212.html">List of all members</a>  </div>
+<a href="a00227.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::IndexedDataset&lt; Parser &gt; Class Template Reference</div>  </div>
+<div class="title">gaml::Identity&lt; Iterator &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00154_source.html">gamlIndexedDataset.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00168_source.html">gamlIdentity.hpp</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.html">iterator</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a5179a08379c638a0b78ee2630ffcdf1e"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00065.html">IdentityIterator</a><br class="typebreak"/>
+&lt; typename <br class="typebreak"/>
+std::iterator_traits&lt; Iterator &gt;<br class="typebreak"/>
+::iterator_category, Iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.html#a5179a08379c638a0b78ee2630ffcdf1e">iterator</a></td></tr>
+<tr class="separator:a5179a08379c638a0b78ee2630ffcdf1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cf6b0afa12d033fc594bbd9c8ab5b7f"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00065.html#a4321baaba7a07dbc264cc81f77b65f61">iterator::value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.html#a0cf6b0afa12d033fc594bbd9c8ab5b7f">value_type</a></td></tr>
+<tr class="separator:a0cf6b0afa12d033fc594bbd9c8ab5b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae68a9d430950612b54e52165a140214e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.html#ae68a9d430950612b54e52165a140214e">IndexedDataset</a> (const data_file_parser_type &amp;parser, const char *dataFileName, const char *indexFileName)</td></tr>
-<tr class="separator:ae68a9d430950612b54e52165a140214e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2752ed88a482c32296f076535373520a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.html#a2752ed88a482c32296f076535373520a">IndexedDataset</a> (const <a class="el" href="a00064.html">IndexedDataset</a> &amp;other)</td></tr>
-<tr class="separator:a2752ed88a482c32296f076535373520a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad12a367c67bfb9a152c99dd10b6b8d08"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.html#ad12a367c67bfb9a152c99dd10b6b8d08">~IndexedDataset</a> ()</td></tr>
-<tr class="separator:ad12a367c67bfb9a152c99dd10b6b8d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a034c78ebef0dd5c9732396a12240cc37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.html#a034c78ebef0dd5c9732396a12240cc37">update</a> ()</td></tr>
-<tr class="separator:a034c78ebef0dd5c9732396a12240cc37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf9d51e96303b81d07362d7fa925e8b8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.html#adf9d51e96303b81d07362d7fa925e8b8">size</a> () const </td></tr>
-<tr class="separator:adf9d51e96303b81d07362d7fa925e8b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab050ffd28411dc5c5b41f0a63f0ca39"><td class="memItemLeft" align="right" valign="top">value_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.html#aab050ffd28411dc5c5b41f0a63f0ca39">operator[]</a> (std::size_t index) const </td></tr>
-<tr class="separator:aab050ffd28411dc5c5b41f0a63f0ca39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aded4346fe2a85385d84d3a28eee90bbf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.html#aded4346fe2a85385d84d3a28eee90bbf">push_back</a> (const value_type &amp;value)</td></tr>
-<tr class="separator:aded4346fe2a85385d84d3a28eee90bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3bcaad3c0db396c414278f67f909b60a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00065.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.html#a3bcaad3c0db396c414278f67f909b60a">begin</a> ()</td></tr>
-<tr class="separator:a3bcaad3c0db396c414278f67f909b60a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cb4bea456853627f5797fd5120c0503"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00065.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.html#a1cb4bea456853627f5797fd5120c0503">end</a> ()</td></tr>
-<tr class="separator:a1cb4bea456853627f5797fd5120c0503"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:a67171474c4da6cc8efe0c7fafefd2b2d"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.html#a67171474c4da6cc8efe0c7fafefd2b2d">iterator</a></td></tr>
-<tr class="separator:a67171474c4da6cc8efe0c7fafefd2b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecf6e81d6187282dc471e4b176284f4f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.html#aecf6e81d6187282dc471e4b176284f4f">Identity</a> (const Iterator &amp;begin_iter, const Iterator &amp;end_iter)</td></tr>
+<tr class="separator:aecf6e81d6187282dc471e4b176284f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac7d652e2d9a5c4b16b4a34261605588"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00064.html#a5179a08379c638a0b78ee2630ffcdf1e">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.html#aac7d652e2d9a5c4b16b4a34261605588">begin</a> () const </td></tr>
+<tr class="separator:aac7d652e2d9a5c4b16b4a34261605588"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51fc5b2d999e85568cefef10518b16ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00064.html#a5179a08379c638a0b78ee2630ffcdf1e">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.html#a51fc5b2d999e85568cefef10518b16ee">end</a> () const </td></tr>
+<tr class="separator:a51fc5b2d999e85568cefef10518b16ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ae68a9d430950612b54e52165a140214e"></a>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="a5179a08379c638a0b78ee2630ffcdf1e"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Parser&gt; </div>
+template&lt;typename Iterator&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="a00065.html">IdentityIterator</a>&lt;typename std::iterator_traits&lt;Iterator&gt;::iterator_category,Iterator&gt; <a class="el" href="a00064.html">gaml::Identity</a>&lt; Iterator &gt;::<a class="el" href="a00064.html#a5179a08379c638a0b78ee2630ffcdf1e">iterator</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0cf6b0afa12d033fc594bbd9c8ab5b7f"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="a00065.html#a4321baaba7a07dbc264cc81f77b65f61">iterator::value_type</a> <a class="el" href="a00064.html">gaml::Identity</a>&lt; Iterator &gt;::<a class="el" href="a00064.html#a0cf6b0afa12d033fc594bbd9c8ab5b7f">value_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="aecf6e81d6187282dc471e4b176284f4f"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00064.html">gaml::IndexedDataset</a>&lt; Parser &gt;::<a class="el" href="a00064.html">IndexedDataset</a> </td>
+          <td class="memname"><a class="el" href="a00064.html">gaml::Identity</a>&lt; Iterator &gt;::<a class="el" href="a00064.html">Identity</a> </td>
           <td>(</td>
-          <td class="paramtype">const data_file_parser_type &amp;&#160;</td>
-          <td class="paramname"><em>parser</em>, </td>
+          <td class="paramtype">const Iterator &amp;&#160;</td>
+          <td class="paramname"><em>begin_iter</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>dataFileName</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>indexFileName</em>&#160;</td>
+          <td class="paramtype">const Iterator &amp;&#160;</td>
+          <td class="paramname"><em>end_iter</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -172,171 +182,18 @@ template&lt;typename Parser&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a2752ed88a482c32296f076535373520a"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Parser&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00064.html">gaml::IndexedDataset</a>&lt; Parser &gt;::<a class="el" href="a00064.html">IndexedDataset</a> </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00064.html">IndexedDataset</a>&lt; Parser &gt; &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ad12a367c67bfb9a152c99dd10b6b8d08"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Parser&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00064.html">gaml::IndexedDataset</a>&lt; Parser &gt;::~<a class="el" href="a00064.html">IndexedDataset</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a3bcaad3c0db396c414278f67f909b60a"></a>
+<a class="anchor" id="aac7d652e2d9a5c4b16b4a34261605588"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Parser&gt; </div>
+template&lt;typename Iterator&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00065.html">iterator</a> <a class="el" href="a00064.html">gaml::IndexedDataset</a>&lt; Parser &gt;::begin </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a1cb4bea456853627f5797fd5120c0503"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Parser&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00065.html">iterator</a> <a class="el" href="a00064.html">gaml::IndexedDataset</a>&lt; Parser &gt;::end </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="aab050ffd28411dc5c5b41f0a63f0ca39"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Parser&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">value_type <a class="el" href="a00064.html">gaml::IndexedDataset</a>&lt; Parser &gt;::operator[] </td>
-          <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>index</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="aded4346fe2a85385d84d3a28eee90bbf"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Parser&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="a00064.html">gaml::IndexedDataset</a>&lt; Parser &gt;::push_back </td>
-          <td>(</td>
-          <td class="paramtype">const value_type &amp;&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="adf9d51e96303b81d07362d7fa925e8b8"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Parser&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="a00064.html">gaml::IndexedDataset</a>&lt; Parser &gt;::size </td>
+          <td class="memname"><a class="el" href="a00064.html#a5179a08379c638a0b78ee2630ffcdf1e">iterator</a> <a class="el" href="a00064.html">gaml::Identity</a>&lt; Iterator &gt;::begin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -351,48 +208,25 @@ template&lt;typename Parser&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a034c78ebef0dd5c9732396a12240cc37"></a>
+<a class="anchor" id="a51fc5b2d999e85568cefef10518b16ee"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Parser&gt; </div>
+template&lt;typename Iterator&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="a00064.html">gaml::IndexedDataset</a>&lt; Parser &gt;::update </td>
+          <td class="memname"><a class="el" href="a00064.html#a5179a08379c638a0b78ee2630ffcdf1e">iterator</a> <a class="el" href="a00064.html">gaml::Identity</a>&lt; Iterator &gt;::end </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Friends And Related Function Documentation</h2>
-<a class="anchor" id="a67171474c4da6cc8efe0c7fafefd2b2d"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Parser&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">friend class <a class="el" href="a00065.html">iterator</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -400,7 +234,7 @@ template&lt;typename Parser&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="a00154_source.html">gamlIndexedDataset.hpp</a></li>
+<li><a class="el" href="a00168_source.html">gamlIdentity.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

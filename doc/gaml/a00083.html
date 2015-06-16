@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::loss::Quadratic&lt; OUTPUT &gt; Class Template Reference</title>
+<title>gaml-1.14: gaml::JSONParser&lt; std::tuple&lt; Args...&gt; &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,49 +82,63 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00179.html">loss</a></li><li class="navelem"><a class="el" href="a00083.html">Quadratic</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00083.html">JSONParser< std::tuple< Args...> ></a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00282.html">List of all members</a>  </div>
+<a href="a00254.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::loss::Quadratic&lt; OUTPUT &gt; Class Template Reference</div>  </div>
+<div class="title">gaml::JSONParser&lt; std::tuple&lt; Args...&gt; &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="a00083.html" title="Quadratic loss.">Quadratic</a> loss.  
- <a href="a00083.html#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="a00156_source.html">gamlLoss.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00171_source.html">gamlJSONParser.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for gaml::JSONParser&lt; std::tuple&lt; Args...&gt; &gt;:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="a00083.png" usemap="#gaml::JSONParser&lt; std::tuple&lt; Args...&gt; &gt;_map" alt=""/>
+  <map id="gaml::JSONParser&lt; std::tuple&lt; Args...&gt; &gt;_map" name="gaml::JSONParser&lt; std::tuple&lt; Args...&gt; &gt;_map">
+<area href="a00100.html" alt="gaml::ParserBase" shape="rect" coords="0,0,247,24"/>
+</map>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a92611be4459d2c579e84a04da53eb24c"><td class="memItemLeft" align="right" valign="top">typedef OUTPUT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00083.html#a92611be4459d2c579e84a04da53eb24c">output_type</a></td></tr>
-<tr class="separator:a92611be4459d2c579e84a04da53eb24c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b24a485221fd3a800c819643a54ce52"><td class="memItemLeft" align="right" valign="top">typedef std::tuple&lt; Args...&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00083.html#a2b24a485221fd3a800c819643a54ce52">value_type</a></td></tr>
+<tr class="separator:a2b24a485221fd3a800c819643a54ce52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5434298c9e3cb668dca419030479e58a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00083.html#a5434298c9e3cb668dca419030479e58a">operator()</a> (const <a class="el" href="a00083.html#a92611be4459d2c579e84a04da53eb24c">output_type</a> &amp;l1, const <a class="el" href="a00083.html#a92611be4459d2c579e84a04da53eb24c">output_type</a> &amp;l2) const </td></tr>
-<tr class="separator:a5434298c9e3cb668dca419030479e58a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a574b2cc4ff9ebeab53043cc2fd00c6d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00083.html#a574b2cc4ff9ebeab53043cc2fd00c6d0">read</a> (std::istream &amp;is, tuple_type &amp;t) const </td></tr>
+<tr class="separator:a574b2cc4ff9ebeab53043cc2fd00c6d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add3052d4680075df9dd242133f9be26b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00083.html#add3052d4680075df9dd242133f9be26b">write</a> (std::ostream &amp;os, const tuple_type &amp;t) const </td></tr>
+<tr class="separator:add3052d4680075df9dd242133f9be26b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_static_methods_a00100"><td colspan="2" onclick="javascript:toggleInherit('pro_static_methods_a00100')"><img src="closed.png" alt="-"/>&#160;Static Protected Member Functions inherited from <a class="el" href="a00100.html">gaml::ParserBase</a></td></tr>
+<tr class="memitem:ac3f98339e32c26644702f9fc6df3742f inherit pro_static_methods_a00100"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="a00060.html">FormatException</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#ac3f98339e32c26644702f9fc6df3742f">formatError</a> (std::istream &amp;is, std::string msg)</td></tr>
+<tr class="separator:ac3f98339e32c26644702f9fc6df3742f inherit pro_static_methods_a00100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45e217295b5433dc07ea06ef5f06256b inherit pro_static_methods_a00100"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="a00060.html">FormatException</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a45e217295b5433dc07ea06ef5f06256b">formatError</a> (std::istream &amp;is, const char *msg)</td></tr>
+<tr class="separator:a45e217295b5433dc07ea06ef5f06256b inherit pro_static_methods_a00100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a571af184506a2660c522f945abd98c78 inherit pro_static_methods_a00100"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a571af184506a2660c522f945abd98c78">expect</a> (std::istream &amp;is, const char *chars, const char *msg=0)</td></tr>
+<tr class="separator:a571af184506a2660c522f945abd98c78 inherit pro_static_methods_a00100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f2e0fc39f579366a68a58c7e9fea1ab inherit pro_static_methods_a00100"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a5f2e0fc39f579366a68a58c7e9fea1ab">expect</a> (std::istream &amp;is, const std::vector&lt; const char * &gt; &amp;words)</td></tr>
+<tr class="separator:a5f2e0fc39f579366a68a58c7e9fea1ab inherit pro_static_methods_a00100"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename OUTPUT&gt;<br/>
-class gaml::loss::Quadratic&lt; OUTPUT &gt;</h3>
-
-<p><a class="el" href="a00083.html" title="Quadratic loss.">Quadratic</a> loss. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="a00001.html#_a5">example-000-000-overview.cpp</a>, <a class="el" href="a00011.html#_a2">example-002-003-cross-validation.cpp</a>, <a class="el" href="a00012.html#_a2">example-002-004-bootstrapping.cpp</a>, <a class="el" href="a00014.html#_a0">example-003-001-multidimension.cpp</a>, <a class="el" href="a00017.html#_a1">example-004-003-wrapper-based-selection.cpp</a>, and <a class="el" href="a00018.html#_a3">example-005-students.cpp</a>.</dd>
-</dl></div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a92611be4459d2c579e84a04da53eb24c"></a>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="a2b24a485221fd3a800c819643a54ce52"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename OUTPUT&gt; </div>
+template&lt;typename... Args&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef OUTPUT <a class="el" href="a00083.html">gaml::loss::Quadratic</a>&lt; OUTPUT &gt;::<a class="el" href="a00083.html#a92611be4459d2c579e84a04da53eb24c">output_type</a></td>
+          <td class="memname">typedef std::tuple&lt;Args...&gt; <a class="el" href="a00076.html">gaml::JSONParser</a>&lt; std::tuple&lt; Args...&gt; &gt;::<a class="el" href="a00083.html#a2b24a485221fd3a800c819643a54ce52">value_type</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -132,26 +146,62 @@ template&lt;typename OUTPUT&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a5434298c9e3cb668dca419030479e58a"></a>
+<a class="anchor" id="a574b2cc4ff9ebeab53043cc2fd00c6d0"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename OUTPUT&gt; </div>
+template&lt;typename... Args&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">double <a class="el" href="a00083.html">gaml::loss::Quadratic</a>&lt; OUTPUT &gt;::operator() </td>
+          <td class="memname">void <a class="el" href="a00076.html">gaml::JSONParser</a>&lt; std::tuple&lt; Args...&gt; &gt;::read </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00083.html#a92611be4459d2c579e84a04da53eb24c">output_type</a> &amp;&#160;</td>
-          <td class="paramname"><em>l1</em>, </td>
+          <td class="paramtype">std::istream &amp;&#160;</td>
+          <td class="paramname"><em>is</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="a00083.html#a92611be4459d2c579e84a04da53eb24c">output_type</a> &amp;&#160;</td>
-          <td class="paramname"><em>l2</em>&#160;</td>
+          <td class="paramtype">tuple_type &amp;&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="add3052d4680075df9dd242133f9be26b"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="a00076.html">gaml::JSONParser</a>&lt; std::tuple&lt; Args...&gt; &gt;::write </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const tuple_type &amp;&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -169,7 +219,7 @@ template&lt;typename OUTPUT&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="a00156_source.html">gamlLoss.hpp</a></li>
+<li><a class="el" href="a00171_source.html">gamlJSONParser.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

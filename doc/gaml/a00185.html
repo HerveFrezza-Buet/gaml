@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::risk::bootstrap Namespace Reference</title>
+<title>gaml-1.14: gamlVirtual.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -37,9 +37,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -61,8 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="namespaces.html"><span>Namespace&#160;List</span></a></li>
-      <li><a href="namespacemembers.html"><span>Namespace&#160;Members</span></a></li>
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -81,145 +80,53 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00184.html">risk</a></li><li class="navelem"><a class="el" href="a00185.html">bootstrap</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::risk::bootstrap Namespace Reference</div>  </div>
+<div class="title">gamlVirtual.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><code>#include &lt;iterator&gt;</code><br/>
+<code>#include &lt;memory&gt;</code><br/>
+<code>#include &lt;vector&gt;</code><br/>
+<code>#include &lt;stdexcept&gt;</code><br/>
+<code>#include &lt;<a class="el" href="a00170_source.html">gamlIterator.hpp</a>&gt;</code><br/>
+<code>#include &lt;sstream&gt;</code><br/>
+</div>
+<p><a href="a00185_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00108.html">LeaveOneOut</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html">gaml::virtualized::base_iterator&lt; VALUE &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00109.html">R632</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00154.html">gaml::virtualized::tabular_base_iterator&lt; VALUE &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00110.html">R632Plus</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00152.html">gaml::virtualized::iterator&lt; VALUE &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00153.html">gaml::virtualized::Sequence&lt; VALUE &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:a00187"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00187.html">gaml</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00205"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00205.html">gaml::virtualized</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a01ac66100a1596566398441fffb1c5dd"><td class="memTemplParams" colspan="2">template&lt;typename LOSS &gt; </td></tr>
-<tr class="memitem:a01ac66100a1596566398441fffb1c5dd"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00108.html">LeaveOneOut</a>&lt; LOSS &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00185.html#a01ac66100a1596566398441fffb1c5dd">leave_one_out</a> (const LOSS &amp;l, unsigned int nb_sets, bool verbosity)</td></tr>
-<tr class="separator:a01ac66100a1596566398441fffb1c5dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a8e3a40f3ab1a21805db11247fe2a1c"><td class="memTemplParams" colspan="2">template&lt;typename LOSS &gt; </td></tr>
-<tr class="memitem:a4a8e3a40f3ab1a21805db11247fe2a1c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00109.html">R632</a>&lt; LOSS &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00185.html#a4a8e3a40f3ab1a21805db11247fe2a1c">r632</a> (const LOSS &amp;l, unsigned int nb_sets, bool verbosity)</td></tr>
-<tr class="separator:a4a8e3a40f3ab1a21805db11247fe2a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae33b2cab5e4459a0dc7c03c156292982"><td class="memTemplParams" colspan="2">template&lt;typename LOSS &gt; </td></tr>
-<tr class="memitem:ae33b2cab5e4459a0dc7c03c156292982"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="a00110.html">R632Plus</a>&lt; LOSS &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00185.html#ae33b2cab5e4459a0dc7c03c156292982">r632plus</a> (const LOSS &amp;l, unsigned int nb_sets, bool verbosity)</td></tr>
-<tr class="separator:ae33b2cab5e4459a0dc7c03c156292982"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54eec3d283931866e53f7d1a84dc813e"><td class="memTemplParams" colspan="2">template&lt;typename Iterator &gt; </td></tr>
+<tr class="memitem:a54eec3d283931866e53f7d1a84dc813e"><td class="memTemplItemLeft" align="right" valign="top">Sequence&lt; typename <br class="typebreak"/>
+std::iterator_traits&lt; Iterator &gt;<br class="typebreak"/>
+::value_type &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00205.html#a54eec3d283931866e53f7d1a84dc813e">gaml::virtualized::sequence</a> (const Iterator &amp;begin, const Iterator &amp;end)</td></tr>
+<tr class="separator:a54eec3d283931866e53f7d1a84dc813e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a01ac66100a1596566398441fffb1c5dd"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename LOSS &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00108.html">LeaveOneOut</a>&lt;LOSS&gt; gaml::risk::bootstrap::leave_one_out </td>
-          <td>(</td>
-          <td class="paramtype">const LOSS &amp;&#160;</td>
-          <td class="paramname"><em>l</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>nb_sets</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>verbosity</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="a00012.html#a1">example-002-004-bootstrapping.cpp</a>.</dd>
-</dl>
-</div>
-</div>
-<a class="anchor" id="a4a8e3a40f3ab1a21805db11247fe2a1c"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename LOSS &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00109.html">R632</a>&lt;LOSS&gt; gaml::risk::bootstrap::r632 </td>
-          <td>(</td>
-          <td class="paramtype">const LOSS &amp;&#160;</td>
-          <td class="paramname"><em>l</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>nb_sets</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>verbosity</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="a00012.html#a3">example-002-004-bootstrapping.cpp</a>.</dd>
-</dl>
-</div>
-</div>
-<a class="anchor" id="ae33b2cab5e4459a0dc7c03c156292982"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename LOSS &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00110.html">R632Plus</a>&lt;LOSS&gt; gaml::risk::bootstrap::r632plus </td>
-          <td>(</td>
-          <td class="paramtype">const LOSS &amp;&#160;</td>
-          <td class="paramname"><em>l</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>nb_sets</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>verbosity</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="a00012.html#a4">example-002-004-bootstrapping.cpp</a>.</dd>
-</dl>
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

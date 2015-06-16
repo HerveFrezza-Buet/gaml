@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gamlVariableSelection.hpp File Reference</title>
+<title>gaml-1.14: gamlIdentity.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -85,50 +85,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">gamlVariableSelection.hpp File Reference</div>  </div>
+<div class="title">gamlIdentity.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="a00148_source.html">gamlDimensions.hpp</a>&gt;</code><br/>
-<code>#include &lt;vector&gt;</code><br/>
-<code>#include &lt;algorithm&gt;</code><br/>
-<code>#include &lt;limits&gt;</code><br/>
+<div class="textblock"><code>#include &lt;exception&gt;</code><br/>
 <code>#include &lt;iterator&gt;</code><br/>
+<code>#include &lt;<a class="el" href="a00185_source.html">gamlVirtual.hpp</a>&gt;</code><br/>
 </div>
 <p><a href="a00168_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.html">gaml::IdentityIterator&lt; CATEGORY, Iterator &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html">gaml::IdentityIterator&lt; std::random_access_iterator_tag, Iterator &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.html">gaml::Identity&lt; Iterator &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:a00171"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00171.html">gaml</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00188"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00188.html">gaml::varsel</a></td></tr>
+<tr class="memitem:a00187"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00187.html">gaml</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a227f485ce8308ad7a7269d89c83bfa92"><td class="memTemplParams" colspan="2">template&lt;typename Evaluator , typename AttributeSet , typename Searcher &gt; </td></tr>
-<tr class="memitem:a227f485ce8308ad7a7269d89c83bfa92"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00188.html#a227f485ce8308ad7a7269d89c83bfa92">gaml::varsel::search</a> (Evaluator &amp;evaluator, AttributeSet &amp;variableSubset, Searcher &amp;searcher, bool verbose)</td></tr>
-<tr class="separator:a227f485ce8308ad7a7269d89c83bfa92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b3c96d59787abd9546ff317096fd3f7"><td class="memTemplParams" colspan="2">template&lt;typename Evaluator , typename AttributeSet &gt; </td></tr>
-<tr class="memitem:a1b3c96d59787abd9546ff317096fd3f7"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00188.html#a1b3c96d59787abd9546ff317096fd3f7">gaml::varsel::SFS</a> (Evaluator &amp;evaluator, AttributeSet &amp;variableSubset, bool verbose=false)</td></tr>
-<tr class="separator:a1b3c96d59787abd9546ff317096fd3f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a367ede0d19e4754c2510a7d4cd76170d"><td class="memTemplParams" colspan="2">template&lt;typename Evaluator , typename AttributeSet &gt; </td></tr>
-<tr class="memitem:a367ede0d19e4754c2510a7d4cd76170d"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00188.html#a367ede0d19e4754c2510a7d4cd76170d">gaml::varsel::SBS</a> (Evaluator &amp;evaluator, AttributeSet &amp;variableSubset, bool verbose=false)</td></tr>
-<tr class="separator:a367ede0d19e4754c2510a7d4cd76170d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a406be0b466d45889075be091d165f0e8"><td class="memTemplParams" colspan="2">template&lt;typename Evaluator , typename AttributeSet &gt; </td></tr>
-<tr class="memitem:a406be0b466d45889075be091d165f0e8"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00188.html#a406be0b466d45889075be091d165f0e8">gaml::varsel::SFFS</a> (Evaluator &amp;evaluator, AttributeSet &amp;variableSubset, bool verbose=false)</td></tr>
-<tr class="separator:a406be0b466d45889075be091d165f0e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49b57f623b1500ae750f58aea95620fc"><td class="memTemplParams" colspan="2">template&lt;typename Evaluator , typename AttributeSet &gt; </td></tr>
-<tr class="memitem:a49b57f623b1500ae750f58aea95620fc"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00188.html#a49b57f623b1500ae750f58aea95620fc">gaml::varsel::SFBS</a> (Evaluator &amp;evaluator, AttributeSet &amp;variableSubset, bool verbose=false)</td></tr>
-<tr class="separator:a49b57f623b1500ae750f58aea95620fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af34ab6c109a7ef1a7f4cf34b7482292c"><td class="memTemplParams" colspan="2">template&lt;typename Evaluator , typename AttributeSet &gt; </td></tr>
-<tr class="memitem:af34ab6c109a7ef1a7f4cf34b7482292c"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00188.html#af34ab6c109a7ef1a7f4cf34b7482292c">gaml::varsel::SBFS</a> (Evaluator &amp;evaluator, AttributeSet &amp;variableSubset, int k, double filteringRatio, bool verbose=false)</td></tr>
-<tr class="separator:af34ab6c109a7ef1a7f4cf34b7482292c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e3005977928f04293d1cbb51f5f6e91"><td class="memTemplParams" colspan="2">template&lt;typename Evaluator , typename AttributeSet &gt; </td></tr>
-<tr class="memitem:a2e3005977928f04293d1cbb51f5f6e91"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00188.html#a2e3005977928f04293d1cbb51f5f6e91">gaml::varsel::SBBS</a> (Evaluator &amp;evaluator, AttributeSet &amp;variableSubset, int k, double filteringRatio, bool verbose=false)</td></tr>
-<tr class="separator:a2e3005977928f04293d1cbb51f5f6e91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad891ba661cb98b79b317dcc9143ad4e"><td class="memTemplParams" colspan="2">template&lt;typename Iterator &gt; </td></tr>
+<tr class="memitem:aad891ba661cb98b79b317dcc9143ad4e"><td class="memTemplItemLeft" align="right" valign="top">Identity&lt; Iterator &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00187.html#aad891ba661cb98b79b317dcc9143ad4e">gaml::identity</a> (const Iterator &amp;begin, const Iterator &amp;end)</td></tr>
+<tr class="separator:aad891ba661cb98b79b317dcc9143ad4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

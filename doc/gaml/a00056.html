@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::FilterIterator&lt; Iterator &gt; Class Template Reference</title>
+<title>gaml-1.14: gaml::exception::NoPositiveInData Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,480 +82,61 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00056.html">FilterIterator</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00193.html">exception</a></li><li class="navelem"><a class="el" href="a00056.html">NoPositiveInData</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00207.html">List of all members</a>  </div>
+<a href="a00307.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::FilterIterator&lt; Iterator &gt; Class Template Reference</div>  </div>
+<div class="title">gaml::exception::NoPositiveInData Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00150_source.html">gamlFilter.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00164_source.html">gamlException.hpp</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for gaml::FilterIterator&lt; Iterator &gt;:</div>
+Inheritance diagram for gaml::exception::NoPositiveInData:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="a00056.png" usemap="#gaml::FilterIterator&lt; Iterator &gt;_map" alt=""/>
-  <map id="gaml::FilterIterator&lt; Iterator &gt;_map" name="gaml::FilterIterator&lt; Iterator &gt;_map">
-<area href="a00023.html" alt="gaml::virtualized::base_iterator&lt; std::input_iterator_tag, std::iterator_traits&lt; Iterator &gt;::value_type &gt;" shape="rect" coords="0,56,563,80"/>
+  <img src="a00056.png" usemap="#gaml::exception::NoPositiveInData_map" alt=""/>
+  <map id="gaml::exception::NoPositiveInData_map" name="gaml::exception::NoPositiveInData_map">
+<area href="a00050.html" alt="gaml::exception::ConfusionMatrix" shape="rect" coords="0,112,200,136"/>
+<area href="a00048.html" alt="gaml::exception::Any" shape="rect" coords="0,56,200,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:ad9747b248019e4a20d28e9dae4788c0f"><td class="memItemLeft" align="right" valign="top">typedef std::iterator_traits<br class="typebreak"/>
-&lt; Iterator &gt;::<a class="el" href="a00056.html#ad9747b248019e4a20d28e9dae4788c0f">value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html#ad9747b248019e4a20d28e9dae4788c0f">value_type</a></td></tr>
-<tr class="separator:ad9747b248019e4a20d28e9dae4788c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a641d3e6e76382fbf50c21513cea9ce36"><td class="memItemLeft" align="right" valign="top">typedef std::iterator_traits<br class="typebreak"/>
-&lt; Iterator &gt;::<a class="el" href="a00056.html#a641d3e6e76382fbf50c21513cea9ce36">difference_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html#a641d3e6e76382fbf50c21513cea9ce36">difference_type</a></td></tr>
-<tr class="separator:a641d3e6e76382fbf50c21513cea9ce36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6ad62dbc2bd71ff94e5ef36ae19bb57"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
-<a class="el" href="a00023.html">gaml::virtualized::base_iterator</a><br class="typebreak"/>
-&lt; std::input_iterator_tag, <br class="typebreak"/>
-typename std::iterator_traits<br class="typebreak"/>
-&lt; Iterator &gt;::<a class="el" href="a00056.html#ad9747b248019e4a20d28e9dae4788c0f">value_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html#ad6ad62dbc2bd71ff94e5ef36ae19bb57">base_type</a></td></tr>
-<tr class="separator:ad6ad62dbc2bd71ff94e5ef36ae19bb57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_types_a00023"><td colspan="2" onclick="javascript:toggleInherit('pub_types_a00023')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="a00023.html">gaml::virtualized::base_iterator&lt; std::input_iterator_tag, std::iterator_traits&lt; Iterator &gt;::value_type &gt;</a></td></tr>
-<tr class="memitem:afa888796974267edc9846f7713aec79b inherit pub_types_a00023"><td class="memItemLeft" align="right" valign="top">typedef std::iterator<br class="typebreak"/>
-&lt; std::input_iterator_tag, <br class="typebreak"/>
-std::iterator_traits&lt; Iterator &gt;<br class="typebreak"/>
-::value_type &gt;<br class="typebreak"/>
-::<a class="el" href="a00023.html#afa888796974267edc9846f7713aec79b">difference_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#afa888796974267edc9846f7713aec79b">difference_type</a></td></tr>
-<tr class="separator:afa888796974267edc9846f7713aec79b inherit pub_types_a00023"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6d5b0d50b8995a9b95fce92aa86fcb00"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html#a6d5b0d50b8995a9b95fce92aa86fcb00">FilterIterator</a> (void)</td></tr>
-<tr class="separator:a6d5b0d50b8995a9b95fce92aa86fcb00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8132be3bc12f30abd176c37fc0208d33"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html#a8132be3bc12f30abd176c37fc0208d33">FilterIterator</a> (const Iterator &amp;iter, const Iterator &amp;last, const std::function&lt; bool(const <a class="el" href="a00056.html#ad9747b248019e4a20d28e9dae4788c0f">value_type</a> &amp;)&gt; &amp;f)</td></tr>
-<tr class="separator:a8132be3bc12f30abd176c37fc0208d33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad51acdf052cadbf213688a6db43b0384"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html#ad51acdf052cadbf213688a6db43b0384">FilterIterator</a> (const <a class="el" href="a00056.html">FilterIterator</a> &amp;cp)</td></tr>
-<tr class="separator:ad51acdf052cadbf213688a6db43b0384"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6668781e493d1861380da8a1e22e00c7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00056.html">FilterIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html#a6668781e493d1861380da8a1e22e00c7">operator=</a> (const <a class="el" href="a00056.html">FilterIterator</a> &amp;cp)</td></tr>
-<tr class="separator:a6668781e493d1861380da8a1e22e00c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30ef91cfe4121972a90bf8675d3ff90c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00056.html">FilterIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html#a30ef91cfe4121972a90bf8675d3ff90c">operator++</a> ()</td></tr>
-<tr class="separator:a30ef91cfe4121972a90bf8675d3ff90c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad055aabfe414d7da331199119ef87ae6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00056.html">FilterIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html#ad055aabfe414d7da331199119ef87ae6">operator++</a> (int)</td></tr>
-<tr class="separator:ad055aabfe414d7da331199119ef87ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a800571633294082f3f5da0db91a76f4d"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00056.html#ad9747b248019e4a20d28e9dae4788c0f">value_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html#a800571633294082f3f5da0db91a76f4d">operator*</a> () const </td></tr>
-<tr class="separator:a800571633294082f3f5da0db91a76f4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e7dd1b8f6e49f2bee3198db8203d784"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html#a2e7dd1b8f6e49f2bee3198db8203d784">operator==</a> (const <a class="el" href="a00056.html">FilterIterator</a> &amp;i) const </td></tr>
-<tr class="separator:a2e7dd1b8f6e49f2bee3198db8203d784"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12e9861de68bdda35ad2253126eb125c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html#a12e9861de68bdda35ad2253126eb125c">operator!=</a> (const <a class="el" href="a00056.html">FilterIterator</a> &amp;i) const </td></tr>
-<tr class="separator:a12e9861de68bdda35ad2253126eb125c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ac2b9dd701edb4ced43ccc2bd9a40b7"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="a00056.html#ad6ad62dbc2bd71ff94e5ef36ae19bb57">base_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html#a2ac2b9dd701edb4ced43ccc2bd9a40b7">clone</a> () const </td></tr>
-<tr class="separator:a2ac2b9dd701edb4ced43ccc2bd9a40b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed9024257fd7b8f88c7a8bc877493a38"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html#aed9024257fd7b8f88c7a8bc877493a38">increment</a> (void)</td></tr>
-<tr class="separator:aed9024257fd7b8f88c7a8bc877493a38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7ab3761953d9a47ab4ab2ead4aeaa88"><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="a00056.html#ad9747b248019e4a20d28e9dae4788c0f">value_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html#ae7ab3761953d9a47ab4ab2ead4aeaa88">get</a> () const </td></tr>
-<tr class="separator:ae7ab3761953d9a47ab4ab2ead4aeaa88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45ffb5772c9bad467939c2a219e6171b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html#a45ffb5772c9bad467939c2a219e6171b">is_equal</a> (const <a class="el" href="a00056.html#ad6ad62dbc2bd71ff94e5ef36ae19bb57">base_type</a> &amp;other) const </td></tr>
-<tr class="separator:a45ffb5772c9bad467939c2a219e6171b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_a00023"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_a00023')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="a00023.html">gaml::virtualized::base_iterator&lt; std::input_iterator_tag, std::iterator_traits&lt; Iterator &gt;::value_type &gt;</a></td></tr>
-<tr class="memitem:a7cb3e416214f3971906a8fea734b6aa2 inherit pub_methods_a00023"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a7cb3e416214f3971906a8fea734b6aa2">base_iterator</a> ()</td></tr>
-<tr class="separator:a7cb3e416214f3971906a8fea734b6aa2 inherit pub_methods_a00023"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd66b133bf0dcebdc381f751896b004d inherit pub_methods_a00023"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#afd66b133bf0dcebdc381f751896b004d">base_iterator</a> (const <a class="el" href="a00023.html">base_iterator</a> &amp;cp)</td></tr>
-<tr class="separator:afd66b133bf0dcebdc381f751896b004d inherit pub_methods_a00023"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a585cfd7ce2669406c75bd3de7e6fa7 inherit pub_methods_a00023"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a7a585cfd7ce2669406c75bd3de7e6fa7">~base_iterator</a> ()</td></tr>
-<tr class="separator:a7a585cfd7ce2669406c75bd3de7e6fa7 inherit pub_methods_a00023"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e3b1e3aa2a80acd29f4d5735c4c09d1 inherit pub_methods_a00023"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a1e3b1e3aa2a80acd29f4d5735c4c09d1">is_equal</a> (const <a class="el" href="a00023.html">base_iterator</a> &amp;other) const =0</td></tr>
-<tr class="separator:a1e3b1e3aa2a80acd29f4d5735c4c09d1 inherit pub_methods_a00023"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34afeb45e3c0c552a4631e7a7e2ce17e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html#a34afeb45e3c0c552a4631e7a7e2ce17e">NoPositiveInData</a> (const std::string &amp;msg)</td></tr>
+<tr class="separator:a34afeb45e3c0c552a4631e7a7e2ce17e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_a00050"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_a00050')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="a00050.html">gaml::exception::ConfusionMatrix</a></td></tr>
+<tr class="memitem:a8ea408ad4ce98f5740efa3c6a3efc762 inherit pub_methods_a00050"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00050.html#a8ea408ad4ce98f5740efa3c6a3efc762">ConfusionMatrix</a> (const std::string &amp;msg)</td></tr>
+<tr class="separator:a8ea408ad4ce98f5740efa3c6a3efc762 inherit pub_methods_a00050"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83857d3044b2f2db610373d627821e58 inherit pub_methods_a00050"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00050.html#a83857d3044b2f2db610373d627821e58">ConfusionMatrix</a> (const std::string &amp;kind, const std::string &amp;msg)</td></tr>
+<tr class="separator:a83857d3044b2f2db610373d627821e58 inherit pub_methods_a00050"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_a00048"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_a00048')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="a00048.html">gaml::exception::Any</a></td></tr>
+<tr class="memitem:af1b4c276e8a2f74b55723feff137a287 inherit pub_methods_a00048"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00048.html#af1b4c276e8a2f74b55723feff137a287">Any</a> (const std::string &amp;kind, const std::string &amp;msg)</td></tr>
+<tr class="separator:af1b4c276e8a2f74b55723feff137a287 inherit pub_methods_a00048"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e6d3273706b86bfc68ac82c552f8e18 inherit pub_methods_a00048"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00048.html#a6e6d3273706b86bfc68ac82c552f8e18">~Any</a> (void)  throw ()</td></tr>
+<tr class="separator:a6e6d3273706b86bfc68ac82c552f8e18 inherit pub_methods_a00048"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73980eae9b8d106e169745923f6f2507 inherit pub_methods_a00048"><td class="memItemLeft" align="right" valign="top">virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00048.html#a73980eae9b8d106e169745923f6f2507">what</a> (void) const   throw ()</td></tr>
+<tr class="separator:a73980eae9b8d106e169745923f6f2507 inherit pub_methods_a00048"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="ad6ad62dbc2bd71ff94e5ef36ae19bb57"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="a00023.html">gaml::virtualized::base_iterator</a>&lt;std::input_iterator_tag, typename std::iterator_traits&lt;Iterator&gt;::<a class="el" href="a00056.html#ad9747b248019e4a20d28e9dae4788c0f">value_type</a>&gt; <a class="el" href="a00056.html">gaml::FilterIterator</a>&lt; Iterator &gt;::<a class="el" href="a00056.html#ad6ad62dbc2bd71ff94e5ef36ae19bb57">base_type</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a641d3e6e76382fbf50c21513cea9ce36"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef std::iterator_traits&lt;Iterator&gt;::<a class="el" href="a00056.html#a641d3e6e76382fbf50c21513cea9ce36">difference_type</a> <a class="el" href="a00056.html">gaml::FilterIterator</a>&lt; Iterator &gt;::<a class="el" href="a00056.html#a641d3e6e76382fbf50c21513cea9ce36">difference_type</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ad9747b248019e4a20d28e9dae4788c0f"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef std::iterator_traits&lt;Iterator&gt;::<a class="el" href="a00056.html#ad9747b248019e4a20d28e9dae4788c0f">value_type</a> <a class="el" href="a00056.html">gaml::FilterIterator</a>&lt; Iterator &gt;::<a class="el" href="a00056.html#ad9747b248019e4a20d28e9dae4788c0f">value_type</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a6d5b0d50b8995a9b95fce92aa86fcb00"></a>
+<a class="anchor" id="a34afeb45e3c0c552a4631e7a7e2ce17e"></a>
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00056.html">gaml::FilterIterator</a>&lt; Iterator &gt;::<a class="el" href="a00056.html">FilterIterator</a> </td>
+          <td class="memname">gaml::exception::NoPositiveInData::NoPositiveInData </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
           <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a8132be3bc12f30abd176c37fc0208d33"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00056.html">gaml::FilterIterator</a>&lt; Iterator &gt;::<a class="el" href="a00056.html">FilterIterator</a> </td>
-          <td>(</td>
-          <td class="paramtype">const Iterator &amp;&#160;</td>
-          <td class="paramname"><em>iter</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const Iterator &amp;&#160;</td>
-          <td class="paramname"><em>last</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::function&lt; bool(const <a class="el" href="a00056.html#ad9747b248019e4a20d28e9dae4788c0f">value_type</a> &amp;)&gt; &amp;&#160;</td>
-          <td class="paramname"><em>f</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ad51acdf052cadbf213688a6db43b0384"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00056.html">gaml::FilterIterator</a>&lt; Iterator &gt;::<a class="el" href="a00056.html">FilterIterator</a> </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00056.html">FilterIterator</a>&lt; Iterator &gt; &amp;&#160;</td>
-          <td class="paramname"><em>cp</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a2ac2b9dd701edb4ced43ccc2bd9a40b7"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual <a class="el" href="a00056.html#ad6ad62dbc2bd71ff94e5ef36ae19bb57">base_type</a>* <a class="el" href="a00056.html">gaml::FilterIterator</a>&lt; Iterator &gt;::clone </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="a00023.html#a66b3e37530a0ac683f8ae20fd471f6fa">gaml::virtualized::base_iterator&lt; std::input_iterator_tag, std::iterator_traits&lt; Iterator &gt;::value_type &gt;</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ae7ab3761953d9a47ab4ab2ead4aeaa88"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual const <a class="el" href="a00056.html#ad9747b248019e4a20d28e9dae4788c0f">value_type</a>&amp; <a class="el" href="a00056.html">gaml::FilterIterator</a>&lt; Iterator &gt;::get </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="a00023.html#a76677da7162ce9b232fed38bcc0a9e2a">gaml::virtualized::base_iterator&lt; std::input_iterator_tag, std::iterator_traits&lt; Iterator &gt;::value_type &gt;</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aed9024257fd7b8f88c7a8bc877493a38"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void <a class="el" href="a00056.html">gaml::FilterIterator</a>&lt; Iterator &gt;::increment </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="a00023.html#a027ecd0bd4e30e168548f7c26a002a05">gaml::virtualized::base_iterator&lt; std::input_iterator_tag, std::iterator_traits&lt; Iterator &gt;::value_type &gt;</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a45ffb5772c9bad467939c2a219e6171b"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual bool <a class="el" href="a00056.html">gaml::FilterIterator</a>&lt; Iterator &gt;::is_equal </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00056.html#ad6ad62dbc2bd71ff94e5ef36ae19bb57">base_type</a> &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a12e9861de68bdda35ad2253126eb125c"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="a00056.html">gaml::FilterIterator</a>&lt; Iterator &gt;::operator!= </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00056.html">FilterIterator</a>&lt; Iterator &gt; &amp;&#160;</td>
-          <td class="paramname"><em>i</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a800571633294082f3f5da0db91a76f4d"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="a00056.html#ad9747b248019e4a20d28e9dae4788c0f">value_type</a>&amp; <a class="el" href="a00056.html">gaml::FilterIterator</a>&lt; Iterator &gt;::operator* </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a30ef91cfe4121972a90bf8675d3ff90c"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00056.html">FilterIterator</a>&amp; <a class="el" href="a00056.html">gaml::FilterIterator</a>&lt; Iterator &gt;::operator++ </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ad055aabfe414d7da331199119ef87ae6"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00056.html">FilterIterator</a> <a class="el" href="a00056.html">gaml::FilterIterator</a>&lt; Iterator &gt;::operator++ </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a6668781e493d1861380da8a1e22e00c7"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00056.html">FilterIterator</a>&amp; <a class="el" href="a00056.html">gaml::FilterIterator</a>&lt; Iterator &gt;::operator= </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00056.html">FilterIterator</a>&lt; Iterator &gt; &amp;&#160;</td>
-          <td class="paramname"><em>cp</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a2e7dd1b8f6e49f2bee3198db8203d784"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Iterator&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="a00056.html">gaml::FilterIterator</a>&lt; Iterator &gt;::operator== </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00056.html">FilterIterator</a>&lt; Iterator &gt; &amp;&#160;</td>
-          <td class="paramname"><em>i</em></td><td>)</td>
-          <td> const</td>
         </tr>
       </table>
   </td>
@@ -568,7 +149,7 @@ template&lt;typename Iterator&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="a00150_source.html">gamlFilter.hpp</a></li>
+<li><a class="el" href="a00164_source.html">gamlException.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

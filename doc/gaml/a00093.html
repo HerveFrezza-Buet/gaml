@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::ostream_iterator&lt; T, OutputDataStream, Distance &gt; Class Template Reference</title>
+<title>gaml-1.14: gaml::MergeIterator&lt; Iterator1, Iterator2 &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,63 +82,141 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00093.html">ostream_iterator</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00093.html">MergeIterator</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00255.html">List of all members</a>  </div>
+<a href="a00258.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::ostream_iterator&lt; T, OutputDataStream, Distance &gt; Class Template Reference</div>  </div>
+<div class="title">gaml::MergeIterator&lt; Iterator1, Iterator2 &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00166_source.html">gamlStreamer.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00174_source.html">gamlMerge.hpp</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for gaml::ostream_iterator&lt; T, OutputDataStream, Distance &gt;:</div>
+Inheritance diagram for gaml::MergeIterator&lt; Iterator1, Iterator2 &gt;:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="a00093.png" usemap="#gaml::ostream_iterator&lt; T, OutputDataStream, Distance &gt;_map" alt=""/>
-  <map id="gaml::ostream_iterator&lt; T, OutputDataStream, Distance &gt;_map" name="gaml::ostream_iterator&lt; T, OutputDataStream, Distance &gt;_map">
+  <img src="a00093.png" usemap="#gaml::MergeIterator&lt; Iterator1, Iterator2 &gt;_map" alt=""/>
+  <map id="gaml::MergeIterator&lt; Iterator1, Iterator2 &gt;_map" name="gaml::MergeIterator&lt; Iterator1, Iterator2 &gt;_map">
+<area href="a00024.html" alt="gaml::virtualized::base_iterator&lt; std::iterator_traits&lt; Iterator1 &gt;::value_type &gt;" shape="rect" coords="472,56,934,80"/>
+<area href="a00073.html" alt="gaml::is_virtual" shape="rect" coords="472,0,934,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a5718ac497785e75a006ae066b89be9f6"><td class="memItemLeft" align="right" valign="top">typedef std::iterator_traits<br class="typebreak"/>
+&lt; Iterator1 &gt;::<a class="el" href="a00093.html#a5718ac497785e75a006ae066b89be9f6">value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#a5718ac497785e75a006ae066b89be9f6">value_type</a></td></tr>
+<tr class="separator:a5718ac497785e75a006ae066b89be9f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35b5c6a1a989623af0429bb2edd49816"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+<a class="el" href="a00024.html">gaml::virtualized::base_iterator</a><br class="typebreak"/>
+&lt; typename <br class="typebreak"/>
+std::iterator_traits<br class="typebreak"/>
+&lt; Iterator1 &gt;::<a class="el" href="a00093.html#a5718ac497785e75a006ae066b89be9f6">value_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#a35b5c6a1a989623af0429bb2edd49816">base_type</a></td></tr>
+<tr class="separator:a35b5c6a1a989623af0429bb2edd49816"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_types_a00024"><td colspan="2" onclick="javascript:toggleInherit('pub_types_a00024')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="a00024.html">gaml::virtualized::base_iterator&lt; std::iterator_traits&lt; Iterator1 &gt;::value_type &gt;</a></td></tr>
+<tr class="memitem:a990bd015bcc14bad1e980b7b7fc53412 inherit pub_types_a00024"><td class="memItemLeft" align="right" valign="top">typedef std::iterator_traits<br class="typebreak"/>
+&lt; Iterator1 &gt;::<a class="el" href="a00024.html#a990bd015bcc14bad1e980b7b7fc53412">value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#a990bd015bcc14bad1e980b7b7fc53412">value_type</a></td></tr>
+<tr class="separator:a990bd015bcc14bad1e980b7b7fc53412 inherit pub_types_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4aa327c9d143e4c4fe5aee82cdecdff5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#a4aa327c9d143e4c4fe5aee82cdecdff5">ostream_iterator</a> ()</td></tr>
-<tr class="separator:a4aa327c9d143e4c4fe5aee82cdecdff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74261b15bf94df8726832fa6dd16d5de"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#a74261b15bf94df8726832fa6dd16d5de">ostream_iterator</a> (<a class="el" href="a00094.html">OutputDataStream</a> &amp;stream, char separator= '\n')</td></tr>
-<tr class="separator:a74261b15bf94df8726832fa6dd16d5de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b8581ea43e32bc68fca0c60b12e35b4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#a1b8581ea43e32bc68fca0c60b12e35b4">ostream_iterator</a> (const <a class="el" href="a00093.html">ostream_iterator</a> &amp;other)</td></tr>
-<tr class="separator:a1b8581ea43e32bc68fca0c60b12e35b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38fd8e43fe97bfce444e597a13527dcf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#a38fd8e43fe97bfce444e597a13527dcf">~ostream_iterator</a> ()</td></tr>
-<tr class="separator:a38fd8e43fe97bfce444e597a13527dcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ba5846af49a469cac6ce81e83573f08"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#a5ba5846af49a469cac6ce81e83573f08">operator*</a> ()</td></tr>
-<tr class="separator:a5ba5846af49a469cac6ce81e83573f08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a148b105b6dfa2965a35b9abc2c939dbc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00093.html">ostream_iterator</a>&lt; T, <br class="typebreak"/>
-<a class="el" href="a00094.html">OutputDataStream</a>, Distance &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#a148b105b6dfa2965a35b9abc2c939dbc">operator++</a> ()</td></tr>
-<tr class="separator:a148b105b6dfa2965a35b9abc2c939dbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acab579ba456fbbe4dd59d2d101bc6be6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00093.html">ostream_iterator</a>&lt; T, <br class="typebreak"/>
-<a class="el" href="a00094.html">OutputDataStream</a>, Distance &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#acab579ba456fbbe4dd59d2d101bc6be6">operator++</a> (int)</td></tr>
-<tr class="separator:acab579ba456fbbe4dd59d2d101bc6be6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36a20a93b477fc435214162868fa10b8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#a36a20a93b477fc435214162868fa10b8">operator!=</a> (const <a class="el" href="a00093.html">ostream_iterator</a> &amp;other) const </td></tr>
-<tr class="separator:a36a20a93b477fc435214162868fa10b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9357f4824bd638246e541f06f3e114b2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#a9357f4824bd638246e541f06f3e114b2">operator==</a> (const <a class="el" href="a00093.html">ostream_iterator</a> &amp;other) const </td></tr>
-<tr class="separator:a9357f4824bd638246e541f06f3e114b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c3197f3bb0e54dd0f4911df658c9ff5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#a9c3197f3bb0e54dd0f4911df658c9ff5">MergeIterator</a> ()</td></tr>
+<tr class="separator:a9c3197f3bb0e54dd0f4911df658c9ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afda7261acd5b7b4fb7ecc433f6d8df6f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#afda7261acd5b7b4fb7ecc433f6d8df6f">MergeIterator</a> (const Iterator1 &amp;it1, const Iterator1 &amp;end1, const Iterator2 &amp;it2, const Iterator2 &amp;begin2)</td></tr>
+<tr class="separator:afda7261acd5b7b4fb7ecc433f6d8df6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2756ccb7464082d202823966ddd3b0d4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#a2756ccb7464082d202823966ddd3b0d4">MergeIterator</a> (const <a class="el" href="a00093.html">MergeIterator</a> &amp;other)</td></tr>
+<tr class="separator:a2756ccb7464082d202823966ddd3b0d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7755a3dd89c5b1bf28d9980a90ce0722"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00093.html">MergeIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#a7755a3dd89c5b1bf28d9980a90ce0722">operator++</a> (void)</td></tr>
+<tr class="separator:a7755a3dd89c5b1bf28d9980a90ce0722"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe68ee0b8cc41564eb768ca030600ab2"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#abe68ee0b8cc41564eb768ca030600ab2">operator*</a> (void) const -&gt; decltype(*it1_)</td></tr>
+<tr class="separator:abe68ee0b8cc41564eb768ca030600ab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abae27f1c3f55a75ec980e2a9e7005678"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#abae27f1c3f55a75ec980e2a9e7005678">operator!=</a> (const <a class="el" href="a00093.html">MergeIterator</a> &amp;other) const </td></tr>
+<tr class="separator:abae27f1c3f55a75ec980e2a9e7005678"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75cf40b8fa393da10f42201764fa7817"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#a75cf40b8fa393da10f42201764fa7817">operator==</a> (const <a class="el" href="a00093.html">MergeIterator</a> &amp;other) const </td></tr>
+<tr class="separator:a75cf40b8fa393da10f42201764fa7817"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d9a498373575f28faa529f1df4b71f8"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="a00093.html#a35b5c6a1a989623af0429bb2edd49816">base_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#a3d9a498373575f28faa529f1df4b71f8">clone</a> () const override</td></tr>
+<tr class="separator:a3d9a498373575f28faa529f1df4b71f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91540e63550814052b64d41cde6bb61c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#a91540e63550814052b64d41cde6bb61c">increment</a> (void) override</td></tr>
+<tr class="separator:a91540e63550814052b64d41cde6bb61c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bacfa03cfd3f4a665166e9b510f91ce"><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="a00093.html#a5718ac497785e75a006ae066b89be9f6">value_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#a3bacfa03cfd3f4a665166e9b510f91ce">get</a> () const override</td></tr>
+<tr class="separator:a3bacfa03cfd3f4a665166e9b510f91ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a094f468b57e7a91e8589b58618767286"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00093.html#a094f468b57e7a91e8589b58618767286">is_equal</a> (const <a class="el" href="a00093.html#a35b5c6a1a989623af0429bb2edd49816">base_type</a> &amp;other) const override</td></tr>
+<tr class="separator:a094f468b57e7a91e8589b58618767286"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_a00024"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_a00024')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="a00024.html">gaml::virtualized::base_iterator&lt; std::iterator_traits&lt; Iterator1 &gt;::value_type &gt;</a></td></tr>
+<tr class="memitem:af0906563edf8dbca9f07c457d5595fce inherit pub_methods_a00024"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#af0906563edf8dbca9f07c457d5595fce">base_iterator</a> ()</td></tr>
+<tr class="separator:af0906563edf8dbca9f07c457d5595fce inherit pub_methods_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ebd7dcfa7922fb628813fa9b44cb429 inherit pub_methods_a00024"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#a2ebd7dcfa7922fb628813fa9b44cb429">base_iterator</a> (const <a class="el" href="a00024.html">base_iterator</a> &amp;cp)</td></tr>
+<tr class="separator:a2ebd7dcfa7922fb628813fa9b44cb429 inherit pub_methods_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb68368085f3f21aed2a972d74da61dc inherit pub_methods_a00024"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#adb68368085f3f21aed2a972d74da61dc">~base_iterator</a> ()</td></tr>
+<tr class="separator:adb68368085f3f21aed2a972d74da61dc inherit pub_methods_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a452660074ff7b29505933a23194d77 inherit pub_methods_a00024"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#a7a452660074ff7b29505933a23194d77">is_equal</a> (const <a class="el" href="a00024.html">base_iterator</a> &amp;other) const =0</td></tr>
+<tr class="separator:a7a452660074ff7b29505933a23194d77 inherit pub_methods_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d3f8a13d61c432e742ce965a7887125 inherit pub_methods_a00024"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#a6d3f8a13d61c432e742ce965a7887125">increment</a> (int i)</td></tr>
+<tr class="separator:a6d3f8a13d61c432e742ce965a7887125 inherit pub_methods_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1d7420ffbfb39c55272f06a92c1297f inherit pub_methods_a00024"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#ab1d7420ffbfb39c55272f06a92c1297f">is_a_tabular_iterator</a> () const</td></tr>
+<tr class="separator:ab1d7420ffbfb39c55272f06a92c1297f inherit pub_methods_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae507a1cfc460ada5926401a08be47396 inherit pub_methods_a00024"><td class="memItemLeft" align="right" valign="top">virtual const <br class="typebreak"/>
+std::iterator_traits<br class="typebreak"/>
+&lt; Iterator1 &gt;::<a class="el" href="a00024.html#a990bd015bcc14bad1e980b7b7fc53412">value_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#ae507a1cfc460ada5926401a08be47396">get_ith_from_root</a> (int i) const</td></tr>
+<tr class="separator:ae507a1cfc460ada5926401a08be47396 inherit pub_methods_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf1b5bafaec33cc07d9b1f49ce1385c2 inherit pub_methods_a00024"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="a00024.html">base_iterator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#abf1b5bafaec33cc07d9b1f49ce1385c2">root_clone</a> () const</td></tr>
+<tr class="separator:abf1b5bafaec33cc07d9b1f49ce1385c2 inherit pub_methods_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacfa336e1db16e9e973a610c18edd049 inherit pub_methods_a00024"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; unsigned <br class="typebreak"/>
+int &gt;::<a class="el" href="a00152.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#aacfa336e1db16e9e973a610c18edd049">idx_iter</a> () const</td></tr>
+<tr class="separator:aacfa336e1db16e9e973a610c18edd049 inherit pub_methods_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a9e64fd9a51e0c7ca3aef40a690de27 inherit pub_methods_a00024"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#a8a9e64fd9a51e0c7ca3aef40a690de27">decrement</a> (void)</td></tr>
+<tr class="separator:a8a9e64fd9a51e0c7ca3aef40a690de27 inherit pub_methods_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5e917cfd58d71e970eacb996d8143c4 inherit pub_methods_a00024"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#aa5e917cfd58d71e970eacb996d8143c4">decrement</a> (int i)</td></tr>
+<tr class="separator:aa5e917cfd58d71e970eacb996d8143c4 inherit pub_methods_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93e2690dfaf48e14c4bb9ca76f23bdac inherit pub_methods_a00024"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#a93e2690dfaf48e14c4bb9ca76f23bdac">distance</a> (const <a class="el" href="a00024.html">base_iterator</a> &amp;other)</td></tr>
+<tr class="separator:a93e2690dfaf48e14c4bb9ca76f23bdac inherit pub_methods_a00024"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a4aa327c9d143e4c4fe5aee82cdecdff5"></a>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="a35b5c6a1a989623af0429bb2edd49816"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&gt; </div>
+template&lt;typename Iterator1, typename Iterator2&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="a00024.html">gaml::virtualized::base_iterator</a>&lt;typename std::iterator_traits&lt;Iterator1&gt;::<a class="el" href="a00093.html#a5718ac497785e75a006ae066b89be9f6">value_type</a>&gt; <a class="el" href="a00093.html">gaml::MergeIterator</a>&lt; Iterator1, Iterator2 &gt;::<a class="el" href="a00093.html#a35b5c6a1a989623af0429bb2edd49816">base_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5718ac497785e75a006ae066b89be9f6"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator1, typename Iterator2&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::iterator_traits&lt;Iterator1&gt;::<a class="el" href="a00093.html#a5718ac497785e75a006ae066b89be9f6">value_type</a> <a class="el" href="a00093.html">gaml::MergeIterator</a>&lt; Iterator1, Iterator2 &gt;::<a class="el" href="a00093.html#a5718ac497785e75a006ae066b89be9f6">value_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a9c3197f3bb0e54dd0f4911df658c9ff5"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator1, typename Iterator2&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00093.html">gaml::ostream_iterator</a>&lt; T, <a class="el" href="a00094.html">OutputDataStream</a>, Distance &gt;::<a class="el" href="a00093.html">ostream_iterator</a> </td>
+          <td class="memname"><a class="el" href="a00093.html">gaml::MergeIterator</a>&lt; Iterator1, Iterator2 &gt;::<a class="el" href="a00093.html">MergeIterator</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -153,26 +231,38 @@ template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&
 
 </div>
 </div>
-<a class="anchor" id="a74261b15bf94df8726832fa6dd16d5de"></a>
+<a class="anchor" id="afda7261acd5b7b4fb7ecc433f6d8df6f"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&gt; </div>
+template&lt;typename Iterator1, typename Iterator2&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00093.html">gaml::ostream_iterator</a>&lt; T, <a class="el" href="a00094.html">OutputDataStream</a>, Distance &gt;::<a class="el" href="a00093.html">ostream_iterator</a> </td>
+          <td class="memname"><a class="el" href="a00093.html">gaml::MergeIterator</a>&lt; Iterator1, Iterator2 &gt;::<a class="el" href="a00093.html">MergeIterator</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00094.html">OutputDataStream</a> &amp;&#160;</td>
-          <td class="paramname"><em>stream</em>, </td>
+          <td class="paramtype">const Iterator1 &amp;&#160;</td>
+          <td class="paramname"><em>it1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>separator</em> = <code>'\n'</code>&#160;</td>
+          <td class="paramtype">const Iterator1 &amp;&#160;</td>
+          <td class="paramname"><em>end1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Iterator2 &amp;&#160;</td>
+          <td class="paramname"><em>it2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Iterator2 &amp;&#160;</td>
+          <td class="paramname"><em>begin2</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -189,45 +279,20 @@ template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&
 
 </div>
 </div>
-<a class="anchor" id="a1b8581ea43e32bc68fca0c60b12e35b4"></a>
+<a class="anchor" id="a2756ccb7464082d202823966ddd3b0d4"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&gt; </div>
+template&lt;typename Iterator1, typename Iterator2&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00093.html">gaml::ostream_iterator</a>&lt; T, <a class="el" href="a00094.html">OutputDataStream</a>, Distance &gt;::<a class="el" href="a00093.html">ostream_iterator</a> </td>
+          <td class="memname"><a class="el" href="a00093.html">gaml::MergeIterator</a>&lt; Iterator1, Iterator2 &gt;::<a class="el" href="a00093.html">MergeIterator</a> </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00093.html">ostream_iterator</a>&lt; T, <a class="el" href="a00094.html">OutputDataStream</a>, Distance &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="a00093.html">MergeIterator</a>&lt; Iterator1, Iterator2 &gt; &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a38fd8e43fe97bfce444e597a13527dcf"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00093.html">gaml::ostream_iterator</a>&lt; T, <a class="el" href="a00094.html">OutputDataStream</a>, Distance &gt;::~<a class="el" href="a00093.html">ostream_iterator</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -241,19 +306,127 @@ template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a36a20a93b477fc435214162868fa10b8"></a>
+<a class="anchor" id="a3d9a498373575f28faa529f1df4b71f8"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&gt; </div>
+template&lt;typename Iterator1, typename Iterator2&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="a00093.html">gaml::ostream_iterator</a>&lt; T, <a class="el" href="a00094.html">OutputDataStream</a>, Distance &gt;::operator!= </td>
+          <td class="memname">virtual <a class="el" href="a00093.html#a35b5c6a1a989623af0429bb2edd49816">base_type</a>* <a class="el" href="a00093.html">gaml::MergeIterator</a>&lt; Iterator1, Iterator2 &gt;::clone </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00093.html">ostream_iterator</a>&lt; T, <a class="el" href="a00094.html">OutputDataStream</a>, Distance &gt; &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="a00024.html#aae09e51dd2a655b9a848ddb6eabbe949">gaml::virtualized::base_iterator&lt; std::iterator_traits&lt; Iterator1 &gt;::value_type &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3bacfa03cfd3f4a665166e9b510f91ce"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator1, typename Iterator2&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const <a class="el" href="a00093.html#a5718ac497785e75a006ae066b89be9f6">value_type</a>&amp; <a class="el" href="a00093.html">gaml::MergeIterator</a>&lt; Iterator1, Iterator2 &gt;::get </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="a00024.html#a8ee90acce782f20a83934ecc9a915408">gaml::virtualized::base_iterator&lt; std::iterator_traits&lt; Iterator1 &gt;::value_type &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a91540e63550814052b64d41cde6bb61c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator1, typename Iterator2&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="a00093.html">gaml::MergeIterator</a>&lt; Iterator1, Iterator2 &gt;::increment </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="a00024.html#ad0ce965de28358ccdba2128737e0d4d0">gaml::virtualized::base_iterator&lt; std::iterator_traits&lt; Iterator1 &gt;::value_type &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a094f468b57e7a91e8589b58618767286"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator1, typename Iterator2&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool <a class="el" href="a00093.html">gaml::MergeIterator</a>&lt; Iterator1, Iterator2 &gt;::is_equal </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00093.html#a35b5c6a1a989623af0429bb2edd49816">base_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abae27f1c3f55a75ec980e2a9e7005678"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator1, typename Iterator2&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="a00093.html">gaml::MergeIterator</a>&lt; Iterator1, Iterator2 &gt;::operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00093.html">MergeIterator</a>&lt; Iterator1, Iterator2 &gt; &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -267,17 +440,43 @@ template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&
 
 </div>
 </div>
-<a class="anchor" id="a5ba5846af49a469cac6ce81e83573f08"></a>
+<a class="anchor" id="abe68ee0b8cc41564eb768ca030600ab2"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&gt; </div>
+template&lt;typename Iterator1, typename Iterator2&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">T&amp; <a class="el" href="a00093.html">gaml::ostream_iterator</a>&lt; T, <a class="el" href="a00094.html">OutputDataStream</a>, Distance &gt;::operator* </td>
+          <td class="memname">auto <a class="el" href="a00093.html">gaml::MergeIterator</a>&lt; Iterator1, Iterator2 &gt;::operator* </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt; decltype(*it1_)  </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7755a3dd89c5b1bf28d9980a90ce0722"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator1, typename Iterator2&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00093.html">MergeIterator</a>&amp; <a class="el" href="a00093.html">gaml::MergeIterator</a>&lt; Iterator1, Iterator2 &gt;::operator++ </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -293,71 +492,19 @@ template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&
 
 </div>
 </div>
-<a class="anchor" id="a148b105b6dfa2965a35b9abc2c939dbc"></a>
+<a class="anchor" id="a75cf40b8fa393da10f42201764fa7817"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&gt; </div>
+template&lt;typename Iterator1, typename Iterator2&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00093.html">ostream_iterator</a>&lt;T, <a class="el" href="a00094.html">OutputDataStream</a>, Distance&gt;&amp; <a class="el" href="a00093.html">gaml::ostream_iterator</a>&lt; T, <a class="el" href="a00094.html">OutputDataStream</a>, Distance &gt;::operator++ </td>
+          <td class="memname">bool <a class="el" href="a00093.html">gaml::MergeIterator</a>&lt; Iterator1, Iterator2 &gt;::operator== </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="acab579ba456fbbe4dd59d2d101bc6be6"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00093.html">ostream_iterator</a>&lt;T, <a class="el" href="a00094.html">OutputDataStream</a>, Distance&gt; <a class="el" href="a00093.html">gaml::ostream_iterator</a>&lt; T, <a class="el" href="a00094.html">OutputDataStream</a>, Distance &gt;::operator++ </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a9357f4824bd638246e541f06f3e114b2"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="a00093.html">gaml::ostream_iterator</a>&lt; T, <a class="el" href="a00094.html">OutputDataStream</a>, Distance &gt;::operator== </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00093.html">ostream_iterator</a>&lt; T, <a class="el" href="a00094.html">OutputDataStream</a>, Distance &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="a00093.html">MergeIterator</a>&lt; Iterator1, Iterator2 &gt; &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -372,7 +519,7 @@ template&lt;class T , class OutputDataStream , class Distance  = std::ptrdiff_t&
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="a00166_source.html">gamlStreamer.hpp</a></li>
+<li><a class="el" href="a00174_source.html">gamlMerge.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

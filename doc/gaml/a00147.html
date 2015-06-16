@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gamlConfusion.hpp File Reference</title>
+<title>gaml-1.14: gaml::varsel::CorrelationFilter&lt; DataIterator, InputOf, OutputOf &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -38,8 +38,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -61,7 +61,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -80,37 +82,230 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00204.html">varsel</a></li><li class="navelem"><a class="el" href="a00147.html">CorrelationFilter</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="a00329.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gamlConfusion.hpp File Reference</div>  </div>
+<div class="title">gaml::varsel::CorrelationFilter&lt; DataIterator, InputOf, OutputOf &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;map&gt;</code><br/>
-<code>#include &lt;set&gt;</code><br/>
-<code>#include &lt;utility&gt;</code><br/>
-<code>#include &lt;<a class="el" href="a00149_source.html">gamlException.hpp</a>&gt;</code><br/>
-</div>
-<p><a href="a00147_source.html">Go to the source code of this file.</a></p>
+
+<p><code>#include &lt;<a class="el" href="a00166_source.html">gamlFilters.hpp</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00036.html">gaml::classification::Confusion&lt; CLASS &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This computes a confusion matrix.  <a href="a00036.html#details">More...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a07dad3cd8f0f28f56397b54ecc8aab68"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00147.html#a07dad3cd8f0f28f56397b54ecc8aab68">CorrelationFilter</a> (const DataIterator &amp;dataBegin, const DataIterator &amp;dataEnd, const InputOf &amp;inputOf, const OutputOf &amp;outputOf)</td></tr>
+<tr class="separator:a07dad3cd8f0f28f56397b54ecc8aab68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2d912f973c934e7386ebbfa98e72b4b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00147.html#aa2d912f973c934e7386ebbfa98e72b4b">~CorrelationFilter</a> ()</td></tr>
+<tr class="separator:aa2d912f973c934e7386ebbfa98e72b4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7343ae5c86479b5fde709d79db257572"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00147.html">CorrelationFilter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00147.html#a7343ae5c86479b5fde709d79db257572">verbose</a> (bool verbose=true)</td></tr>
+<tr class="separator:a7343ae5c86479b5fde709d79db257572"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6e181d0d34c1ced2b07839191f29d5c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00147.html#ae6e181d0d34c1ced2b07839191f29d5c">getAttributeNumber</a> () const </td></tr>
+<tr class="separator:ae6e181d0d34c1ced2b07839191f29d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c91a6e8d3019f44c700d4f17ba0cf05"><td class="memTemplParams" colspan="2">template&lt;typename AttributeIterator &gt; </td></tr>
+<tr class="memitem:a8c91a6e8d3019f44c700d4f17ba0cf05"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00147.html#a8c91a6e8d3019f44c700d4f17ba0cf05">operator()</a> (const AttributeIterator begin, const AttributeIterator end) const </td></tr>
+<tr class="separator:a8c91a6e8d3019f44c700d4f17ba0cf05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:a00171"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00171.html">gaml</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00175"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00175.html">gaml::classification</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a2975ec2c47f58aaafd5f483378331840"><td class="memItemLeft" align="right" valign="top">static const bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00147.html#a2975ec2c47f58aaafd5f483378331840">toMinimize</a> = false</td></tr>
+<tr class="separator:a2975ec2c47f58aaafd5f483378331840"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a07dad3cd8f0f28f56397b54ecc8aab68"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DataIterator, typename InputOf, typename OutputOf&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00147.html">gaml::varsel::CorrelationFilter</a>&lt; DataIterator, InputOf, OutputOf &gt;::<a class="el" href="a00147.html">CorrelationFilter</a> </td>
+          <td>(</td>
+          <td class="paramtype">const DataIterator &amp;&#160;</td>
+          <td class="paramname"><em>dataBegin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const DataIterator &amp;&#160;</td>
+          <td class="paramname"><em>dataEnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const InputOf &amp;&#160;</td>
+          <td class="paramname"><em>inputOf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const OutputOf &amp;&#160;</td>
+          <td class="paramname"><em>outputOf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa2d912f973c934e7386ebbfa98e72b4b"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DataIterator, typename InputOf, typename OutputOf&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00147.html">gaml::varsel::CorrelationFilter</a>&lt; DataIterator, InputOf, OutputOf &gt;::~<a class="el" href="a00147.html">CorrelationFilter</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ae6e181d0d34c1ced2b07839191f29d5c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DataIterator, typename InputOf, typename OutputOf&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="a00147.html">gaml::varsel::CorrelationFilter</a>&lt; DataIterator, InputOf, OutputOf &gt;::getAttributeNumber </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8c91a6e8d3019f44c700d4f17ba0cf05"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DataIterator, typename InputOf, typename OutputOf&gt; </div>
+<div class="memtemplate">
+template&lt;typename AttributeIterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="a00147.html">gaml::varsel::CorrelationFilter</a>&lt; DataIterator, InputOf, OutputOf &gt;::operator() </td>
+          <td>(</td>
+          <td class="paramtype">const AttributeIterator&#160;</td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const AttributeIterator&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7343ae5c86479b5fde709d79db257572"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DataIterator, typename InputOf, typename OutputOf&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00147.html">CorrelationFilter</a>&amp; <a class="el" href="a00147.html">gaml::varsel::CorrelationFilter</a>&lt; DataIterator, InputOf, OutputOf &gt;::verbose </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>verbose</em> = <code>true</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a2975ec2c47f58aaafd5f483378331840"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DataIterator, typename InputOf, typename OutputOf&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const bool <a class="el" href="a00147.html">gaml::varsel::CorrelationFilter</a>&lt; DataIterator, InputOf, OutputOf &gt;::toMinimize = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="a00166_source.html">gamlFilters.hpp</a></li>
+</ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

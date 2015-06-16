@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gamlFilters.hpp File Reference</title>
+<title>gaml-1.14: gaml::virtual_category_of&lt; Iterator, std::true_type &gt; Struct Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -38,8 +38,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -61,7 +61,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -80,46 +82,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00151.html">virtual_category_of< Iterator, std::true_type ></a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#pub-types">Public Types</a> &#124;
+<a href="a00234.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gamlFilters.hpp File Reference</div>  </div>
+<div class="title">gaml::virtual_category_of&lt; Iterator, std::true_type &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="a00148_source.html">gamlDimensions.hpp</a>&gt;</code><br/>
-<code>#include &lt;vector&gt;</code><br/>
-<code>#include &lt;algorithm&gt;</code><br/>
-<code>#include &lt;limits&gt;</code><br/>
-<code>#include &lt;iterator&gt;</code><br/>
-</div>
-<p><a href="a00151_source.html">Go to the source code of this file.</a></p>
+
+<p><code>#include &lt;<a class="el" href="a00170_source.html">gamlIterator.hpp</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00134.html">gaml::varsel::CorrelationFilter&lt; DataIterator, InputOf, OutputOf &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:a00171"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00171.html">gaml</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00188"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00188.html">gaml::varsel</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a7423a399127ecd855efd035d9776da3f"><td class="memTemplParams" colspan="2">template&lt;typename DataIterator , typename InputOf , typename OutputOf &gt; </td></tr>
-<tr class="memitem:a7423a399127ecd855efd035d9776da3f"><td class="memTemplItemLeft" align="right" valign="top">CorrelationFilter<br class="typebreak"/>
-&lt; DataIterator, InputOf, <br class="typebreak"/>
-OutputOf &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00188.html#a7423a399127ecd855efd035d9776da3f">gaml::varsel::make_correlation_filter</a> (const DataIterator &amp;dataBegin, const DataIterator &amp;dataEnd, const InputOf &amp;inputOf, const OutputOf &amp;outputOf)</td></tr>
-<tr class="separator:a7423a399127ecd855efd035d9776da3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:aed1c01fbe2b5c4cb195f00cf26319fdd"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00155.html">virtualized_iterator_tag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00151.html#aed1c01fbe2b5c4cb195f00cf26319fdd">tag_type</a></td></tr>
+<tr class="separator:aed1c01fbe2b5c4cb195f00cf26319fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename Iterator&gt;<br/>
+struct gaml::virtual_category_of&lt; Iterator, std::true_type &gt;</h3>
+
+<p>For internal use </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="aed1c01fbe2b5c4cb195f00cf26319fdd"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="a00155.html">virtualized_iterator_tag</a> <a class="el" href="a00150.html">gaml::virtual_category_of</a>&lt; Iterator, std::true_type &gt;::<a class="el" href="a00151.html#aed1c01fbe2b5c4cb195f00cf26319fdd">tag_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li><a class="el" href="a00170_source.html">gamlIterator.hpp</a></li>
+</ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

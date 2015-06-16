@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: example-002-004-bootstrapping.cpp</title>
+<title>gaml-1.14: example-002-004-bootstrapping.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -79,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">example-002-004-bootstrapping.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00142.html">gaml.hpp</a>&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00157.html">gaml.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;ctime&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
@@ -106,17 +106,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  </div>
 <div class="line">  ratio::DataSet basis(DATA_SIZE);</div>
 <div class="line">  <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; data : basis) {</div>
-<div class="line">    <span class="keywordtype">double</span> x = <a name="a0"></a><a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(0,1);</div>
-<div class="line">    <span class="keywordtype">double</span> y = RATIO*x + <a class="code" href="a00183.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(-NOISE,NOISE);</div>
+<div class="line">    <span class="keywordtype">double</span> x = <a name="a0"></a><a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(0,1);</div>
+<div class="line">    <span class="keywordtype">double</span> y = RATIO*x + <a class="code" href="a00199.html#a63a869d5b9fe61b984623e3ecd99a033">gaml::random::uniform</a>(-NOISE,NOISE);</div>
 <div class="line">    data = {x,y};</div>
 <div class="line">  }</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Let us compute the different bootstrapping risks.</span></div>
 <div class="line">  <span class="keywordtype">bool</span> verbosity = <span class="keyword">true</span>;</div>
 <div class="line"></div>
-<div class="line">  <span class="keyword">auto</span> leave_one_out_evaluator = <a name="a1"></a><a class="code" href="a00185.html#a01ac66100a1596566398441fffb1c5dd">gaml::risk::bootstrap::leave_one_out</a>(<a name="_a2"></a><a class="code" href="a00083.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a>(), NB_BOOTSTRAPPED_SETS, verbosity);</div>
-<div class="line">  <span class="keyword">auto</span> r632_evaluator          = <a name="a3"></a><a class="code" href="a00185.html#a4a8e3a40f3ab1a21805db11247fe2a1c">gaml::risk::bootstrap::r632</a>         (<a class="code" href="a00083.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a>(), NB_BOOTSTRAPPED_SETS, verbosity);</div>
-<div class="line">  <span class="keyword">auto</span> r632plus_evaluator      = <a name="a4"></a><a class="code" href="a00185.html#ae33b2cab5e4459a0dc7c03c156292982">gaml::risk::bootstrap::r632plus</a>     (<a class="code" href="a00083.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a>(), NB_BOOTSTRAPPED_SETS, verbosity);</div>
+<div class="line">  <span class="keyword">auto</span> leave_one_out_evaluator = <a name="a1"></a><a class="code" href="a00201.html#a01ac66100a1596566398441fffb1c5dd">gaml::risk::bootstrap::leave_one_out</a>(<a name="_a2"></a><a class="code" href="a00087.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a>(), NB_BOOTSTRAPPED_SETS, verbosity);</div>
+<div class="line">  <span class="keyword">auto</span> r632_evaluator          = <a name="a3"></a><a class="code" href="a00201.html#a4a8e3a40f3ab1a21805db11247fe2a1c">gaml::risk::bootstrap::r632</a>         (<a class="code" href="a00087.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a>(), NB_BOOTSTRAPPED_SETS, verbosity);</div>
+<div class="line">  <span class="keyword">auto</span> r632plus_evaluator      = <a name="a4"></a><a class="code" href="a00201.html#ae33b2cab5e4459a0dc7c03c156292982">gaml::risk::bootstrap::r632plus</a>     (<a class="code" href="a00087.html" title="Quadratic loss.">gaml::loss::Quadratic&lt;double&gt;</a>(), NB_BOOTSTRAPPED_SETS, verbosity);</div>
 <div class="line"></div>
 <div class="line">  ratio::Learner learning_algorithm;</div>
 <div class="line"></div>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>gaml-1.12: gaml::Projection&lt; DataIterator, AttrIterator, InputOf, OutputOf &gt;::learning_types&lt; GenericLearner &gt; Struct Template Reference</title>
+<title>gaml-1.14: gaml::ProjectedInput&lt; AttrIterator, Input &gt;::Iterator Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">gaml-1.12
+   <div id="projectname">gaml-1.14
    </div>
   </td>
  </tr>
@@ -82,89 +82,211 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="a00171.html">gaml</a></li><li class="navelem"><a class="el" href="a00104.html">Projection</a></li><li class="navelem"><a class="el" href="a00106.html">learning_types</a></li>  </ul>
+<li class="navelem"><a class="el" href="a00187.html">gaml</a></li><li class="navelem"><a class="el" href="a00105.html">ProjectedInput</a></li><li class="navelem"><a class="el" href="a00106.html">Iterator</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="a00206.html">List of all members</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="a00216.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gaml::Projection&lt; DataIterator, AttrIterator, InputOf, OutputOf &gt;::learning_types&lt; GenericLearner &gt; Struct Template Reference</div>  </div>
+<div class="title">gaml::ProjectedInput&lt; AttrIterator, Input &gt;::Iterator Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00148_source.html">gamlDimensions.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00163_source.html">gamlDimensions.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for gaml::ProjectedInput&lt; AttrIterator, Input &gt;::Iterator:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="a00106.png" usemap="#gaml::ProjectedInput&lt; AttrIterator, Input &gt;::Iterator_map" alt=""/>
+  <map id="gaml::ProjectedInput&lt; AttrIterator, Input &gt;::Iterator_map" name="gaml::ProjectedInput&lt; AttrIterator, Input &gt;::Iterator_map">
+</map>
+ </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:af32868e9148e1c771b3c75a35a55140b"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
-projected_learner_type::predictor_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00106.html#af32868e9148e1c771b3c75a35a55140b">projected_predictor_type</a></td></tr>
-<tr class="separator:af32868e9148e1c771b3c75a35a55140b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb25240601fdab80e58aa80b19163f8d"><td class="memItemLeft" align="right" valign="top">typedef input_type::template <br class="typebreak"/>
-WrappingPredictor<br class="typebreak"/>
-&lt; <a class="el" href="a00106.html#af32868e9148e1c771b3c75a35a55140b">projected_predictor_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00106.html#afb25240601fdab80e58aa80b19163f8d">wrapping_predictor_type</a></td></tr>
-<tr class="separator:afb25240601fdab80e58aa80b19163f8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a6145aa0bc0ecd5ff766356d10f57b4b5"><td class="memItemLeft" align="right" valign="top">decltype(GenericLearner().template <br class="typebreak"/>
-make&lt; <a class="el" href="a00104.html#adb3d2a0e7f5fcacdf39a0bb93f382be3">input_type</a> &gt;()) typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00106.html#a6145aa0bc0ecd5ff766356d10f57b4b5">projected_learner_type</a></td></tr>
-<tr class="separator:a6145aa0bc0ecd5ff766356d10f57b4b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:abd7ab7b230fd2a7f4a4f19adc009a3fe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00106.html#abd7ab7b230fd2a7f4a4f19adc009a3fe">Iterator</a> (const AttrIterator &amp;index, const <a class="el" href="a00105.html#a4e2639c0632e93b8a0b703ec08045856">attribute_iterator</a> &amp;<a class="el" href="a00105.html#a08a4d04a286ab4919f1282000e053157">begin</a>)</td></tr>
+<tr class="separator:abd7ab7b230fd2a7f4a4f19adc009a3fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6dea0e6cf8e4bb4efb1ab80fca3a32d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00106.html#ab6dea0e6cf8e4bb4efb1ab80fca3a32d">Iterator</a> (const <a class="el" href="a00106.html">Iterator</a> &amp;other)</td></tr>
+<tr class="separator:ab6dea0e6cf8e4bb4efb1ab80fca3a32d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a669c605becd2c37a782d5d87595cd537"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00105.html#ab0f7003d1f30830a0af3a886b5b089f6">attribute_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00106.html#a669c605becd2c37a782d5d87595cd537">operator*</a> () const </td></tr>
+<tr class="separator:a669c605becd2c37a782d5d87595cd537"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b62a81da3fbe28149c13cec8d939308"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00106.html">Iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00106.html#a5b62a81da3fbe28149c13cec8d939308">operator++</a> ()</td></tr>
+<tr class="separator:a5b62a81da3fbe28149c13cec8d939308"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53c84b1dd73987dbbcfa4784290ff63d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00106.html#a53c84b1dd73987dbbcfa4784290ff63d">operator!=</a> (const <a class="el" href="a00106.html">Iterator</a> &amp;other) const </td></tr>
+<tr class="separator:a53c84b1dd73987dbbcfa4784290ff63d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae6526ad1eaaf78da97446e64e9c8ace"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00106.html#aae6526ad1eaaf78da97446e64e9c8ace">operator==</a> (const <a class="el" href="a00106.html">Iterator</a> &amp;other) const </td></tr>
+<tr class="separator:aae6526ad1eaaf78da97446e64e9c8ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="af32868e9148e1c771b3c75a35a55140b"></a>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="abd7ab7b230fd2a7f4a4f19adc009a3fe"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename DataIterator, typename AttrIterator, typename InputOf, typename OutputOf&gt; </div>
-<div class="memtemplate">
-template&lt;typename GenericLearner &gt; </div>
+template&lt;typename AttrIterator , typename Input &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">typedef projected_learner_type::predictor_type <a class="el" href="a00104.html">gaml::Projection</a>&lt; DataIterator, AttrIterator, InputOf, OutputOf &gt;::<a class="el" href="a00106.html">learning_types</a>&lt; GenericLearner &gt;::<a class="el" href="a00106.html#af32868e9148e1c771b3c75a35a55140b">projected_predictor_type</a></td>
+          <td class="memname"><a class="el" href="a00105.html">gaml::ProjectedInput</a>&lt; AttrIterator, Input &gt;::Iterator::Iterator </td>
+          <td>(</td>
+          <td class="paramtype">const AttrIterator &amp;&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00105.html#a4e2639c0632e93b8a0b703ec08045856">attribute_iterator</a> &amp;&#160;</td>
+          <td class="paramname"><em>begin</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="afb25240601fdab80e58aa80b19163f8d"></a>
+<a class="anchor" id="ab6dea0e6cf8e4bb4efb1ab80fca3a32d"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename DataIterator, typename AttrIterator, typename InputOf, typename OutputOf&gt; </div>
-<div class="memtemplate">
-template&lt;typename GenericLearner &gt; </div>
+template&lt;typename AttrIterator , typename Input &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">typedef input_type::template WrappingPredictor&lt; <a class="el" href="a00106.html#af32868e9148e1c771b3c75a35a55140b">projected_predictor_type</a>&gt; <a class="el" href="a00104.html">gaml::Projection</a>&lt; DataIterator, AttrIterator, InputOf, OutputOf &gt;::<a class="el" href="a00106.html">learning_types</a>&lt; GenericLearner &gt;::<a class="el" href="a00106.html#afb25240601fdab80e58aa80b19163f8d">wrapping_predictor_type</a></td>
+          <td class="memname"><a class="el" href="a00105.html">gaml::ProjectedInput</a>&lt; AttrIterator, Input &gt;::Iterator::Iterator </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00106.html">Iterator</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a6145aa0bc0ecd5ff766356d10f57b4b5"></a>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a53c84b1dd73987dbbcfa4784290ff63d"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename DataIterator, typename AttrIterator, typename InputOf, typename OutputOf&gt; </div>
-<div class="memtemplate">
-template&lt;typename GenericLearner &gt; </div>
+template&lt;typename AttrIterator , typename Input &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">decltype(GenericLearner().template make&lt;<a class="el" href="a00104.html#adb3d2a0e7f5fcacdf39a0bb93f382be3">input_type</a>&gt;()) typedef <a class="el" href="a00104.html">gaml::Projection</a>&lt; DataIterator, AttrIterator, InputOf, OutputOf &gt;::<a class="el" href="a00106.html">learning_types</a>&lt; GenericLearner &gt;::projected_learner_type</td>
+          <td class="memname">bool <a class="el" href="a00105.html">gaml::ProjectedInput</a>&lt; AttrIterator, Input &gt;::Iterator::operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00106.html">Iterator</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="a00148_source.html">gamlDimensions.hpp</a></li>
+<a class="anchor" id="a669c605becd2c37a782d5d87595cd537"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename AttrIterator , typename Input &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="a00105.html#ab0f7003d1f30830a0af3a886b5b089f6">attribute_type</a>&amp; <a class="el" href="a00105.html">gaml::ProjectedInput</a>&lt; AttrIterator, Input &gt;::Iterator::operator* </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5b62a81da3fbe28149c13cec8d939308"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename AttrIterator , typename Input &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00106.html">Iterator</a>&amp; <a class="el" href="a00105.html">gaml::ProjectedInput</a>&lt; AttrIterator, Input &gt;::Iterator::operator++ </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aae6526ad1eaaf78da97446e64e9c8ace"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename AttrIterator , typename Input &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="a00105.html">gaml::ProjectedInput</a>&lt; AttrIterator, Input &gt;::Iterator::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00106.html">Iterator</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="a00163_source.html">gamlDimensions.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
