@@ -90,7 +90,7 @@ public:
 
 	bool operator!=(const InputDataStream& other) const {
 		if (is_ && other.is_)
-			return *is_ != *other.is_;
+			return is_ != other.is_;
 		else
 			return (is_ || other.is_);
 	}
