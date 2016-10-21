@@ -1,5 +1,7 @@
 #pragma once
 
+erreur_faite_expres
+
 /*
  *   Copyright (C) 2012,  Supelec
  *

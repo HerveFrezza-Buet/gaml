@@ -35,48 +35,20 @@
 #include <type_traits>
 #include <gamlAlgorithms.hpp>
 #include <gamlException.hpp>
-#include <gamlIterator.hpp>
 #include <gamlTabular.hpp>
 
 namespace gaml {
 
-  template<typename Iterator> 
-  class Bootstrap : public Tabular<Iterator,typename gaml::iterator_traits<Iterator>::tag_type> {
-
-  public:
-
-    typedef typename std::iterator_traits<Iterator>::value_type value_type;
-    typedef typename Tabular<Iterator,typename gaml::iterator_traits<Iterator>::tag_type>::iterator iterator;
-
-    Bootstrap(void) : Tabular<Iterator,typename gaml::iterator_traits<Iterator>::tag_type>() {}
-    Bootstrap(const Bootstrap<Iterator>& cp) : Tabular<Iterator,typename gaml::iterator_traits<Iterator>::tag_type>(cp) {}
-    Bootstrap(const Iterator& begin_iter, 
-	      const Iterator& end_iter,
-	      unsigned int size) : Tabular<Iterator,typename gaml::iterator_traits<Iterator>::tag_type>(begin_iter) {
-      this->indices.resize(size);
-      unsigned int range = std::distance(begin_iter,end_iter);
-      for(auto& idx : this->indices)
-	idx = (unsigned int)gaml::random::uniform(0,range);
-      this->process_indices();
-    }
-
-    /**
-     * For internal use.
-     */
-    bool has(unsigned int i) {
-      bool res = false;
-      for(auto it = this->indices.begin();
-	  !res && it != this->indices.end();
-	  ++it)
-	res = *it == i;
-      return res;
-    }
-    
-  };
   
   template<typename Iterator>
-  Bootstrap<Iterator> bootstrap(const Iterator& begin, const Iterator& end,unsigned int size) {
-    return Bootstrap<Iterator>(begin,end,size);
+  Tabular<Iterator> bootstrap(const Iterator& begin, const Iterator& end, unsigned int size) {
+    auto init = [begin,end,size](std::vector<tabular_index_type>& indices) -> void {
+      indices.resize(size);
+      unsigned int range = std::distance(begin,end);
+      for(auto& idx : indices)
+	idx = (tabular_index_type)gaml::random::uniform(0,range);
+    };
+    return Tabular<Iterator>(begin,init);
   }
 
   namespace risk {

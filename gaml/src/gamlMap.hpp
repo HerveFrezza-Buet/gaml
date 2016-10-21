@@ -27,15 +27,13 @@
 
 #include <iterator>
 #include <functional>
-#include <gamlVirtual.hpp>
 
 namespace gaml {
   
   template<typename CATEGORY,typename Iterator, typename Function, typename Return>
   class MapIterator 
     : public std::iterator<typename std::iterator_traits<Iterator>::iterator_category,
-			   typename std::iterator_traits<Iterator>::value_type>,
-      public gaml::virtualized::base_iterator<Return> {
+			   typename std::iterator_traits<Iterator>::value_type>{
   private:
 
     Iterator it;
@@ -70,27 +68,6 @@ namespace gaml {
 
     bool     operator==(const MapIterator& i) const {return it == i.it;}
     bool     operator!=(const MapIterator& i) const {return it != i.it;}
-
-    // Virtualization
-
-    typedef gaml::virtualized::base_iterator<Return> base_type;
-    
-    virtual base_type* clone() const override {
-      return new MapIterator<CATEGORY,Iterator,Function,Return>(*this);
-    }
-
-    virtual void increment(void) override {
-      ++(*this);
-    }
-
-    virtual const value_type& get() const override {
-      return *(*this);
-    }
-
-    virtual bool is_equal(const base_type& other) const override {
-      auto p_iter = reinterpret_cast<const MapIterator<CATEGORY,Iterator,Function,Return>*>(&other);
-      return (*this) == (*p_iter);
-    }
   };
 
 
@@ -100,8 +77,7 @@ namespace gaml {
   template<typename Iterator, typename Function, typename Return>
   class MapIterator<std::random_access_iterator_tag,Iterator,Function,Return> 
     : public std::iterator<typename std::iterator_traits<Iterator>::iterator_category,
-			   typename std::iterator_traits<Iterator>::value_type>,
-      public gaml::virtualized::base_iterator<Return> {
+			   typename std::iterator_traits<Iterator>::value_type>{
   private:
 
     Iterator it;
@@ -148,44 +124,6 @@ namespace gaml {
     const value_type& operator*()                     const {content = f(*it); return content;}
     bool     operator==(const MapIterator& i) const {return it == i.it;}
     bool     operator!=(const MapIterator& i) const {return it != i.it;}
-
-    // Virtualization
-
-    typedef gaml::virtualized::base_iterator<Return> base_type;
-    
-    virtual base_type* clone() const override {
-      return new MapIterator<std::random_access_iterator_tag,Iterator,Function,Return>(*this);
-    }
-
-    virtual void increment(void) override {
-      ++(*this);
-    }
-
-    virtual const value_type& get() const override {
-      return *(*this);
-    }
-
-    virtual bool is_equal(const base_type& other) const override {
-      auto p_iter = reinterpret_cast<const MapIterator<std::random_access_iterator_tag,Iterator,Function,Return>*>(&other);
-      return (*this) == (*p_iter);
-    }
-
-    virtual void decrement(void) override {
-      --(*this);
-    }
-
-    virtual void increment(int i) override {
-      (*this) += i;
-    }
-
-    virtual void decrement(int i) override {
-      (*this) -= i;
-    }
-
-    virtual int distance(const base_type& other) override {
-      auto p_iter = reinterpret_cast<const MapIterator<std::random_access_iterator_tag,Iterator,Function,Return>*>(&other);
-      return (int)(std::distance(*this,*p_iter));
-    }
   };
 
 

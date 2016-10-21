@@ -35,8 +35,6 @@
 #include <gamlFilter.hpp>
 #include <gamlFilters.hpp>
 #include <gamlGnuplot.hpp>
-#include <gamlIdentity.hpp>
-#include <gamlIterator.hpp>
 #include <gamlLoss.hpp>
 #include <gamlMap.hpp>
 #include <gamlMerge.hpp>
@@ -52,7 +50,6 @@
 #include <gamlStreamer.hpp>
 #include <gamlTabular.hpp>
 #include <gamlIndexedDataset.hpp>
-#include <gamlVirtual.hpp>
 #include <gamlWrapper.hpp>
 
 /**

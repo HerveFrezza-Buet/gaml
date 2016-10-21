@@ -29,7 +29,6 @@
 #include <iomanip>
 #include <vector>
 #include <iterator>
-#include <gamlIdentity.hpp>
 #include <gamlBootstrap.hpp>
 
 namespace gaml {
@@ -156,18 +155,6 @@ namespace gaml {
     }
 
     namespace set {
-
-      /**
-       * This is data set randomizer for bag learners that only
-       * provide the dataset as it is.
-       */
-      class Identity {
-      public:
-	template<typename DataIterator> 
-	gaml::Identity<DataIterator> operator()(const DataIterator& begin, const DataIterator& end) const {
-	  return gaml::identity(begin,end);
-	}
-      };
 
       /**
        * This is data set randomizer for bag learners that builds a

@@ -27,7 +27,6 @@
 
 #include<exception>
 #include<iterator>
-#include <gamlVirtual.hpp>
 
 
 namespace gaml {
@@ -36,8 +35,7 @@ namespace gaml {
   template<typename Iterator1, typename Iterator2>
   class MergeIterator 
     : public std::iterator<std::input_iterator_tag,
-			   typename std::iterator_traits<Iterator1>::value_type>,
-      public gaml::virtualized::base_iterator<typename std::iterator_traits<Iterator1>::value_type> {
+			   typename std::iterator_traits<Iterator1>::value_type> {
     Iterator1 it1_, end1_;
     Iterator2 it2_, begin2_;
 
@@ -53,44 +51,11 @@ namespace gaml {
       return *this;
     }
 
-    // MergeIterator& operator--(void) {
-    //   if(it2_ != begin2_) --it2_;
-    //   else --it1_;
-    //   return *this;
-    // }
-
     auto operator*(void) const -> decltype(*it1_)  {
       if(it1_ != end1_) return *it1_;
       else return *it2_;
     }
-
-    // typename MergeIterator::difference_type operator-(const MergeIterator& other) const {
-    //   return (it1_ - end1_) + (it2_ - begin2_) - (other.it1_ - other.end1_) - (other.it2_ - other.begin2_);
-    // }
-
-    // MergeIterator& operator+=(typename MergeIterator::difference_type i) {
-    //   typename MergeIterator::difference_type n1 = end1_ - it1_;
-    //   typename MergeIterator::difference_type n2 = it2_ - begin2_;
-    //   if(n1 != 0) {
-    // 	if(i < n1) it1_ += i; else { it1_ = end1_; it2_ += (i - n1); }
-    //   } else {
-    // 	if(i > -n2) it2_ += i; else { it2_ = begin2_; it1_ += (i + n2); }
-    //   }
-    //   return *this;
-    // }
-    // MergeIterator& operator-=(typename MergeIterator::difference_type i) {
-    //   return (*this += (-i));
-    // }
-
-    // MergeIterator operator+(typename MergeIterator::difference_type i) const {
-    //   MergeIterator it(*this);
-    //   it += i;
-    //   return it;
-    // }
-    // MergeIterator operator-(typename MergeIterator::difference_type i) const {
-    //   return *this + (-i);
-    // }
-
+    
     bool operator!=(const MergeIterator& other) const {
       return (it1_ != other.it1_) || (it2_ != other.it2_);
     }
@@ -98,43 +63,6 @@ namespace gaml {
       return (it1_ == other.it1_) && (it2_ == other.it2_);
     }
 
-    // Virtualization
-
-    typedef gaml::virtualized::base_iterator<typename std::iterator_traits<Iterator1>::value_type> base_type;
-    
-    virtual base_type* clone() const override {
-      return new MergeIterator<Iterator1,Iterator2>(*this);
-    }
-
-    virtual void increment(void) override {
-      ++(*this);
-    }
-
-    virtual const value_type& get() const override {
-      return *(*this);
-    }
-
-    virtual bool is_equal(const base_type& other) const override {
-      auto p_iter = reinterpret_cast<const MergeIterator<Iterator1,Iterator2>*>(&other);
-      return (*this) == (*p_iter);
-    }
-
-    // virtual void decrement(void) override {
-    //   --(*this);
-    // }
-
-    // virtual void increment(int i) override {
-    //   (*this) += i;
-    // }
-
-    // virtual void decrement(int i) override {
-    //   (*this) -= i;
-    // }
-
-    // virtual int distance(const base_type& other) override {
-    //   auto p_iter = reinterpret_cast<const MergeIterator<Iterator1,Iterator2>*>(&other);
-    //   return (int)(std::distance(*this,*p_iter));
-    // }
   };
 
   template<typename Iterator1, typename Iterator2> class Merge {
