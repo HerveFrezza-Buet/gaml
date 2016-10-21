@@ -35,6 +35,13 @@ namespace gaml {
   
   namespace concept {
 
+    /**
+     * This concept stands for iterator which iterate on data through
+     * an intermadiate array of index. The type trait
+     * is_secondary_iterator<T>::type is std::true_type if T is a
+     * secondary iterator (detected by the existence of
+     * T::primary_type) and std::false_type otherwise.
+     */
     class SecondaryIterator {
     public:
       /**
@@ -57,23 +64,26 @@ namespace gaml {
   }
 
 
+  
+
+
   /**
    * Tabular iterator. It fits concept::SecondaryIterator.
    */
-  template<Iterator>
+  template<typename Iterator>
   class TabularIterator : public std::iterator<std::random_access_iterator_tag,
 					       typename Iterator::value_type> {
   private:
     Iterator                                  begin;
     std::vector<tabular_index_type>::iterator idx;
 
-    friend class Tabular<Iterator>;
     
-    TabularIterator(const Iterator& begin, const std::vector<tabular_index_type>::iterator& idx)
-      : begin(begin), idx(idx) {}
 
   public:
 
+    TabularIterator(const Iterator& begin, const std::vector<tabular_index_type>::iterator& idx)
+      : begin(begin), idx(idx) {}
+    
     typedef Iterator primary_type;
     
     TabularIterator()                                   = default;
@@ -97,63 +107,72 @@ namespace gaml {
     TabularIterator<Iterator> operator+(int i)        const {return TabularIterator<Iterator>(begin,idx+i);}
     TabularIterator<Iterator> operator-(int i)        const {return TabularIterator<Iterator>(begin,idx-i);}
     
-    bool operator==(const TabularIterator<Iterator>& i) const {return idx == i.idx && begin == it.begin;}
-    bool operator!=(const TabularIterator<Iterator>& i) const {return idx != i.idx || begin != it.begin;}
+    bool operator==(const TabularIterator<Iterator>& i) const {return idx == i.idx && begin == i.begin;}
+    bool operator!=(const TabularIterator<Iterator>& i) const {return idx != i.idx || begin != i.begin;}
     
-    const Iterator::value_type& operator*() const {
+    const typename Iterator::value_type& operator*() const {
       auto itt = begin;
-      std::advance(iit,(std::iterator_traits<primary_type>::distance_type)(*idx));
+      std::advance(itt,(std::iterator_traits<primary_type>::distance_type)(*idx));
       return *itt;
     }
   };
+
+  
+  template<typename T> using test_primary_iterator = void;
+  
+  template<typename T, typename = void>
+  struct is_secondary_iterator : std::false_type {};
+  
+  template<typename T>
+  struct is_secondary_iterator<T, test_primary_iterator<typename T::primary_type> > : std::true_type {};
   
   /**
-   * Class for tabular acces to data. SFINAE here. Secondary Iterator must fit concept::SecondaryIterator.
+   * Class for tabular acces to data in case of primary iterators.
    */
-  template<typename SecondaryIterator> 
+  template<typename Iterator, typename PrimaryIterator> 
   class Tabular {
   private:
     
-    typename SecondaryIterator::primary_type begin;
-    std::vector<tabular_index_type> indices;    // indices in the primary collection
-
-  public:
-    
-    template<typename InitIdxFunc>
-    Tabular(const SecondaryIterator& begin, const InitIdxFunc& init)
-      : begin(begin.origin()) {
-      init(indices);
-      for(auto& index : indices) index = (begin + index).index();
-    }
-
-    typedef TabularIterator<typename SecondaryIterator::primary_type> iterator;
-
-    iterator begin() const {return iterator(begin,indices.begin());}
-    iterator end()   const {return iterator(begin,indices.end());}
-  };
-  
-  /**
-   * Class for tabular acces to data in case of primary iterators (SFINAE rescue case).
-   */
-  template<typename Iterator> 
-  class Tabular {
-  private:
-    
-    typename Iterator begin;
+    typename Iterator start;
     std::vector<tabular_index_type> indices;    // indices in the primary collection
 
   public:
     
     template<typename InitIdxFunc>
     Tabular(const Iterator& begin, const InitIdxFunc& init)
-      : begin(begin) {
+      : start(begin) {
       init(indices);
     }
 
     typedef TabularIterator<Iterator> iterator;
 
-    iterator begin() const {return iterator(begin,indices.begin());}
-    iterator end()   const {return iterator(begin,indices.end());}
+    iterator begin() const {return iterator(start,indices.begin());}
+    iterator end()   const {return iterator(start,indices.end());}
+  };
+  
+  /**
+   * Class for tabular acces to data for secondary iterators
+   */
+  template<typename Iterator> 
+  class Tabular<Iterator, std::true_type> {
+  private:
+    
+    typename Iterator::primary_type start;
+    std::vector<tabular_index_type> indices;    // indices in the primary collection
+
+  public:
+    
+    template<typename InitIdxFunc>
+    Tabular(const Iterator& begin, const InitIdxFunc& init)
+      : start(begin.origin()) {
+      init(indices);
+      for(auto& index : indices) index = (start + index).index();
+    }
+
+    typedef TabularIterator<typename Iterator::primary_type> iterator;
+
+    iterator begin() const {return iterator(start,indices.begin());}
+    iterator end()   const {return iterator(start,indices.end());}
   };
 
   

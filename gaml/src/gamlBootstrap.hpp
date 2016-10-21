@@ -41,14 +41,14 @@ namespace gaml {
 
   
   template<typename Iterator>
-  Tabular<Iterator> bootstrap(const Iterator& begin, const Iterator& end, unsigned int size) {
+  Tabular<Iterator, is_secondary_iterator<Iterator>::type> bootstrap(const Iterator& begin, const Iterator& end, unsigned int size) {
     auto init = [begin,end,size](std::vector<tabular_index_type>& indices) -> void {
       indices.resize(size);
       unsigned int range = std::distance(begin,end);
       for(auto& idx : indices)
 	idx = (tabular_index_type)gaml::random::uniform(0,range);
     };
-    return Tabular<Iterator>(begin,init);
+    return Tabular<Iterator, is_secondary_iterator<Iterator>::type>(begin,init);
   }
 
   namespace risk {
