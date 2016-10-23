@@ -16,7 +16,7 @@ foreach(f ${usage_examples})
     get_filename_component(exampleName ${f} NAME_WE) 
     add_executable (${exampleName} ${f}) 
     set_target_properties(${exampleName} PROPERTIES LINKER_LANGUAGE CXX)
-    set_target_properties(${exampleName} PROPERTIES COMPILE_FLAGS "${PROJECT_ALL_CFLAGS} ${SHARE_PATH_CFLAGS}" LINK_FLAGS "${PROJECT_ALL_LDFLAGS}")
+    set_target_properties(${exampleName} PROPERTIES COMPILE_FLAGS "${PROJECT_ALL_CFLAGS} ${SHARE_PATH_CFLAGS} -std=c++14" LINK_FLAGS "${PROJECT_ALL_LDFLAGS}")
 
     install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${exampleName} 
             DESTINATION bin

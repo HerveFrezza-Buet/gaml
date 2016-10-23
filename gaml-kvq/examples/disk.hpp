@@ -70,7 +70,7 @@ void plot(Graph& prototypes, UnitSimilarity& unit_distance, gaml::span::Dictiona
       auto xi = dict(Point(x,y));
       double closest_dist;
       auto best = vq2::algo::closest(prototypes,unit_distance,xi,closest_dist);
-      unsigned char color_level = (unsigned char)(255*((*best).stuff.label)/(nb_protos-1.0)+.5);
+      unsigned char color_level = (unsigned char)(255*((*best).stuff.label+1.0)/nb_protos+.5);
       if(inside(x,y))
 	ppm << (unsigned char)0 << (unsigned char)0 << color_level;
       else
