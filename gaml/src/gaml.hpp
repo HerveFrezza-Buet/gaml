@@ -58,7 +58,7 @@
  * @example example-001-002-indexed-dataset.cpp
  * @example example-001-003-set-manipulations.cpp
  * @example example-001-004-span.cpp
- * @example example-001-005-virtualization.cpp
+ * @example example-001-005-tree.cpp
  * @example example-001-006-score.cpp
  * @example example-001-007-score.cpp
  * @example example-002-001-confusion.cpp
