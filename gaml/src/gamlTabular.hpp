@@ -125,29 +125,53 @@ namespace gaml {
   
   template<typename T>
   struct is_secondary_iterator<T, test_primary_iterator<typename T::primary_type> > : std::true_type {};
+
+  /**
+   * Base class for tabular acces to data.
+   */
+
+  template<typename Iterator> 
+  class TabularBase {
+  protected:
+    
+    std::vector<tabular_index_type> indices;    // indices in the primary collection
+
+  public:
+    
+    TabularBase() = default;
+
+    typedef std::vector<tabular_index_type>::const_iterator index_iterator;
+    index_iterator begin_index() const {return indices.begin();}
+    index_iterator end_index()   const {return indices.end();}
+
+    bool has(tabular_index_type idx) const {
+      for(auto i : indices) if(i == idx) return true;
+      return false;
+    }
+  };
+
   
   /**
    * Class for tabular acces to data in case of primary iterators.
    */
   template<typename Iterator, typename PrimaryIterator> 
-  class Tabular {
+  class Tabular : public TabularBase<Iterator> {
   private:
     
-    typename Iterator start;
-    std::vector<tabular_index_type> indices;    // indices in the primary collection
+    Iterator start;
 
   public:
     
     template<typename InitIdxFunc>
     Tabular(const Iterator& begin, const InitIdxFunc& init)
-      : start(begin) {
-      init(indices);
+      : TabularBase<Iterator>(), start(begin) {
+      init(this->indices);
     }
 
     typedef TabularIterator<Iterator> iterator;
 
-    iterator begin() const {return iterator(start,indices.begin());}
-    iterator end()   const {return iterator(start,indices.end());}
+    iterator begin() const {return iterator(start,this->indices.begin());}
+    iterator end()   const {return iterator(start,this->indices.end());}
   };
   
   /**
@@ -158,21 +182,20 @@ namespace gaml {
   private:
     
     typename Iterator::primary_type start;
-    std::vector<tabular_index_type> indices;    // indices in the primary collection
 
   public:
     
     template<typename InitIdxFunc>
     Tabular(const Iterator& begin, const InitIdxFunc& init)
-      : start(begin.origin()) {
-      init(indices);
-      for(auto& index : indices) index = (start + index).index();
+      : TabularBase<Iterator>(), start(begin.origin()) {
+      init(this->indices);
+      for(auto& index : this->indices) index = (start + index).index();
     }
 
     typedef TabularIterator<typename Iterator::primary_type> iterator;
 
-    iterator begin() const {return iterator(start,indices.begin());}
-    iterator end()   const {return iterator(start,indices.end());}
+    iterator begin() const {return iterator(start,this->indices.begin());}
+    iterator end()   const {return iterator(start,this->indices.end());}
   };
 
   

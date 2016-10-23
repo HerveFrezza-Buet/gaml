@@ -27,6 +27,7 @@
 
 #include <vector>
 #include <set>
+#include <map>
 #include <sstream>
 #include <iterator>
 #include <cstdlib>
@@ -36,19 +37,20 @@
 #include <gamlAlgorithms.hpp>
 #include <gamlException.hpp>
 #include <gamlTabular.hpp>
+#include <gamlIdentity.hpp>
 
 namespace gaml {
 
   
   template<typename Iterator>
-  Tabular<Iterator, is_secondary_iterator<Iterator>::type> bootstrap(const Iterator& begin, const Iterator& end, unsigned int size) {
+  Tabular<Iterator, typename is_secondary_iterator<Iterator>::type> bootstrap(const Iterator& begin, const Iterator& end, unsigned int size) {
     auto init = [begin,end,size](std::vector<tabular_index_type>& indices) -> void {
       indices.resize(size);
       unsigned int range = std::distance(begin,end);
       for(auto& idx : indices)
 	idx = (tabular_index_type)gaml::random::uniform(0,range);
     };
-    return Tabular<Iterator, is_secondary_iterator<Iterator>::type>(begin,init);
+    return Tabular<Iterator, typename is_secondary_iterator<Iterator>::type> (begin,init);
   }
 
   namespace risk {
@@ -72,25 +74,28 @@ namespace gaml {
 	template<typename Learner, typename DataIterator, typename InputOf, typename OutputOf> 
 	double operator()(const Learner& learner,const DataIterator& begin, const DataIterator& end,
 			  const InputOf& inputOf, const OutputOf& outputOf) const {
-	  unsigned int size = end - begin;
-	  std::vector<gaml::Bootstrap<DataIterator> > sets;
-	  std::vector<typename Learner::predictor_type> f;
-	  std::vector<std::set<int> > C(size);
+	  unsigned int size = std::distance(begin,end);
 	  unsigned int b,i;
+	  std::vector<typename Learner::predictor_type> f;
+
+	  // sets[i] is the ith bootstrapped dataset.
+	  // C[i] contains the indices of sets that can be used to test index i.
+	  std::vector< decltype(gaml::bootstrap(begin,end,size)) >    sets;
+	  std::map<tabular_index_type, <std::set<tabular_index_type>> C;
 
 	  if(verbose)
 	    std::cout << "Making " << nb_sets 
 		      << " bootstrapped sets." << std::endl;
-       
-	  for(b = 0; b < nb_sets; ++b)
-	    sets.push_back(gaml::bootstrap(begin,end,size));
+
+	  auto set_out = std::back_inserter(sets);
+	  for(b = 0; b < nb_sets; ++b) *(set_out++) = gaml::bootstrap(begin,end,size);
 	  
 	  if(verbose) {
 	    for(b = 0; b < nb_sets; ++b) {
 	      std::cout << "  Set " << std::setw(3) << b+1 << '/' << nb_sets << " :";
 
-	      for(auto elem : sets[b].indices)
-	      	std::cout << ' ' << std::setw(3) << elem;
+	      for(auto it_elem = sets[b].begin_index(); it_elem != sets[b].end_index(); ++it_elem)
+	      	std::cout << ' ' << std::setw(3) << *it_elem;
 	      std::cout << std::endl;
 	    }
 	  }
@@ -99,7 +104,11 @@ namespace gaml {
 	  if(verbose)
 	    std::cout << "Computing the non-belong-to set list for each example." << std::endl;
 
-	  for(i = 0; i < size; ++i) {
+	  // We need identity here in order to have the main set as a
+	  // tabular collection. Now indexes fit with subset indexes.
+	  auto main_set = gaml::identity(begin,end);
+	  
+	  for(auto i = main_set.begin_index(); i != main_set.end_index(); ++i) {
 	    auto& Ci = C[i];
 	    for(b = 0; b < nb_sets; ++b)
 	      if(!(sets[b].has(i)))
@@ -108,14 +117,19 @@ namespace gaml {
 	  }
 
 	  if(verbose) {
-	    for(i = 0; i < size; ++i) {
+	    for(auto i = main_set.begin_index(); i != main_set.end_index(); ++i) {
 	      std::cout << "  sample " << std::setw(3) << i << " is not in sets {";
 	      for(auto elem : C[i])
-	      	std::cout << ' ' << elem+1;
+	      	std::cout << ' ' << elem.first;
 	      std::cout << " }" << std::endl;
 	    }
 	  }
 
+	  ////////////
+	  ////////////
+	  ////////////
+	  ////////////
+	  relire a partir d ici !!!
 
 	  if(verbose)
 	    std::cout << "Learning on these sets." << std::endl;
@@ -125,7 +139,7 @@ namespace gaml {
 	      ostr << "  Set " << std::setw(3) << b+1 << '/' << nb_sets << " : ";
 	      std::cout << ostr.str() << "learning...\r" << std::flush;
 	    }
-	    gaml::Bootstrap<DataIterator>& Zb = sets[b];
+	    auto& Zb = sets[b];
 	    f.push_back(learner(Zb.begin(),Zb.end(),inputOf,outputOf));
 	    if(verbose)
 	      std::cout << ostr.str() << "Done.      " << std::endl;
