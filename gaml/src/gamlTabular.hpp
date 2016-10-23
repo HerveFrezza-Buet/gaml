@@ -92,7 +92,7 @@ namespace gaml {
     TabularIterator(TabularIterator<Iterator>&&)                            = default;
     TabularIterator<Iterator>& operator=(TabularIterator<Iterator>&&)       = default;
     
-    tabular_index_type index()  const {return idx;}
+    tabular_index_type index()  const {return *idx;}
     primary_type       origin() const {return begin;};
     
     TabularIterator<Iterator>& operator++()         {++idx;       return *this;}
@@ -176,7 +176,6 @@ namespace gaml {
     Tabular(const Iterator& begin, const InitIdxFunc& init)
       : TabularBase<Iterator>(), start(begin) {
       init(this->indices);
-      std::cout << std::endl;
     }
 
     typedef TabularIterator<Iterator> iterator;
@@ -189,7 +188,7 @@ namespace gaml {
    * Class for tabular acces to data for secondary iterators
    */
   template<typename Iterator> 
-  class Tabular<Iterator, std::true_type> {
+  class Tabular<Iterator, std::true_type> : public TabularBase<Iterator> {
   private:
     
     typename Iterator::primary_type start;
@@ -206,7 +205,11 @@ namespace gaml {
     Tabular(const Iterator& begin, const InitIdxFunc& init)
       : TabularBase<Iterator>(), start(begin.origin()) {
       init(this->indices);
-      for(auto& index : this->indices) index = (start + index).index();
+      for(auto& index : this->indices) {
+	auto sec_it = begin;
+	std::advance(sec_it,index);
+	index = sec_it.index();
+      }
     }
 
     typedef TabularIterator<typename Iterator::primary_type> iterator;
