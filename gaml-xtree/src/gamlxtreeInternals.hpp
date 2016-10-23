@@ -330,11 +330,9 @@ namespace gaml {
 	  auto split       = gaml::split(begin, end, filter_function);
 	  auto left        = split.true_values;
 	  auto right       = split.false_values;
-	  auto vleft  = gaml::virtualized::sequence(left.begin(),  left.end() );
-	  auto vright = gaml::virtualized::sequence(right.begin(), right.end());
 	  return make_node(best_test,
-			   build_tree<X,Y,SCORE,MakeLeaf>(vleft.begin(),  vleft.end(),  input_of, output_of, nmin, k),
-			   build_tree<X,Y,SCORE,MakeLeaf>(vright.begin(), vright.end(), input_of, output_of, nmin, k));
+			   build_tree<X,Y,SCORE,MakeLeaf>(left.begin(),  left.end(),  input_of, output_of, nmin, k),
+			   build_tree<X,Y,SCORE,MakeLeaf>(right.begin(), right.end(), input_of, output_of, nmin, k));
 	}
 	else {
 	  MakeLeaf<X,Y,DataIterator,InputOf,OutputOf> make_leaf;
