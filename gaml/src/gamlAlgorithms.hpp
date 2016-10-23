@@ -256,6 +256,9 @@ namespace gaml {
 
   }
 
+  /**
+   * This iterator is not adapted to serve as a basis for tabular collections, since it do not refer to a value that exists independently from the iterator.
+   */
   class integer : public std::iterator<std::random_access_iterator_tag,int> {
   private:
     int j;

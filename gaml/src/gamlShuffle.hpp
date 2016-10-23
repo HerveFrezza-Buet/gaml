@@ -28,56 +28,33 @@
 #include <vector>
 #include <iterator>
 #include <algorithm>
-#include <type_traits>
-#include <gamlIterator.hpp>
 #include <gamlTabular.hpp>
 
 namespace gaml {
-  
-
-  template<typename Iterator> 
-  class Shuffle : public Tabular<Iterator, typename gaml::iterator_traits<Iterator>::tag_type> {
-
-  public:
-
-    typedef typename std::iterator_traits<Iterator>::value_type value_type;
-    typedef typename Tabular<Iterator, typename gaml::iterator_traits<Iterator>::tag_type>::iterator   iterator;
     
-    Shuffle(const Iterator& begin_iter, 
-	    const Iterator& end_iter) : Tabular<Iterator, typename gaml::iterator_traits<Iterator>::tag_type>(begin_iter) {
-      unsigned int i=0;
-      this->indices.resize(std::distance(begin_iter,end_iter));
-      for(auto& idx : this->indices) idx = i++;
-      std::random_shuffle(this->indices.begin(),this->indices.end());
-      this->process_indices();
-    }
-  };
-  
   template<typename Iterator>
-  Shuffle<Iterator> shuffle(const Iterator& begin, const Iterator& end) {
-    return Shuffle<Iterator>(begin,end);
+  Tabular<Iterator, typename is_secondary_iterator<Iterator>::type> shuffle(const Iterator& begin, const Iterator& end) {
+    auto init = [begin,end](std::vector<tabular_index_type>& indices) -> void {
+      unsigned int i=0;
+      indices.resize(std::distance(begin,end));
+      for(auto& idx : indices) idx = i++;
+      std::random_shuffle(indices.begin(),indices.end());
+    };
+    return Tabular<Iterator, typename is_secondary_iterator<Iterator>::type> (begin,init);
   }
-
-  template<typename Iterator> 
-  class PackShuffle : public Tabular<Iterator, typename gaml::iterator_traits<Iterator>::tag_type> {
-
-  public:
-
-    typedef typename std::iterator_traits<Iterator>::value_type value_type;
-    typedef typename Tabular<Iterator, typename gaml::iterator_traits<Iterator>::tag_type>::iterator                iterator;
     
-    PackShuffle(const Iterator& begin_iter, 
-		const Iterator& end_iter,
-		unsigned int pack_size) : Tabular<Iterator, typename gaml::iterator_traits<Iterator>::tag_type>(begin_iter) {
+  template<typename Iterator>
+  Tabular<Iterator, typename is_secondary_iterator<Iterator>::type> packed_shuffle(const Iterator& begin, const Iterator& end, unsigned int pack_size) {
+    auto init = [begin,end, pack_size](std::vector<tabular_index_type>& indices) -> void {
       unsigned int nb_blocks;
       unsigned int i,j,k;
 
-      this->indices.resize(std::distance(begin_iter,end_iter));
+      indices.resize(std::distance(begin,end));
       std::vector<unsigned int> blocks;
       std::vector<unsigned int> begins;
       std::vector<unsigned int> ends;
       std::vector<unsigned int> sizes;
-      std::vector<unsigned int> idxs(this->indices.size());
+      std::vector<unsigned int> idxs(indices.size());
 
       nb_blocks = idxs.size() / pack_size;
       if(idxs.size() % pack_size)
@@ -104,18 +81,15 @@ namespace gaml {
 	std::random_shuffle(start+i,start+j);
       }
 
-      auto out = this->indices.begin();
+      auto out = indices.begin();
       start    = idxs.begin();
       for(auto& b : blocks) {
 	std::copy(start + begins[b], start + ends[b], out);
 	out += sizes[b];
       }
-      this->process_indices();
-    }
-  };
-  
-  template<typename Iterator>
-  PackShuffle<Iterator> packed_shuffle(const Iterator& begin, const Iterator& end, unsigned int pack_size) {
-    return PackShuffle<Iterator>(begin,end,pack_size);
+    };
+    return Tabular<Iterator, typename is_secondary_iterator<Iterator>::type> (begin,init);
   }
+  
+
 }

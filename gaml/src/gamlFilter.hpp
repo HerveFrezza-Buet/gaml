@@ -29,15 +29,13 @@
 #include <iterator>
 #include <algorithm>
 #include <functional>
-#include <gamlVirtual.hpp>
 
 namespace gaml {
   
   template<typename Iterator>
   class FilterIterator 
     : public std::iterator<std::input_iterator_tag,
-			   typename std::iterator_traits<Iterator>::value_type>,
-      public gaml::virtualized::base_iterator<typename std::iterator_traits<Iterator>::value_type> {
+			   typename std::iterator_traits<Iterator>::value_type> {
   private:
 
     Iterator it;
@@ -58,7 +56,7 @@ namespace gaml {
       : it(iter), end(last), filter(f) {
       for(; it != end && !filter(*it); ++it);
     }
-    FilterIterator(const FilterIterator& cp) : base_type(cp), it(cp.it), end(cp.end), filter(cp.filter) {}
+    FilterIterator(const FilterIterator& cp) : it(cp.it), end(cp.end), filter(cp.filter) {}
 
     FilterIterator& operator=(const FilterIterator& cp)   {
       if(this != &cp) {
@@ -82,27 +80,6 @@ namespace gaml {
     const value_type& operator*()                const {return *it;}
     bool     operator==(const FilterIterator& i) const {return it == i.it;}
     bool     operator!=(const FilterIterator& i) const {return it != i.it;}
-
-    // Virtualization
-    
-    typedef gaml::virtualized::base_iterator<typename std::iterator_traits<Iterator>::value_type> base_type;
-    
-    virtual base_type* clone() const {
-      return new FilterIterator<Iterator>(*this);
-    }
-
-    virtual void increment(void) {
-      ++(*this);
-    }
-
-    virtual const value_type& get() const {
-      return *(*this);
-    }
-
-    virtual bool is_equal(const base_type& other) const {
-      auto p_iter = reinterpret_cast<const FilterIterator<Iterator>*>(&other);
-      return (*this) == (*p_iter);
-    }
 
   };
 

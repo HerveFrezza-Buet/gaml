@@ -74,23 +74,23 @@ namespace gaml {
   class TabularIterator : public std::iterator<std::random_access_iterator_tag,
 					       typename Iterator::value_type> {
   private:
-    Iterator                                  begin;
-    std::vector<tabular_index_type>::iterator idx;
+    Iterator                                        begin;
+    std::vector<tabular_index_type>::const_iterator idx;
 
     
 
   public:
 
-    TabularIterator(const Iterator& begin, const std::vector<tabular_index_type>::iterator& idx)
+    TabularIterator(const Iterator& begin, const std::vector<tabular_index_type>::const_iterator& idx)
       : begin(begin), idx(idx) {}
     
     typedef Iterator primary_type;
     
-    TabularIterator()                                   = default;
-    TabularIterator(const TabularIterator&)             = default;
-    TabularIterator& operator=(const TabularIterator&)  = default;
-    TabularIterator(TabularIterator&&)                  = default;
-    TabularIterator& operator=(const TabularIterator&&) = default;
+    TabularIterator()                                                       = default;
+    TabularIterator(const TabularIterator<Iterator>&)                       = default;
+    TabularIterator<Iterator>& operator=(const TabularIterator<Iterator>&)  = default;
+    TabularIterator(TabularIterator<Iterator>&&)                            = default;
+    TabularIterator<Iterator>& operator=(TabularIterator<Iterator>&&)       = default;
     
     tabular_index_type index()  const {return idx;}
     primary_type       origin() const {return begin;};
@@ -112,7 +112,7 @@ namespace gaml {
     
     const typename Iterator::value_type& operator*() const {
       auto itt = begin;
-      std::advance(itt,(std::iterator_traits<primary_type>::distance_type)(*idx));
+      std::advance(itt,(typename std::iterator_traits<primary_type>::difference_type)(*idx));
       return *itt;
     }
   };
@@ -139,6 +139,10 @@ namespace gaml {
   public:
     
     TabularBase() = default;
+    TabularBase(const TabularBase<Iterator>&) = default;
+    TabularBase(TabularBase<Iterator>&&) = default;
+    TabularBase<Iterator>& operator=(const TabularBase<Iterator>&) = default;
+    TabularBase<Iterator>& operator=(TabularBase<Iterator>&&) = default;
 
     typedef std::vector<tabular_index_type>::const_iterator index_iterator;
     index_iterator begin_index() const {return indices.begin();}
@@ -161,11 +165,18 @@ namespace gaml {
     Iterator start;
 
   public:
+
+    Tabular() = default;
+    Tabular(const Tabular<Iterator,PrimaryIterator>&) = default;
+    Tabular(Tabular<Iterator,PrimaryIterator>&&) = default;
+    Tabular<Iterator,PrimaryIterator>& operator=(const Tabular<Iterator,PrimaryIterator>&) = default;
+    Tabular<Iterator,PrimaryIterator>& operator=(Tabular<Iterator,PrimaryIterator>&&) = default;
     
     template<typename InitIdxFunc>
     Tabular(const Iterator& begin, const InitIdxFunc& init)
       : TabularBase<Iterator>(), start(begin) {
       init(this->indices);
+      std::cout << std::endl;
     }
 
     typedef TabularIterator<Iterator> iterator;
@@ -184,6 +195,12 @@ namespace gaml {
     typename Iterator::primary_type start;
 
   public:
+    
+    Tabular() = default;
+    Tabular(const Tabular<Iterator,std::true_type>&) = default;
+    Tabular(Tabular<Iterator,std::true_type>&&) = default;
+    Tabular<Iterator,std::true_type>& operator=(const Tabular<Iterator,std::true_type>&) = default;
+    Tabular<Iterator,std::true_type>& operator=(Tabular<Iterator,std::true_type>&&) = default;
     
     template<typename InitIdxFunc>
     Tabular(const Iterator& begin, const InitIdxFunc& init)

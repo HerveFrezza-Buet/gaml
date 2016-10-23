@@ -34,7 +34,6 @@
 #include<stdexcept>
 #include<iterator>
 #include<utility>
-#include <gamlVirtual.hpp>
 
 namespace gaml {
 
@@ -95,8 +94,7 @@ namespace gaml {
   public:
     IndexedDataset(const data_file_parser_type& parser,
 		   const char* dataFileName, const char* indexFileName) :
-      parser_(parser), dataFileName_(dataFileName), indexFileName_(
-								   indexFileName), dataFile_(), indexFile_() {
+      parser_(parser), dataFileName_(dataFileName), indexFileName_(indexFileName), dataFile_(), indexFile_() {
       if(doesFileExist(indexFileName_))
 	getSize();
       else
@@ -104,8 +102,7 @@ namespace gaml {
     }
 
     IndexedDataset(const IndexedDataset& other) :
-      parser_(other.parser_), dataFileName_(other.dataFileName_), indexFileName_(
-										 other.indexFileName_), dataFile_(), indexFile_() {
+      parser_(other.parser_), dataFileName_(other.dataFileName_), indexFileName_(other.indexFileName_), dataFile_(), indexFile_() {
       if(doesFileExist(indexFileName_))
 	getSize();
       else
@@ -267,7 +264,6 @@ namespace gaml {
 	return currentIndex_ < other.currentIndex_;
       }
 
-      // Virtualization
 
 
     };

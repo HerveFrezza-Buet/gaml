@@ -4,6 +4,7 @@
 #include <iterator>
 #include <ctime>
 #include <cstdlib>
+#include <array>
 
 /*
   This example shows how the use of iterators allows a convenient
@@ -33,12 +34,14 @@ int main(int argc, char* argv[]) {
 
   // random seed initialization
   std::srand(std::time(0));
+
+  // Let us build some fake data.
+  std::vector<int> data(50);
+  int i=0;
+  for(auto& d : data) d = i++;
+  auto begin = data.begin();
+  auto end   = data.end();
   
-  // gaml::integer are iterable integer values. They are used here as
-  // the native sequence of values, from which more complex sequences
-  // are built.
-  gaml::integer begin = 0;
-  gaml::integer end   = 50;
 
   std::cout << "Basic subset" << std::endl;
 
@@ -46,13 +49,21 @@ int main(int argc, char* argv[]) {
   // the actual template type is deduced from arguments. This is why
   // the display method should be defined as a template.
   display(begin,end);
+  
+  std::cout << "Identity" << std::endl;
+
+  // This transforms any collection into a tabular collection. This is
+  // only usefull in some specific cases where the algorithm needs to
+  // have a tabular collection.
+  auto identity = gaml::identity(begin,end);
+  display(identity.begin(),identity.end());
 
   std::cout << "Merging non overlapping subsets" << std::endl;
 
   // This merges two chunks into a single set (union of non
   // overlapping sets).
   auto merge = gaml::merge(begin +  2, begin + 10,
-			   begin + 23, begin + 47);
+  			   begin + 23, begin + 47);
   display(merge.begin(),merge.end());
 
   // std::cout << "Mapping a function" << std::endl;

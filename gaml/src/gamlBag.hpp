@@ -166,7 +166,7 @@ namespace gaml {
       public:
 	Bootstrap(unsigned int bootstrap_set_size) : size(bootstrap_set_size) {}
 	template<typename DataIterator> 
-	gaml::Bootstrap<DataIterator> operator()(const DataIterator& begin, const DataIterator& end) const {
+	auto operator()(const DataIterator& begin, const DataIterator& end) const {
 	  return gaml::bootstrap(begin,end,size);
 	}
       };

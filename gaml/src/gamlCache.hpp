@@ -29,7 +29,6 @@
 #include <vector>
 #include <iterator>
 #include <algorithm>
-#include <gamlVirtual.hpp>
 
 namespace gaml {
   
@@ -38,8 +37,7 @@ namespace gaml {
   template<typename Iterator>
   class CacheIterator 
     : public std::iterator<std::random_access_iterator_tag,
-			   typename std::iterator_traits<Iterator>::value_type>,
-      public gaml::virtualized::base_iterator<typename std::iterator_traits<Iterator>::value_type> {
+			   typename std::iterator_traits<Iterator>::value_type>{
   private:
 
     typedef int index_type;
@@ -91,44 +89,6 @@ namespace gaml {
     bool              operator!=(const CacheIterator& i) const {return cache != i.cache || idx != i.idx;}
 
 
-   
-    // Virtualization
-
-    typedef gaml::virtualized::base_iterator<typename std::iterator_traits<Iterator>::value_type> base_type;
-    
-    virtual base_type* clone() const {
-      return new CacheIterator<Iterator>(*this);
-    }
-
-    virtual void increment(void) {
-      ++(*this);
-    }
-
-    virtual const value_type& get() const {
-      return *(*this);
-    }
-
-    virtual bool is_equal(const base_type& other) const {
-      auto p_iter = reinterpret_cast<const CacheIterator<Iterator>*>(&other);
-      return (*this) == (*p_iter);
-    }
-
-    virtual void decrement(void) {
-      --(*this);
-    }
-
-    virtual void increment(int i) {
-      (*this) += i;
-    }
-
-    virtual void decrement(int i) {
-      (*this) -= i;
-    }
-
-    virtual int distance(const base_type& other) {
-      auto p_iter = reinterpret_cast<const CacheIterator<Iterator>*>(&other);
-      return (int)(std::distance(*this,*p_iter));
-    }
   };
 
 

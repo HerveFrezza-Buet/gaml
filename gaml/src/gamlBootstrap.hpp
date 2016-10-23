@@ -75,7 +75,7 @@ namespace gaml {
 	double operator()(const Learner& learner,const DataIterator& begin, const DataIterator& end,
 			  const InputOf& inputOf, const OutputOf& outputOf) const {
 	  unsigned int size = std::distance(begin,end);
-	  unsigned int b,i;
+	  unsigned int b;
 
 	  // sets[i] is the ith bootstrapped dataset.
 	  std::vector< decltype(gaml::bootstrap(begin,end,size)) > sets;
@@ -84,7 +84,7 @@ namespace gaml {
 	  std::vector<typename Learner::predictor_type> f;
 	  
 	  // C[i] contains the indices of sets that can be used to test index i.
-	  std::map<tabular_index_type, <std::set<tabular_index_type>> C;
+	  std::map<tabular_index_type, std::set<tabular_index_type>> C;
 	  
 
 	  if(verbose)

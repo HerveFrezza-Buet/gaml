@@ -29,39 +29,44 @@
 #include <iterator>
 #include <algorithm>
 #include <type_traits>
-#include <gamlIterator.hpp>
 #include <gamlTabular.hpp>
 
 namespace gaml {
 
-  template<typename Iterator> 
-  class Split {
-  public:
+  template<typename Tabular>
+  struct Split {
+    Tabular true_values;
+    Tabular false_values;
+  };
 
-    Tabular<Iterator, typename gaml::iterator_traits<Iterator>::tag_type> true_values, false_values;
+ 
+  template<typename Iterator, typename Test>
+  Split<Tabular<Iterator, typename is_secondary_iterator<Iterator>::type>> split(const Iterator& begin, const Iterator& end, const Test& test) {
+    std::vector<tabular_index_type> false_indices;
     
-    template<typename Test>
-    Split(const Iterator& begin_iter, 
-	  const Iterator& end_iter, 
-	  const Test& test) 
-      : true_values(begin_iter), false_values(begin_iter) {
-      auto out_true  = std::back_inserter(true_values.indices);
-      auto out_false = std::back_inserter(false_values.indices);
-
-      unsigned int i=0;
-      for(auto it = begin_iter; it != end_iter; ++it)
+    auto true_init = [begin,end,test,&false_indices](std::vector<tabular_index_type>& indices) -> void {
+      auto out_true  = std::back_inserter(indices);
+      auto out_false = std::back_inserter(false_indices);
+      tabular_index_type i=0;
+      for(auto it = begin; it != end; ++it)
 	if(test(*it))
 	  *(out_true++)  = i++;
 	else
 	  *(out_false++) = i++;
+    };
+    
+    auto false_init = [begin,end,&false_indices](std::vector<tabular_index_type>& indices) -> void {
+      indices = std::move(false_indices);
+    };
 
-      true_values.process_indices();
-      false_values.process_indices();
-    }
-  };
-  
-  template<typename Iterator, typename Test>
-  Split<Iterator> split(const Iterator& begin, const Iterator& end, const Test& test) {
-    return Split<Iterator>(begin,end,test);
+    Tabular<Iterator, typename is_secondary_iterator<Iterator>::type> true_table (begin,true_init);
+    Tabular<Iterator, typename is_secondary_iterator<Iterator>::type> false_table(begin,false_init);
+    
+
+    Split<Tabular<Iterator, typename is_secondary_iterator<Iterator>::type>> result;
+    result.true_values  = std::move(true_table);
+    result.false_values = std::move(false_table);
+    
+    return result;
   }
 }
