@@ -112,7 +112,8 @@ namespace gaml {
 	  // tabular collection. Now indexes fit with subset indexes.
 	  auto main_set = gaml::identity(begin,end);
 	  
-	  for(auto i = main_set.begin_index(); i != main_set.end_index(); ++i) {
+	  for(auto it = main_set.begin_index(); it != main_set.end_index(); ++it) {
+	    auto i = *it;
 	    auto& Ci = C[i];
 	    for(b = 0; b < nb_sets; ++b)
 	      if(!(sets[b].has(i)))
@@ -121,17 +122,18 @@ namespace gaml {
 	  }
 
 	  if(verbose) {
-	    for(auto i = main_set.begin_index(); i != main_set.end_index(); ++i) {
+	    for(auto it = main_set.begin_index(); it != main_set.end_index(); ++it) {
+	      auto i = *it;
 	      std::cout << "  sample " << std::setw(3) << i << " is not in sets {";
 	      for(auto elem : C[i])
-	      	std::cout << ' ' << elem.first;
+	      	std::cout << ' ' << elem;
 	      std::cout << " }" << std::endl;
 	    }
 	  }
 
-
 	  if(verbose)
 	    std::cout << "Learning on these sets." << std::endl;
+	  
 	  for(b = 0; b < nb_sets; ++b) {
 	    std::ostringstream ostr;
 	    if(verbose) {
@@ -151,8 +153,9 @@ namespace gaml {
 	  double       sumD  = 0;
 
 	  DataIterator zi;
-	  auto i = main_set.begin_index();
-	  for(auto i = main_set.begin_index(), zi = begin; i != main_set.end_index(); ++i, ++zi) {
+	  auto it = main_set.begin_index();
+	  for(zi = begin; it != main_set.end_index(); ++it, ++zi) {
+	    auto i = *it;
 	    if(verbose)
 	      std::cout << "  " << std::setw(4) << i+1 << '/' << size << " : ";
 	    

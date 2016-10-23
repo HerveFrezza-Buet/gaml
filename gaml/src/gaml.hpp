@@ -71,7 +71,6 @@
  * @example example-004-002-filter-based-selection.cpp
  * @example example-004-003-wrapper-based-selection.cpp
  * @example example-005-students.cpp
- * @example example-999-001-test-virtual-tabular.cpp
  * @example example-customer.hpp
  * @example example-dummy.hpp
  * @example example-ratio.hpp

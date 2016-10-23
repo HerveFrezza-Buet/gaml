@@ -157,6 +157,19 @@ namespace gaml {
     namespace set {
 
       /**
+       * This is data set randomizer for bag learners that only
+       * provide the dataset as it is.
+       */
+      class Identity {
+      public:
+	template<typename DataIterator> 
+	auto operator()(const DataIterator& begin, const DataIterator& end) const {
+	  return gaml::identity(begin,end);
+	}
+      };
+
+
+      /**
        * This is data set randomizer for bag learners that builds a
        * bootstrapped set for each learner.
        */
