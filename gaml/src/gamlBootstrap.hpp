@@ -76,12 +76,16 @@ namespace gaml {
 			  const InputOf& inputOf, const OutputOf& outputOf) const {
 	  unsigned int size = std::distance(begin,end);
 	  unsigned int b,i;
-	  std::vector<typename Learner::predictor_type> f;
 
 	  // sets[i] is the ith bootstrapped dataset.
+	  std::vector< decltype(gaml::bootstrap(begin,end,size)) > sets;
+
+	  // f[i] is the predictor associated to set i.
+	  std::vector<typename Learner::predictor_type> f;
+	  
 	  // C[i] contains the indices of sets that can be used to test index i.
-	  std::vector< decltype(gaml::bootstrap(begin,end,size)) >    sets;
 	  std::map<tabular_index_type, <std::set<tabular_index_type>> C;
+	  
 
 	  if(verbose)
 	    std::cout << "Making " << nb_sets 
@@ -125,11 +129,6 @@ namespace gaml {
 	    }
 	  }
 
-	  ////////////
-	  ////////////
-	  ////////////
-	  ////////////
-	  relire a partir d ici !!!
 
 	  if(verbose)
 	    std::cout << "Learning on these sets." << std::endl;
@@ -152,12 +151,13 @@ namespace gaml {
 	  double       sumD  = 0;
 
 	  DataIterator zi;
-	  for(i = 0, zi = begin; i < size; ++i,++zi) {
+	  auto i = main_set.begin_index();
+	  for(auto i = main_set.begin_index(), zi = begin; i != main_set.end_index(); ++i, ++zi) {
 	    if(verbose)
 	      std::cout << "  " << std::setw(4) << i+1 << '/' << size << " : ";
-
-	    std::set<int>& Ci = C[i];
-
+	    
+	    auto& Ci = C[i];
+	    
 	    if(Ci.empty()) {
 	      if(verbose)
 		std::cout << "belongs to all sets." << std::endl;
