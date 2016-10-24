@@ -21,12 +21,8 @@ namespace ratio {
     double a;
     Predictor(double coef) : a(coef) {}
 
-    Predictor(const Predictor& other) : a(other.a) {}
-    Predictor& operator=(const Predictor& other) {
-      if(this != &other)
-	a = other.a;
-      return *this;
-    }
+    Predictor(const Predictor&) = default;
+    Predictor& operator=(const Predictor&) = default;
   
     // This does the prediction.
     output_type operator()(const input_type& x) const {return a*x;}
@@ -43,8 +39,8 @@ namespace ratio {
 
     typedef Predictor predictor_type;
 
-    Learner(void) {}
-    Learner(const Learner& other) {}
+    Learner(void) = default;
+    Learner(const Learner&) = default;
 
     // This does the learning, and returns a predictor from the data.
     template<typename DataIterator, typename InputOf, typename OutputOf> 

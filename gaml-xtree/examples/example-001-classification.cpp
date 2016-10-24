@@ -14,7 +14,6 @@
 #define XMAX           10
 #define PLOT_SIDE     200
 #define NB_SAMPLES   1000
-#define FOREST_SIZE    50
 #define NOISE_PROBA    .2
 
 typedef std::array<double,DIM> X;

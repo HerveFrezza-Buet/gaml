@@ -25,12 +25,8 @@ namespace silly {
 
     Predictor(double label) : constant_label(label) {}
 
-    Predictor(const Predictor& other) : constant_label(other.constant_label) {}
-    Predictor& operator=(const Predictor& other) {
-      if(this != &other)
-	constant_label = other.constant_label;
-      return *this;
-    }
+    Predictor(const Predictor&) = default;
+    Predictor& operator=(const Predictor&) = default;
   
     // This does the prediction.
     output_type operator()(const input_type& x) const {return constant_label;}

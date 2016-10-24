@@ -48,11 +48,12 @@ Data sample() {
 }
 
 // Let us use define a class which uses a score method as
-// parameter. The score method is a template template... ok, let us
-// read the example. A score is a template of the forme
-// Score<ITER,TEST,VALUE_OF>, it has three type variables. The
-// following Evaluator class is parametrized by the kind of score we
-// intend to use for evaluation. 
+// parameter. gaml provide such classes, the purpose here is to
+// introduce the way they are coded. The kind of score is a template
+// template... ok, let us read the example. A score is a template of
+// the form Score<ITER,TEST,VALUE_OF>, it has three type
+// variables. The following Evaluator class is parametrized by the
+// kind of score we intend to use for evaluation.
 
 template <template<typename,typename,typename> class SCORE>
 class Evaluator {
