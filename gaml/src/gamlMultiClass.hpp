@@ -30,6 +30,7 @@
 #include <vector>
 #include <utility>
 #include <algorithm>
+#include <functional>
 
 #include <gamlFilter.hpp>
 
@@ -37,13 +38,135 @@ namespace gaml {
 
   namespace concept {
     namespace score {
-      // learner
-      // predictor
+      
+      /**
+       * @short This compute a scalar from an input. The scalar value is
+       * somehow related to a class detection.
+       */ 
+      class Scorer {
+      public:
+      
+	typedef any input_type;
+      
+	Scorer(const Scorer& other);
+	Scorer& operator=(const Scorer& other);
+	double operator()(const input_type& x) const;
+      };
+
+      /**
+       * @short This learns a scorer from a data set.
+       */ 
+      class Learner {
+      public:
+
+	/**
+	 * The class should provide such a typedef (not int, of course).
+	 */
+	typedef int scorer_type;
+      
+	Learner(const Learner& other);
+	Learner& operator=(const Learner& other);
+
+	template<typename DataIterator, typename InputOf, typename OutputOf> 
+	scorer_type operator()(const DataIterator& begin, const DataIterator& end,
+			       const InputOf&, const OutputOf&) const;
+      };
+
     }
   }
   
-  namespace biclass {
-    // learner/predicor from scorer avec labelisation fct.
+
+  namespace score2class {
+
+    template<typename SCORER, typename OUTPUT>
+    class Predictor {
+    private:
+
+      SCORER scorer;
+      std::function<bool (double)> decision;
+      OUTPUT pos_class;
+      OUTPUT neg_class;
+      
+    public:
+      
+      typedef typename SCORER::input_type input_type;
+      typedef OUTPUT output_type;
+
+      /**
+       * decision is a function telling if the score correspond to the positive class.
+       */
+      template<typename Decision>
+      Predictor(const OUTPUT& positive_class,
+		const OUTPUT& negative_class,
+		const SCORER& scorer,
+		const Decision& decision)
+	: scorer(scorer), decision(decision), pos_class(positive_class), neg_class(negative_class) {}
+      Predictor(const Predictor&)            = default;
+      Predictor& operator=(const Predictor&) = default;
+      
+      output_type operator()(const input_type& x) const {
+	if(decision(scorer(x))) return pos_class;
+	return neg_class;
+      }
+    };
+
+    /**
+     * This builds a predictor from a scorer.
+     */
+    template<typename OUTPUT,typename SCORER,typename ToClass>
+    auto predictor(const OUTPUT& positive_class,
+		   const OUTPUT& negative_class,
+		   const SCORER& scorer, const ToClass& score_to_class) {
+      return Predictor<SCORER,OUTPUT>(positive_class,negative_class,
+				      scorer,score_to_class);
+    }
+    
+    
+    template<typename SCORE_LEARNER, typename OUTPUT>
+    class Learner {
+    private:
+
+      SCORE_LEARNER algo;
+      std::function<bool (double)> decision;
+      OUTPUT pos_class;
+      OUTPUT neg_class;
+	
+    public:
+
+
+      /**
+       * decision is a function telling if the score correspond to the positive class.
+       */
+      template<typename Decision>
+      Learner(const OUTPUT& positive_class,
+	      const OUTPUT& negative_class,
+	      const SCORE_LEARNER& algo,
+	      const Decision& decision)
+	: algo(algo), decision(decision),
+	  pos_class(positive_class), neg_class(negative_class)  {}
+      
+      Learner()                          = default;
+      Learner(const Learner&)            = default;
+      Learner& operator=(const Learner&) = default;
+
+      typedef Predictor<SCORE_LEARNER::scorer_type, OUTPUT> predictor_type;
+
+      // This does the learning, and returns a predictor from the data.
+      template<typename DataIterator, typename InputOf, typename OutputOf> 
+      predictor_type operator()(const DataIterator& begin, const DataIterator& end,
+				const InputOf& input_of, const OutputOf& output_of) const {
+	auto scorer = algo(begin, end, input_of, output_of);
+	return predictor(pos_class, neg_class, scorer, to_class);
+      }
+    };
+
+    template<typename SCORE_LEARNER, typename OUTPUT, typename DECISION>
+    auto learner(const OUTPUT& positive_class,
+		 const OUTPUT& negative_class,
+		 const SCORE_LEARNER& score_learner,
+		 const Decision& decision) {
+      return Learner<SCORE_LEARNER,OUTPUT)>(positive_class, negative_class, score_learner, decision);
+    }
   }
   
   namespace multiclass {
