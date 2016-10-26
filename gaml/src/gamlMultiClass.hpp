@@ -31,6 +31,7 @@
 #include <utility>
 #include <algorithm>
 #include <functional>
+#include <stdexcept>
 
 #include <gamlFilter.hpp>
 
@@ -45,8 +46,11 @@ namespace gaml {
        */ 
       class Scorer {
       public:
-      
-	typedef any input_type;
+
+	/**
+	 * Do not use int in your implementation
+	 */
+	typedef int input_type;
       
 	Scorer(const Scorer& other);
 	Scorer& operator=(const Scorer& other);
@@ -60,7 +64,7 @@ namespace gaml {
       public:
 
 	/**
-	 * The class should provide such a typedef (not int, of course).
+	 * Do not use int in your implementation
 	 */
 	typedef int scorer_type;
       
@@ -73,6 +77,27 @@ namespace gaml {
       };
 
     }
+
+    /**
+     * This finds the two classes in a bi-class dataset
+     */
+    class FindBiclass {
+    public:
+      
+      /**
+       * Do not use int in your implementation
+       */
+      typedef int output_type;
+      
+      FindBiclass(const FindBiclass& other);
+
+      /**
+       * This returns the two classes used to label the dataset. The dataset is supposed to contain exactly two classes.
+       */
+      template<typename DataIterator, typename OutputOf> 
+      std::pair<output_type,output_type> operator()(const DataIterator& begin, const DataIterator& end,
+						    const OutputOf&) const;
+    };
   }
   
 
@@ -109,64 +134,103 @@ namespace gaml {
 	return neg_class;
       }
     };
-
+    
     /**
      * This builds a predictor from a scorer.
      */
-    template<typename OUTPUT,typename SCORER,typename ToClass>
+    template<typename OUTPUT,typename SCORER, typename Decision>
     auto predictor(const OUTPUT& positive_class,
 		   const OUTPUT& negative_class,
-		   const SCORER& scorer, const ToClass& score_to_class) {
-      return Predictor<SCORER,OUTPUT>(positive_class,negative_class,
-				      scorer,score_to_class);
+		   const SCORER& scorer, const Decision& decision) {
+      return Predictor<SCORER,OUTPUT>(positive_class, negative_class,
+				      scorer, decision);
     }
     
     
-    template<typename SCORE_LEARNER, typename OUTPUT>
+    template<typename SCORE_LEARNER, typename FIND_BICLASS>
     class Learner {
     private:
-
+      
       SCORE_LEARNER algo;
       std::function<bool (double)> decision;
+      FIND_BICLASS find;
       OUTPUT pos_class;
       OUTPUT neg_class;
-	
+      
     public:
-
-
+      
+      
       /**
-       * decision is a function telling if the score correspond to the positive class.
+       * @param decision is a function telling if the score correspond to the positive class.
+       * @param FIND_CLASS must fit gaml::concept::FindBiclass.
        */
       template<typename Decision>
-      Learner(const OUTPUT& positive_class,
-	      const OUTPUT& negative_class,
-	      const SCORE_LEARNER& algo,
-	      const Decision& decision)
-	: algo(algo), decision(decision),
-	  pos_class(positive_class), neg_class(negative_class)  {}
+      Learner(const SCORE_LEARNER& algo,
+	      const Decision& decision,
+	      const FIND_BICLASS& find)
+	: algo(algo), decision(decision), find(find)  {}
       
       Learner()                          = default;
       Learner(const Learner&)            = default;
       Learner& operator=(const Learner&) = default;
-
+      
       typedef Predictor<SCORE_LEARNER::scorer_type, OUTPUT> predictor_type;
-
+      
       // This does the learning, and returns a predictor from the data.
       template<typename DataIterator, typename InputOf, typename OutputOf> 
       predictor_type operator()(const DataIterator& begin, const DataIterator& end,
 				const InputOf& input_of, const OutputOf& output_of) const {
-	auto scorer = algo(begin, end, input_of, output_of);
-	return predictor(pos_class, neg_class, scorer, to_class);
+	auto scorer  = algo(begin, end, input_of, output_of);
+	auto classes = find(begin, end, output_of);
+	return predictor(classes.first, classes.second, scorer, to_class);
+      }
+    };
+    
+    template<typename SCORE_LEARNER, typename FIND_BICLASS, typename DECISION>
+    auto learner(const SCORE_LEARNER& score_learner,
+		 const Decision& decision,
+		 const FIND_BICLASS& find) {
+      return Learner<SCORE_LEARNER,FIND_BICLASS>(score_learner, decision, find);
+    }
+  }
+  
+  namespace classification {
+
+    /**
+     * This finds the two classes which are in the data.
+     */
+    template<typename OUTPUT>
+    class FindTwoClasses {
+    public:
+      
+      typedef OUTPUT output_type;
+      
+      FindTwoClasses()                         = default;
+      FindTwoClasses(const FindBiclass& other) = default;
+
+      /**
+       * This returns the two classes used to label the dataset. The dataset is supposed to contain exactly two classes.
+       */
+      template<typename DataIterator, typename OutputOf> 
+      std::pair<output_type,output_type> operator()(const DataIterator& begin, const DataIterator& end,
+						    const OutputOf&) const {
+	if(begin == end) throw std::runtime_error("FindTwoClasses : empty dataset");
+	
+	output_type pos_class = output_of(*begin);
+	output_type neg_class = pos_class;
+	
+	auto it = begin;
+	for(++it; it != end; ++it)
+	  if((neg_class = output_of(*it)) != pos_class)
+	    break;
+	if(it == end) throw std::runtime_error("FindTwoClasses : dataset has only one label");
+
+	return {pos_class,neg_class};
       }
     };
 
-    template<typename SCORE_LEARNER, typename OUTPUT, typename DECISION>
-    auto learner(const OUTPUT& positive_class,
-		 const OUTPUT& negative_class,
-		 const SCORE_LEARNER& score_learner,
-		 const Decision& decision) {
-      return Learner<SCORE_LEARNER,OUTPUT)>(positive_class, negative_class, score_learner, decision);
-    }
+    template<OUTPUT>
+    FindTwoClasses<OUTPUT> find_two_class() {return FindTwoClasses<OUTPUT>();}
   }
   
   namespace multiclass {

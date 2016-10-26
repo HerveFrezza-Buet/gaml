@@ -50,17 +50,11 @@ namespace my_algo {
     scorer_type operator()(const DataIterator& begin, const DataIterator& end,
 			   const InputOf& input_of, const OutputOf& output_of) const {
       
-      int pos_class = output_of(*begin);
-      int neg_class = pos_class;
-
-      // This codes works only if there are two classes in the data...
-      auto it = begin;
-      for(++it; it != end; ++it)
-	if((neg_class = output_of(*it)) != pos_class)
-	  break;
+      auto find    = gaml::classification::find_two_class();
+      auto classes = find(begin, end, output_of);
       
       auto split = gaml::split(begin, end,
-			       [pos_class,output_of](const decltype(*begin)& d) -> bool {
+			       [pos_class = classes.first, output_of](const decltype(*begin)& d) -> bool {
 				 return output_of(d) == pos_class;
 			       });
       double pos_avg = gaml::average(split.true_values.begin(),  split.true_values.end(),  input_of);
@@ -93,7 +87,8 @@ int main(int argc, char* argv[]) {
      scores. Our learning algorithm computes a score. We have to build
      a learner from it. */
   auto biclass_algo = gaml::score2class::learner(score_learner,
-						 [](double score) -> 
+						 [](double score) -> bool {return score >=0;},
+						 gaml::classification::find_two_class());
   
   
 
