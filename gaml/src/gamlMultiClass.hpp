@@ -268,10 +268,10 @@ namespace gaml {
 	typedef std::vector<PREDICTOR>             predictors_type;
 	typedef std::map<output_type,unsigned int> vote_type;
 	
-	predictors_type predictors;
-	vote_type       votes;
+	predictors_type   predictors;
+	mutable vote_type votes;
 
-	void clear_votes() {for(auto& kv : votes) kv.second = 0;}
+	void clear_votes() const {for(auto& kv : votes) kv.second = 0;}
 			
 	
       public:
@@ -290,6 +290,8 @@ namespace gaml {
 	  // We create entries in the votes map.
 	  votes[p.second.first]  = 0;
 	  votes[p.second.second] = 0;
+
+	  return *this;
 	}
 
 	output_type operator()(const input_type& x) const {
@@ -320,6 +322,10 @@ namespace gaml {
 	template<typename DataIterator, typename InputOf, typename OutputOf> 
 	predictor_type operator()(const DataIterator& begin, const DataIterator& end,
 				  const InputOf& input_of, const OutputOf& output_of) const {
+	  // if output_of is a function, it cannot be captured in the
+	  // lambda capture block. We use std::bind to solve this.
+	  auto get_output = std::bind(output_of,std::placeholders::_1);
+      
 	  // First, let us collect the labels which are in the data.
 	  std::set<typename LEARNER::predictor_type::output_type> labels;
 	  for(auto it = begin; it != end; ++it) labels.insert(output_of(*it));
@@ -330,8 +336,8 @@ namespace gaml {
 	    auto l2 = l1;
 	    for(++l2; l2 != labels.end(); ++l2) {
 	      auto dataset = gaml::filter(begin,end,
-					  [output_of, a=*l1, b=*l2](const decltype(*begin)& elem) -> bool {
-					    return output_of(elem) == a || output_of(elem) == b;
+					  [get_output, a=*l1, b=*l2](const typename DataIterator::value_type& elem) -> bool {
+					    return get_output(elem) == a || get_output(elem) == b;
 					  });
 	      res += {algo(dataset.begin(),dataset.end(),input_of,output_of),{*l1,*l2}};
 	    }
