@@ -8,62 +8,7 @@
 // class. The decision functions returns a score, telling which class
 // is detected.
 
-namespace my_algo {
-
-  /**
-   * This fits concept::score::Scorer
-   */
-  class Scorer {
-  private:
-    double pos_avg;
-    double neg_avg;
-    
-    
-  public:
-    Scorer(double pos_avg, double neg_avg)
-      : pos_avg(pos_avg), neg_avg(neg_avg) {}
-    
-    Scorer()                         = default;
-    Scorer(const Scorer&)            = default;
-    Scorer& operator=(const Scorer&) = default;
-
-    typedef double input_type;
-    
-    double operator()(const input_type& x) const {
-      return std::fabs(x-neg_avg)-std::fabs(x-pos_avg);
-    }
-  };
-
-  /**
-   * This fits concept::score::Learner
-   */
-  class Learner {
-  public:
-
-    typedef Scorer scorer_type;
-      
-    Learner()                                = default;
-    Learner(const Learner& other)            = default;
-    Learner& operator=(const Learner& other) = default;
-
-    template<typename DataIterator, typename InputOf, typename OutputOf> 
-    scorer_type operator()(const DataIterator& begin, const DataIterator& end,
-			   const InputOf& input_of, const OutputOf& output_of) const {
-      
-      auto find    = gaml::classification::find_two_class();
-      auto classes = find(begin, end, output_of);
-      
-      auto split = gaml::split(begin, end,
-			       [pos_class = classes.first, output_of](const decltype(*begin)& d) -> bool {
-				 return output_of(d) == pos_class;
-			       });
-      double pos_avg = gaml::average(split.true_values.begin(),  split.true_values.end(),  input_of);
-      double neg_avg = gaml::average(split.false_values.begin(), split.false_values.end(), input_of);
-
-      return Scorer(pos_class, neg_class, pos_avg, neg_avg);
-    }
-  };
-}
+#include <example-scorer.hpp>
 
 
 int main(int argc, char* argv[]) {
@@ -88,7 +33,7 @@ int main(int argc, char* argv[]) {
      a learner from it. */
   auto biclass_algo = gaml::score2class::learner(score_learner,
 						 [](double score) -> bool {return score >=0;},
-						 gaml::classification::find_two_class());
+						 gaml::classification::find_two_class<int>());
   
   
 

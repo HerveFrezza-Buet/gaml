@@ -67,6 +67,7 @@
  * @example example-002-003-cross-validation.cpp
  * @example example-002-004-bootstrapping.cpp
  * @example example-002-005-bagging.cpp
+ * @example example-002-006-scorer.cpp
  * @example example-003-001-multidimension.cpp
  * @example example-003-002-multiclass.cpp
  * @example example-004-001-variable-projection.cpp
@@ -76,6 +77,7 @@
  * @example example-customer.hpp
  * @example example-dummy.hpp
  * @example example-ratio.hpp
+ * @example example-scorer.hpp
  * @example example-silly.hpp
  */
 

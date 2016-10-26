@@ -67,6 +67,7 @@ namespace gaml {
 	 * Do not use int in your implementation
 	 */
 	typedef int scorer_type;
+	typedef int output_type;
       
 	Learner(const Learner& other);
 	Learner& operator=(const Learner& other);
@@ -126,6 +127,7 @@ namespace gaml {
 		const SCORER& scorer,
 		const Decision& decision)
 	: scorer(scorer), decision(decision), pos_class(positive_class), neg_class(negative_class) {}
+      Predictor()                            = default;
       Predictor(const Predictor&)            = default;
       Predictor& operator=(const Predictor&) = default;
       
@@ -136,7 +138,9 @@ namespace gaml {
     };
     
     /**
-     * This builds a predictor from a scorer.
+     * This builds a predictor from a scorer. 
+     * @param positive_class must be the first argument
+     * @param negative_class must be the first argument
      */
     template<typename OUTPUT,typename SCORER, typename Decision>
     auto predictor(const OUTPUT& positive_class,
@@ -154,8 +158,6 @@ namespace gaml {
       SCORE_LEARNER algo;
       std::function<bool (double)> decision;
       FIND_BICLASS find;
-      OUTPUT pos_class;
-      OUTPUT neg_class;
       
     public:
       
@@ -174,7 +176,7 @@ namespace gaml {
       Learner(const Learner&)            = default;
       Learner& operator=(const Learner&) = default;
       
-      typedef Predictor<SCORE_LEARNER::scorer_type, OUTPUT> predictor_type;
+      typedef Predictor<typename SCORE_LEARNER::scorer_type, typename FIND_BICLASS::output_type> predictor_type;
       
       // This does the learning, and returns a predictor from the data.
       template<typename DataIterator, typename InputOf, typename OutputOf> 
@@ -182,13 +184,28 @@ namespace gaml {
 				const InputOf& input_of, const OutputOf& output_of) const {
 	auto scorer  = algo(begin, end, input_of, output_of);
 	auto classes = find(begin, end, output_of);
-	return predictor(classes.first, classes.second, scorer, to_class);
+
+	// Now, we have to know which is the positive class, i.e the class for which decision(score) is true.
+	auto b_class    = output_of(*begin);
+	auto b_decision = decision(scorer(input_of(*begin)));
+	predictor_type res;
+	if(b_class == classes.first)
+	  if(b_decision)
+	    res = predictor(classes.first,  classes.second, scorer, decision);
+	  else
+	    res = predictor(classes.second, classes.first, scorer, decision);
+	else
+	  if(b_decision)
+	    res = predictor(classes.second, classes.first, scorer, decision);
+	  else
+	    res = predictor(classes.first,  classes.second, scorer, decision);
+	return res;
       }
     };
     
     template<typename SCORE_LEARNER, typename FIND_BICLASS, typename DECISION>
     auto learner(const SCORE_LEARNER& score_learner,
-		 const Decision& decision,
+		 const DECISION& decision,
 		 const FIND_BICLASS& find) {
       return Learner<SCORE_LEARNER,FIND_BICLASS>(score_learner, decision, find);
     }
@@ -206,14 +223,14 @@ namespace gaml {
       typedef OUTPUT output_type;
       
       FindTwoClasses()                         = default;
-      FindTwoClasses(const FindBiclass& other) = default;
+      FindTwoClasses(const FindTwoClasses& other) = default;
 
       /**
        * This returns the two classes used to label the dataset. The dataset is supposed to contain exactly two classes.
        */
       template<typename DataIterator, typename OutputOf> 
       std::pair<output_type,output_type> operator()(const DataIterator& begin, const DataIterator& end,
-						    const OutputOf&) const {
+						    const OutputOf& output_of) const {
 	if(begin == end) throw std::runtime_error("FindTwoClasses : empty dataset");
 	
 	output_type pos_class = output_of(*begin);
@@ -229,8 +246,8 @@ namespace gaml {
       }
     };
 
-    template<OUTPUT>
-    FindTwoClasses<OUTPUT> find_two_class() {return FindTwoClasses<OUTPUT>();}
+    template<typename OUTPUT>
+    FindTwoClasses<OUTPUT> find_two_classes() {return FindTwoClasses<OUTPUT>();}
   }
   
   namespace multiclass {
@@ -254,7 +271,7 @@ namespace gaml {
 	predictors_type predictors;
 	vote_type       votes;
 
-	void clear_votes() {for(auto& kv : votes) : kv.second = 0;}
+	void clear_votes() {for(auto& kv : votes) kv.second = 0;}
 			
 	
       public:
@@ -268,8 +285,8 @@ namespace gaml {
 	/**
 	 * This adds a bi-class predictor in the list.
 	 */
-	Predictor<output_type,PREDICTOR>& operator+=(const std::pair<const PREDICTOR&, std::pair<output_type,output_type> >& p) {
-	  predictor_type.push_back(p.first);
+	Predictor<PREDICTOR>& operator+=(const std::pair<const PREDICTOR&, std::pair<output_type,output_type> >& p) {
+	  predictors.push_back(p.first);
 	  // We create entries in the votes map.
 	  votes[p.second.first]  = 0;
 	  votes[p.second.second] = 0;
@@ -279,7 +296,7 @@ namespace gaml {
 	  clear_votes();
 	  for(auto& p : predictors) votes[p(x)]++;
 	  auto argmax = std::max_element(votes.begin(), votes.end(),
-					 [](const vote_type::value_type& a, const vote_type::value_type& b) -> bool {return a.second < b.second;});
+					 [](const typename vote_type::value_type& a, const typename vote_type::value_type& b) -> bool {return a.second < b.second;});
 	  return argmax->first;
 	}
       };
