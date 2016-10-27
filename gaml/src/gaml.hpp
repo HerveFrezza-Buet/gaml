@@ -99,12 +99,12 @@
  * around its favorite algorithms some general purpose machine
  * learning features. Nevertheless, the famous <a
  * href="http://www.csie.ntu.edu.tw/~cjlin/libsvm/">libsvm package</a>
- * by Chih-Chung Chang and Chih-Jen Lin has already been included in ml thanks
+ * by Chih-Chung Chang and Chih-Jen Lin has already been included in gaml thanks
  * to the <a
  * href="http://malis.metz.supelec.fr/spip.php?article192">gaml-libsvm</a>
  * extension.
  *
- * Last, let us insist on one major feature of the ml lib. It relies
+ * Last, let us insist on one major feature of the gaml lib. It relies
  * on c++ generic programming, which is strongly typed. The design of
  * the library fits the mathematics of machine learning concepts, and
  * thus the strong typing forces the user to comply to those
@@ -121,7 +121,7 @@
  * For those who are not familiar with generic programming, the use of
  * concept may be confusing since classical object oriented relies
  * rather on inheritence mechanisms. A concept is a syntactical
- * requirement. In the ml library, such requirement are documented
+ * requirement. In the gaml library, such requirement are documented
  * through the use of <b>fake</b> classes in the gaml::concept
  * namespace. Let us take the exemple of the gaml::concept::Predictor
  * concept.
@@ -143,9 +143,9 @@ public:
 };
  * @endcode
  *
- * This Funny class fits the gaml::concept::Predictor concept while no inheritance is involved. If some algorithm in the documentation is such as it requires an argument whose type fits the gaml::concept::Predictor concept, this will be specified in the documentation. For example, let us suppose that the function foo is dedicated to the manipulation of some predictor. Its declaration in the ml lib would be
+ * This Funny class fits the gaml::concept::Predictor concept while no inheritance is involved. If some algorithm in the documentation is such as it requires an argument whose type fits the gaml::concept::Predictor concept, this will be specified in the documentation. For example, let us suppose that the function foo is dedicated to the manipulation of some predictor. Its declaration in the gaml lib would be
  * @code
- namespace ml {
+ namespace gaml {
    template<typename Predictor>
    double foo(const Predictor& pred) {....}
  }
@@ -157,7 +157,7 @@ public:
  double result = gaml::foo<Funny>(funny);
  * @endcode
  *
- * This is will compile fine as long as the Funny class fits the gaml::concept::Predictor concept. Moreover, when the compiler can guess the template parameter type from the function call, the template parameters can be removed. This leads to the following codes, that gives you the flavor of the ml function calls.
+ * This is will compile fine as long as the Funny class fits the gaml::concept::Predictor concept. Moreover, when the compiler can guess the template parameter type from the function call, the template parameters can be removed. This leads to the following codes, that gives you the flavor of the gaml function calls.
  * @code
  Funny funny;
  double result = gaml::foo(funny);
@@ -168,19 +168,19 @@ public:
  * @section The use of iterators and functors
  *
  * This idea of the library is that data belong to collections that
- * can be accessed by iterators. Most algorithms provided in the ml
+ * can be accessed by iterators. Most algorithms provided in the gaml
  * library take iterators as argument when they have to consider
  * a collection of data. This is complient with the STL programming
  * style. The user is thus responsible for the way s/he stores the
  * data. Consequently s/he has to provide functions that allows to retrieve
  * elements in each single datum in the data set. Typically, data sets
- * contain input/output pairs. The ml algorithm will be provided with
+ * contain input/output pairs. The gaml algorithm will be provided with
  * iterators on the dataset and it will acces to successive
- * elements. From each element, the ml algoritm will have to extract
+ * elements. From each element, the gaml algoritm will have to extract
  * the input and the output contained in the pair. In order not to
- * impose the coding of those pairs to the user, ml algorithms will
+ * impose the coding of those pairs to the user, gaml algorithms will
  * have to be given two supplementary extraction functions. Let us
- * write some typical ml code accordingly.
+ * write some typical gaml code accordingly.
  *
  * @code
 typedef char                    Input;
@@ -223,7 +223,7 @@ int main(...) {
  * keyword can be used where a type name is required, when the type can
  * be guessed by the compiler. This is the case for the
  * gaml::Shuffle<Samples::iterator,nasty-functional-types> obscure type
- * provided by ml. This leads to rewrite the code as this.
+ * provided by gaml. This leads to rewrite the code as this.
  *
  * @code
 typedef char                    Input;
@@ -289,14 +289,14 @@ int main(...) {
  *
  * @section Read the documentation
  *
- * The user manual of the ml library consists of a set of examples,
+ * The user manual of the gaml library consists of a set of examples,
  * available in this documentation. They are ordered, and they should
- * be read in that order to get a comprehensive overview of the ml
+ * be read in that order to get a comprehensive overview of the gaml
  * features.
  * 
  * @section Conclusion
  *
- * The use of ml implies invoking templates that can by
+ * The use of gaml implies invoking templates that can by
  * intricated. Thanks to C++11 syntactical elements (as auto), this
  * intrication can be hidden to the user so that the code is kept
  * readible. The code expresses naturally the machine learning
