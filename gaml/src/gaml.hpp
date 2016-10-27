@@ -122,11 +122,11 @@
  * concept may be confusing since classical object oriented relies
  * rather on inheritence mechanisms. A concept is a syntactical
  * requirement. In the ml library, such requirement are documented
- * through the use of <b>fake</b> classes in the ml::concept
- * namespace. Let us take the exemple of the ml::concept::Predictor
+ * through the use of <b>fake</b> classes in the gaml::concept
+ * namespace. Let us take the exemple of the gaml::concept::Predictor
  * concept.
  *
- * The ml::concept::Predictor concept says that some predictor must define two types, names input_type and output_type, and that it should provide some defaut and copy constructors, as well as a operator() method. Let us propose some predictor (dummy...).
+ * The gaml::concept::Predictor concept says that some predictor must define two types, names input_type and output_type, and that it should provide some defaut and copy constructors, as well as a operator() method. Let us propose some predictor (dummy...).
  * @code
 class Funny {
 public:
@@ -143,7 +143,7 @@ public:
 };
  * @endcode
  *
- * This Funny class fits the ml::concept::Predictor concept while no inheritance is involved. If some algorithm in the documentation is such as it requires an argument whose type fits the ml::concept::Predictor concept, this will be specified in the documentation. For example, let us suppose that the function foo is dedicated to the manipulation of some predictor. Its declaration in the ml lib would be
+ * This Funny class fits the gaml::concept::Predictor concept while no inheritance is involved. If some algorithm in the documentation is such as it requires an argument whose type fits the gaml::concept::Predictor concept, this will be specified in the documentation. For example, let us suppose that the function foo is dedicated to the manipulation of some predictor. Its declaration in the ml lib would be
  * @code
  namespace ml {
    template<typename Predictor>
@@ -154,13 +154,13 @@ public:
  * The use of the function in some code where Funny is available would be
  * @code
  Funny funny;
- double result = ml::foo<Funny>(funny);
+ double result = gaml::foo<Funny>(funny);
  * @endcode
  *
- * This is will compile fine as long as the Funny class fits the ml::concept::Predictor concept. Moreover, when the compiler can guess the template parameter type from the function call, the template parameters can be removed. This leads to the following codes, that gives you the flavor of the ml function calls.
+ * This is will compile fine as long as the Funny class fits the gaml::concept::Predictor concept. Moreover, when the compiler can guess the template parameter type from the function call, the template parameters can be removed. This leads to the following codes, that gives you the flavor of the ml function calls.
  * @code
  Funny funny;
- double result = ml::foo(funny);
+ double result = gaml::foo(funny);
  * @endcode
  *
  *
@@ -203,26 +203,26 @@ int main(...) {
   }
 
   // Let us set up a shuffled basis.
-  ml::Shuffle<Samples::iterator,nasty-functional-types> shuffled = ml::shuffle(basis.begin(),
+  gaml::Shuffle<Samples::iterator,nasty-functional-types> shuffled = gaml::shuffle(basis.begin(),
 									       basis.end());
 
   // Let us compute something
   Funny funny;
-  risk = ml::some_algo(funny,
-                       shuffled.begin(), shuffled.end(), // We iterate on the shuffled basis.
-		       input_of,     // These are the
-		       output_of);   // extraction functions.
+  risk = gaml::some_algo(funny,
+                         shuffled.begin(), shuffled.end(), // We iterate on the shuffled basis.
+		         input_of,     // These are the
+		         output_of);   // extraction functions.
 }
  * @endcode
  *
  * The previous code benefits from the template parameter implicite
- * resolution, since ml::some_algo is a template function, whose type
- * parameters can be ommitted, as mentioned for ml::foo previously. It
+ * resolution, since gaml::some_algo is a template function, whose type
+ * parameters can be ommitted, as mentioned for gaml::foo previously. It
  * can be simplified further. First, C++11 provide smarts notation for
  * interation on collections (a new for loop syntax). Second, the auto
  * keyword can be used where a type name is required, when the type can
  * be guessed by the compiler. This is the case for the
- * ml::Shuffle<Samples::iterator,nasty-functional-types> obscure type
+ * gaml::Shuffle<Samples::iterator,nasty-functional-types> obscure type
  * provided by ml. This leads to rewrite the code as this.
  *
  * @code
@@ -245,14 +245,14 @@ int main(...) {
   }
 
   // Let us set up a shuffled basis.
-  auto shuffled = ml::shuffle(basis.begin(),basis.end());
+  auto shuffled = gaml::shuffle(basis.begin(),basis.end());
 
   // Let us compute something
   Funny funny;
-  risk = ml::some_algo(funny,
-                       shuffled.begin(), shuffled.end(), 
-		       input_of,
-		       output_of);
+  risk = gaml::some_algo(funny,
+                         shuffled.begin(), shuffled.end(), 
+		         input_of,
+		         output_of);
 }
  * @endcode
  *
@@ -275,14 +275,14 @@ int main(...) {
   }
 
   // Let us set up a shuffled basis.
-  auto shuffled = ml::shuffle(basis.begin(),basis.end());
+  auto shuffled = gaml::shuffle(basis.begin(),basis.end());
 
   // Let us compute something
   Funny funny;
-  risk = ml::some_algo(funny,
-                       shuffled.begin(), shuffled.end(), 
-		       [](const Data& data) -> const Input&  {return data.first;},
-		       [](const Data& data) -> const Output& {return data.second;});
+  risk = gaml::some_algo(funny,
+                         shuffled.begin(), shuffled.end(), 
+		         [](const Data& data) -> const Input&  {return data.first;},
+		         [](const Data& data) -> const Output& {return data.second;});
 }
  * @endcode
  *
