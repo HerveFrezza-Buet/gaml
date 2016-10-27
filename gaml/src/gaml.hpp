@@ -176,7 +176,7 @@ public:
  * elements in each single datum in the data set. Typically, data sets
  * contain input/output pairs. The gaml algorithm will be provided with
  * iterators on the dataset and it will acces to successive
- * elements. From each element, the gaml algoritm will have to extract
+ * elements. From each element, the gaml algorithm will have to extract
  * the input and the output contained in the pair. In order not to
  * impose the coding of those pairs to the user, gaml algorithms will
  * have to be given two supplementary extraction functions. Let us

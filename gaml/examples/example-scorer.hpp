@@ -73,7 +73,7 @@ namespace scorer {
       // lambda capture block. We use std::bind to solve this.
       auto get_output = std::bind(output_of,_1);
 
-      // We wplit data according to the class label and we compute
+      // We split data according to the class label and we compute
       // averages of each parts.
       auto split = gaml::split(begin, end,
 			       [get_output, A=classes.first](const decltype(*begin)& d) -> bool {
