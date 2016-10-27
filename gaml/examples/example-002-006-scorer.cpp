@@ -63,8 +63,8 @@ int main(int argc, char* argv[]) {
   
   auto classification_algo
     = gaml::score2class::learner(scoring_algo,
-				 [](double the_score) -> bool {return the_score >= 0;}, // This tells how to decide from the scorer.
-				 gaml::classification::find_two_classes<Y>());          // This nows how to retrieve the two class values in the data.
+				 [](double the_score) -> bool {return the_score >= 0;}, // This tells how to decide from the score.
+				 gaml::classification::find_two_classes<Y>());          // This knows how to retrieve the two class values in the data.
   
   auto predictor = classification_algo(dataset.begin(), dataset.end(), input_of, output_of);
 

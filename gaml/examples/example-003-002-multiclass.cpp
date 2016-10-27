@@ -2,12 +2,7 @@
 #include <cmath>
 
 
-// Let us define a simple bi-class learning algorithm. Inputs are
-// scalars, labelled with two classes. Classes are integer
-// values. Learning consists of computing the average value of each
-// class. The decision functions returns a score, telling which class
-// is detected.
-
+// Let us use a scorer from this file (read it).
 #include <example-scorer.hpp>
 
 // Here are the types
@@ -20,7 +15,7 @@ typedef std::vector<Data> Dataset;
 
 const X& input_of      (const Data& d) {return d.first; }
 const Y& output_of     (const Data& d) {return d.second;}
-Y        class_of_label(Y label)       {return label;   } 
+Y        class_of_label(Y label)       {return label;   } // for the confusion matrix
 
 // The oracle
 #define NB_CLASSES          5
@@ -44,10 +39,13 @@ int main(int argc, char* argv[]) {
  
   for(unsigned int i=0; i < 1000; ++i) {
     X x        = gaml::random::uniform(0,1);
-    *(out++) = {x,oracle(x)};
+    *(out++)   = {x,oracle(x)};
   }
 
-  // This is an instance of our learning algorithm.
+  // This is an instance of our learning algorithm. It learns a
+  // scorer, i.e. a function that associates a scalar to the
+  // input. From the value of this scalar, one can guess the class
+  // associated to the input. We are in a bi-class context.
   
   auto score_learner = scorer::Learner<Y>();
     
@@ -60,7 +58,7 @@ int main(int argc, char* argv[]) {
 	    << "##########" << std::endl
 	    << std::endl;
 
-  // 1 vs 1 needs learner and classifiers that produces labels, not
+  // 1 vs 1 needs learner and classifiers that produce labels, not
   // scores. Our learning algorithm computes a score. We have to build
   // a learner from it (see the scorer example).
   
