@@ -2,6 +2,7 @@
 
 A C++ generic programming library for machine learning, developped by <a href="https://github.com/P-Fred">Frédéric Pennerath</a>, <a href="https://github.com/jeremyfix">Jérémy Fix</a> and <a href="https://github.com/HerveFrezza-Buet">Hervé Frezza-Buet</a>.
 
+
 # Documentation
 
 The directory contains several source packages, the documentation for each of them can be found in the doc directory as a doxygen generated html file.
