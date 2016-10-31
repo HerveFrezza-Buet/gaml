@@ -8,9 +8,9 @@
 
 // This learning algorithm expects data which are labelled with two
 // classes. The input is scalar. The scorer owns two position, one
-// for class A, and the other of class B. The score given to an input
+// for the positive, and the other of the negative class. The score given to an input
 // x depends on the distances to these two positions. It is positive
-// if x is closer to the class-A position.
+// if x is closer to the positive class position.
 
 // The learning consists in finding the two class-dependant positions.
 
@@ -61,13 +61,13 @@ namespace scorer {
     Learner()                                = default;
     Learner(const Learner& other)            = default;
     Learner& operator=(const Learner& other) = default;
-    
+
+
+    // As we fit concept::score::Learner, we can assume that output_of
+    // returns a boolean telling which are positive class samples.
     template<typename DataIterator, typename InputOf, typename OutputOf> 
     scorer_type operator()(const DataIterator& begin, const DataIterator& end,
 			   const InputOf& input_of, const OutputOf& output_of) const {
-      // We retrieve the two classes values.
-      auto finder = gaml::classification::find_two_classes<output_type>();
-      auto classes =  finder(begin, end, output_of); // this is a pair of label values.
 	
       // if output_of is a function, it cannot be captured in the
       // lambda capture block. We use std::bind to solve this.
@@ -76,8 +76,8 @@ namespace scorer {
       // We split data according to the class label and we compute
       // averages of each parts.
       auto split = gaml::split(begin, end,
-			       [get_output, A=classes.first](const decltype(*begin)& d) -> bool {
-				 return get_output(d) == A; 
+			       [get_output](const decltype(*begin)& d) -> bool {
+				 return get_output(d); 
 			       });
       double pos_avg = gaml::average(split.true_values.begin(),  split.true_values.end(),  input_of);
       double neg_avg = gaml::average(split.false_values.begin(), split.false_values.end(), input_of);

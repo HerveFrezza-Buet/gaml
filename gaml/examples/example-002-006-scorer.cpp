@@ -54,26 +54,52 @@ int main(int argc, char* argv[]) {
   // Using our scorer
 
   auto scoring_algo = scorer::Learner<Y>();
-  auto scoring_fct  = scoring_algo(dataset.begin(), dataset.end(), input_of, output_of);
+
+  // For scoring, we need a function that tells whether a data is of
+  // positive or negative class. This is what the lambda here does.
+  auto scoring_fct  = scoring_algo(dataset.begin(), dataset.end(), input_of,
+				   [](const Data& d) -> bool {return d.second == 'A';}); 
 
   std::cout << std::endl
 	    << "Scoring function : " << scoring_fct << std::endl;
 
   // Now, let us build actual predictors rather than scorers.
+
+  // You can set which class is positive, and which class is negative.
+  auto classification_algo_class_def
+    = gaml::score2class::learner('A', // The positive class
+				 'B', // The negative class
+				 scoring_algo,
+				 [](double the_score) -> bool {return the_score >= 0;});
   
-  auto classification_algo
-    = gaml::score2class::learner(scoring_algo,
-				 [](double the_score) -> bool {return the_score >= 0;}, // This tells how to decide from the score.
-				 gaml::classification::find_two_classes<Y>());          // This knows how to retrieve the two class values in the data.
+  auto predictor_class_def = classification_algo_class_def(dataset.begin(), dataset.end(), input_of, output_of);
   
-  auto predictor = classification_algo(dataset.begin(), dataset.end(), input_of, output_of);
+  auto classification_algo_class_undef
+    = gaml::score2class::learner<Y>(scoring_algo,
+				    [](double the_score) -> bool {return the_score >= 0;});
+  
+  auto predictor_class_undef = classification_algo_class_undef(dataset.begin(), dataset.end(), input_of, output_of);
+
+  // Let us display the two computed scorers. You may need to run this
+  // example several time to see a difference, since it depends on how
+  // the data is labelled.
+
+
+  std::cout << std::endl
+	    << "Scorers" << std::endl
+	    << "  - when positive and negative classes are defined   : " << predictor_class_def.scorer()   << std::endl
+	    << "  - when positive and negative classes are undefined : " << predictor_class_undef.scorer() << std::endl;
+  
 
   std::cout << std::endl
 	    << "Scoring vs predicting" << std::endl;
   
   for(unsigned int i=0; i < 10; ++i) {
     X x        = gaml::random::uniform(0,1);
-    std::cout << "  " << x << " -> " << predictor(x) << '(' << scoring_fct(x) << ')' << std::endl;
+    std::cout << "  " << std::setw(10) << x << " -> " << predictor_class_def(x) << ' ' << predictor_class_undef(x)
+	      << " : sc(x) = " << std::setw(10) << scoring_fct(x)
+	      << ", sc_def(x) = " << std::setw(10) << predictor_class_def.scorer()(x)
+	      << ", sc_undef(x) = " << std::setw(10) << predictor_class_undef.scorer()(x)  << std::endl;
   }
   std::cout << std::endl;
 
@@ -82,7 +108,7 @@ int main(int argc, char* argv[]) {
   auto algo_evaluator = gaml::risk::cross_validation(gaml::loss::Classification<Y>(),
                                                      gaml::partition::kfold(5),
                                                      true);
-  double real = algo_evaluator(classification_algo,
+  double real = algo_evaluator(classification_algo_class_def,
                                dataset.begin(),dataset.end(),
                                input_of,output_of);
   std::cout << "Real risk  = " << real << std::endl;

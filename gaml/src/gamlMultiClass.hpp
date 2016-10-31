@@ -34,6 +34,7 @@
 #include <stdexcept>
 
 #include <gamlFilter.hpp>
+#include <gamlMap.hpp>
 
 
 namespace gaml {
@@ -68,147 +69,18 @@ namespace gaml {
 	 * Do not use int in your implementation
 	 */
 	typedef int scorer_type;
-	typedef int output_type;
       
 	Learner(const Learner& other);
 	Learner& operator=(const Learner& other);
 
+	/**
+	 * @short The OutputOf must return a boolean, true for the positive class, false for the negative one.
+	 */
 	template<typename DataIterator, typename InputOf, typename OutputOf> 
 	scorer_type operator()(const DataIterator& begin, const DataIterator& end,
 			       const InputOf&, const OutputOf&) const;
       };
 
-    }
-
-    /**
-     * This finds the two classes in a bi-class dataset
-     */
-    class FindBiclass {
-    public:
-      
-      /**
-       * Do not use int in your implementation
-       */
-      typedef int output_type;
-      
-      FindBiclass(const FindBiclass& other);
-
-      /**
-       * This returns the two classes used to label the dataset. The dataset is supposed to contain exactly two classes.
-       */
-      template<typename DataIterator, typename OutputOf> 
-      std::pair<output_type,output_type> operator()(const DataIterator& begin, const DataIterator& end,
-						    const OutputOf&) const;
-    };
-  }
-  
-
-  namespace score2class {
-
-    template<typename SCORER, typename OUTPUT>
-    class Predictor {
-    private:
-
-      SCORER scorer;
-      std::function<bool (double)> decision;
-      OUTPUT pos_class;
-      OUTPUT neg_class;
-      
-    public:
-      
-      typedef typename SCORER::input_type input_type;
-      typedef OUTPUT output_type;
-
-      /**
-       * decision is a function telling if the score correspond to the positive class.
-       */
-      template<typename Decision>
-      Predictor(const OUTPUT& positive_class,
-		const OUTPUT& negative_class,
-		const SCORER& scorer,
-		const Decision& decision)
-	: scorer(scorer), decision(decision), pos_class(positive_class), neg_class(negative_class) {}
-      Predictor()                            = default;
-      Predictor(const Predictor&)            = default;
-      Predictor& operator=(const Predictor&) = default;
-      
-      output_type operator()(const input_type& x) const {
-	if(decision(scorer(x))) return pos_class;
-	return neg_class;
-      }
-    };
-    
-    /**
-     * This builds a predictor from a scorer. 
-     * @param positive_class must be the first argument
-     * @param negative_class must be the first argument
-     */
-    template<typename OUTPUT,typename SCORER, typename Decision>
-    auto predictor(const OUTPUT& positive_class,
-		   const OUTPUT& negative_class,
-		   const SCORER& scorer, const Decision& decision) {
-      return Predictor<SCORER,OUTPUT>(positive_class, negative_class,
-				      scorer, decision);
-    }
-    
-    
-    template<typename SCORE_LEARNER, typename FIND_BICLASS>
-    class Learner {
-    private:
-      
-      SCORE_LEARNER algo;
-      std::function<bool (double)> decision;
-      FIND_BICLASS find;
-      
-    public:
-      
-      
-      /**
-       * @param decision is a function telling if the score correspond to the positive class.
-       * @param FIND_CLASS must fit gaml::concept::FindBiclass.
-       */
-      template<typename Decision>
-      Learner(const SCORE_LEARNER& algo,
-	      const Decision& decision,
-	      const FIND_BICLASS& find)
-	: algo(algo), decision(decision), find(find)  {}
-      
-      Learner()                          = default;
-      Learner(const Learner&)            = default;
-      Learner& operator=(const Learner&) = default;
-      
-      typedef Predictor<typename SCORE_LEARNER::scorer_type, typename FIND_BICLASS::output_type> predictor_type;
-      
-      // This does the learning, and returns a predictor from the data.
-      template<typename DataIterator, typename InputOf, typename OutputOf> 
-      predictor_type operator()(const DataIterator& begin, const DataIterator& end,
-				const InputOf& input_of, const OutputOf& output_of) const {
-	auto scorer  = algo(begin, end, input_of, output_of);
-	auto classes = find(begin, end, output_of);
-
-	// Now, we have to know which is the positive class, i.e the class for which decision(score) is true.
-	auto b_class    = output_of(*begin);
-	auto b_decision = decision(scorer(input_of(*begin)));
-	predictor_type res;
-	if(b_class == classes.first)
-	  if(b_decision)
-	    res = predictor(classes.first,  classes.second, scorer, decision);
-	  else
-	    res = predictor(classes.second, classes.first, scorer, decision);
-	else
-	  if(b_decision)
-	    res = predictor(classes.second, classes.first, scorer, decision);
-	  else
-	    res = predictor(classes.first,  classes.second, scorer, decision);
-	return res;
-      }
-    };
-    
-    template<typename SCORE_LEARNER, typename FIND_BICLASS, typename DECISION>
-    auto learner(const SCORE_LEARNER& score_learner,
-		 const DECISION& decision,
-		 const FIND_BICLASS& find) {
-      return Learner<SCORE_LEARNER,FIND_BICLASS>(score_learner, decision, find);
     }
   }
   
@@ -246,10 +118,138 @@ namespace gaml {
 	return {pos_class,neg_class};
       }
     };
-
+    
     template<typename OUTPUT>
     FindTwoClasses<OUTPUT> find_two_classes() {return FindTwoClasses<OUTPUT>();}
   }
+
+
+  namespace score2class {
+
+    template<typename SCORER, typename OUTPUT>
+    class Predictor {
+    private:
+
+      SCORER sc;
+      std::function<bool (double)> decision;
+      OUTPUT pos_class;
+      OUTPUT neg_class;
+      
+    public:
+      
+      typedef typename SCORER::input_type input_type;
+      typedef OUTPUT output_type;
+
+      /**
+       * decision is a function telling if the score correspond to the positive class.
+       */
+      template<typename Decision>
+      Predictor(const OUTPUT& positive_class,
+		const OUTPUT& negative_class,
+		const SCORER& scorer,
+		const Decision& decision)
+	: sc(scorer), decision(decision), pos_class(positive_class), neg_class(negative_class) {}
+      Predictor()                            = default;
+      Predictor(const Predictor&)            = default;
+      Predictor& operator=(const Predictor&) = default;
+      
+      output_type operator()(const input_type& x) const {
+	if(decision(sc(x))) return pos_class;
+	return neg_class;
+      }
+
+      const SCORER& scorer() const {return sc;}
+    };
+    
+    /**
+     * This builds a predictor from a scorer. 
+     * @param positive_class must be the first argument
+     * @param negative_class must be the first argument
+     */
+    template<typename OUTPUT,typename SCORER, typename Decision>
+    auto predictor(const OUTPUT& positive_class,
+		   const OUTPUT& negative_class,
+		   const SCORER& scorer,
+		   const Decision& decision) {
+      return Predictor<SCORER,OUTPUT>(positive_class, negative_class,
+				      scorer, decision);
+    }
+    
+    
+    template<typename SCORE_LEARNER, typename OUTPUT>
+    class Learner {
+    private:
+      
+      SCORE_LEARNER algo;
+      std::function<bool (double)> decision;
+      mutable OUTPUT pos_class;
+      mutable OUTPUT neg_class;
+      bool class_undef;
+      
+    public:
+      
+      /**
+       * @param decision is a function telling if the score correspond to the positive class.
+       */
+      template<typename Decision>
+      Learner(const OUTPUT& positive_class,
+	      const OUTPUT& negative_class,
+	      const SCORE_LEARNER& algo,
+	      const Decision& decision)
+	: algo(algo), decision(decision), pos_class(positive_class), neg_class(negative_class), class_undef(false) {}
+      
+      /**
+       * As positive and negative classes are not defined, they are
+       * determined at learning time. The first class encountered in
+       * the data is thus the positive class.
+       *
+       * @param decision is A function telling if the score correspond to the positive class.
+       */
+      template<typename Decision>
+      Learner(const SCORE_LEARNER& algo,
+	      const Decision& decision)
+	: algo(algo), decision(decision), pos_class(), neg_class(), class_undef(true) {}
+      
+      Learner()                          = default;
+      Learner(const Learner&)            = default;
+      Learner& operator=(const Learner&) = default;
+      
+      typedef Predictor<typename SCORE_LEARNER::scorer_type, OUTPUT> predictor_type;
+      
+      // This does the learning, and returns a predictor from the data.
+      template<typename DataIterator, typename InputOf, typename OutputOf> 
+      predictor_type operator()(const DataIterator& begin, const DataIterator& end,
+				const InputOf& input_of, const OutputOf& output_of) const {
+	if(class_undef) {
+	  auto classes = gaml::classification::find_two_classes<OUTPUT>()(begin, end, output_of);
+	  pos_class = classes.first;
+	  neg_class = classes.second;
+	}
+	
+	// if output_of is a function, it cannot be captured in the
+	// lambda capture block. We use std::bind to solve this.
+	auto get_output = std::bind(output_of,std::placeholders::_1);
+	auto scorer  = algo(begin, end, input_of,
+			    [get_output, pc = this->pos_class](const typename DataIterator::value_type& elem) -> bool {return get_output(elem) == pc;});
+	return predictor(pos_class, neg_class, scorer, decision);
+      }
+    };
+    
+    template<typename OUTPUT, typename SCORE_LEARNER, typename DECISION>
+    auto learner(const OUTPUT& positive_class,
+		 const OUTPUT& negative_class,
+		 const SCORE_LEARNER& score_learner,
+		 const DECISION& decision) {
+      return Learner<SCORE_LEARNER, OUTPUT>(positive_class, negative_class, score_learner, decision);
+    }
+    
+    template<typename OUTPUT, typename SCORE_LEARNER, typename DECISION>
+    auto learner(const SCORE_LEARNER& score_learner,
+		 const DECISION& decision) {
+      return Learner<SCORE_LEARNER, OUTPUT>(score_learner, decision);
+    }
+  }
+  
   
   namespace multiclass {
 

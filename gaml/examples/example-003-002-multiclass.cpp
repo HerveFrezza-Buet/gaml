@@ -62,9 +62,8 @@ int main(int argc, char* argv[]) {
   // scores. Our learning algorithm computes a score. We have to build
   // a learner from it (see the scorer example).
   
-  auto biclass_algo = gaml::score2class::learner(score_learner,
-						 [](double score) -> bool {return score >=0;},
-						 gaml::classification::find_two_classes<Y>());
+  auto biclass_algo = gaml::score2class::learner<Y>(score_learner,
+						    [](double score) -> bool {return score >=0;});
 
   // Then, from it, we can compute a multi-class learning algorithm...
   
