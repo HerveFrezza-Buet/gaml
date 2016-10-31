@@ -35,6 +35,7 @@
 
 #include <gamlFilter.hpp>
 
+
 namespace gaml {
 
   namespace concept {
