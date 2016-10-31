@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['cache',['Cache',['../a00061.html#a81e6691cd3e2c67790ce15c252823a39',1,'gaml::Cache::Cache()'],['../a00204.html#a2613c3bae4a11e8a81a09db41dbfb67d',1,'gaml::cache()']]],
+  ['cacheiterator',['CacheIterator',['../a00062.html#a6d3c6bc151461261515b329621ceb820',1,'gaml::CacheIterator::CacheIterator(void)'],['../a00062.html#a7233711c8d2eb280dad3952e2d9b86fb',1,'gaml::CacheIterator::CacheIterator(const CacheIterator &amp;cp)']]],
+  ['cbegin',['cbegin',['../a00132.html#a1b60d0441a5c9372361457405350c887',1,'gaml::ProjectedInput']]],
+  ['cend',['cend',['../a00132.html#ad0f179e8d8bdbc563776556eb24d580c',1,'gaml::ProjectedInput']]],
+  ['chunk',['Chunk',['../a00128.html#a19c337a825d25dad6f0a78c981b97ef6',1,'gaml::partition::Chunk::Chunk(const Chunk &amp;cp)'],['../a00128.html#a0dc00e19925fce81c712bf593127c53c',1,'gaml::partition::Chunk::Chunk(const iterator &amp;data_begin, const iterator &amp;data_end, unsigned int chunk_size)'],['../a00129.html#aa7c287208935e98c83407a16bb589e03',1,'gaml::partition::internal::Chunk::Chunk(unsigned int nb)'],['../a00129.html#ad91f5aedc1ea02458dc4fb873693a1c7',1,'gaml::partition::internal::Chunk::Chunk(const Chunk &amp;other)'],['../a00218.html#a4e80e33411ed81098970800cc1a05bbb',1,'gaml::partition::chunk()']]],
+  ['classes',['classes',['../a00063.html#a025ba8099f6074944768962d447f4332',1,'gaml::classification::Confusion']]],
+  ['classification_5fentropy',['classification_entropy',['../a00204.html#a58ccc99c1b246fb7127e0100be6fd8d2',1,'gaml']]],
+  ['clear',['clear',['../a00063.html#ae0d9ed24a04a3d49655de786756997e9',1,'gaml::classification::Confusion::clear()'],['../a00160.html#a630c8d586a80193236fd34c4e6c7ce92',1,'gaml::span::Matrix::clear()'],['../a00159.html#ac79a3d524b3b5302e053974b13ead005',1,'gaml::span::Dictionary::clear()']]],
+  ['cleared',['cleared',['../a00160.html#a2943771a900df7a3f9d218efaf4bd364',1,'gaml::span::Matrix']]],
+  ['coefficients',['coefficients',['../a00161.html#ac91d9a2d88cc9392549981d905f93311',1,'gaml::span::Vector']]],
+  ['complement',['Complement',['../a00152.html#a7a6a13173563bb71628897f35b8bdb95',1,'gaml::Search::Complement::Complement(const elts_set_type &amp;set, int n)'],['../a00152.html#a6a2bc83e7c2688b55ec790bb048c88cb',1,'gaml::Search::Complement::Complement(const Complement &amp;other)']]],
+  ['complement_5fbegin',['complement_begin',['../a00070.html#ab2b58f77584e6f79171e2f492b6d70d8',1,'gaml::concept::Partition::complement_begin()'],['../a00131.html#ad2065b9ccf857963743c7d468ac35316',1,'gaml::partition::KFold::complement_begin()'],['../a00128.html#a5d82ac23f854aa0448a209f5f0c113bb',1,'gaml::partition::Chunk::complement_begin()']]],
+  ['complement_5fend',['complement_end',['../a00070.html#adbaf5c20c69799c9589eeab78ba0640d',1,'gaml::concept::Partition::complement_end()'],['../a00131.html#a0bce3f9b340ef5c8eadabd59eb4cf3a8',1,'gaml::partition::KFold::complement_end()'],['../a00128.html#a8a1dc8d6981e2b3a47c5e799ef06e7ea',1,'gaml::partition::Chunk::complement_end()']]],
+  ['confusion',['Confusion',['../a00063.html#ae93ae811862145768fe2b373901321d2',1,'gaml::classification::Confusion::Confusion(void)'],['../a00063.html#a1e83f4ed645c7ded194996b361ac9815',1,'gaml::classification::Confusion::Confusion(const Confusion&lt; CLASS &gt; &amp;cp)'],['../a00063.html#a831abcbb8de536a7fef4fbf68c66116f',1,'gaml::classification::Confusion::confusion(const class_type &amp;a, const class_type &amp;b) const ']]],
+  ['confusionmatrix',['ConfusionMatrix',['../a00078.html#a8ea408ad4ce98f5740efa3c6a3efc762',1,'gaml::exception::ConfusionMatrix::ConfusionMatrix(const std::string &amp;msg)'],['../a00078.html#a83857d3044b2f2db610373d627821e58',1,'gaml::exception::ConfusionMatrix::ConfusionMatrix(const std::string &amp;kind, const std::string &amp;msg)']]],
+  ['container',['container',['../a00159.html#ac8fa551c7cd67d12117fbddc5a70e39e',1,'gaml::span::Dictionary']]],
+  ['correlationfilter',['CorrelationFilter',['../a00171.html#a07dad3cd8f0f28f56397b54ecc8aab68',1,'gaml::varsel::CorrelationFilter']]],
+  ['cross_5fvalidation',['cross_validation',['../a00221.html#adf7f5a2dee85281e5a0b604b588e9560',1,'gaml::risk']]],
+  ['crossvalidation',['CrossValidation',['../a00142.html#a7017297be2cf4932d78d623cb3646dab',1,'gaml::risk::CrossValidation::CrossValidation(const LOSS &amp;l, const PARTITION &amp;part, bool verbosity)'],['../a00142.html#a863beae4d614b7371c85106ee65efd6c',1,'gaml::risk::CrossValidation::CrossValidation(const CrossValidation &amp;other)']]]
+];

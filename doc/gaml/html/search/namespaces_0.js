@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['bag',['bag',['../a00205.html',1,'gaml']]],
+  ['bootstrap',['bootstrap',['../a00222.html',1,'gaml::risk']]],
+  ['by_5fdefault',['by_default',['../a00207.html',1,'gaml']]],
+  ['classification',['classification',['../a00208.html',1,'gaml']]],
+  ['concept',['concept',['../a00209.html',1,'gaml']]],
+  ['exception',['exception',['../a00211.html',1,'gaml']]],
+  ['gaml',['gaml',['../a00204.html',1,'']]],
+  ['gnuplot',['gnuplot',['../a00212.html',1,'gaml']]],
+  ['internal',['internal',['../a00219.html',1,'gaml::partition']]],
+  ['loss',['loss',['../a00213.html',1,'gaml']]],
+  ['multiclass',['multiclass',['../a00214.html',1,'gaml']]],
+  ['multidim',['multidim',['../a00217.html',1,'gaml']]],
+  ['one_5fvs_5fall',['one_vs_all',['../a00215.html',1,'gaml::multiclass']]],
+  ['one_5fvs_5fone',['one_vs_one',['../a00216.html',1,'gaml::multiclass']]],
+  ['partition',['partition',['../a00218.html',1,'gaml']]],
+  ['random',['random',['../a00220.html',1,'gaml']]],
+  ['risk',['risk',['../a00221.html',1,'gaml']]],
+  ['score',['score',['../a00210.html',1,'gaml::concept']]],
+  ['score',['score',['../a00223.html',1,'gaml']]],
+  ['score2class',['score2class',['../a00224.html',1,'gaml']]],
+  ['set',['set',['../a00206.html',1,'gaml::bag']]],
+  ['span',['span',['../a00225.html',1,'gaml']]],
+  ['varsel',['varsel',['../a00226.html',1,'gaml']]]
+];

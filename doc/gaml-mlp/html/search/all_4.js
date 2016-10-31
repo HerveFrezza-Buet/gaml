@@ -1,0 +1,6 @@
+var searchData=
+[
+  ['dalpha',['dalpha',['../a00021.html#a9162fe0f905e184608b7946464eabdd4',1,'gaml::mlp::learner::gradient::parameter']]],
+  ['depth',['depth',['../a00027.html#ac9439dbfd612bbbbb9c01a361e378886',1,'gaml::mlp::Perceptron']]],
+  ['deriv',['deriv',['../a00026.html#a48c759ba12847f6aa21e93e4143ba2a3',1,'gaml::mlp::loss::Quadratic::deriv()'],['../a00024.html#a5f74e625f6ada71b323b9196d7a116d5',1,'gaml::mlp::loss::CrossEntropy::deriv()'],['../a00015.html#a2801fa3ad997ef51c343fc13de0c71c8',1,'gaml::mlp::InputLayer::deriv()'],['../a00016.html#ad70b1efbb1e9756f94feaa4c082d1d5c',1,'gaml::mlp::Layer::deriv()'],['../a00027.html#ae41f38085c84e7cb616171b63c95433a',1,'gaml::mlp::Perceptron::deriv()']]]
+];

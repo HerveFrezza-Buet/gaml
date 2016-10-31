@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['sbbs',['SBBS',['../a00226.html#a2e3005977928f04293d1cbb51f5f6e91',1,'gaml::varsel']]],
+  ['sbfs',['SBFS',['../a00226.html#af34ab6c109a7ef1a7f4cf34b7482292c',1,'gaml::varsel']]],
+  ['sbs',['SBS',['../a00226.html#a367ede0d19e4754c2510a7d4cd76170d',1,'gaml::varsel']]],
+  ['scorer',['Scorer',['../a00074.html#a480f6fbbd13f2eeff9598f011a1e04eb',1,'gaml::concept::score::Scorer::Scorer()'],['../a00145.html#aa4c3e3e0bea125ccd1d0c850a312e51b',1,'gaml::score2class::Predictor::scorer()']]],
+  ['search',['Search',['../a00148.html#add7c5d46904527cde36c1aca18ee6a73',1,'gaml::Search::Search()'],['../a00226.html#a227f485ce8308ad7a7269d89c83bfa92',1,'gaml::varsel::search()']]],
+  ['sensitivity',['sensitivity',['../a00063.html#a1977d3587c11b036279f522137b3e7bb',1,'gaml::classification::Confusion']]],
+  ['setinitattributesubset',['setInitAttributeSubset',['../a00154.html#ab56bf9c3ef09805c7eb67ae657cff271',1,'gaml::Search::ForwardPolicy::setInitAttributeSubset()'],['../a00150.html#aeb52a0485f468990712ac56afe5cec65',1,'gaml::Search::BackwardPolicy::setInitAttributeSubset()']]],
+  ['setinput',['setInput',['../a00132.html#a309fa830f380e9f0d554c126e945d88e',1,'gaml::ProjectedInput']]],
+  ['setverbose',['setVerbose',['../a00148.html#a02e4be9f1295117ba481fbf656b48ec4',1,'gaml::Search']]],
+  ['sfbs',['SFBS',['../a00226.html#a49b57f623b1500ae750f58aea95620fc',1,'gaml::varsel']]],
+  ['sffs',['SFFS',['../a00226.html#a406be0b466d45889075be091d165f0e8',1,'gaml::varsel']]],
+  ['sfs',['SFS',['../a00226.html#a1b3c96d59787abd9546ff317096fd3f7',1,'gaml::varsel']]],
+  ['shuffle',['shuffle',['../a00204.html#ac1cef8ba1418932df629fe2d0fc081f5',1,'gaml']]],
+  ['size',['size',['../a00132.html#a08ff2c0f62d0a83762d41529a61dbca0',1,'gaml::ProjectedInput::size()'],['../a00092.html#adf9d51e96303b81d07362d7fa925e8b8',1,'gaml::IndexedDataset::size()'],['../a00116.html#a8d05eb7bf004ceeb515bbd27882c9e31',1,'gaml::Merge::size()'],['../a00070.html#a500c8313f6b80b7247ffad593b871883',1,'gaml::concept::Partition::size()'],['../a00131.html#a2c86ee86cb30715cd5e7702c82496fe2',1,'gaml::partition::KFold::size()'],['../a00128.html#aecd6ec73f1e0a11cc853721cf4e75536',1,'gaml::partition::Chunk::size()']]],
+  ['specificity',['specificity',['../a00063.html#a6af1ce0bfa8412cc4ce617faaba082ad',1,'gaml::classification::Confusion']]],
+  ['split',['split',['../a00204.html#a6546eb11c4b49c34864a43bca1f9d82e',1,'gaml']]],
+  ['submit',['submit',['../a00159.html#ae8b5e48f143af2ada7050665c85be078',1,'gaml::span::Dictionary']]],
+  ['successorgenerator',['SuccessorGenerator',['../a00156.html#acefc9df817610f940bf84d43cc386ae9',1,'gaml::Search::SuccessorGenerator']]]
+];
