@@ -7,7 +7,7 @@
 #include <gaml.hpp>
 
 
-// here, let us address the case where the bi-class learning algorithm
+// Here, let us address the case where the bi-class learning algorithm
 // provides a scorer rather than a predictor. A scorer gives a scalar
 // score to the input. From the value of this score (usually the
 // sign), a class can be deduced. Predictors, which are central in
@@ -65,7 +65,7 @@ int main(int argc, char* argv[]) {
 
   // Now, let us build actual predictors rather than scorers.
 
-  // You can set which class is positive, and which class is negative.
+  // First option: You can set which class is positive, and which class is negative.
   auto classification_algo_class_def
     = gaml::score2class::learner('A', // The positive class
 				 'B', // The negative class
@@ -73,6 +73,12 @@ int main(int argc, char* argv[]) {
 				 [](double the_score) -> bool {return the_score >= 0;});
   
   auto predictor_class_def = classification_algo_class_def(dataset.begin(), dataset.end(), input_of, output_of);
+
+  // Second option: You do not tell which is the positive class. The
+  // learner finds which are the two classes in the set, and consider
+  // the first one it founds as the positive label. Run this example
+  // several times to see boht cases (i.e 'A' is the positive class ot
+  // 'B' is the positive class).
   
   auto classification_algo_class_undef
     = gaml::score2class::learner<Y>(scoring_algo,
@@ -96,7 +102,7 @@ int main(int argc, char* argv[]) {
   
   for(unsigned int i=0; i < 10; ++i) {
     X x        = gaml::random::uniform(0,1);
-    std::cout << "  " << std::setw(10) << x << " -> " << predictor_class_def(x) << ' ' << predictor_class_undef(x)
+    std::cout << "  " << std::setw(10) << x << " -> " << predictor_class_def(x) << " == " << predictor_class_undef(x)
 	      << " : sc(x) = " << std::setw(10) << scoring_fct(x)
 	      << ", sc_def(x) = " << std::setw(10) << predictor_class_def.scorer()(x)
 	      << ", sc_undef(x) = " << std::setw(10) << predictor_class_undef.scorer()(x)  << std::endl;

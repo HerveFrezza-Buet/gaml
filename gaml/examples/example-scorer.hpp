@@ -7,16 +7,13 @@
 
 
 // This learning algorithm expects data which are labelled with two
-// classes. The input is scalar. The scorer owns two position, one
-// for the positive, and the other of the negative class. The score given to an input
-// x depends on the distances to these two positions. It is positive
-// if x is closer to the positive class position.
+// classes. The input is scalar. The scorer owns two positions, one
+// for the positive class, and the other of the negative class. The
+// score given to an input x depends on the distances to these two
+// positions. It is positive if x is closer to the positive class
+// position.
 
 // The learning consists in finding the two class-dependant positions.
-
-
-using namespace std::placeholders;
-
 
 namespace scorer {
 
@@ -29,7 +26,7 @@ namespace scorer {
     double neg_avg;
 
     friend std::ostream& operator<<(std::ostream& os, const Scorer& sc) {
-      os << "{" << sc.pos_avg << ", " << sc.neg_avg << '}';
+      os << "{[+] = " << sc.pos_avg << ", [-] = " << sc.neg_avg << '}';
       return os;
     }
     
@@ -69,7 +66,7 @@ namespace scorer {
 	
       // if output_of is a function, it cannot be captured in the
       // lambda capture block. We use std::bind to solve this.
-      auto get_output = std::bind(output_of,_1);
+      auto get_output = std::bind(output_of,std::placeholders::_1);
 
       // We split data according to the class label and we compute
       // averages of each parts.

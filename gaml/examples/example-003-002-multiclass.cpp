@@ -49,8 +49,6 @@ int main(int argc, char* argv[]) {
   
   auto score_learner = scorer::Learner();
     
-    
-
   std::cout << std::endl
 	    << "############" << std::endl
 	    << "#          #" << std::endl
@@ -62,7 +60,6 @@ int main(int argc, char* argv[]) {
   // We can compute a multi-class learning algorithm from a score learner...
   
   auto ova_algo = gaml::multiclass::one_vs_all::learner<Y>(score_learner);
-  
   
   // ... and get a predictor from it.
   
@@ -87,9 +84,9 @@ int main(int argc, char* argv[]) {
 	    << "##########" << std::endl
 	    << std::endl;
 
-  // 1 vs 1 needs learner and classifiers that produce labels, not
-  // scores. Our learning algorithm computes a score. We have to build
-  // a learner from it (see the scorer example).
+  // 1 vs 1 needs a learner providing predictors which predict actual
+  // labels, not scores. Our learning algorithm computes a scorer. We
+  // have to build a learner from it (see the scorer example).
   
   auto biclass_algo = gaml::score2class::learner<Y>(score_learner,
 						    [](double score) -> bool {return score >=0;});
