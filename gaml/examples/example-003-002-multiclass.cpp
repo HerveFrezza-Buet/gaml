@@ -47,8 +47,37 @@ int main(int argc, char* argv[]) {
   // input. From the value of this scalar, one can guess the class
   // associated to the input. We are in a bi-class context.
   
-  auto score_learner = scorer::Learner<Y>();
+  auto score_learner = scorer::Learner();
     
+    
+
+  std::cout << std::endl
+	    << "############" << std::endl
+	    << "#          #" << std::endl
+	    << "# 1 vs all #" << std::endl
+	    << "#          #" << std::endl
+	    << "############" << std::endl
+	    << std::endl;
+  
+  // We can compute a multi-class learning algorithm from a score learner...
+  
+  auto ova_algo = gaml::multiclass::one_vs_all::learner<Y>(score_learner);
+  
+  
+  // ... and get a predictor from it.
+  
+  auto ova_pred = ova_algo(dataset.begin(), dataset.end(), input_of, output_of);
+  
+  // We can now compute the confusion matrix of this predictor.
+  
+  gaml::classification::Confusion<Y> ova_matrix;
+  ova_matrix.clear();
+  ova_matrix.update(ova_pred,
+		    dataset.begin(), dataset.end(),
+		    input_of, output_of, class_of_label);
+  ova_matrix.display(std::cout);
+
+  
 
   std::cout << std::endl
 	    << "##########" << std::endl
@@ -75,12 +104,12 @@ int main(int argc, char* argv[]) {
   
   // We can now compute the confusion matrix of this predictor.
   
-  gaml::classification::Confusion<Y> matrix;
-  matrix.clear();
-  matrix.update(ovo_pred,
-		dataset.begin(), dataset.end(),
-		input_of, output_of, class_of_label);
-  matrix.display(std::cout);
+  gaml::classification::Confusion<Y> ovo_matrix;
+  ovo_matrix.clear();
+  ovo_matrix.update(ovo_pred,
+		    dataset.begin(), dataset.end(),
+		    input_of, output_of, class_of_label);
+  ovo_matrix.display(std::cout);
   
 
   return EXIT_SUCCESS;

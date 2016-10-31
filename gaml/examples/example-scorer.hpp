@@ -51,12 +51,10 @@ namespace scorer {
   /**
    * This fits concept::score::Learner
    */
-  template<typename OUTPUT>
   class Learner {
   public:
 
     typedef Scorer scorer_type;
-    typedef OUTPUT output_type;
       
     Learner()                                = default;
     Learner(const Learner& other)            = default;

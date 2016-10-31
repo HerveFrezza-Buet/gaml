@@ -53,7 +53,7 @@ int main(int argc, char* argv[]) {
 
   // Using our scorer
 
-  auto scoring_algo = scorer::Learner<Y>();
+  auto scoring_algo = scorer::Learner();
 
   // For scoring, we need a function that tells whether a data is of
   // positive or negative class. This is what the lambda here does.

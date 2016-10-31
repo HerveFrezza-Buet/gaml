@@ -253,6 +253,94 @@ namespace gaml {
   
   namespace multiclass {
 
+    namespace one_vs_all {
+      /**
+       * This predicts a label from a vote of internal bi-class predictors.
+       */
+      template<typename SCORER, typename OUTPUT>
+      class Predictor {
+	
+	typedef typename SCORER::input_type input_type;
+	typedef OUTPUT                      output_type;
+	
+      private:
+
+	typedef std::map<output_type, std::pair<SCORER,double> > scorers_type;
+	mutable scorers_type                                     scorers;
+	
+      public:
+ 
+
+	Predictor()                                  = default;
+	Predictor(const Predictor& other)            = default;
+	Predictor& operator=(const Predictor& other) = default;
+
+	/**
+	 * This adds a scorer in the list, providing the positive class.
+	 */
+	Predictor<SCORER,OUTPUT>& operator+=(const std::pair<const SCORER&, OUTPUT >& p) {
+	  scorers[p.second] = {p.first, 0};
+	  return *this;
+	}
+
+	output_type operator()(const input_type& x) const {
+	  for(auto& kv : scorers) kv.second.second =  kv.second.first(x);
+	  auto argmax = std::max_element(scorers.begin(), scorers.end(),
+					 [](const typename scorers_type::value_type& a, const typename scorers_type::value_type& b) -> bool {return a.second.second < b.second.second;});
+	  return argmax->first;
+	}
+      };
+
+
+      /**
+       * SCORE_LEARNER must fit gaml::concept::score::learner
+       */
+      template<typename SCORE_LEARNER, typename OUTPUT>
+      class Learner {
+      private:
+
+	SCORE_LEARNER algo;
+	
+      public:
+
+	Learner(const SCORE_LEARNER& algo) : algo(algo) {}
+	Learner()                          = default;
+	Learner(const Learner&)            = default;
+	Learner& operator=(const Learner&) = default;
+
+	typedef Predictor<typename SCORE_LEARNER::scorer_type,OUTPUT> predictor_type;
+
+	// This does the learning, and returns a predictor from the data.
+	template<typename DataIterator, typename InputOf, typename OutputOf> 
+	predictor_type operator()(const DataIterator& begin, const DataIterator& end,
+				  const InputOf& input_of, const OutputOf& output_of) const {
+	  // if output_of is a function, it cannot be captured in the
+	  // lambda capture block. We use std::bind to solve this.
+	  auto get_output = std::bind(output_of,std::placeholders::_1);
+	  
+	  // First, let us collect the labels which are in the data.
+	  std::set<OUTPUT> labels;
+	  for(auto it = begin; it != end; ++it) labels.insert(output_of(*it));
+	  
+	  // Now, let us learn for each label.
+	  predictor_type res;
+	  for(auto l = labels.begin(); l != labels.end(); ++l)
+	    res += {
+	      algo(begin, end, input_of,
+		   [get_output, label= *l](const decltype(*begin)& d) -> bool {return get_output(d) == label;}),
+		*l};
+	  return res;				      
+	}
+      };
+
+      template<typename OUTPUT,typename LEARNER>
+      Learner<LEARNER,OUTPUT> learner(const LEARNER& learner) {
+	return Learner<LEARNER,OUTPUT>(learner);
+      }
+
+      
+    }
+    
     namespace one_vs_one {
       
       /**
