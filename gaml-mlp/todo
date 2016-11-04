@@ -3,3 +3,9 @@
 // TODO:
 // - faire une copie des données avant l'apprentissage (parce qu'on les shuffle, on aura peut être envie de les normaliser, ...)
 // - j'ai l'impression que l'interface avec easykf est un peu trop compliquée..
+
+// - supprimer l'interface avec easykf
+// - réfléchir pour ajouter des algos comme RMSprop, batch normalization, convolutifs
+// - qu'est ce que je fais pour la backprop ?? je devrais rétropropager le gradient de la loss par rapport aux sorties ...
+// - normalement, il faudrait gérer un graphe parce qu'il peut y avoir des branches dans le graphe de calcul  et pas simplement une ligne
+// - diviser en plusieurs .h plusieurs qu'un gros header monolithique...
