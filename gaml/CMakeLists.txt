@@ -22,7 +22,9 @@ SET(PROJECT_DESCRIPTION_SUMMARY "C++ tools for machine learning.")
 SET(PROJECT_CFLAGS "-Wall -std=c++14")
 
 # lib flags added by the package
-SET(PROJECT_LIBS "-Wl,--no-as-needed ")
+if(UNIX)
+  SET(PROJECT_LIBS "-Wl,--no-as-needed ")
+endif()
 
 # ldflags required, but not provided by pkg-config
 SET(PROJECT_LDFLAGS "")

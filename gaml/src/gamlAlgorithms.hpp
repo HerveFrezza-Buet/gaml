@@ -352,7 +352,7 @@ namespace gaml {
   namespace by_default {
     template<typename VALUE>
     struct LesserThan {
-      bool operator()(const VALUE& v1, const VALUE& v2) {
+      bool operator()(const VALUE& v1, const VALUE& v2) const {
 	return v1 < v2;
       }
     };
