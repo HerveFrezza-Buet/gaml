@@ -59,8 +59,9 @@ int main(int argc, char* argv[]) {
 
   try {
 
-    for(i = 0; i < NB_GOOD_STUDENTS; ++i) basis[i] = make_good_student();
-    for(     ; i < BASIS_SIZE;       ++i) basis[i] = make_weak_student();
+    auto out = basis.begin();
+    for(i = 0; i < NB_GOOD_STUDENTS; ++i) *(out++) = make_good_student();
+    for(     ; i < BASIS_SIZE;       ++i) *(out++) = make_weak_student();
 
     // Let us generate a ROC curve.
 
@@ -81,10 +82,10 @@ int main(int argc, char* argv[]) {
 
     gaml::gnuplot::ROC<gaml::gnuplot::termX11,
 		       gaml::gnuplot::styleLine,
-		       gaml::gnuplot::verboseOn>("roc-curve",     "roc.data", "ml example 001-002"); 
+		       gaml::gnuplot::verboseOn>("roc-curve",     "roc.data", "ml example 002-002"); 
     gaml::gnuplot::ROC<gaml::gnuplot::termFig,
 		       gaml::gnuplot::styleLine,
-		       gaml::gnuplot::verboseOn>("roc-curve-fig", "roc.data", "ml example 001-002");
+		       gaml::gnuplot::verboseOn>("roc-curve-fig", "roc.data", "ml example 002-002");
   }
   catch(const std::exception& e) {
     std::cout << e.what() << std::endl;
