@@ -155,7 +155,7 @@ public:
 
 	bool operator!=(const OutputDataStream& other) const {
 		if (os_ && other.os_)
-			return *os_ != *other.os_;
+			return os_ != other.os_;
 		else
 			return (os_ || other.os_);
 	}
@@ -209,7 +209,7 @@ public:
 
 	bool operator!=(const InputOutputDataStream& other) const {
 		if (ios_ && other.ios_)
-			return *ios_ != *other.ios_;
+			return ios_ != other.ios_;
 		else
 			return (ios_ || other.ios_);
 	}
