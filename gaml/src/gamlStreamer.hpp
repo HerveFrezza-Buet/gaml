@@ -33,341 +33,352 @@
 #include<stdexcept>
 #include<iterator>
 #include<utility>
+#include<memory>
 
 namespace gaml {
+  struct BasicParser {
+    void readBegin(std::istream&) {}
+    void readEnd(std::istream&) {}
+    bool readSeparator(std::istream&) { return false; }
+    void writeBegin(std::ostream&) {}
+    void writeEnd(std::ostream&) {}    
+    void writeSeparator(std::ostream&) {}
+  };
 
-template<typename Parser> class InputDataStream : public Parser {
-	void initInputStream() {
-		is_->exceptions(
-				std::istream::failbit | std::istream::badbit
-						| std::istream::eofbit);
+  template<typename Parser> class InputDataStream : public Parser {
+    void initInputStream() {
+      // is_->exceptions(
+      // 		      std::istream::failbit | std::istream::badbit
+      // 		      | std::istream::eofbit);
+    }
+    
+  public:
+    typedef typename Parser::value_type value_type;
+    std::istream* is_;
+    bool seq_;
+    
+    InputDataStream(std::istream& is) :
+      Parser(), is_(&is), seq_(false) {
+      initInputStream();
+    }
+
+    InputDataStream(std::istream& is, const Parser& parser) :
+      Parser(parser), is_(&is), seq_(false) {
+      initInputStream();
+    }
+
+    InputDataStream(const InputDataStream& other) = default;
+
+    template <typename Value>
+    InputDataStream& operator>>(Value& data) {
+      *is_ >> data;
+      return *this;
+    }
+
+    InputDataStream& operator>>(std::ios_base& (*pf)(std::ios_base&)) {
+      *is_ >> pf;
+      return *this;
+    }
+
+    InputDataStream& operator>>(std::ios& (*pf)(std::ios&)) {
+      *is_ >> pf;
+      return *this;
+    }
+
+    InputDataStream& operator>>(std::istream& (*pf)(std::istream&)) {
+      *is_ >> pf;
+      return *this;
+    }
+
+    InputDataStream& operator>>(value_type& data) {
+      try {
+	Parser::read(*is_, data);
+      } catch (std::istream::failure e) {
+      }
+      return *this;
+    }
+
+    void readBeginOfSequence() {
+      if(! seq_) {
+	seq_ = true;
+	this->readBegin(*is_);
+      }
+    }
+    void readEndOfSequence() {
+      if(seq_) {
+	seq_ = false;
+	this->readEnd(*is_);
+      }
+    }
+    bool readSeparatorOfSequence() {
+      return this->readSeparator(*is_);
+    }
+    
+    bool operator!=(const InputDataStream& other) const {
+      if (is_ && other.is_)
+	return is_ != other.is_;
+      else
+	return (is_ || other.is_);
+    }
+
+    bool operator!(void) const {
+      return !*is_;
+    }
+
+    bool good() const {
+      return is_->good();
+    }
+
+    int peek() {
+      return is_->peek();
+    }
+  };
+
+    
+  template<typename Parser> class OutputDataStream : public Parser {
+    
+  public:
+    typedef typename Parser::value_type value_type;
+    std::ostream* os_;
+    bool seq_;
+    
+    OutputDataStream(std::ostream& os) :
+      Parser(), os_(&os), seq_(false) {}
+
+    OutputDataStream(std::ostream& os, const Parser& parser) :
+      Parser(parser), os_(&os), seq_(false) {}
+
+    OutputDataStream(const OutputDataStream&) = default;
+
+    template <typename Value>
+    OutputDataStream& operator<<(const Value& data) {
+      *os_ << data;
+      return *this;
+    }
+
+    OutputDataStream& operator<<(std::ios& (*pf)(std::ios&)) {
+      *os_ << pf;
+      return *this;
+    }
+
+    OutputDataStream& operator<<(std::ios_base& (*pf)(std::ios_base&)) {
+      *os_ << pf;
+      return *this;
+    }
+
+    OutputDataStream& operator<<(std::ostream& (*pf)(std::ostream&)) {
+      *os_ << pf;
+      return *this;
+    }
+
+    OutputDataStream& operator<<(const value_type& data) {
+      Parser::write(*os_, data);
+      return *this;
+    }
+
+
+    bool operator!=(const OutputDataStream& other) const {
+      if (os_ && other.os_)
+	return os_ != other.os_;
+      else
+	return (os_ || other.os_);
+    }
+
+    void writeBeginOfSequence() {
+      if(! seq_) {
+	seq_ = true;
+	this->writeBegin(*os_);
+      }
+    }
+    void writeEndOfSequence() {
+      if(seq_) {
+	this->writeEnd(*os_);
+	seq_ = false;
+      }
+    }
+    void writeSeparatorOfSequence() {
+      this->writeSeparator(*os_);
+    }    
+  };
+
+
+  template<typename Parser> InputDataStream<Parser> make_input_data_stream(std::istream& is) {
+    return InputDataStream<Parser>(is);
+  }
+
+  template<typename Parser> InputDataStream<Parser> make_input_data_stream(std::istream& is, const Parser& parser) {
+    return InputDataStream<Parser>(is, parser);
+  }
+
+
+  template<typename Parser> OutputDataStream<Parser> make_output_data_stream(std::ostream& os) {
+    return OutputDataStream<Parser>(os);
+  }
+
+  template<typename Parser> OutputDataStream<Parser> make_output_data_stream(std::ostream& os, const Parser& parser) {
+    return OutputDataStream<Parser>(os, parser);
+  }
+
+  template<class T, class InputDataStream, class Distance = std::ptrdiff_t> class istream_iterator: public std::iterator<
+    std::input_iterator_tag, T, Distance, const T*, const T&> {
+    InputDataStream* stream_;
+    T value_;
+    
+    struct State {
+      InputDataStream* stream_;
+      bool first_, end_;
+      State() : stream_(), first_(false), end_(true) {}
+      State(InputDataStream* stream) : stream_(stream), first_(true), end_(false) {}
+      State(const State&) = delete;
+      ~State() {
+	this->readEndOfSequence();
+      }
+      
+      bool operator!=(const State& other) const {
+	if(end_ || other.end_) return end_ != other.end_;
+	else return stream_ != other.stream_;
+      }
+
+      void readEndOfSequence() {
+	if(! end_) {
+	  stream_->readEndOfSequence();
+	  end_ = true;
 	}
-public:
-	typedef typename Parser::value_type value_type;
-	std::istream* is_;
-
-	InputDataStream(std::istream& is) :
-		Parser(), is_(&is) {
+      }
+      
+      void readBeginOfSequence() {
+	if(first_) {
+	  stream_->readBeginOfSequence();
 	}
+      }
+      
+      bool readNext() {
+	if(end_) return false;
+	bool last = false;
+	if(first_)
+	  first_ = false;
+	else
+	 last = stream_->readSeparatorOfSequence();
+	if(last) this->readEndOfSequence();
+	return ! last;
+      }
+    };
+    
+    std::shared_ptr<State> state_;
 
-	InputDataStream(std::istream& is, const Parser& parser) :
-		Parser(parser), is_(&is) {
-		initInputStream();
+    void read() {
+      if(state_->readNext())
+	*stream_ >> value_;
+    }
+
+  public:
+    istream_iterator() :
+      stream_(), value_(), state_(new State()) {
+    }
+    istream_iterator(InputDataStream& stream) :
+      stream_(&stream), value_(), state_(new State(&stream)) {
+      state_->readBeginOfSequence();
+      read();
+    }
+    istream_iterator(const istream_iterator&) = default;
+    
+    const T& operator*() const {
+      return value_;
+    }
+    const T* operator->() const {
+      return &value_;
+    }
+    istream_iterator<T, InputDataStream, Distance>& operator++() {
+      read();
+      return *this;
+    }
+
+    bool operator!=(const istream_iterator& other) const {
+      return  *state_ != *other.state_;
+    }
+    bool operator==(const istream_iterator& other) const {
+      return !(*this != other);
+    }
+  };
+
+  template<class T, class OutputDataStream, class Distance = std::ptrdiff_t> class ostream_iterator: public std::iterator<
+    std::output_iterator_tag, T, Distance, const T*, const T&> {
+    OutputDataStream* stream_;
+    T value_;
+    bool changed_;
+
+    struct State {
+      OutputDataStream* stream_;
+      bool first_, end_;
+      State(OutputDataStream* stream) : stream_(stream), first_(true), end_(false) {}
+      State(const State&) = delete;
+
+      ~State() {
+	stream_->writeEndOfSequence();
+      }
+
+      void writeNext() {
+	if(! end_) {
+	  if(first_) {
+	    stream_->writeBeginOfSequence();
+	    first_ = false;
+	  } else
+	    stream_->writeSeparatorOfSequence();
 	}
+      }
+    };
+    
+    std::shared_ptr<State> state_;
+    
+  public:
+    ostream_iterator() :
+      stream_(0), changed_(false), state_() {
+    }
+    
+    ostream_iterator(OutputDataStream& stream) :
+      stream_(&stream), changed_(false), state_(new State(&stream)) {
+    }
+    
+    ostream_iterator(const ostream_iterator&) = default;
+    
+    ~ostream_iterator() {
+      ++(*this);
+    }
 
-	InputDataStream(const InputDataStream& other) : Parser(other),
-			is_(other.is_) {
-	}
+    T& operator*() {
+      changed_ = true;
+      return value_;
+    }
 
-	template <typename Value>
-	InputDataStream& operator>>(Value& data) {
-		*is_ >> data;
-		return *this;
-	}
+    ostream_iterator<T, OutputDataStream, Distance>& operator++() {
+      if(changed_) {
+	state_->writeNext();
+	changed_ =  false;
+	*stream_ << value_;
+      }
+      return *this;
+    }
 
-	InputDataStream& operator>>(std::ios_base& (*pf)(std::ios_base&)) {
-		*is_ >> pf;
-		return *this;
-	}
+    ostream_iterator<T, OutputDataStream, Distance> operator++(int) {
+      ++(*this);
+      return *this;
+    }
+  };
 
-	InputDataStream& operator>>(std::ios& (*pf)(std::ios&)) {
-		*is_ >> pf;
-		return *this;
-	}
+  template<typename InputDataStream>
+  istream_iterator<typename InputDataStream::value_type, InputDataStream> make_input_data_begin(InputDataStream& inputDataStream) {
+    return istream_iterator<typename InputDataStream::value_type, InputDataStream>(inputDataStream);
+  }
 
-	InputDataStream& operator>>(std::istream& (*pf)(std::istream&)) {
-		*is_ >> pf;
-		return *this;
-	}
+  template<typename InputDataStream>
+  istream_iterator<typename InputDataStream::value_type, InputDataStream> make_input_data_end(InputDataStream&) {
+    return istream_iterator<typename InputDataStream::value_type, InputDataStream>();
+  }
 
-	InputDataStream& operator>>(value_type& data) {
-		try {
-			Parser::read(*is_, data);
-		} catch (std::istream::failure e) {
-		}
-		return *this;
-	}
-
-	bool operator!=(const InputDataStream& other) const {
-		if (is_ && other.is_)
-			return is_ != other.is_;
-		else
-			return (is_ || other.is_);
-	}
-
-	bool operator!(void) const {
-		return !*is_;
-	}
-
-	bool good() const {
-		return is_->good();
-	}
-
-	int peek() {
-		return is_->peek();
-	}
-};
-
-template<typename Parser> class OutputDataStream : public Parser {
-
-public:
-	typedef typename Parser::value_type value_type;
-	std::ostream* os_;
-
-	OutputDataStream(std::ostream& os) :
-		Parser(), os_(&os) {
-	}
-
-	OutputDataStream(std::ostream& os, const Parser& parser) :
-		Parser(parser), os_(&os) {
-	}
-
-	OutputDataStream(const OutputDataStream& other) : Parser(other),
-			os_(other.os_) {
-	}
-
-	template <typename Value>
-	OutputDataStream& operator<<(const Value& data) {
-		*os_ << data;
-		return *this;
-	}
-
-	OutputDataStream& operator<<(std::ios& (*pf)(std::ios&)) {
-		*os_ << pf;
-		return *this;
-	}
-
-	OutputDataStream& operator<<(std::ios_base& (*pf)(std::ios_base&)) {
-		*os_ << pf;
-		return *this;
-	}
-
-	OutputDataStream& operator<<(std::ostream& (*pf)(std::ostream&)) {
-		*os_ << pf;
-		return *this;
-	}
-
-	OutputDataStream& operator<<(const value_type& data) {
-		Parser::write(*os_, data);
-		return *this;
-	}
-
-
-	bool operator!=(const OutputDataStream& other) const {
-		if (os_ && other.os_)
-			return os_ != other.os_;
-		else
-			return (os_ || other.os_);
-	}
-};
-
-template<typename Parser> class InputOutputDataStream : public Parser {
-
-public:
-	typedef typename Parser::value_type value_type;
-	std::iostream* ios_;
-
-	InputOutputDataStream(std::iostream& ios) :
-		Parser(), ios_(&ios) {
-	}
-
-	InputOutputDataStream(std::iostream& ios, const Parser& parser) :
-		Parser(parser), ios_(&ios) {
-	}
-
-	InputOutputDataStream(const InputOutputDataStream& other) : Parser(other),
-			ios_(other.ios_) {
-	}
-
-	template <typename Value>
-	InputOutputDataStream& operator>>(Value& data) {
-		try {
-			*ios_ >> data;
-		} catch (std::istream::failure e) {
-		}
-		return *this;
-	}
-
-	InputOutputDataStream& operator>>(value_type& data) {
-		try {
-			Parser::read(*ios_, data);
-		} catch (std::istream::failure e) {
-		}
-		return *this;
-	}
-
-	template <typename Value>
-	InputOutputDataStream& operator<<(const Value& data) {
-		*ios_ << data;
-		return *this;
-	}
-
-	InputOutputDataStream& operator<<(const value_type& data) {
-		Parser::write(*ios_, data);
-		return *this;
-	}
-
-	bool operator!=(const InputOutputDataStream& other) const {
-		if (ios_ && other.ios_)
-			return ios_ != other.ios_;
-		else
-			return (ios_ || other.ios_);
-	}
-
-	bool good() const {
-		return ios_->good();
-	}
-
-	int peek() {
-		return ios_->peek();
-	}
-};
-
-
-template<typename Parser> InputDataStream<Parser> make_input_data_stream(std::istream& is) {
-	return InputDataStream<Parser>(is);
-}
-
-template<typename Parser> InputDataStream<Parser> make_input_data_stream(std::istream& is, const Parser& parser) {
-	return InputDataStream<Parser>(is, parser);
-}
-
-
-template<typename Parser> OutputDataStream<Parser> make_output_data_stream(std::ostream& os) {
-	return OutputDataStream<Parser>(os);
-}
-
-template<typename Parser> OutputDataStream<Parser> make_output_data_stream(std::ostream& os, const Parser& parser) {
-	return OutputDataStream<Parser>(os, parser);
-}
-
-template<typename Parser> InputOutputDataStream<Parser> make_input_output_data_stream(std::iostream& ios) {
-	return InputOutputDataStream<Parser>(ios);
-}
-
-template<typename Parser> InputOutputDataStream<Parser> make_input_output_data_stream(std::iostream& ios, const Parser& parser) {
-	return InputOutputDataStream<Parser>(ios, parser);
-}
-
-template<class T, class InputDataStream, class Distance = std::ptrdiff_t> class istream_iterator: public std::iterator<
-		std::input_iterator_tag, T, Distance, const T*, const T&> {
-	InputDataStream* stream_;
-	T value_;
-
-	void read() {
-		if(stream_ && !(*stream_ >> value_))
-			stream_ = nullptr;
-	}
-
-public:
-	istream_iterator() :
-			stream_(), value_() {
-	}
-	istream_iterator(InputDataStream& stream) :
-			stream_(&stream), value_() {
-		read();
-	}
-	istream_iterator(const istream_iterator& other) :
-			stream_(other.stream_), value_(other.value_) {
-	}
-	~istream_iterator() {
-	}
-
-	const T& operator*() const {
-		return value_;
-	}
-	const T* operator->() const {
-		return &value_;
-	}
-	istream_iterator<T, InputDataStream, Distance>& operator++() {
-		read();
-		return *this;
-	}
-//	istream_iterator<T, InputDataStream, Distance> operator++(int) {
-//		istream_iterator<T, InputDataStream, Distance> tmp = *this;
-//		++*this;
-//		return tmp;
-//	}
-
-	bool operator!=(const istream_iterator& other) const {
-		if (stream_ && other.stream_)
-			return (*stream_ != *other.stream_);
-		else
-			return (stream_ || other.stream_);
-	}
-	bool operator==(const istream_iterator& other) const {
-		return !(*this != other);
-	}
-};
-
-template<class T, class OutputDataStream, class Distance = std::ptrdiff_t> class ostream_iterator: public std::iterator<
-		std::output_iterator_tag, T, Distance, const T*, const T&> {
-	OutputDataStream* stream_;
-	T value_;
-	char separator_;
-	bool changed_;
-
-public:
-	ostream_iterator() :
-		stream_(0), changed_(false) {
-	}
-	ostream_iterator(OutputDataStream& stream, char separator = '\n') :
-		stream_(&stream), separator_(separator), changed_(false) {
-	}
-	ostream_iterator(const ostream_iterator& other) :
-		stream_(other.stream_), value_(other.value_), separator_(
-					other.separator_), changed_(other.changed_) {
-	}
-	~ostream_iterator() {
-		++(*this);
-	}
-
-	T& operator*() {
-		changed_ = true;
-		return value_;
-	}
-
-	ostream_iterator<T, OutputDataStream, Distance>& operator++() {
-		if(changed_) {
-			changed_ =  false;
-			*stream_ << value_ << separator_;
-		}
-		return *this;
-	}
-
-	ostream_iterator<T, OutputDataStream, Distance> operator++(int) {
-		++(*this);
-		return *this;
-	}
-
-	bool operator!=(const ostream_iterator& other) const {
-		if (stream_ && other.stream_)
-			return (*stream_ != *other.stream_);
-		else
-			return (stream_ || other.stream_);
-	}
-
-	bool operator==(const ostream_iterator& other) const {
-		return !(*this != other);
-	}
-};
-
-template<typename InputDataStream>
-istream_iterator<typename InputDataStream::value_type, InputDataStream> make_input_data_begin(InputDataStream& inputDataStream) {
-	return istream_iterator<typename InputDataStream::value_type, InputDataStream>(inputDataStream);
-}
-
-template<typename InputDataStream>
-istream_iterator<typename InputDataStream::value_type, InputDataStream> make_input_data_end(InputDataStream&) {
-	return istream_iterator<typename InputDataStream::value_type, InputDataStream>();
-}
-
-template<typename OutputDataStream>
-ostream_iterator<typename OutputDataStream::value_type, OutputDataStream> make_output_iterator(
-		OutputDataStream& outputDataStream) {
-	return ostream_iterator<typename OutputDataStream::value_type, OutputDataStream>(
-			outputDataStream);
-}
+  template<typename OutputDataStream>
+  ostream_iterator<typename OutputDataStream::value_type, OutputDataStream> make_output_iterator(OutputDataStream& outputDataStream) {
+    return ostream_iterator<typename OutputDataStream::value_type, OutputDataStream>(outputDataStream);
+  }
 }
 
 
