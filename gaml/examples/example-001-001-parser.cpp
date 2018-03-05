@@ -32,7 +32,7 @@
 struct HandcraftedParser : gaml::BasicParser {
   typedef customer::Data value_type;
 
-  void read(std::ostream& os, value_type& customer) const {
+  void read(std::istream& is, value_type& customer) const {
     // Not implemented.
   }
 
