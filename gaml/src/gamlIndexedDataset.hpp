@@ -120,16 +120,17 @@ namespace gaml {
       openDataFile(dataFile_, std::fstream::in );
       openIndexFile(indexFile_, std::fstream::out);
 
-      auto inputDataStream = gaml::make_input_data_stream(dataFile_, parser_);
-
+      value_type value;
       size_ = 0;
-      std::streampos position = dataFile_.tellg()+1;
-      auto it = gaml::make_input_data_begin(inputDataStream);
-      auto end = gaml::make_input_data_end(inputDataStream);
-      for (; it != end; ++it) {
+      
+      parser_.readBegin(dataFile_);
+      std::streampos position = dataFile_.tellg();
+      while(true) {
+	parser_.read(dataFile_, value);
+	if(parser_.readSeparator(dataFile_)) break;
 	indexFile_.write((const char*) &position, sizeof(position));
 	size_ += 1;
-	position = dataFile_.tellg()+1;
+	position = dataFile_.tellg();
       }
       dataFile_.close();
       indexFile_.close();
