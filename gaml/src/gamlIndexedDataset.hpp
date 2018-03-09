@@ -123,13 +123,13 @@ namespace gaml {
       auto inputDataStream = gaml::make_input_data_stream(dataFile_, parser_);
 
       size_ = 0;
-      std::streampos position = dataFile_.tellg();
+      std::streampos position = dataFile_.tellg()+1;
       auto it = gaml::make_input_data_begin(inputDataStream);
       auto end = gaml::make_input_data_end(inputDataStream);
       for (; it != end; ++it) {
 	indexFile_.write((const char*) &position, sizeof(position));
 	size_ += 1;
-	position = dataFile_.tellg();
+	position = dataFile_.tellg()+1;
       }
       dataFile_.close();
       indexFile_.close();
@@ -141,7 +141,7 @@ namespace gaml {
 
     value_type operator[](std::size_t index) const {
       seek(index);
-      value_type value;
+      value_type value;      
       parser_.read(dataFile_, value);
       return value;
     }
@@ -170,6 +170,7 @@ namespace gaml {
 	if(currentIndex_ >= 0 && currentIndex_ < fileDataset_.size_) {
 	  if(!opened_) {
 	    fileDataset_.openDataFile(dataFile_, std::fstream::in);
+	    fileDataset_.parser_.readBegin(dataFile_);	    
 	    fileDataset_.openIndexFile(indexFile_, std::fstream::in);
 	    opened_ = true;
 	  }
@@ -184,6 +185,7 @@ namespace gaml {
 	    }
 
 	    fileDataset_.parser_.read(dataFile_, value_);
+	    fileDataset_.parser_.readSeparator(dataFile_);
 	  }
 	} else
 	  throw std::ios_base::failure("random access out of indexed file");

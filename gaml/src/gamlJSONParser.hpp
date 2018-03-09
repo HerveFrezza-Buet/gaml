@@ -112,7 +112,7 @@ namespace gaml {
       }
       return -1;
     }
-
+  public:
     void readBegin(std::istream& is) {
       is >> std::skipws;
       if(expect(is, "[") < 0)

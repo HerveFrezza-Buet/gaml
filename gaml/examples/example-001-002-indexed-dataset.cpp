@@ -52,55 +52,58 @@ int main(int argc, char** argv) {
       auto data = customer::make_data();
       std::ofstream ofile(CUSTOMERS_DATA_FILE);
       auto output_stream = gaml::make_output_data_stream(ofile, parser);
-      auto out           = gaml::make_output_iterator   (output_stream);
-      std::copy(data.begin(), data.end(), out);
-      ofile.close();
+      {
+	auto out           = gaml::make_output_iterator   (output_stream);
+	std::copy(data.begin(), data.end(), out);
+      }
     }
 
     // This displays customers on the standard output.
     auto output_stream = gaml::make_output_data_stream(std::cout, parser);
-    auto out           = gaml::make_output_iterator   (output_stream);
 
     // Now we can set up an indexed dataset easily...
     auto indexed = gaml::make_indexed_dataset(parser, 
 					      CUSTOMERS_DATA_FILE, 
 					      CUSTOMERS_INDEX_FILE);
-    
-    // ... and have an efficient random access to the elements in the file.
-    const auto& customer_3 = indexed[3];
-    std::cout << std::endl
-	      << "Customer #3" << std::endl
-	      << std::endl;
-    *(out++) = customer_3; // or also : output_stream << customer_3 << std::endl;
 
+    // ... and have an efficient random access to the elements in the file.
+    {
+      const auto& customer_3 = indexed[3];
+      std::cout << std::endl
+		<< "Customer #3" << std::endl
+		<< std::endl;
+      auto out = gaml::make_output_iterator (output_stream);
+      *(out++) = customer_3; // or also : output_stream << customer_3 << std::endl;
+    }
+    
     // Insertion of new data is also possible (at the end of the file
     // only). For instance let's copy customer_3 at the end of the
     // dataset
-    indexed.push_back(customer_3);
+    //    indexed.push_back(customer_3);
 
     // Now, let us append data directly at the end of the file.
-    customer::Article  art1 {"hammer",  8.5};
-    customer::Article  art2 {"saw",    25.3};
-    customer::Article  art3 {"nails",  10.0};
-    customer::Date     day1 {{2014, 12, 23}};
-    customer::Date     day2 {{2014, 12, 26}};
-    customer::Purchase pur1 {day1, {{art1,art3}}};
-    customer::Purchase pur2 {day2, {{art2     }}};
-	customer::Ratings  rat1 { { "saw", 1 } };
+    // customer::Article  art1 {"hammer",  8.5};
+    // customer::Article  art2 {"saw",    25.3};
+    // customer::Article  art3 {"nails",  10.0};
+    // customer::Date     day1 {{2014, 12, 23}};
+    // customer::Date     day2 {{2014, 12, 26}};
+    // customer::Purchase pur1 {day1, {{art1,art3}}};
+    // customer::Purchase pur2 {day2, {{art2     }}};
+    // 	customer::Ratings  rat1 { { "saw", 1 } };
 
-    customer::Data     dat1 {false, 43, {{pur1      }}, {}};
-    customer::Data     dat2 {false, 44, {{pur1, pur2}}, rat1};
+    // customer::Data     dat1 {false, 43, {{pur1      }}, {}};
+    // customer::Data     dat2 {false, 44, {{pur1, pur2}}, rat1};
     
-    std::ofstream ofile(CUSTOMERS_DATA_FILE, std::fstream::app);
-    auto append_stream = gaml::make_output_data_stream(ofile, parser);
-    auto app_out       = gaml::make_output_iterator   (append_stream);
-    *(app_out++)       = dat1;
-    *(app_out++)       = dat2;
-    ofile.close();
+    // std::ofstream ofile(CUSTOMERS_DATA_FILE, std::fstream::app);
+    // auto append_stream = gaml::make_output_data_stream(ofile, parser);
+    // auto app_out       = gaml::make_output_iterator   (append_stream);
+    // // *(app_out++)       = dat1;
+    // // *(app_out++)       = dat2;
+    // ofile.close();
 
     // The indexed file "indexed" is not aware of the new data,
     // i.e. it has to update its index table.
-    indexed.update();
+    // indexed.update();
 
     // Let us manipulate the indexed file as any other STL container.
 
@@ -108,16 +111,22 @@ int main(int argc, char** argv) {
     std::cout << std::endl
 	      << "All customers" << std::endl
 	      << std::endl;
-    std::copy(indexed.begin(), indexed.end(), out);
+    {
+      auto out = gaml::make_output_iterator (output_stream);
+      std::copy(indexed.begin(), indexed.end(), out);
+    }
 
     // We can print it in reverse order
     std::cout << std::endl
 	      << "All customers (reversed)" << std::endl
 	      << std::endl;
-    std::reverse_copy(indexed.begin(), indexed.end(), out);
+    {
+      auto out = gaml::make_output_iterator (output_stream);
+      std::reverse_copy(indexed.begin(), indexed.end(), out);
+    }
   }
   
-  catch (std::exception& e) {
+  catch (const std::exception& e) {
     std::cerr <<"Error: " << e.what() << std::endl;
   }
 
