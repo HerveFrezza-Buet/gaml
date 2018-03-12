@@ -1,10 +1,10 @@
-#include<iostream>
-#include<fstream>
-#include<sstream>
-#include<string>
-#include<vector>
-#include<stdexcept>
-#include<algorithm>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <vector>
+#include <stdexcept>
+#include <algorithm>
 #include <iterator> 
 
 // The ml library.
@@ -22,43 +22,6 @@
 // Read this file.
 #include <example-customer.hpp>
 
-/* 
- * A data parser can be handcrafted to display customer data.
- * Parser defines two methods: 
- *   void read (std::istream& input,        Data& d) const;
- *   void write(std::ostream& output, const Data& d) const; 
- * In this tutorial, the read method is not implemented.
- */
-struct HandcraftedParser : gaml::BasicParser {
-  typedef customer::Data value_type;
-
-  void read(std::istream& is, value_type& customer) const {
-    // Not implemented.
-  }
-
-  void write(std::ostream& os, const value_type& customer) const {
-    os << "A " << std::get<1> (customer) << " years old ";
-    if (std::get<0> (customer))
-      os << "female";
-    else
-      os << "male";
-    os << " customer bought" << std::endl;
-    auto& purchases = std::get<2> (customer);
-    for (auto& purchase : purchases) {
-      auto& date = std::get<0> (purchase);
-      os << "  on " << std::get<2> (date) << "/" << std::get<1>(date) << "/" << std::get<0>(date) << ":" << std::endl;
-      for (auto& item : std::get<1> (purchase))
-	os << "    - \"" << item.first << "\" for $" << item.second
-	   << std::endl;
-    }
-    auto& ratings = std::get<3> (customer);
-    if(! ratings.empty()) {
-      os << "Her/she made the following ratings:" << std::endl;
-      for (auto& rating : ratings)
-	os << "    - " << rating.first << ": " << rating.second << "/5" << std::endl;
-    }
-  }
-};
 
 /*
  * Let us parse Customers.
@@ -94,10 +57,7 @@ int main(int argc, char** argv) {
     //     have all the same types and is compatible with the mapped type of the container.
 
     auto JSON_parser = gaml::make_JSON_parser<customer::Data>();
-
-    // But we can use our parser as well.
-    HandcraftedParser custom_parser;
-
+    
     {
       // From parsers, output streams can be made, from existing
       // streams. Let us use std::cout here, with the JSON parser.
@@ -108,24 +68,19 @@ int main(int argc, char** argv) {
       std::cout << std::endl << "JSON built-in output parser:\n" << std::endl;
       std::copy(data.begin(), data.end(), out1);
       
-      // The destructor of the out1 iterator is called here and outputs the final squared bracket.
+      // The destructor of the out1 iterator is called here and
+      // outputs the final squared bracket. As we need out1 to be
+      // destroyed right now, we have enclosed the current piece of
+      // code with {...}
     }
 
-    // We can do the same with the custom parser.
-    {
-      auto output_customer_stream_2 = gaml::make_output_data_stream(std::cout,
-								    custom_parser);
-      auto out2 = gaml::make_output_iterator(output_customer_stream_2);
-      std::cout << std::endl << "Custom output parser:\n" << std::endl;
-      std::copy(data.begin(), data.end(), out2);
-    }
-    
     // Let us serialize this data into a file, using the JSON syntax.
     {
       std::ofstream ofile(CUSTOMERS_DATA_FILE);
       auto output_stream = gaml::make_output_data_stream(ofile, JSON_parser);
       auto out = gaml::make_output_iterator(output_stream);
       std::copy(data.begin(), data.end(), out);
+      // out is destroyed before ofile, so the last ']' is written before closing.
     }
 
     // Now, we can clear the data and re-load it from the file.

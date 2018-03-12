@@ -55,7 +55,8 @@
 
 /**
  * @example example-000-000-overview.cpp
- * @example example-001-001-parser.cpp
+ * @example example-001-001-JSON-parser.cpp
+ * @example example-001-001-handcrafted-parser.cpp
  * @example example-001-002-indexed-dataset.cpp
  * @example example-001-003-set-manipulations.cpp
  * @example example-001-004-span.cpp

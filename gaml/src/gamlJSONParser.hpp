@@ -113,34 +113,34 @@ namespace gaml {
       return -1;
     }
   public:
-    void readBegin(std::istream& is) {
+    void readBegin(std::istream& is) const {
       is >> std::skipws;
       if(expect(is, "[") < 0)
 	throw formatError(is, "JSON file should start with \"[\"");
     }
-    void readEnd(std::istream& is) {
+    void readEnd(std::istream& is) const {
       if(expect(is, "]") < 0)
 	throw formatError(is, "JSON file should end with \"]\"");
     }
-    bool readSeparator(std::istream& is) {
+    bool readSeparator(std::istream& is) const {
       int c = expect(is, ",]");
       if(c == ',')
-	return false;
+	return true;
       else if(c == ']') {
 	is.putback(']');
 	is.clear();
-	return true;
+	return false;
       } else
 	throw formatError(is, "JSON data should be separated by \",\"");
     }
     
-    void writeBegin(std::ostream& os) {
+    void writeBegin(std::ostream& os) const {
       os << "[\n  ";
     }
-    void writeEnd(std::ostream& os) {
+    void writeEnd(std::ostream& os) const {
       os << "\n]\n" << std::endl;
     }
-    void writeSeparator(std::ostream& os) {
+    void writeSeparator(std::ostream& os) const {
       os << ",\n  ";
     }
   };

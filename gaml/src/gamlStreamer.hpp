@@ -28,21 +28,61 @@
 #include<string>
 #include<vector>
 #include<list>
-#include<array>
-#include<tuple>
-#include<stdexcept>
-#include<iterator>
-#include<utility>
-#include<memory>
+#include <array>
+#include <tuple>
+#include <stdexcept>
+#include <iterator>
+#include <utility>
+#include <memory>
+#include <iomanip>
 
 namespace gaml {
+  /**
+   * The data stream is considered as :<br>
+   * Begin Data Sep Data Sep ... Sep Data End <eof><br>
+   *
+   * After the last data, no separator is expected. Thus readSeparator
+   * should fail (i.e. return false). Nevertheless, if End is empty,
+   * the last data is directly followed by <eof>, so having a
+   * readSeparator method that tests eof is ok. This is what the
+   * default implementation of BasicParser does.
+   */
   struct BasicParser {
-    void readBegin(std::istream&) {}
-    void readEnd(std::istream&) {}
-    bool readSeparator(std::istream&) { return false; }
-    void writeBegin(std::ostream&) {}
-    void writeEnd(std::ostream&) {}    
-    void writeSeparator(std::ostream&) {}
+    /**
+     * Reads some header in the file.
+     */
+    void readBegin(std::istream&) const {}
+    /**
+     * Reads some footer in the file.
+     */
+    void readEnd(std::istream&) const {}
+    /**
+     * Reads the separator between two consecutive data.
+     * @return True if another data follows the separator that has just been read.
+     */
+    bool readSeparator(std::istream& is) const {
+      char c;
+      is >> std::ws;
+      is.get(c);
+      bool ok = !(is.eof());
+      if(ok)
+	is.putback(c);
+      return ok;
+    }
+    /**
+     * Writes some header in the file.
+     */
+    void writeBegin(std::ostream&) const {
+    }
+    
+    /**
+     * Writes some header in the file.
+     */
+    void writeEnd(std::ostream&) const {}
+    /**
+     * Writes the separator between two consecutive data.
+     */
+    void writeSeparator(std::ostream&) const {}
   };
 
   template<typename Parser> class InputDataStream : public Parser {
@@ -258,7 +298,7 @@ namespace gaml {
 	if(first_)
 	  first_ = false;
 	else
-	 last = stream_->readSeparatorOfSequence();
+	  last = !(stream_->readSeparatorOfSequence());
 	if(last) this->readEndOfSequence();
 	return ! last;
       }
