@@ -43,11 +43,11 @@ namespace gaml {
     typedef typename data_file_parser_type::value_type value_type;
 
     data_file_parser_type parser_;
+    mutable std::fstream dataFile_;
+    mutable std::fstream indexFile_;
     std::string dataFileName_;
     std::string indexFileName_;
     int size_;
-    mutable std::fstream dataFile_;
-    mutable std::fstream indexFile_;
 
     void openDataFile(std::fstream& dataFile, std::fstream::openmode accessMode) {
       dataFile.open(dataFileName_, accessMode);
@@ -67,8 +67,8 @@ namespace gaml {
       }
     }
 
-    inline bool doesFileExist(const char* fileName) {
-      std::ifstream f(fileName);
+    inline bool doesFileExist(const std::string& fileName) {
+      std::ifstream f(fileName.c_str());
       bool exists = f.good();
       f.close();
       return exists;
@@ -94,7 +94,7 @@ namespace gaml {
   public:
     IndexedDataset(const data_file_parser_type& parser,
 		   const std::string& dataFileName, const std::string& indexFileName) :
-      parser_(parser), dataFile_(), indexFile_(),dataFileName_(dataFileName),indexFileName_(indexFileName)   {
+      parser_(parser), dataFile_(), indexFile_(), dataFileName_(dataFileName), indexFileName_(indexFileName)   {
       if(doesFileExist(indexFileName_))
 	getSize();
       else
@@ -102,7 +102,7 @@ namespace gaml {
     }
 
     IndexedDataset(const IndexedDataset& other) :
-      parser_(other.parser_), dataFileName_(other.dataFileName_), indexFileName_(other.indexFileName_), dataFile_(), indexFile_() {
+      parser_(other.parser_), dataFile_(), indexFile_(), dataFileName_(other.dataFileName_), indexFileName_(other.indexFileName_) {
       if(doesFileExist(indexFileName_))
 	getSize();
       else
