@@ -44,7 +44,7 @@ namespace gaml {
 
     data_file_parser_type parser_;
     const char* dataFileName_;
-    const char* indexFileName_;
+	const char* indexFileName_;
     int size_;
     mutable std::fstream dataFile_;
     mutable std::fstream indexFile_;
@@ -94,7 +94,9 @@ namespace gaml {
   public:
     IndexedDataset(const data_file_parser_type& parser,
 		   const char* dataFileName, const char* indexFileName) :
-      parser_(parser), dataFileName_(dataFileName), indexFileName_(indexFileName), dataFile_(), indexFile_() {
+      parser_(parser), dataFile_(), indexFile_() {
+		  dataFileName_ = strdup(dataFileName);
+		  indexFileName_ = strdup(indexFileName);
       if(doesFileExist(indexFileName_))
 	getSize();
       else
