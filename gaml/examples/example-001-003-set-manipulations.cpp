@@ -5,6 +5,8 @@
 #include <ctime>
 #include <cstdlib>
 #include <array>
+#include <tuple>
+#include <utility>
 
 /*
   This example shows how the use of iterators allows a convenient
@@ -12,6 +14,15 @@
   library. 
 */
 
+// For use of zip, we define a serialization operator for
+// a std::tuple<std::string, int, std::pair<int, int> >
+std::ostream& operator<<(std::ostream& os,
+			 const std::tuple<std::string, int, std::pair<int, int>>& elem) {
+  os << "(\"" << std::get<0>(elem) << "\"" 
+     << ", "  << std::get<1>(elem)
+     << ", (" << std::get<2>(elem).first << ", " << std::get<2>(elem).second << "))";
+  return os;
+}
 
 // This template function displays values from begin to end.
 template<typename Iterator>
@@ -74,6 +85,15 @@ int main(int argc, char* argv[]) {
   auto map = gaml::map(begin, begin+10,
   		       [] (const int& x) -> int {return x*x;});
   display("Mapping a function", map.begin(), map.end());
+
+  // The zip iterator allows to browse several iterators in parallel
+  auto s1 = gaml::map(begin, end, [] (const int& x) { return std::to_string(x);});
+  auto s2 = gaml::map(begin, end, [] (const int& x) { return x*x;});
+  auto s3 = gaml::map(begin, end, [] (const int& x) { return std::make_pair(x, 2*x);});
+  auto zip = gaml::zip({s1.begin(), s1.end()},
+		       {s2.begin(), s2.end()},
+		       {s3.begin(), s3.end()});
+  display("Zip of 3 collections ", zip.begin(), zip.end());
   
   // The bootstrap consists in taking 20 samples randomly from [begin,
   // begin+10[.
