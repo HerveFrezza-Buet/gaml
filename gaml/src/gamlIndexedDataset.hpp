@@ -283,7 +283,7 @@ namespace gaml {
 
   template<typename Parser>
   IndexedDataset<Parser> make_indexed_dataset(Parser& parser,
-					      const char* dataFileName, const char* indexFileName) {
+					      const std::string& dataFileName, const std::string& indexFileName) {
     return IndexedDataset<Parser>(parser, dataFileName, indexFileName);
   }
 
