@@ -90,10 +90,11 @@ int main(int argc, char* argv[]) {
   auto s1 = gaml::map(begin, end, [] (const int& x) { return std::to_string(x);});
   auto s2 = gaml::map(begin, end, [] (const int& x) { return x*x;});
   auto s3 = gaml::map(begin, end, [] (const int& x) { return std::make_pair(x, 2*x);});
-  auto zip = gaml::zip({s1.begin(), s1.end()},
-		       {s2.begin(), s2.end()},
-		       {s3.begin(), s3.end()});
-  display("Zip of 3 collections ", zip.begin(), zip.end());
+  auto zip = gaml::zip(gaml::range(s1.begin(), s1.end()),
+		       gaml::range(s2.begin(), s2.end()),
+		       gaml::range(s3.begin(), s3.end()));
+  auto p = zip.begin();
+  //display("Zip of 3 collections ", zip.begin(), zip.end());
   
   // The bootstrap consists in taking 20 samples randomly from [begin,
   // begin+10[.
