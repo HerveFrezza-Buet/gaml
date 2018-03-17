@@ -93,8 +93,7 @@ int main(int argc, char* argv[]) {
   auto zip = gaml::zip(gaml::range(s1.begin(), s1.end()),
 		       gaml::range(s2.begin(), s2.end()),
 		       gaml::range(s3.begin(), s3.end()));
-  auto p = zip.begin();
-  //display("Zip of 3 collections ", zip.begin(), zip.end());
+  display("Zip of 3 collections ", zip.begin(), zip.end());
   
   // The bootstrap consists in taking 20 samples randomly from [begin,
   // begin+10[.

@@ -33,7 +33,7 @@ namespace gaml {
 
   template<typename T>
   struct Range {
-    using value_type = std::iterator_traits<T>::value_type;
+    using value_type = typename std::iterator_traits<T>::value_type;
     using iterator_type = T;
 
     T begin;
@@ -57,19 +57,20 @@ namespace gaml {
   template<typename Head, typename... Tail>
   class ZipIterator<Head, Tail...> {
   private:
-    typename Head::first_type head;
+    typename Head::iterator_type head;
     ZipIterator<Tail...> tail;
     
   public:
     using difference_type = long;
-    using value_type        = decltype(std::tuple_cat(std::declval<std::tuple<const typename Head::first_type&>>(),*tail));
+    //using value_type        = decltype(std::tuple_cat(std::declval<std::tuple<const typename Head::first_type&>>(),*tail));
+    using value_type = decltype(std::tuple_cat(std::declval<std::tuple<const typename Head::value_type&>>(), *tail));
     using pointer           = value_type*;
     using reference         = value_type&;
     using iterator_category = std::random_access_iterator_tag;
 
     ZipIterator() = default;
     ZipIterator(const ZipIterator& cp) = default;
-    ZipIterator(const Head& head, ZipIterator<Tail...> tail) : head(head), tail(tail) {}
+    ZipIterator(const typename Head::iterator_type& head, ZipIterator<Tail...> tail) : head(head), tail(tail) {}
     ZipIterator& operator=(const ZipIterator& cp) = default;
     ZipIterator& operator++() {++head; ++tail; return *this;}
     ZipIterator& operator--() {--head; --tail; return *this;}
@@ -80,7 +81,7 @@ namespace gaml {
     difference_type operator-(const ZipIterator& i) const {return std::distance(i.head, head);}
     ZipIterator operator+(difference_type i) const {auto cpy = *this; return (cpy+=i);}
     ZipIterator operator-(difference_type i) const {auto cpy = *this; return (cpy-=i);}
-    value_type operator*() const {return std::tuple<const Head&>(*head);}
+    value_type operator*() const {return std::tuple_cat(std::tuple<const typename Head::value_type&>(*head), *tail);}
     bool operator==(const ZipIterator& i) const {return (head == i.head) && (tail == i.tail);}
     bool operator!=(const ZipIterator& i) const {return (head != i.head) || (tail != i.tail);}
   };
@@ -117,12 +118,14 @@ namespace gaml {
   template<typename Head, typename... Tail>
   class Zip<Head, Tail...> {
   private:
-    typename Head::first_type begin_;
-    typename Head::second_type end_;
+    using iterator_type = typename Head::iterator_type;
+    
+    iterator_type begin_;
+    iterator_type end_;
     Zip<Tail...> tail;
 
   public:
-    Zip(const Head& range, const Tail&... tail): begin_(range.first), end_(range.second), tail(tail...){}
+    Zip(const Head& range, const Tail&... tail): begin_(range.begin), end_(range.end), tail(tail...){}
     
     ZipIterator<Head, Tail...> begin() const {
       return ZipIterator<Head, Tail...>(begin_, tail.begin());
@@ -131,6 +134,7 @@ namespace gaml {
     ZipIterator<Head, Tail...> end() const {
       return ZipIterator<Head, Tail...>(end_, tail.end());
     } 
+    
 
   };
 
