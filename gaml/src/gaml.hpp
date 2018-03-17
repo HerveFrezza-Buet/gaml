@@ -52,6 +52,7 @@
 #include <gamlTabular.hpp>
 #include <gamlIndexedDataset.hpp>
 #include <gamlWrapper.hpp>
+#include <gamlZip.hpp>
 
 /**
  * @example example-000-000-overview.cpp
