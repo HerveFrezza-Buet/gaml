@@ -20,32 +20,60 @@ namespace dummy {
   // is related to the sum of the RELEVANT_ATTRIBUTE_NUMBER first
   // attributes, so that the remaining attributes are meaningless.
 
-  const int    DATA_SIZE                         = 100;
+  const int    DATA_SIZE                         = 10000;
   const int    ATTRIBUTE_NUMBER                  = 100;
   const int    RELEVANT_ATTRIBUTE_NUMBER         =   5;
   const double NOISE_RATIO_ON_RELEVANT_ATTRIBUTE =   0.1;
 
-  typedef std::array<double,ATTRIBUTE_NUMBER> input_type;
-  typedef std::pair<input_type ,double> data_type;
-  typedef std::vector<data_type> dataset_type;
+  namespace numeric {
+    typedef std::array<double,ATTRIBUTE_NUMBER> input_type;
+    typedef std::pair<input_type ,double> data_type;
+    typedef std::vector<data_type> dataset_type;
 
-  dataset_type build_dataset(void) {
-    dataset_type data(DATA_SIZE);
-    for(auto& d : data)  { 
-      // Let us put a random value on each attributes.
-      for(auto& attr : d.first) attr = gaml::random::uniform(0,1);
-      // let us compute the label as the sum of the first RELEVANT_ATTRIBUTE_NUMBER attributes...
-      double total = std::accumulate(d.first.begin(), d.first.begin() + RELEVANT_ATTRIBUTE_NUMBER, 0.);
-      // ... and noisify a bit the result.
-      d.second = total * gaml::random::uniform(1-NOISE_RATIO_ON_RELEVANT_ATTRIBUTE,
-					       1+NOISE_RATIO_ON_RELEVANT_ATTRIBUTE);
+    dataset_type build_dataset(void) {
+      dataset_type data(DATA_SIZE);
+      for(auto& d : data)  { 
+	// Let us put a random value on each attributes.
+	for(auto& attr : d.first) attr = gaml::random::uniform(0,1);
+	// let us compute the label as the sum of the first RELEVANT_ATTRIBUTE_NUMBER attributes...
+	double total = std::accumulate(d.first.begin(), d.first.begin() + RELEVANT_ATTRIBUTE_NUMBER, 0.);
+	// ... and noisify a bit the result.
+	d.second = total * gaml::random::uniform(1-NOISE_RATIO_ON_RELEVANT_ATTRIBUTE,
+						 1+NOISE_RATIO_ON_RELEVANT_ATTRIBUTE);
+      }
+
+      return data;
     }
-
-    return data;
+    const input_type&  input_of_data(const data_type& data) {return data.first;}
+    double            output_of_data(const data_type& data) {return data.second;}
   }
 
-  const input_type&  input_of_data(const data_type& data) {return data.first;}
-  double            output_of_data(const data_type& data) {return data.second;}
+  namespace nominal {
+
+    typedef std::array<bool,ATTRIBUTE_NUMBER> input_type;
+    typedef std::pair<input_type ,bool> data_type;
+    typedef std::vector<data_type> dataset_type;
+
+    dataset_type build_dataset(void) {
+      dataset_type data(DATA_SIZE);
+      for(auto& d : data)  { 
+	// Let us put a random value on each attributes.
+	for(auto& attr : d.first) {
+	  attr = gaml::random::proba(0.5);
+	}
+	// let us compute the label as the sum of the first RELEVANT_ATTRIBUTE_NUMBER attributes...
+	d.second = std::accumulate(d.first.begin(), d.first.begin() + RELEVANT_ATTRIBUTE_NUMBER, true, [](bool a, bool b) -> bool {
+	    if(gaml::random::proba(NOISE_RATIO_ON_RELEVANT_ATTRIBUTE))
+	      return a;
+	    else
+	      return a && b;
+	  });
+      }
+
+      return data;
+    }
+
+    const input_type&  input_of_data(const data_type& data) {return data.first;}
+    double            output_of_data(const data_type& data) {return data.second;}
+  }
 }
-
-

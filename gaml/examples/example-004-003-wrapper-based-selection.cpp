@@ -96,8 +96,8 @@ int main(int argc, char* argv[]) {
   // Make the test verbose
   bool verbose = true;
 
-  // Builds the artificial dataset
-  auto dataset = dummy::build_dataset();
+  // Builds an artificial numeric dataset
+  auto dataset = dummy::numeric::build_dataset();
 
   // The evaluator is a function that maps a given subset of variables to a real score.
   // Here one uses the wrapper approach : the evaluation of a subset of variables
@@ -113,7 +113,7 @@ int main(int argc, char* argv[]) {
   // Wrapping evaluator
   auto evaluator = gaml::varsel::make_wrapper_evaluator(generic_learner, real_risk_estimator, 
 							dataset.begin(), dataset.end(),
-							dummy::input_of_data, dummy::output_of_data);
+							dummy::numeric::input_of_data, dummy::numeric::output_of_data);
 
   // Make the evaluator verbose.
   evaluator.verbose();
@@ -177,7 +177,7 @@ int main(int argc, char* argv[]) {
   // Builds the predictor based on variable_subset, i.e. the best subset of variables found
   //
   // To do this, first build the dataset view restricted to the variable subset variable_subset
-  auto projection = gaml::project(dataset.begin(), dataset.end(), variable_subset.begin(), variable_subset.end(), dummy::input_of_data, dummy::output_of_data);
+  auto projection = gaml::project(dataset.begin(), dataset.end(), variable_subset.begin(), variable_subset.end(), dummy::numeric::input_of_data, dummy::numeric::output_of_data);
 
   // Then applies the generic learner to the dataset restricted to the selected variables
   auto predictor = projection.teach(generic_learner);
@@ -185,7 +185,7 @@ int main(int argc, char* argv[]) {
   // Finally evaluates the empirical risk on the learning examples
   auto predictor_evaluator = gaml::risk::empirical(gaml::loss::Quadratic<double>());
   double risk = predictor_evaluator(predictor,
-				    dataset.begin(), dataset.end(), dummy::input_of_data, dummy::output_of_data);
+				    dataset.begin(), dataset.end(), dummy::numeric::input_of_data, dummy::numeric::output_of_data);
   std::cout << "Empirical risk on the whole dataset = " << risk << std::endl;
 
   return EXIT_SUCCESS;

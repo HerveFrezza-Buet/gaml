@@ -91,7 +91,7 @@ namespace gaml {
 	throw std::ios_base::failure("random access out of indexed file");
     }
 
-  public:
+  public:    
     IndexedDataset(const data_file_parser_type& parser,
 		   const std::string& dataFileName, const std::string& indexFileName) :
       parser_(parser), dataFile_(), indexFile_(), dataFileName_(dataFileName), indexFileName_(indexFileName)   {
@@ -161,18 +161,18 @@ namespace gaml {
     friend class iterator;
     class iterator: public std::iterator<std::random_access_iterator_tag,
 					 value_type, std::ptrdiff_t, const value_type*, const value_type&> {
-      IndexedDataset& fileDataset_;
+      IndexedDataset* fileDataset_;
       std::fstream dataFile_, indexFile_;
       std::ptrdiff_t currentIndex_, lastAccessedIndex_;
       value_type value_;
       bool opened_;
 
       void update() {
-	if(currentIndex_ >= 0 && currentIndex_ < fileDataset_.size_) {
+	if(currentIndex_ >= 0 && currentIndex_ < fileDataset_->size_) {
 	  if(!opened_) {
-	    fileDataset_.openDataFile(dataFile_, std::fstream::in);
-	    fileDataset_.parser_.readBegin(dataFile_);	    
-	    fileDataset_.openIndexFile(indexFile_, std::fstream::in);
+	    fileDataset_->openDataFile(dataFile_, std::fstream::in);
+	    fileDataset_->parser_.readBegin(dataFile_);	    
+	    fileDataset_->openIndexFile(indexFile_, std::fstream::in);
 	    opened_ = true;
 	  }
 	  if(lastAccessedIndex_ != currentIndex_) {
@@ -185,16 +185,18 @@ namespace gaml {
 	      lastAccessedIndex_ = currentIndex_;
 	    }
 
-	    fileDataset_.parser_.read(dataFile_, value_);
-	    fileDataset_.parser_.readSeparator(dataFile_);
+	    fileDataset_->parser_.read(dataFile_, value_);
+	    fileDataset_->parser_.readSeparator(dataFile_);
 	  }
 	} else
 	  throw std::ios_base::failure("random access out of indexed file");
       }
 
     public:
+      iterator() = default;
+      
       iterator(IndexedDataset& fileDataset, size_t index) :
-	fileDataset_(fileDataset), dataFile_(), indexFile_(), currentIndex_(
+	fileDataset_(&fileDataset), dataFile_(), indexFile_(), currentIndex_(
 									    index), lastAccessedIndex_(-1), value_(), opened_(false) {
       }
 

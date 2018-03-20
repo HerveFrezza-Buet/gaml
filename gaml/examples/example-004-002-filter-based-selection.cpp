@@ -28,27 +28,26 @@ VALUE ask(const std::string& prompt, VALUE min, VALUE max) {
   return choice;
 }
 
-// Now search for the best subset of variables using the filter
-// approach and various search strategies.
-int main(int argc, char* argv[]) {
+// Let's assume one has a dataset and an evaluator
+// (see the main function at the bottom of this file to see examples for both numeric and nominal datasets)
 
+// The evaluator is a function that maps a given subset of variables
+// to a real score.  Here one uses the filter approach based on
+// correlation: the evaluation of a subset of variables consists in
+// computing the ratio of the average correlation between each
+// variable and the target divided by the average correlations
+// between every pair of variables in the subset.
+
+
+template<typename DataSet, typename Evaluator>
+void test(DataSet& dataset, Evaluator& evaluator) {
   // Make the test verbose.
   bool verbose = true;
+  
+// Now search for the best subset of variables using the filter
+// approach and various search strategies.
 
-  // Builds the artificial dataset.
-  auto dataset = dummy::build_dataset();
-
-  // The evaluator is a function that maps a given subset of variables
-  // to a real score.  Here one uses the filter approach based on
-  // correlation: the evaluation of a subset of variables consists in
-  // computing the ratio of the average correlation between each
-  // variable and the target divided by the average correlations
-  // between every pair of variables in the subset.
-
-  // Correlation evaluator
-  auto evaluator = gaml::varsel::make_correlation_filter(dataset.begin(), dataset.end(), dummy::input_of_data, dummy::output_of_data);
-
-  // Asks for the search strategy
+  // First asks for the search strategy
   std::ostringstream prompt;
   prompt << "Choose your search strategy: "                                      << std::endl
 	 << "1) Sequential Forward Selection           (SFS or forward greedy)"  << std::endl
@@ -103,6 +102,35 @@ int main(int argc, char* argv[]) {
   std::cout << "Likely the best attribute set = ";
   for(int elt : variable_subset) std::cout << elt << ' ';
   std::cout << "with score " << best_score << std::endl;
+}
+
+int main(int argc, char* argv[]) {
+
+  // Tests first the correlation filter with a numeric dataset
+  {
+    std::cout << "Let's first test a numeric dataset with the correlation filter\n" << std::endl;
+
+    // Builds an artificial numeric dataset.
+    auto dataset = dummy::numeric::build_dataset();
+
+    // Correlation based evaluator
+    auto evaluator = gaml::varsel::make_correlation_filter(dataset.begin(), dataset.end(), dummy::numeric::input_of_data, dummy::numeric::output_of_data);
+
+    test(dataset, evaluator);
+  }
+  
+  // Tests then the mutual information filter with a nominal dataset
+  {
+    std::cout << "\n\nLet's then test a nominal dataset with the mutual information filter\n" << std::endl;
+
+    // Builds an artificial nominal dataset.
+    auto dataset = dummy::nominal::build_dataset();
+
+    // Information based evaluator
+    auto evaluator = gaml::varsel::make_information_filter(dataset.begin(), dataset.end(), dummy::nominal::input_of_data, dummy::nominal::output_of_data);
+
+    test(dataset, evaluator);
+  }
 
   return EXIT_SUCCESS;
 }

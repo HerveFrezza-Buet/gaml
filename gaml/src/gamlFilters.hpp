@@ -30,6 +30,7 @@
 #include <algorithm>
 #include <limits>
 #include <iterator>
+#include <unordered_map>
 
 namespace gaml {
   namespace varsel {
@@ -198,6 +199,180 @@ namespace gaml {
     CorrelationFilter<DataIterator,InputOf,OutputOf> 
     make_correlation_filter(const DataIterator& dataBegin, const DataIterator& dataEnd, const InputOf& inputOf, const OutputOf& outputOf) {
       return CorrelationFilter<DataIterator,InputOf,OutputOf>(dataBegin, dataEnd, inputOf, outputOf);
-    }
+    }    
+    
+    template<typename DataIterator, typename InputOf, typename OutputOf> 
+    class MutualInformationFilter {
+      const DataIterator dataBegin_;
+      const DataIterator dataEnd_;
+      const InputOf& inputOf_;
+      const OutputOf& outputOf_;
+      bool verbose_;
+      int attributeNumber_;
+      double* entropies_;
+      double* mutualInfo_;
+  
+      struct IntPairHash {
+	std::size_t operator()(const std::pair<int,int> &x) const {
+	  size_t h1 = std::hash<int>()(x.first);
+	  size_t h2 = std::hash<int>()(x.second);
+	  h1^= h2 + 0x9e3779b9 + (h1 << 6) + (h1 >> 2);
+	  return h1;
+	}
+      };
+      using pair_unordered_map = std::unordered_map<std::pair<int,int>, size_t, IntPairHash>;
+      
+      template<typename Map>
+      double computeEntropy(size_t m, const Map& counts) {
+	double H = 0.;
+	for(const auto& v : counts) {
+	  size_t a = v.second;
+	  H += double(a) * std::log2(a); 
+	}
+	H = std::log2(m) - H / m;
+	return H;
+      }
+      
+      void computeEntropies() {
+	if(verbose_) std::cout << "Computing entropies in dataset" << std::endl;
+	int n = attributeNumber_ + 1;
+
+	std::unordered_map<int, size_t> counts[n];
+      
+	int m = 0;
+	for(DataIterator it = dataBegin_; it != dataEnd_; ++it, ++m) {
+	  auto& input = inputOf_(*it);
+
+	  int i = 0;
+	  for(auto attr = input.begin(); attr != input.end(); ++attr, ++i) {
+	    auto& count = counts[i];
+	    auto& attrCount = count[*attr];
+	    ++attrCount;
+	  }
+	  auto& count = counts[i];
+	  auto& attrCount = count[outputOf_(*it)];
+	  ++attrCount;
+	}
+	
+	{
+	  entropies_ = new double[n];
+	  for(int attr = 0; attr != n; ++attr)
+	    entropies_[attr] = computeEntropy(m, counts[attr]);
+	}
+
+	if(verbose_) {
+	  std::cout << std::setiosflags(std::ios::fixed) << std::setprecision(3);
+	  std::cout << "Entropies   =";
+	  for(int i = 0; i != n; i++) std::cout << " " << entropies_[i];
+	  std::cout << std::endl;
+	}
+      }
+
+      void computeCrossEntropies() {
+	computeEntropies();
+	if(verbose_) std::cout << "Computing cross entropies" << std::endl;
+
+	int n = attributeNumber_ + 1;
+	int y = attributeNumber_;
+	
+	pair_unordered_map  XXcounts[n][n];
+	
+	int m = 0;
+	std::vector<int> data;
+	for(DataIterator it = dataBegin_; it != dataEnd_; ++it, ++m) {
+	  auto& input = inputOf_(*it);
+	  data.clear();
+	  std::copy(input.begin(), input.end(), std::back_inserter(data));
+	  auto vy = outputOf_(*it);
+	  
+	  for(size_t i = 0; i != data.size(); i++)  {
+	    auto vi = data[i];
+	    for(size_t j = 0; j <= i; j++) {
+	      auto vj = data[j];
+	      auto& counts = XXcounts[i][j];
+	      auto pair = std::make_pair(vi, vj);
+	      auto& count = counts[pair];
+	      ++count;
+	    }
+	    {
+	      auto& counts = XXcounts[y][i];
+	      auto& count = counts[std::make_pair(vi, vy)];
+	      ++count;
+	    }
+	  }
+	  {
+	      auto& counts = XXcounts[y][y];
+	      auto& count = counts[std::make_pair(vy, vy)];
+	      ++count;
+	  }
+	}
+	{
+	  mutualInfo_ = new double[n*n];
+	  for(int i = 0; i != n; i++)
+	    for(int j = 0; j <= i; j++) {
+	      double Hij = computeEntropy(m, XXcounts[i][j]);
+	      mutualInfo_[i*n+j] = entropies_[i] + entropies_[j] - Hij;
+	    }
+	}
+	
+	if(verbose_) {
+	  for(int i = 0; i != n; i++) {
+	    for(int j = 0; j <= i; j++) 
+	      std::cout << " " << mutualInfo_[i*n+j];
+	    std::cout << std::endl;
+	  }
+	}
+      }
+      
+    public:
+      static const bool toMinimize = false;
+
+      MutualInformationFilter(const DataIterator& dataBegin, const DataIterator& dataEnd, const InputOf& inputOf, const OutputOf& outputOf) :
+	dataBegin_(dataBegin), dataEnd_(dataEnd), inputOf_(inputOf), outputOf_(outputOf), verbose_(false), entropies_(nullptr),mutualInfo_(nullptr) {
+	attributeNumber_ = getDimensionNumber(dataBegin_, dataEnd_, inputOf_);
+      }
+
+      MutualInformationFilter& verbose(bool verbose = true) { verbose_ = verbose; return *this; }
+
+      int getAttributeNumber() const { 
+	return attributeNumber_;
+      }
+
+      template<typename AttributeIterator>
+      double operator()(const AttributeIterator begin, const AttributeIterator end) const {
+	if(mutualInfo_ == nullptr) {
+	  MutualInformationFilter* filter = const_cast<MutualInformationFilter*>(this);
+	  filter->computeCrossEntropies();
+	}
+	if(begin == end) return std::numeric_limits<double>::min();
+
+	int n = attributeNumber_ + 1;
+	double score = 0.;
+	int target = attributeNumber_;
+	for(AttributeIterator it = begin; it != end; ++it) {
+	  score += mutualInfo_[target * n + (*it)];
+	}
+
+	double denominator = 0.;
+	for(AttributeIterator it1 = begin; it1 != end; ++it1) {
+	  int i = *it1;
+	  for(AttributeIterator it2 = begin; it2 != end; ++it2) {
+	    int j = *it2;
+	    if(i >= j)
+	      denominator += mutualInfo_[i*n+j];
+	    else
+	      denominator += mutualInfo_[j*n+i];
+	  }
+	}
+
+	return score / sqrt(denominator);
+      }
+    };
+
+    template<typename DataIterator, typename InputOf, typename OutputOf>
+    MutualInformationFilter<DataIterator,InputOf,OutputOf> 
+    make_information_filter(const DataIterator& dataBegin, const DataIterator& dataEnd, const InputOf& inputOf, const OutputOf& outputOf) {
+      return MutualInformationFilter<DataIterator,InputOf,OutputOf>(dataBegin, dataEnd, inputOf, outputOf);
+    }    
   }
 }
