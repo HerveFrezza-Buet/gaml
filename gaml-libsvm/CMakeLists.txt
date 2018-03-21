@@ -25,7 +25,7 @@ set(PKG_CONFIG_DEPENDS "gaml")
 #######################################
 
 # cflags added by the package
-SET(PROJECT_CFLAGS "-Wall -std=c++11")
+SET(PROJECT_CFLAGS "-Wall -std=c++17")
 
 # cflags added by the pkg-config dependencies contains ';' as separator. This is a fix.
 string(REPLACE ";" " " GAML_CFLAGS "${GAML_CFLAGS}")

@@ -33,6 +33,7 @@
 #include <string>
 #include <sstream>
 #include <iterator>
+#include <optional>
 
 namespace gaml {
 
@@ -305,12 +306,13 @@ namespace gaml {
       std::function<void (const Input&,struct svm_node*)> nodes_of;
       std::function<Output (double)>                      from_double;
       std::function<double (Output)>                      to_double;
-      const struct svm_parameter* param;
+      std::optional<struct svm_parameter>                 param;
       
       
-      void check(const struct svm_problem& problem,
-		 const struct svm_parameter& param) const {
-	const char* res = svm_check_parameter(&problem,&param);
+      void check(const struct svm_problem& problem) const {
+	if(!param)
+	  throw exception::Parameters("Empty SVM parameter");
+	const char* res = svm_check_parameter(&problem,&(param.value()));
 	if(res != 0)
 	  throw exception::Parameters(res);
       }
@@ -324,7 +326,7 @@ namespace gaml {
 
       typedef Predictor<Input,Output> predictor_type;
       
-      Learner(void) : nb_nodes_of(), nodes_of(), from_double(), to_double(), param(0) {}
+      Learner(void) : nb_nodes_of(), nodes_of(), from_double(), to_double(), param() {}
 
       Learner(const Learner<Input,Output>& cpy) 
 	: nb_nodes_of(cpy.nb_nodes_of), 
@@ -342,7 +344,7 @@ namespace gaml {
 	  nodes_of(nodes_of_func), 
 	  from_double(from_double_func), 
 	  to_double(to_double_func), 
-	  param(&parameters) {}
+	  param(parameters) {}
 
       Learner<Input,Output>& operator=(const Learner<Input,Output>& cpy) {
 
@@ -379,9 +381,9 @@ namespace gaml {
 	  *xiter = new struct svm_node[nb_nodes_of(input_of(*diter))];
 	  nodes_of(input_of(*diter),*xiter);
 	}
-	check(*the_problem,*param); 
+	check(*the_problem); 
 	std::shared_ptr<struct svm_problem> problem_ptr(the_problem,internal::free_problem);
-	std::shared_ptr<struct svm_model>   model_ptr(train(*the_problem,*param),internal::free_model);
+	std::shared_ptr<struct svm_model>   model_ptr(train(*the_problem,param.value()),internal::free_model);
 	return Predictor<Input,Output>(model_ptr,problem_ptr,nb_nodes_of,nodes_of,from_double);
       }
       
@@ -407,9 +409,9 @@ namespace gaml {
 	  *xiter = new struct svm_node[nb_nodes_of(input_of(*diter))];
 	  nodes_of(input_of(*diter),*xiter);
 	}
-	check(*the_problem,*param); 
+	check(*the_problem); 
 	std::shared_ptr<struct svm_problem> problem_ptr(the_problem,internal::free_problem);
-	std::shared_ptr<struct svm_model>   model_ptr(train(*the_problem,*param),internal::free_model);
+	std::shared_ptr<struct svm_model>   model_ptr(train(*the_problem,param.value()),internal::free_model);
 	return Predictor<Input,Output>(model_ptr,problem_ptr,nb_nodes_of,nodes_of,from_double);
       }
     };

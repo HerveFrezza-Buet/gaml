@@ -183,7 +183,8 @@ namespace gaml {
   public:
 
     typedef ProjectedInput<AttrIterator, internal_input_type> input_type;
-    typedef decltype(outputOf_(*dataBegin_)) output_type;
+    typedef typename std::remove_const<
+      typename std::remove_reference<decltype(outputOf_(*dataBegin_))>::type>::type output_type;
     typedef std::pair<input_type, output_type> data_type;
 
     Projection(const DataIterator& dataBegin, const DataIterator& dataEnd,
@@ -203,8 +204,7 @@ namespace gaml {
     public:
 
       iterator(const Projection& projection, const DataIterator& inputDataIt) :
-	projection_(projection), inputDataIt_(inputDataIt), outputData_(
-									input_type(projection.attrBegin_, projection.attrEnd_),
+	projection_(projection), inputDataIt_(inputDataIt), outputData_(input_type(projection.attrBegin_, projection.attrEnd_),
 									output_type()), toUpdate_(true) {
       }
       iterator(const iterator& other) :
