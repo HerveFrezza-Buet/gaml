@@ -8,6 +8,19 @@ The directory contains several source packages, the documentation for each of th
 
 For example, the documentation of gaml-libsvm is accessible from doc/gaml-libsvm/index.html
 
+# C++17
+
+The compilation of gaml requires C++-17, which means you need gcc >= 7. On ubuntu 16.04, the latest installed gcc is version 5, therefore you need to do the following :
+```
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+sudo apt-get install gcc-7 g++-7
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 100 --slave /usr/bin/g++ g++ /usr/bin/g++-5
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 150 --slave /usr/bin/g++ g++ /usr/bin/g++-7
+sudo update-alternatives --config gcc
+```
+
+You may need to adapt the update-alternatives install depending on the versions that are installed on your system.
 
 # Unix Installation
 
