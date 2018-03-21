@@ -347,25 +347,26 @@ namespace gaml {
 	if(begin == end) return std::numeric_limits<double>::min();
 
 	int n = attributeNumber_ + 1;
-	double score = 0.;
+	double term1 = 0.;
 	int target = attributeNumber_;
 	for(AttributeIterator it = begin; it != end; ++it) {
-	  score += mutualInfo_[target * n + (*it)];
+	  term1 += mutualInfo_[target * n + (*it)];
 	}
+	term1 /= (n-1);
 
-	double denominator = 0.;
+	double term2 = 0.;
 	for(AttributeIterator it1 = begin; it1 != end; ++it1) {
 	  int i = *it1;
 	  for(AttributeIterator it2 = begin; it2 != end; ++it2) {
 	    int j = *it2;
 	    if(i >= j)
-	      denominator += mutualInfo_[i*n+j];
+	      term2 += mutualInfo_[i*n+j];
 	    else
-	      denominator += mutualInfo_[j*n+i];
+	      term2 += mutualInfo_[j*n+i];
 	  }
 	}
-
-	return score / sqrt(denominator);
+	term2 /= ((n-1) * (n-1));
+	return term1 - term2;
       }
     };
 
