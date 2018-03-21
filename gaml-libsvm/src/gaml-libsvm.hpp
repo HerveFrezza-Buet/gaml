@@ -86,8 +86,11 @@ namespace gaml {
 
       static void free_problem(struct svm_problem* p) {
 	if(p != nullptr) {
-	  delete p->x;
-	  delete p->y;
+	  svm_node** xend = p->x + p->l;
+	  for(svm_node** xiter = p->x; xiter != xend; ++xiter)
+	    delete [] (*xiter);
+	  delete [] p->x;
+	  delete [] p->y;
 	  delete p;
 	}
       }
