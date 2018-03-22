@@ -60,7 +60,7 @@ namespace gaml {
     
   public:
     using difference_type = long;
-    using value_type = decltype(std::tuple_cat(std::declval<std::tuple<const typename Head::value_type&>>(), *tail));
+    using value_type = decltype(std::tuple_cat(std::declval<std::tuple<const typename Head::value_type>>(), *tail)); // No Head::value_type& here.
     using pointer           = value_type*;
     using reference         = value_type&;
     using iterator_category = std::random_access_iterator_tag;
@@ -78,7 +78,7 @@ namespace gaml {
     difference_type operator-(const ZipIterator& i) const {return std::distance(i.head, head);}
     ZipIterator operator+(difference_type i) const {auto cpy = *this; return (cpy+=i);}
     ZipIterator operator-(difference_type i) const {auto cpy = *this; return (cpy-=i);}
-    value_type operator*() const {return std::tuple_cat(std::tuple<const typename Head::value_type&>(*head), *tail);}
+    value_type operator*() const {return std::tuple_cat(std::tuple<const typename Head::value_type>(*head), *tail);} // No Head::value_type& here.
     bool operator==(const ZipIterator& i) const {return (head == i.head) && (tail == i.tail);}
     bool operator!=(const ZipIterator& i) const {return (head != i.head) || (tail != i.tail);}
   };
