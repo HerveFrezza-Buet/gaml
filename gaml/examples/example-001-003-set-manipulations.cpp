@@ -90,9 +90,10 @@ int main(int argc, char* argv[]) {
   auto s1  = gaml::map(begin, end, [] (const int& x) { return std::to_string(x);});
   auto s2  = gaml::map(begin, end, [] (const int& x) { return x*x;});
   auto s3  = gaml::map(begin, end, [] (const int& x) { return std::make_pair(x, 2*x);});
-  auto zip = gaml::zip(gaml::range(s1.begin(), s1.end()),   // If one of the range contains random_access_iterator iterators, put it first.
-		       gaml::range(s2.begin(), s2.end()),
-		       gaml::range(s3.begin(), s3.end()));
+  int zip_size = 10;
+  auto zip = gaml::zip(gaml::range(s1.begin(), s1.begin() + zip_size),   // If one of the range contains random_access_iterator iterators, put it first.
+		       gaml::range(s2.begin(), s2.begin() + zip_size),
+		       gaml::range(s3.begin(), s3.begin() + zip_size));
   display("Zip of 3 collections ", zip.begin(), zip.end());
   
   // The bootstrap consists in taking 20 samples randomly from [begin,
