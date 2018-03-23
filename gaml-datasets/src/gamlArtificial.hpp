@@ -41,21 +41,26 @@ namespace gaml {
     template<typename INPUT,
 	     typename OUTPUT,
 	     typename SAMPLER>
-    class FuncSampler {
+    class FiniteFuncSampler {
     private:
       SAMPLER sampler;
+      unsigned int nb_samples;
     public:
       using input_type = INPUT;
       using output_type = OUTPUT;
       using data_type = std::pair<input_type, output_type>;
 
-      FuncSampler(const SAMPLER& sampler): sampler(sampler) {};
-      ~FuncSampler() {}
+      FiniteFuncSampler(const SAMPLER& sampler, unsigned int nb_samples):
+	sampler(sampler),
+	nb_samples(nb_samples) {};
+      
+      ~FiniteFuncSampler() {}
 
       class iterator {
       private:
 	data_type value;
-	const FuncSampler& parent;
+	const FiniteFuncSampler& parent;
+	int idx;
 	
 	void sample(void) {
 	  value = parent.sampler();
@@ -67,24 +72,25 @@ namespace gaml {
 	using reference         = value_type&;
 	using iterator_category = std::input_iterator_tag;
 
-	iterator(const FuncSampler& parent): parent(parent) { sample(); };
+	iterator(const FiniteFuncSampler& parent): parent(parent), idx(0) { sample(); };
+	iterator(const FiniteFuncSampler& parent, unsigned int idx): parent(parent), idx(idx) { sample(); };
 	iterator(const iterator& cp) = default;
 	iterator& operator=(const iterator& cp) = default;
-	iterator& operator++() { sample(); return *this;}
+	iterator& operator++() { sample(); ++idx; return *this;}
 	iterator operator++(int) {iterator res = *this; ++*this; return res;}
 	pointer operator->() { return &value; };
 	reference operator*()  {return value;}
-	bool operator==(const iterator& i) const {return value == i.value;}
-	bool operator!=(const iterator& i) const {return value != i.value;}
+	bool operator==(const iterator& i) const {return idx == i.idx;}
+	bool operator!=(const iterator& i) const {return !((*this) == i);}
 
       };
 
       iterator begin() const {
-	return iterator(*this);
+	return iterator(*this, 0);
       }
 
       iterator end() const {
-	return iterator(*this);
+	return iterator(*this, nb_samples);
       }
 
       static const input_type& inputOf(const data_type& data) {
@@ -98,8 +104,8 @@ namespace gaml {
     template<typename INPUT,
 	     typename OUTPUT,
 	     typename SAMPLER>
-    FuncSampler<INPUT, OUTPUT, SAMPLER> make_func_sampler(const SAMPLER& sampler) {
-      return FuncSampler<INPUT, OUTPUT, SAMPLER>(sampler);
+    FiniteFuncSampler<INPUT, OUTPUT, SAMPLER> make_func_sampler(const SAMPLER& sampler, unsigned int nb_samples) {
+      return FiniteFuncSampler<INPUT, OUTPUT, SAMPLER>(sampler, nb_samples);
     }
     
     /**
@@ -109,7 +115,7 @@ namespace gaml {
      * @param noise_std Warning : not yet implemented !
      * @param factor the radius of the second circle
      */
-    auto make_circles(double noise_std, double factor) {
+    auto make_circles(unsigned int nb_samples, double noise_std, double factor) {
 
       auto sampler = [noise_std, factor]() {
 	double theta = gaml::random::uniform(0.0, 2.0 * M_PI);
@@ -126,7 +132,7 @@ namespace gaml {
 	return std::make_pair(input, output);
       };
       
-      return make_func_sampler<std::array<double,2>, int>(sampler);
+      return make_func_sampler<std::array<double,2>, int>(sampler, nb_samples);
     }
     
   }
