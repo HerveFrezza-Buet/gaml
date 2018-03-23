@@ -122,11 +122,13 @@ namespace gaml {
 	std::array<double, 2> input;
 	int output;
 	if(gaml::random::proba(0.5)) {
-	  input = {cos(theta), sin(theta)};
+	  input = {cos(theta) + gaml::random::normal(0.0, noise_std),
+		   sin(theta) + gaml::random::normal(0.0, noise_std)};
 	  output = 0;
 	}
 	else {
-	  input = {factor * cos(theta), factor * sin(theta)};
+	  input = {factor * cos(theta) + gaml::random::normal(0.0, noise_std),
+		   factor * sin(theta) + gaml::random::normal(0.0, noise_std)};
 	  output = 1;
 	}
 	return std::make_pair(input, output);
