@@ -29,6 +29,7 @@
 #include <iterator>
 #include <algorithm>
 #include <gamlTabular.hpp>
+#include <gamlAlgorithms.hpp>
 
 namespace gaml {
     
@@ -38,7 +39,7 @@ namespace gaml {
       unsigned int i=0;
       indices.resize(std::distance(begin,end));
       for(auto& idx : indices) idx = i++;
-      std::random_shuffle(indices.begin(),indices.end());
+      std::shuffle(indices.begin(), indices.end(), gaml::random::gen);
     };
     return Tabular<Iterator, typename is_secondary_iterator<Iterator>::type> (begin,init);
   }
@@ -65,7 +66,7 @@ namespace gaml {
       sizes.resize(nb_blocks);
 
       k = 0; for(auto& b : blocks) b = k++;
-      std::random_shuffle(blocks.begin(),blocks.end());
+      std::shuffle(blocks.begin(),blocks.end(), gaml::random::gen);
 
       i = 0; for(auto& idx : idxs) idx = i++;
       
@@ -78,7 +79,7 @@ namespace gaml {
 	begins[k] = i;
 	ends  [k] = j;
 	sizes [k] = j-i;
-	std::random_shuffle(start+i,start+j);
+	std::shuffle(start+i,start+j, gaml::random::gen);
       }
 
       auto out = indices.begin();

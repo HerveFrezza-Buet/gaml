@@ -45,27 +45,54 @@
 #include <gamlMap.hpp>
 #include <iostream>
 #include <iomanip>
+#include <random>
+#include <type_traits>
 
 namespace gaml {
 
   namespace random {
 
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    
     /**
      * @return a random value in [min,max[
      */
     inline double uniform(double min,double max) {
-      return min + (max-min)*(std::rand()/(RAND_MAX+1.0));
+      std::uniform_real_distribution<> dis(min, max);
+      return dis(gen);
     }
 
     /**
      * @return a random integer in [0,max[
      */
-    template<typename VALUE>
+    template<typename VALUE,
+	     typename = std::enable_if_t<std::is_integral<VALUE>::value> >
     inline VALUE uniform(VALUE max) {
-      return (VALUE)(max*(std::rand()/(RAND_MAX+1.0)));
+      std::uniform_int_distribution<> dis(0, max-1);
+      return dis(gen);
     }
 
+    /**
+     * @return a random double in [0,max[
+     */
+    template<typename VALUE,
+	     typename = std::enable_if_t<std::is_floating_point<VALUE>::value> >
+    inline double uniform(double max) {
+      std::uniform_real_distribution<> dis(0, max);
+      return dis(gen);
+    }    
 
+    /**
+     * @param mu : the mean
+     * @param std : the standard deviation
+     * @return a double sampled from a normal distribution of parameters (mu, std)
+     */
+    inline double normal(double mean, double std) {
+      std::normal_distribution<> dis{mean,std};
+      return dis(gen);
+    }
+    
     /**
      * @param p in [0,1]
      * @return true with the probability proba.
