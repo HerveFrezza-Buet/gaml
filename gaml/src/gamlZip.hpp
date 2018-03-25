@@ -61,7 +61,7 @@ namespace gaml {
 
   public:
     using difference_type = long;
-    using value_type = decltype(std::tuple_cat(std::declval<std::tuple<typename Head::value_type>>(), *tail)); 
+    using value_type = decltype(std::tuple_cat(std::declval<std::tuple<typename Head::value_type>>(), *tail)); // const typename Head::value_type& generates bad memory read.
     using pointer           = value_type*;
     using reference         = value_type&;
     using iterator_category = std::random_access_iterator_tag;
@@ -78,9 +78,9 @@ namespace gaml {
     ZipIterator& operator=(const ZipIterator& cp) = default;
     ZipIterator& operator++() {++head; ++tail; value.reset(); return *this;}
     ZipIterator& operator--() {--head; --tail; value.reset(); return *this;}
-    ZipIterator& operator+=(difference_type diff) { std::advance(head, diff); tail+= diff; value.reset(); return *this;}
-    ZipIterator& operator-=(difference_type diff) { std::advance(head, -diff); tail-=diff; value.reset(); return *this;}
-    ZipIterator operator++(int) {ZipIterator res = *this; ++*this; ; return res;}
+    ZipIterator& operator+=(difference_type diff) {std::advance(head,  diff); tail += diff; value.reset(); return *this;}
+    ZipIterator& operator-=(difference_type diff) {std::advance(head, -diff); tail -= diff; value.reset(); return *this;}
+    ZipIterator operator++(int) {ZipIterator res = *this; ++*this; return res;}
     ZipIterator operator--(int) {ZipIterator res = *this; --*this; return res;}
     difference_type operator-(const ZipIterator& i) const {return std::distance(i.head, head);}
     ZipIterator operator+(difference_type i) const {auto cpy = *this; return (cpy+=i);}

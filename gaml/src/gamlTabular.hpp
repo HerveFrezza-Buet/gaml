@@ -75,6 +75,7 @@ namespace gaml {
 					       typename Iterator::value_type> {
   private:
     Iterator                                        begin;
+    mutable Iterator                                itt;
     std::vector<tabular_index_type>::const_iterator idx;
 
     
@@ -82,7 +83,8 @@ namespace gaml {
   public:
 
     TabularIterator(const Iterator& begin, const std::vector<tabular_index_type>::const_iterator& idx)
-      : begin(begin), idx(idx) {}
+      : begin(begin), idx(idx) {
+    }
     
     typedef Iterator primary_type;
     
@@ -111,7 +113,7 @@ namespace gaml {
     bool operator!=(const TabularIterator<Iterator>& i) const {return idx != i.idx || begin != i.begin;}
     
     const typename Iterator::value_type& operator*() const {
-      auto itt = begin;
+      itt = begin;
       std::advance(itt,(typename std::iterator_traits<primary_type>::difference_type)(*idx));
       return *itt;
     }
