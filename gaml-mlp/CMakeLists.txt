@@ -26,7 +26,7 @@ set(PKG_CONFIG_DEPENDS "gaml easykf")
 #######################################
 
 # cflags added by the package
-SET(PROJECT_CFLAGS "-Wall -std=c++14")
+SET(PROJECT_CFLAGS "-Wall")
 
 # cflags added by the pkg-config dependencies contains ';' as separator. This is a fix.
 string(REPLACE ";" " " GAML_CFLAGS "${GAML_CFLAGS}")
