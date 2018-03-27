@@ -14,61 +14,11 @@
 #include <gsl/gsl_vector.h>
 #include <gsl/gsl_matrix.h>
 
-#define FILE_PREFIX "diabetes-lars"
+#include "diabetes-parser.hpp"
 #define PLOT_PATH_FILE FILE_PREFIX"_path.plot"
 #define DATA_PATH_FILE FILE_PREFIX"_path.data"
-
-// We create a custom Data type and Parser for diabetes dataset
-namespace diabetes { 
-  const unsigned int nb_samples = 442;
-  const unsigned int nb_features = 10;
-  typedef std::array<double, nb_features> X;
-  typedef double Y;
-  typedef std::pair<X, Y> Data;
-  typedef std::vector<Data> Basis;
-
-  void print(const Data& patient) {
-    for(unsigned int i = 0 ; i < nb_features; ++i)
-      std::cout << patient.first[i] << " ";
-    std::cout << " -> " << patient.second << std::endl;
-  }
-
-  struct Parser {
-    typedef Data value_type;
-
-    void read(std::istream& is, value_type& patient) const {
-      // Skip the comment lines
-      char c;
-      is.get(c);
-      while(c == '/') {
-	std::string comment_line;
-	std::getline(is, comment_line);
-	is.get(c);
-      }
-
-      // Fill the data
-      for(unsigned int i = 0 ; i < nb_features; ++i)
-	is >> patient.first[i];
-      is >> patient.second;
-
-      
-    }
-
-    void write(std::ostream& os, const value_type& customer) const {
-      // Not implemented
-    }
-  };
-
-  X input_of(const Data& d) {return d.first;}
-  Y label_of(const Data& d) {return d.second;}
-  void phi(gsl_vector* phi_x, const X& x) {
-    for(unsigned int i = 0 ; i < nb_features ; ++i)
-      gsl_vector_set(phi_x, i, x[i]);
-  }
-}
-
-
 #define DIABETES_DATA_FILE "/usr/share/gaml-linear/diabetes.data"
+#define FILE_PREFIX "diabetes-lars"
 
 int main(int argc, char* argv[]) {
 
