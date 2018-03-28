@@ -4,6 +4,7 @@
 #include <vector>
 #include <utility>
 #include <numeric>
+#include <random>
 
 // This example is about how to use data projections over a subset of
 // attributes.  The example considers the subset of the 4th, 5th and
@@ -18,13 +19,16 @@ typedef bool                                 U;
 typedef std::pair<X, U>                      Data;
 typedef std::vector<Data>                    DataSet;
 
-DataSet build_dataset() {
+template<typename RANDOM_DEVICE>
+DataSet build_dataset(RANDOM_DEVICE& rd) {
   DataSet dataset;
   dataset.resize(DATA_SIZE);
+  std::uniform_real_distribution<double> uniform(0,1);
+  std::bernoulli_distribution proba(0.5);
   for (auto& d : dataset) {
     for (auto& attr : d.first)
-      attr = gaml::random::uniform(0, 1);
-    d.second = gaml::random::proba(.5);
+      attr = uniform(rd);
+    d.second = proba(rd);
   }
 
   return dataset;
@@ -53,12 +57,13 @@ U output_of_data(const Data& data) {
 int main(int argc, char* argv[]) {
 
   // random seed initialization
-  std::srand(std::time(0));
+  std::random_device rd;
+  std::mt19937 gen(rd());
 
   // configuration of the printing for numbers.
   std::cout << std::setiosflags(std::ios::fixed) << std::setprecision(3);
 
-  DataSet dataset = build_dataset();
+  DataSet dataset = build_dataset(gen);
 
   // The set of indices of variables to select (indices start at 0)
   typedef std::array<size_t, 3> Idx;

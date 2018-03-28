@@ -153,14 +153,14 @@ namespace gaml {
 								   bool is_verbose) {
       return Learner<MergeOutput,BasisRandomizer,ElementaryLearner>(l,output_merger,dataset_randomizer,size,is_verbose);
     }
-
-    namespace set {
+    
+    namespace functor {
 
       /**
        * This is data set randomizer for bag learners that only
        * provide the dataset as it is.
        */
-      class Identity {
+      class identity {
       public:
 	template<typename DataIterator> 
 	auto operator()(const DataIterator& begin, const DataIterator& end) const {
@@ -173,16 +173,28 @@ namespace gaml {
        * This is data set randomizer for bag learners that builds a
        * bootstrapped set for each learner.
        */
+      template<typename RANDOM_DEVICE>
       class Bootstrap {
       private:
 	unsigned int size;
+	RANDOM_DEVICE& rd;
       public:
-	Bootstrap(unsigned int bootstrap_set_size) : size(bootstrap_set_size) {}
+	Bootstrap(unsigned int bootstrap_set_size, RANDOM_DEVICE& rd)
+	  : size(bootstrap_set_size), rd(rd) {}
 	template<typename DataIterator> 
 	auto operator()(const DataIterator& begin, const DataIterator& end) const {
-	  return gaml::bootstrap(begin,end,size);
+	  return gaml::bootstrap(begin,end,size, rd);
 	}
       };
+
+      /**
+       * This is data set randomizer for bag learners that builds a
+       * bootstrapped set for each learner.
+       */
+      template<typename RANDOM_DEVICE>
+      Bootstrap<RANDOM_DEVICE> bootstrap(unsigned int bootstrap_set_size, RANDOM_DEVICE& rd) {
+	return Bootstrap<RANDOM_DEVICE>(bootstrap_set_size, rd);
+      }
     }
   }
 }

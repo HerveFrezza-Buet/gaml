@@ -3,8 +3,8 @@
 #include <array>
 #include <vector>
 #include <utility>
-#include <cstdlib>
-#include <ctime>
+#include <random>
+#include <algorithm>
 
 // Let us implement a bagging method from a silly predictor.
 
@@ -23,11 +23,12 @@ Y oracle(const X& x) {
 #define XMIN -1
 #define XMAX  1
 #define NOISE .1
-Data sample() {
-  X x = {{gaml::random::uniform(XMIN,XMAX),
-	  gaml::random::uniform(XMIN,XMAX)}};
+template<typename RANDOM_DEVICE>
+Data sample(RANDOM_DEVICE& rd) {
+  std::uniform_real_distribution<double> uniform(XMIN, XMAX);
+  X x = {uniform(rd), uniform(rd)};
   Y y = oracle(x);
-  if(gaml::random::proba(NOISE))
+  if(std::bernoulli_distribution(NOISE)(rd))
     y = !y;
   return {x,y};
 }
@@ -61,14 +62,18 @@ public:
 };
 
 
+template<typename RANDOM_DEVICE>
 class Learner {
 
 public:
 
   typedef Predictor predictor_type;
 
-  Learner(void) {}
-  Learner(const Learner& other) {}
+  RANDOM_DEVICE& rd;
+  
+  Learner() = delete;
+  Learner(RANDOM_DEVICE& rd) : rd(rd) {}
+  Learner(const Learner& other) = default;
 
   template<typename DataIterator, typename InputOf, typename OutputOf> 
   Predictor operator()(const DataIterator& begin, const DataIterator& end,
@@ -77,15 +82,17 @@ public:
     // cathegory and pick a random 'true' and a random 'false'
     // sample in each.
 
+
+
     unsigned int pos;
     auto trues    = gaml::filter(begin,end,output_of);
-    pos           = gaml::random::uniform(std::distance(trues.begin(),trues.end()));
-    auto it_true  = trues.begin(); std::advance(it_true,pos);
+    pos           = std::uniform_int_distribution<unsigned int>(0, std::distance(trues.begin(), trues.end())-1)(rd);
+    auto it_true  = trues.begin(); std::advance(it_true, pos);
     X x_true      = input_of(*it_true);
 
     auto falses   = gaml::reject(begin,end,output_of);
-    pos           = gaml::random::uniform(std::distance(falses.begin(),falses.end()));
-    auto it_false = falses.begin(); std::advance(it_false,pos);
+    pos           = std::uniform_int_distribution<unsigned int>(0, std::distance(falses.begin(), falses.end())-1)(rd);
+    auto it_false = falses.begin(); std::advance(it_false, pos);
     X x_false     = input_of(*it_false);
 
     // Let us find w,c such as w.x+c > 0 is the 'true' side of the
@@ -97,6 +104,10 @@ public:
     return Predictor(w,c);
   }
 };
+
+template<typename RANDOM_DEVICE>
+Learner<RANDOM_DEVICE> make_learner(RANDOM_DEVICE& rd) {return Learner<RANDOM_DEVICE>(rd);}
+
 
 // For bagging, we need a template that tells how to compute the
 // overall output from the output of all the predictor. Let us set up
@@ -116,16 +127,28 @@ class SillyMerge {
   }
 };
 
+SillyMerge make_merge() {return SillyMerge();}
+
+
 // We also need a way to feed each predictor from the basis. Here, let
 // us feed each predictor with a random shuffle of the initial
 // basis... this is also silly.
+template<typename RANDOM_DEVICE>
 class SillyRandomizer {
-  public:
+private:
+  RANDOM_DEVICE& rd;
+public:
+
+  SillyRandomizer(RANDOM_DEVICE& rd) : rd(rd) {}
+  
   template<typename DataIterator> 
   auto operator()(const DataIterator& begin, const DataIterator& end) const {
-    return gaml::shuffle(begin,end);
+    return gaml::shuffle(begin, end, rd);
   }
 };
+
+template<typename RANDOM_DEVICE>
+SillyRandomizer<RANDOM_DEVICE> make_randomizer(RANDOM_DEVICE& rd) {return  SillyRandomizer<RANDOM_DEVICE>(rd);}
 
 
 #define NB_SAMPLES 1000
@@ -133,15 +156,16 @@ class SillyRandomizer {
 int main(int argc, char* argv[]) {
 
   // random seed initialization.
-  std::srand(std::time(0));
+  std::random_device rd;
+  std::mt19937 gen(rd());
 
   // Setting up of a dataset.
   Basis basis(NB_SAMPLES);
-  for(auto& data : basis) data = sample();
+  for(auto& data : basis) data = sample(gen);
 
   // Let us set up a weak predictor from the data.
-  Learner learner;
-  auto weak = learner(basis.begin(), basis.end(), input_of, output_of);
+  auto learner = make_learner(rd);
+  auto weak    = learner(basis.begin(), basis.end(), input_of, output_of);
 
   // Let us measure its empirical risk.
   auto evaluator = gaml::risk::empirical(gaml::loss::Classification<Y>());
@@ -153,8 +177,8 @@ int main(int argc, char* argv[]) {
   // the sake illustration, let us dot this with our silly templates.
   
   auto silly_bag_learner = gaml::bag::learner(learner, 
-					      SillyMerge(), 
-					      SillyRandomizer(), 
+					      make_merge(), 
+					      make_randomizer(gen), 
 					      BAG_SIZE,
 					      false);
   auto silly = silly_bag_learner(basis.begin(), basis.end(), input_of, output_of);
@@ -166,8 +190,8 @@ int main(int argc, char* argv[]) {
   // library. Their design is similar to the design of the Silly*
   // classes of this example.
   auto clever1_bag_learner = gaml::bag::learner(learner, 
-						gaml::MostFrequent<Y>(),
-						gaml::bag::set::Identity(), 
+						gaml::functor::most_frequent<Y>(),
+						gaml::bag::functor::identity(), 
 						BAG_SIZE,
 						false);
   auto clever1 = clever1_bag_learner(basis.begin(), basis.end(), input_of, output_of);
@@ -180,8 +204,8 @@ int main(int argc, char* argv[]) {
   // classes of this example.
 #define BOOTSTRAP_SIZE 200
   auto clever2_bag_learner = gaml::bag::learner(learner, 
-						gaml::MostFrequent<Y>(),
-						gaml::bag::set::Bootstrap(BOOTSTRAP_SIZE), 
+						gaml::functor::most_frequent<Y>(),
+						gaml::bag::functor::bootstrap(BOOTSTRAP_SIZE, gen), 
 						BAG_SIZE,
 						false);
   auto clever2 = clever2_bag_learner(basis.begin(), basis.end(), input_of, output_of);

@@ -34,21 +34,23 @@
 #include <iostream>
 #include <iomanip>
 #include <type_traits>
-#include <gamlAlgorithms.hpp>
 #include <gamlException.hpp>
 #include <gamlTabular.hpp>
 #include <gamlIdentity.hpp>
+#include <random>
 
 namespace gaml {
 
   
-  template<typename Iterator>
-  Tabular<Iterator, typename is_secondary_iterator<Iterator>::type> bootstrap(const Iterator& begin, const Iterator& end, unsigned int size) {
-    auto init = [begin,end,size](std::vector<tabular_index_type>& indices) -> void {
+  template<typename Iterator, typename RANDOM_DEVICE>
+  Tabular<Iterator, typename is_secondary_iterator<Iterator>::type> bootstrap(const Iterator& begin, const Iterator& end,
+									      unsigned int size, RANDOM_DEVICE& rd) {
+    auto init = [begin,end,size,&rd](std::vector<tabular_index_type>& indices) -> void {
       indices.resize(size);
-      unsigned int range = std::distance(begin,end);
+      tabular_index_type range = std::distance(begin,end);
+      std::uniform_int_distribution<tabular_index_type> uniform(0, range-1);
       for(auto& idx : indices)
-	idx = (tabular_index_type)gaml::random::uniform(0,range);
+	idx = uniform(rd);
     };
     return Tabular<Iterator, typename is_secondary_iterator<Iterator>::type> (begin,init);
   }
