@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <utility>
+#include <random>
 
 // Let us deal with 1D data, that consists of two classes A and B. In
 // each class, the data are tossed from a uniform range of
@@ -27,11 +28,12 @@ Y output_of(const Data& d) {return d.second;}
 #define B_OUT_CENTER 1.0
 #define OUT_RADIUS   1.0
 
-Data sample() {
+template<typename RANDOM_DEVICE>
+Data sample(RANDOM_DEVICE& rd) {
   X xmin,xmax;
   Y ymin,ymax;
 
-  if(gaml::random::proba(PROBA_A)) {
+  if(std::bernoulli_distribution(PROBA_A)(rd)) {
     xmin = A_MIN;
     xmax = A_MAX;
     ymin = A_OUT_CENTER - OUT_RADIUS;
@@ -44,7 +46,8 @@ Data sample() {
     ymax = B_OUT_CENTER + OUT_RADIUS;
   }
 
-  return {gaml::random::uniform(xmin,xmax),gaml::random::uniform(ymin,ymax)};
+  return {std::uniform_real_distribution<double>(xmin,xmax)(rd),
+      std::uniform_real_distribution<double>(ymin,ymax)(rd)};
 }
 
 // Let us use define a class which uses a score method as
@@ -66,8 +69,13 @@ public:
 };
 
 int main(int argc, char* argv[]) {
+  
+  // random seed initialization
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  
   Basis basis(100000);
-  for(auto& data : basis) data = sample();
+  for(auto& data : basis) data = sample(gen);
 
   // Let us use the relative variance reduction score. It scores a
   // splitting of the data basis, according to a test. Here, the
