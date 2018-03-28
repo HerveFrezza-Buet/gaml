@@ -1,5 +1,6 @@
 #pragma once
 
+#include <random>
 #include <algorithm>
 #include <gaml.hpp>
 
@@ -30,16 +31,18 @@ namespace dummy {
     typedef std::pair<input_type ,double> data_type;
     typedef std::vector<data_type> dataset_type;
 
-    dataset_type build_dataset(void) {
+    template<typename RANDOM_DEVICE>
+    dataset_type build_dataset(RANDOM_DEVICE& rd) {
       dataset_type data(DATA_SIZE);
+      std::uniform_real_distribution<double> uniform_value(0,1);
+      std::uniform_real_distribution<double> uniform_coef(1-NOISE_RATIO_ON_RELEVANT_ATTRIBUTE, 1+NOISE_RATIO_ON_RELEVANT_ATTRIBUTE);
       for(auto& d : data)  { 
 	// Let us put a random value on each attributes.
-	for(auto& attr : d.first) attr = gaml::random::uniform(0,1);
+	for(auto& attr : d.first) attr = uniform_value(rd);
 	// let us compute the label as the sum of the first RELEVANT_ATTRIBUTE_NUMBER attributes...
 	double total = std::accumulate(d.first.begin(), d.first.begin() + RELEVANT_ATTRIBUTE_NUMBER, 0.);
 	// ... and noisify a bit the result.
-	d.second = total * gaml::random::uniform(1-NOISE_RATIO_ON_RELEVANT_ATTRIBUTE,
-						 1+NOISE_RATIO_ON_RELEVANT_ATTRIBUTE);
+	d.second = total * uniform_coef(rd);
       }
 
       return data;
@@ -54,20 +57,23 @@ namespace dummy {
     typedef std::pair<input_type ,bool> data_type;
     typedef std::vector<data_type> dataset_type;
 
-    dataset_type build_dataset(void) {
+    template<typename RANDOM_DEVICE>
+    dataset_type build_dataset(RANDOM_DEVICE& rd) {
       dataset_type data(DATA_SIZE);
+      std::bernoulli_distribution attr_proba(0.5);
+      std::bernoulli_distribution label_proba(NOISE_RATIO_ON_RELEVANT_ATTRIBUTE);
       for(auto& d : data)  { 
 	// Let us put a random value on each attributes.
-	for(auto& attr : d.first) {
-	  attr = gaml::random::proba(0.5);
-	}
+	for(auto& attr : d.first)
+	  attr = attr_proba(rd);
 	// let us compute the label as the sum of the first RELEVANT_ATTRIBUTE_NUMBER attributes...
-	d.second = std::accumulate(d.first.begin(), d.first.begin() + RELEVANT_ATTRIBUTE_NUMBER, true, [](bool a, bool b) -> bool {
-	    if(gaml::random::proba(NOISE_RATIO_ON_RELEVANT_ATTRIBUTE))
-	      return a;
-	    else
-	      return a && b;
-	  });
+	d.second = std::accumulate(d.first.begin(), d.first.begin() + RELEVANT_ATTRIBUTE_NUMBER, true,
+				   [&label_proba, &rd](bool a, bool b) -> bool {
+				     if(label_proba(rd))
+				       return a;
+				     else
+				       return a && b;
+				   });
       }
 
       return data;

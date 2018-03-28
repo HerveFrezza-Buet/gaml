@@ -1,6 +1,5 @@
 #include <gaml.hpp>
-#include <cstdlib>
-#include <ctime>
+#include <random>
 #include <vector>
 #include <utility>
 
@@ -16,16 +15,19 @@
 int main(int argc, char* argv[]) {
 
   // random seed initialization
-  std::srand(std::time(0));
+  std::random_device rd;
+  std::mt19937 gen(rd());
 
   // Let us build some fake data. The input set is int, and the output
   // set is a double. In our fake data, input is choosen randomly in
   // [0..100[, and output is choosen randomly in [0,1[. Let us store
   // the data set in some vector.
 
+  std::uniform_real_distribution<double> big_uniform(0, 100);
+  std::uniform_real_distribution<double> small_uniform(0, 1);
   silly::DataSet basis(DATA_SIZE);
   for(auto& data : basis)
-    data = {gaml::random::uniform(0,100),gaml::random::uniform(0,1)};
+    data = {big_uniform(gen), small_uniform(gen)};
 
 
   // The cross validation techniques are based on a partition of the

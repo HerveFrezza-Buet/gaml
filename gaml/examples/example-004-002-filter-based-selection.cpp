@@ -1,11 +1,11 @@
 #include <gaml.hpp>
-#include <cstdlib>
 #include <vector>
 #include <utility>
 #include <numeric>
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <random>
 
 // This example shows how to select a relevant subset of variables
 // using the filter approach and various search strategies.
@@ -106,12 +106,15 @@ void test(DataSet& dataset, Evaluator& evaluator) {
 
 int main(int argc, char* argv[]) {
 
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  
   // Tests first the correlation filter with a numeric dataset
   {
     std::cout << "Let's first test a numeric dataset with the correlation filter\n" << std::endl;
 
     // Builds an artificial numeric dataset.
-    auto dataset = dummy::numeric::build_dataset();
+    auto dataset = dummy::numeric::build_dataset(rd);
 
     // Correlation based evaluator
     auto evaluator = gaml::varsel::make_correlation_filter(dataset.begin(), dataset.end(), dummy::numeric::input_of_data, dummy::numeric::output_of_data);
@@ -124,7 +127,7 @@ int main(int argc, char* argv[]) {
     std::cout << "\n\nLet's then test a nominal dataset with the mutual information filter\n" << std::endl;
 
     // Builds an artificial nominal dataset.
-    auto dataset = dummy::nominal::build_dataset();
+    auto dataset = dummy::nominal::build_dataset(rd);
 
     // Information based evaluator
     auto evaluator = gaml::varsel::make_information_filter(dataset.begin(), dataset.end(), dummy::nominal::input_of_data, dummy::nominal::output_of_data);
