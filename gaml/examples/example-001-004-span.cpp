@@ -4,11 +4,10 @@
 #include <fstream>
 #include <iostream>
 #include <iomanip>
-#include <cstdlib>
-#include <ctime>
 #include <array>
 #include <algorithm>
 #include <functional>
+#include <random>
 
 // Let us define a 2D point from a pair.
 typedef std::pair<double,double> Point;
@@ -62,12 +61,15 @@ bool inside(double x, double y) {
     d2 <= SMALL_RADIUS*SMALL_RADIUS;
 }
 
-Point get_sample() {
-  double x  = gaml::random::uniform(-AREA_RADIUS,AREA_RADIUS);
-  double y  = gaml::random::uniform(-AREA_RADIUS,AREA_RADIUS);
+template<typename RANDOM_DEVICE>
+Point get_sample(RANDOM_DEVICE& rd) {
+  std::uniform_real_distribution<double> uniform(-AREA_RADIUS,AREA_RADIUS);
+
+  double x  = uniform(rd);
+  double y  = uniform(rd);
   while(!inside(x,y)) {
-    x=gaml::random::uniform(-AREA_RADIUS,AREA_RADIUS);
-    y=gaml::random::uniform(-AREA_RADIUS,AREA_RADIUS);
+    x=uniform(rd);
+    y=uniform(rd);
   }
   return {x,y};
 }
@@ -77,9 +79,10 @@ Point get_sample() {
 
 
 int main(int argc, char* argv[]) {
-
+  
   // random seed initialization
-  std::srand(std::time(0));
+  std::random_device rd;
+  std::mt19937 gen(rd());
 
   // Let us create a dictionary (by default, the * operator is the dot
   // product)
@@ -108,7 +111,7 @@ int main(int argc, char* argv[]) {
     // Let us adjust it so that it spans the distribution.
     dict.clear();
     dict.kernel = kernels[mode];
-    for(unsigned int nb = 0; nb < NB_SAMPLES; ++nb) dict.submit(get_sample());
+    for(unsigned int nb = 0; nb < NB_SAMPLES; ++nb) dict.submit(get_sample(gen));
     std::cout << names[mode] << " kernel : " << std::setw(3) << dict.container().size() << " samples added."<< std::endl;
   
     // Let us keep on working with the gaussian kernel. We will
@@ -125,7 +128,7 @@ int main(int argc, char* argv[]) {
     std::array<gaml::span::Vector<Point>,K> prototypes;
 
     // Let us initialize the prototypes from the distribution.
-    for(auto& w : prototypes) w = dict(get_sample());
+    for(auto& w : prototypes) w = dict(get_sample(gen));
 
     // The type gaml::span::Vector<Point> supports all vector operation
     // (including the dot product).
@@ -138,7 +141,7 @@ int main(int argc, char* argv[]) {
   
     // Now, let us apply the on-line K-means.
     for(unsigned int i=0; i < NB_SAMPLES; ++i) {
-      auto xi = dict(get_sample()); 
+      auto xi = dict(get_sample(gen)); 
       // Let us find the prototype closest to xi.
       auto best_proto_it = std::min_element(prototypes.begin(),
 					    prototypes.end(),

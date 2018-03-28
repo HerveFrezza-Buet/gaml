@@ -72,9 +72,11 @@ struct UVXYparser : public gaml::BasicParser {
 
 #define BIG_R    1
 #define SMALL_R .2
-Data sample() {
-  double u = gaml::random::uniform(0, 2*3.141592654);
-  double v = gaml::random::uniform(0, 2*3.141592654);
+template<typename RANDOM_DEVICE>
+Data sample(RANDOM_DEVICE& rd) {
+  std::uniform_real_distribution<double> uniform(0, 2*3.141592654);
+  double u = uniform(rd);
+  double v = uniform(rd);
   double R = BIG_R + SMALL_R*std::cos(v);
   return { u, v,
       R*std::cos(u),
@@ -86,8 +88,10 @@ Data sample() {
 #define FILENAME "data.csv"
 
 int main(int argc, char** argv) {
+  
   // random seed initialization
-  std::srand(std::time(0));
+  std::random_device rd;
+  std::mt19937 gen(rd());
 
   UVXYparser parser;
   
@@ -97,7 +101,7 @@ int main(int argc, char** argv) {
     auto os  = gaml::make_output_data_stream(ofile, parser);
     auto out = gaml::make_output_iterator(os);
     for(unsigned int i=0; i<100; ++i)
-      *(out++) = sample();
+      *(out++) = sample(gen);
     std::cout << "File \"" << FILENAME << "\" generated." << std::endl;
   }
 

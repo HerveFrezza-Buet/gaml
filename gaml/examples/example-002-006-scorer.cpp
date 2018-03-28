@@ -3,6 +3,7 @@
 #include <iterator>
 #include <cmath>
 #include <iomanip>
+#include <random>
 
 #include <gaml.hpp>
 
@@ -33,16 +34,19 @@ const Y& output_of(const Data& d) {return d.second;}
 int main(int argc, char* argv[]) {
   
   // random seed initialization
-  std::srand(std::time(0));
+  std::random_device rd;
+  std::mt19937 gen(rd());
 
   // Making the dataset
 
   Dataset dataset;
   auto out = std::back_inserter(dataset);
 
+  std::uniform_real_distribution<double> uniform(0, 1);
+  std::bernoulli_distribution proba(.05);
   for(unsigned int i=0; i < 1000; ++i) {
-    X x        = gaml::random::uniform(0,1);
-    bool noise = gaml::random::proba(.05);
+    X x        = uniform(gen);
+    bool noise = proba(gen);
     if(x < .5)
       if(noise) *(out++) = {x,'B'};
       else      *(out++) = {x,'A'};
@@ -101,7 +105,7 @@ int main(int argc, char* argv[]) {
 	    << "Scoring vs predicting" << std::endl;
   
   for(unsigned int i=0; i < 10; ++i) {
-    X x        = gaml::random::uniform(0,1);
+    X x        = uniform(gen);
     std::cout << "  " << std::setw(10) << x << " -> " << predictor_class_def(x) << " == " << predictor_class_undef(x)
 	      << " : sc(x) = " << std::setw(10) << scoring_fct(x)
 	      << ", sc_def(x) = " << std::setw(10) << predictor_class_def.scorer()(x)

@@ -39,17 +39,23 @@ public:
   }
 };
 
-Data make_good_student(void) {
-  return Data(gaml::random::uniform(MIN_GOOD_MARK,MAX_GOOD_MARK),
+template<typename RANDOM_DEVICE>
+Data make_good_student(RANDOM_DEVICE& rd) {
+  return Data(std::uniform_real_distribution<double>(MIN_GOOD_MARK,MAX_GOOD_MARK)(rd),
 	      studentGood);
 }
 
-Data make_weak_student(void) {
-  return Data(gaml::random::uniform(MIN_WEAK_MARK,MAX_WEAK_MARK),
+template<typename RANDOM_DEVICE>
+Data make_weak_student(RANDOM_DEVICE& rd) {
+  return Data(std::uniform_real_distribution<double>(MIN_WEAK_MARK,MAX_WEAK_MARK)(rd),
 	      studentWeak);
 }
 
 int main(int argc, char* argv[]) {
+
+  // random seed initialization
+  std::random_device rd;
+  std::mt19937 gen(rd());
 
   Basis                                  basis;
   gaml::classification::Confusion<Skill> matrix;
@@ -60,8 +66,8 @@ int main(int argc, char* argv[]) {
   try {
 
     auto out = basis.begin();
-    for(i = 0; i < NB_GOOD_STUDENTS; ++i) *(out++) = make_good_student();
-    for(     ; i < BASIS_SIZE;       ++i) *(out++) = make_weak_student();
+    for(i = 0; i < NB_GOOD_STUDENTS; ++i) *(out++) = make_good_student(gen);
+    for(     ; i < BASIS_SIZE;       ++i) *(out++) = make_weak_student(gen);
 
     // Let us generate a ROC curve.
 

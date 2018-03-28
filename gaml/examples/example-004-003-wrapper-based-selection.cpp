@@ -3,6 +3,7 @@
 #include <vector>
 #include <utility>
 #include <numeric>
+#include <random>
 
 // This example shows how to select a relevant subset of variables using the wrapper approach
 // and various search strategies.
@@ -93,11 +94,15 @@ struct GenericLearner {
 // approach and various search strategies.
 int main(int argc, char* argv[]) {
 
+  // random seed initialization
+  std::random_device rd;
+  std::mt19937 gen(rd());
+
   // Make the test verbose
   bool verbose = true;
 
   // Builds an artificial numeric dataset
-  auto dataset = dummy::numeric::build_dataset();
+  auto dataset = dummy::numeric::build_dataset(gen);
 
   // The evaluator is a function that maps a given subset of variables to a real score.
   // Here one uses the wrapper approach : the evaluation of a subset of variables

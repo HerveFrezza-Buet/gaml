@@ -5,8 +5,7 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-#include <ctime>
-#include <cstdlib>
+#include <random>
 
 // #define DEBUG
 
@@ -108,8 +107,9 @@ std::unique_ptr<Tree> build_tree(const Iterator& begin, const Iterator& end,
 }
 
 
-double oracle(double x) {
-  return std::sin(x) + gaml::random::uniform(-.2,.2);
+template<typename RANDOM_DEVICE>
+double oracle(double x, RANDOM_DEVICE& rd) {
+  return std::sin(x) + std::uniform_real_distribution<double>(-.2,.2)(rd);
 }
 
 typedef std::pair<double,double> Data;
@@ -117,13 +117,15 @@ typedef std::pair<double,double> Data;
 int main(int argc, char* argv[]) {
 
   // random seed initialization
-  std::srand(std::time(0));
+  std::random_device rd;
+  std::mt19937 gen(rd());
   
 
   std::vector<Data> basis(100);
+  std::uniform_real_distribution<double> uniform(0, 10);
   for(auto& xy : basis) {
-    xy.first  = gaml::random::uniform(0,10);
-    xy.second = oracle(xy.first);
+    xy.first  = uniform(gen);
+    xy.second = oracle(xy.first, gen);
   }
 
   auto tree = build_tree(basis.begin(), basis.end(),
