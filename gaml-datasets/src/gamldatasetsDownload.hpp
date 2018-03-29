@@ -221,8 +221,6 @@ namespace gaml {
     return gaml::datasets::make_downloaded_dataset(url, parser);
   }
 
-
-  
   inline auto make_diabetes_dataset() {
     std::string url("https://www4.stat.ncsu.edu/~boos/var.select/diabetes.tab.txt");
     auto output_of_label = [](int label) {
@@ -231,5 +229,31 @@ namespace gaml {
     
     auto parser = gaml::datasets::make_csv_parser<10, int>(' ', 1, output_of_label);
     return gaml::datasets::make_downloaded_dataset(url, parser);
-  } 
+  }
+
+  /*
+    In this dataset, the class is the first element
+    our parser cannot handle this yet
+    
+    inline auto make_wine_dataset() {
+    std::string url("https://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data");
+    auto output_of_label = [](int label) {
+    return label;
+    };
+    
+    auto parser = gaml::datasets::make_csv_parser<10, int>(' ', 0, output_of_label);
+    return gaml::datasets::make_downloaded_dataset(url, parser);
+    }
+  */
+  
+ inline auto make_boston_housing_dataset() {
+   std::string url("https://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data");
+     auto output_of_label = [](double label) {
+     return label;
+   };
+   
+   auto parser = gaml::datasets::make_csv_parser<13, double>(' ', 0, output_of_label);
+   return gaml::datasets::make_downloaded_dataset(url, parser);
+ }
+  
 }

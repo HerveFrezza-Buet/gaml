@@ -21,14 +21,20 @@ void print_dataset(const DATASET& dataset,
 int main(int argc, char* argv[]) {
   
   {
-    std::cout << std::string(100, '*') << "Iris Dataset" << std::endl;
-    auto iris = gaml::make_iris_dataset();
-    print_dataset(iris, 2);
+    std::cout << std::string(100, '*') << "Iris classification Dataset" << std::endl;
+    auto dataset = gaml::make_iris_dataset();
+    print_dataset(dataset, 2);
   }
   
   {
-    std::cout << std::string(100, '*') << "Diabetes Dataset" << std::endl;
-    auto diabetes = gaml::make_diabetes_dataset();
-    print_dataset(diabetes, 2);
+    std::cout << std::string(100, '*') << "Diabetes regression Dataset" << std::endl;
+    auto dataset = gaml::make_diabetes_dataset();
+    print_dataset(dataset, 2);
+  }
+
+  {
+    std::cout << std::string(100, '*') << "Boston housing regression Dataset" << std::endl;
+    auto dataset = gaml::make_boston_housing_dataset();
+    print_dataset(dataset, 2);
   }
 }
