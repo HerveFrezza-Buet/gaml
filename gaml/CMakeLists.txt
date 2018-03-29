@@ -3,7 +3,7 @@ CMAKE_MINIMUM_REQUIRED( VERSION 2.8.4 )
 
 project (gaml) 
 
-SET(PACKAGE_VERSION "1.18")
+SET(PACKAGE_VERSION "1.20")
 SET(PACKAGE_LICENSE "GPL")
 
 SET(CMAKE_BUILD_TYPE Release)
@@ -19,7 +19,7 @@ SET(PROJECT_DESCRIPTION_SUMMARY "C++ tools for machine learning.")
 #######################################
 
 # cflags added by the package
-SET(PROJECT_CFLAGS "-Wall -std=c++17")
+SET(PROJECT_CFLAGS "-Wall -std=c++17 -g")
 
 # lib flags added by the package
 if(UNIX)

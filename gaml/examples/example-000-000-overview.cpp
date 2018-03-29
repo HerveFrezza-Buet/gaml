@@ -28,11 +28,13 @@ int main(int argc, char* argv[]) {
   for(auto& data : basis)
     data = {uniform_100(gen), uniform_1(gen)};
 
-  // Let us display the data, using the provided stl-like output iterators.
-  auto parser           = gaml::make_JSON_parser<silly::Data>();
-  auto outputDataStream = gaml::make_output_data_stream(std::cout, parser);
-  auto out              = gaml::make_output_iterator(outputDataStream);
-  std::copy(basis.begin(),basis.end(),out);
+  {
+    // Let us display the data, using the provided stl-like output iterators.
+    auto parser           = gaml::make_JSON_parser<silly::Data>();
+    auto outputDataStream = gaml::make_output_data_stream(std::cout, parser);
+    auto out              = gaml::make_output_iterator(outputDataStream);
+    std::copy(basis.begin(),basis.end(),out);
+  } // output iterator "out" is destroyed here, this writes the closing ']' of the JSON format.
   std::cout << std::endl << std::endl;
 
   // Now, let us train our algorithm on this database.
