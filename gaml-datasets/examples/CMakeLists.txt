@@ -17,6 +17,8 @@ foreach(f ${usage_examples})
     set_target_properties(${exampleName} PROPERTIES LINKER_LANGUAGE CXX)
     set_target_properties(${exampleName} PROPERTIES COMPILE_FLAGS "${PROJECT_ALL_CFLAGS}" LINK_FLAGS "${PROJECT_ALL_LDFLAGS}")
 
+    target_link_libraries(${exampleName} stdc++fs)
+    
     install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${exampleName} 
             DESTINATION bin
             RENAME ${CMAKE_PROJECT_NAME}-${exampleName}

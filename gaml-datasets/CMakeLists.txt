@@ -17,34 +17,37 @@ SET(PROJECT_DESCRIPTION_SUMMARY "This provides easy access to popular datasets f
 find_package(PkgConfig)
 
 pkg_check_modules(GAML gaml REQUIRED)
+pkg_check_modules(CURL libcurl REQUIRED)
 
 #######################################
 # Setting the compilation flags
 #######################################
 
 # cflags added by the package
-SET(PROJECT_CFLAGS "-Wall -std=c++11")
+SET(PROJECT_CFLAGS "-Wall")
 
 # cflags added by the pkg-config dependencies contains ';' as separator. This is a fix.
 string(REPLACE ";" " " GAML_CFLAGS "${GAML_CFLAGS}")
+string(REPLACE ";" " " CURL_CFLAGS "${CURL_CFLAGS}")
 
 # lib flags added by the package
 SET(PROJECT_LIBS "-Wl,--no-as-needed ")
 
 # libs added by the pkg-config dependencies contains ';' as separator. This is a fix.
 string(REPLACE ";" " " GAML_LDFLAGS "${GAML_LDFLAGS}")
+string(REPLACE ";" " " CURL_LDFLAGS "${CURL_LDFLAGS}")
 
 # ldflags required, but not provided by pkg-config
 SET(PROJECT_LDFLAGS "")
 
 # Gathering of all flags
 # (e.g. for compiling examples)
-SET(PROJECT_ALL_CFLAGS  "${PROJECT_CFLAGS} ${GAML_CFLAGS}")
-SET(PROJECT_ALL_LDFLAGS "${PROJECT_LIBS} ${PROJECT_LDFLAGS} -L${CMAKE_BINARY_DIR}/src ${GAML_LDFLAGS}")
+SET(PROJECT_ALL_CFLAGS  "${PROJECT_CFLAGS} ${GAML_CFLAGS} ${CURL_CFLAGS}")
+SET(PROJECT_ALL_LDFLAGS "${PROJECT_LIBS} ${PROJECT_LDFLAGS} -L${CMAKE_BINARY_DIR}/src ${GAML_LDFLAGS} ${CURL_LDFLAGS}")
 
 # Gathering of all flags from dependancies flags
 # (e.g. for compiling libraries)
-SET(PROJECT_ALL_DEP_LDFLAGS "${PROJECT_LDFLAGS} ${GAML_LDFLAGS}")
+SET(PROJECT_ALL_DEP_LDFLAGS "${PROJECT_LDFLAGS} ${GAML_LDFLAGS} ${CURL_LDFLAGS}")
 
 ###################################
 # Some prefix definitions
@@ -110,8 +113,8 @@ ADD_CUSTOM_TARGET(dist
 ###################################
 
 SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY ${PROJECT_DESCRIPTION_SUMMARY})
-SET(CPACK_PACKAGE_VENDOR "Herve Frezza-Buet and Matthieu Geist")
-SET(CPACK_PACKAGE_CONTACT "{Herve.Frezza-Buet,Matthieu.Geist}@supelec.fr")
+SET(CPACK_PACKAGE_VENDOR "Jeremy Fix")
+SET(CPACK_PACKAGE_CONTACT "{Jeremy.Fix}@centralesupelec.fr")
 SET(CPACK_PACKAGE_VERSION ${PACKAGE_VERSION})
 SET(CPACK_PACKAGE_LICENSE "${PACKAGE_LICENSE}")
 SET(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_SOURCE_DIR}/LICENSE)
@@ -158,12 +161,12 @@ IF(NOT RPMBUILD STREQUAL "RPMBUILD-NOTFOUND")
   ENDIF()
 
   IF(MYBUILDTYPE STREQUAL "binary")
-    SET(CPACK_RPM_PACKAGE_REQUIRES "gaml")
+    SET(CPACK_RPM_PACKAGE_REQUIRES "gaml, libcurl")
   ENDIF()
 
   IF(MYBUILDTYPE STREQUAL "devel")
     SET(CPACK_RPM_PACKAGE_NAME ${CMAKE_PROJECT_NAME}-devel)
-    SET(CPACK_RPM_PACKAGE_REQUIRES "gaml-devel, ${CMAKE_PROJECT_NAME}")
+    SET(CPACK_RPM_PACKAGE_REQUIRES "gaml-devel, libcurl, ${CMAKE_PROJECT_NAME}")
   ENDIF()
 
   SET(CPACK_PACKAGE_FILE_NAME ${CPACK_RPM_PACKAGE_NAME}-${PACKAGE_VERSION}-${CMAKE_SYSTEM_PROCESSOR})
@@ -190,12 +193,12 @@ IF(NOT DPKGDEB STREQUAL  "DPKGDEB-NOTFOUND")
   ENDIF()
 
   IF(MYBUILDTYPE STREQUAL "binary")
-    SET(CPACK_DEBIAN_PACKAGE_DEPENDS "gaml")
+    SET(CPACK_DEBIAN_PACKAGE_DEPENDS "gaml, libcurl")
   ENDIF()
 
   IF(MYBUILDTYPE STREQUAL "devel")
     SET(CPACK_DEBIAN_PACKAGE_NAME ${CMAKE_PROJECT_NAME}-dev)
-    SET(CPACK_DEBIAN_PACKAGE_DEPENDS "gaml-dev, ${CMAKE_PROJECT_NAME}")
+    SET(CPACK_DEBIAN_PACKAGE_DEPENDS "gaml-dev, libcurl, ${CMAKE_PROJECT_NAME}")
   ENDIF()
 
   SET(CPACK_PACKAGE_FILE_NAME ${CPACK_DEBIAN_PACKAGE_NAME}-${PACKAGE_VERSION}-${CMAKE_SYSTEM_PROCESSOR})

@@ -26,7 +26,8 @@
  */
 
 
-#include "gamlArtificial.hpp"
+#include "gamldatasetsArtificial.hpp"
+#include "gamldatasetsDownload.hpp"
 
 /**
  * @example example-001-artificial.cpp
