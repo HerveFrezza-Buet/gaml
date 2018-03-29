@@ -62,7 +62,7 @@ namespace gaml {
 	/* enable progress meter */
 	curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0L);
         res = curl_easy_perform(curl);
-	
+	std::cout << std::endl;
         /* always cleanup */
         curl_easy_cleanup(curl);
         fclose(fp);
@@ -76,18 +76,22 @@ namespace gaml {
       return outfilename;
     }
 
-    template<int NB_INPUT,
-	     typename OUTPUT>
+    template<int NB_INPUT_ATTRIBUTES,
+	     typename LABEL_TYPE,
+	     typename OUTPUT_OF_LABEL>
     class CSVParser : public gaml::BasicParser {
     private:
+      char expected_sep;
       unsigned int skiprows;
+      OUTPUT_OF_LABEL output_of_label;
     public:
-      using input_type = std::array<double, NB_INPUT>;
-      using output_type = OUTPUT;
+      using input_type = std::array<double, NB_INPUT_ATTRIBUTES>;
+      using output_type = std::invoke_result_t<OUTPUT_OF_LABEL, LABEL_TYPE>;
       using value_type = std::pair<input_type, output_type>;
 
       
-      CSVParser(unsigned int skiprows): gaml::BasicParser(), skiprows(skiprows) {}
+      CSVParser(char expected_sep, unsigned int skiprows, const OUTPUT_OF_LABEL& output_of_label):
+	gaml::BasicParser(), expected_sep(expected_sep), skiprows(skiprows), output_of_label(output_of_label) {}
       
       void writeBegin(std::ostream& os) const {
 	// Nope
@@ -127,78 +131,105 @@ namespace gaml {
       
       void read(std::istream& is, value_type & data) const {
 	char sep;
-	for(auto& v: data.first)
-	  is >> v >> sep;
-	is >> data.second;
+	for(auto& v: data.first) {
+	  if(expected_sep == ' ')
+	    is >> v ;
+	  else {
+	    is >> v >> sep;
+	    if(sep != expected_sep) 
+	      throw std::runtime_error("I was expecting the separator '" + std::string(1, expected_sep) + "' but got '" + std::string(1, sep) + "'");
+	  }
+	}
+	LABEL_TYPE l;
+	is >> l;
+	data.second = output_of_label(l);
       }
     };
 
-
-
+    template<int NB_INPUT_ATTRIBUTES,
+	     typename LABEL_TYPE,
+	     typename OUTPUT_OF_LABEL>
+    CSVParser<NB_INPUT_ATTRIBUTES, LABEL_TYPE, OUTPUT_OF_LABEL> make_csv_parser(char expected_sep,
+										unsigned int skip_rows,
+										const OUTPUT_OF_LABEL& output_of_label) {
+      return CSVParser<NB_INPUT_ATTRIBUTES, LABEL_TYPE, OUTPUT_OF_LABEL>(expected_sep, skip_rows, output_of_label);
+    }
     
-    class Iris {
+    
+    template<typename PARSER>
+    class DownloadedDataset {
     public:
-      using input_type = std::array<double, 4>;
-      using label_type = std::string;
-      using data_type = std::pair<input_type, label_type>;
+      using input_type = typename PARSER::input_type;
+      using output_type = typename PARSER::output_type;
+      using data_type = std::pair<input_type, output_type>;
       using dataset_type = std::vector<data_type>;
-      
-      using output_type = int;
       
     private:
       dataset_type dataset;
-      
+
     public:
-           
-      Iris() {
-	std::string filename = download("https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data");
-	
-	CSVParser<4, label_type> parser(0);
+
+      inline DownloadedDataset(std::string url,
+		      const PARSER& parser) {
+	std::string filename = download(url);
 	
 	std::ifstream ifile(filename);
 	auto input_data_stream = gaml::make_input_data_stream(ifile, parser);
 	auto begin = gaml::make_input_data_begin(input_data_stream);
 	auto end = gaml::make_input_data_end(input_data_stream);
 	std::copy(begin, end, std::back_inserter(dataset));
+	ifile.close();
       }
-
-      auto begin() {
+      
+      inline auto begin() const {
 	return dataset.begin();
       }
 
-      auto end() {
+      inline auto end() const {
 	return dataset.end();
       }
 
-      const input_type& input_of_data(const data_type& data) const {
+      inline const input_type& input_of_data(const data_type& data) const {
 	return data.first;
       }
 
-      output_type output_of_data(const data_type& data) const {
-	if(data.second == std::string("Iris-setosa"))
-	  return 0;
-	else if(data.second == std::string("Iris-versicolor"))
-	  return 1;
-	else
-	  return 2;
-      }
-    };
-  
-    
-    struct Diabetes {
-
+      inline const output_type& output_of_data(const data_type& data) const {
+	return data.second;
+      }      
     };
 
-    Diabetes diabetes() {
-      return Diabetes();
+    template<typename PARSER>
+    DownloadedDataset<PARSER> make_downloaded_dataset(std::string url,
+						      const PARSER& parser) {
+      return DownloadedDataset<PARSER>(url, parser);
     }
     
-    
   }
 
-  gaml::datasets::Iris make_iris_dataset() {
-    return gaml::datasets::Iris();
+  inline auto make_iris_dataset() {
+    std::string url("https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data");
+    auto output_of_label = [](std::string label) {
+      if(label == std::string("Iris-setosa"))
+	  return 0;
+      else if(label == std::string("Iris-versicolor"))
+	return 1;
+      else
+	return 2;
+    };
+    
+    auto parser = gaml::datasets::make_csv_parser<4, std::string>(',', 0, output_of_label);
+    return gaml::datasets::make_downloaded_dataset(url, parser);
   }
+
 
   
+  inline auto make_diabetes_dataset() {
+    std::string url("https://www4.stat.ncsu.edu/~boos/var.select/diabetes.tab.txt");
+    auto output_of_label = [](int label) {
+      return label;
+    };
+    
+    auto parser = gaml::datasets::make_csv_parser<10, int>(' ', 1, output_of_label);
+    return gaml::datasets::make_downloaded_dataset(url, parser);
+  } 
 }
