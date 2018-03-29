@@ -58,18 +58,19 @@ namespace gaml {
   namespace risk {
     namespace bootstrap {
 
-      template<typename LOSS>
+      template<typename LOSS, typename RANDOM_DEVICE>
       class LeaveOneOut {
       private:
 
 	LOSS loss;
 	unsigned int nb_sets;
 	bool verbose;
-
+	RANDOM_DEVICE& rd;
+	
       public:
 
-	LeaveOneOut(const LOSS& l, unsigned int nb_bootstrapped_sets, bool verbosity) 
-	  : loss(l), nb_sets(nb_bootstrapped_sets), verbose(verbosity) {}
+	LeaveOneOut(const LOSS& l, unsigned int nb_bootstrapped_sets, RANDOM_DEVICE& rd, bool verbosity) 
+	  : loss(l), nb_sets(nb_bootstrapped_sets), verbose(verbosity), rd(rd) {}
 	LeaveOneOut(const LeaveOneOut& other)
 	  : loss(other.loss), nb_sets(other.nb_sets), verbose(other.verbose) {}
 	
@@ -80,7 +81,7 @@ namespace gaml {
 	  unsigned int b;
 
 	  // sets[i] is the ith bootstrapped dataset.
-	  std::vector< decltype(gaml::bootstrap(begin,end,size)) > sets;
+	  std::vector< decltype(gaml::bootstrap(begin,end,size,rd)) > sets;
 
 	  // f[i] is the predictor associated to set i.
 	  std::vector<typename Learner::predictor_type> f;
@@ -94,7 +95,7 @@ namespace gaml {
 		      << " bootstrapped sets." << std::endl;
 
 	  auto set_out = std::back_inserter(sets);
-	  for(b = 0; b < nb_sets; ++b) *(set_out++) = gaml::bootstrap(begin,end,size);
+	  for(b = 0; b < nb_sets; ++b) *(set_out++) = gaml::bootstrap(begin,end,size,rd);
 	  
 	  if(verbose) {
 	    for(b = 0; b < nb_sets; ++b) {
@@ -189,26 +190,26 @@ namespace gaml {
       };
       
       
-      template<typename LOSS>
-      LeaveOneOut<LOSS> leave_one_out(const LOSS& l, unsigned int nb_sets, bool verbosity) {
-	return LeaveOneOut<LOSS>(l,nb_sets,verbosity);
+      template<typename LOSS, typename RANDOM_DEVICE>
+      LeaveOneOut<LOSS, RANDOM_DEVICE> leave_one_out(const LOSS& l, unsigned int nb_sets, RANDOM_DEVICE& rd, bool verbosity) {
+	return LeaveOneOut<LOSS, RANDOM_DEVICE>(l,nb_sets, rd, verbosity);
       }
       
 
-      template<typename LOSS>
+      template<typename LOSS, typename RANDOM_DEVICE>
       class R632 {
       private: 
 
       	LOSS loss;
       	unsigned int nb_sets;
       	bool verbose;
+	RANDOM_DEVICE& rd;
 
       public:
 
-      	R632(const LOSS& l, unsigned int nb_bootstrapped_sets, bool verbosity) 
-      	  : loss(l), nb_sets(nb_bootstrapped_sets), verbose(verbosity) {}
-      	R632(const R632& other)
-      	  : loss(other.loss), nb_sets(other.nb_sets), verbose(other.verbose) {}
+      	R632(const LOSS& l, unsigned int nb_bootstrapped_sets, RANDOM_DEVICE& rd, bool verbosity) 
+      	  : loss(l), nb_sets(nb_bootstrapped_sets), verbose(verbosity), rd(rd) {}
+      	R632(const R632& other) = default;
 	
       	template<typename Learner, typename DataIterator, typename InputOf, typename OutputOf> 
       	double operator()(const Learner& learner,const DataIterator& begin, const DataIterator& end,
@@ -216,7 +217,7 @@ namespace gaml {
 	  auto predictor = learner(begin,end,inputOf,outputOf);
       	  auto empirical = gaml::risk::empirical(loss);
       	  double Rn      = empirical(predictor,begin,end,inputOf,outputOf);
-      	  auto estimated = gaml::risk::bootstrap::leave_one_out(loss,nb_sets,false);
+      	  auto estimated = gaml::risk::bootstrap::leave_one_out(loss,nb_sets,rd,false);
       	  double R       = estimated(learner,begin,end,inputOf,outputOf);
       	  if(verbose)
       	    std::cout << "Empirical risk    : Rn     : " << Rn << std::endl
@@ -226,26 +227,26 @@ namespace gaml {
       	}
       };
 
-      template<typename LOSS>
-      R632<LOSS> r632(const LOSS& l, unsigned int nb_sets, bool verbosity) {
-      	return R632<LOSS>(l,nb_sets,verbosity);
+      template<typename LOSS, typename RANDOM_DEVICE>
+      R632<LOSS, RANDOM_DEVICE> r632(const LOSS& l, unsigned int nb_sets, RANDOM_DEVICE& rd, bool verbosity) {
+      	return R632<LOSS, RANDOM_DEVICE>(l,nb_sets, rd, verbosity);
       }
 
 
-      template<typename LOSS>
+      template<typename LOSS, typename RANDOM_DEVICE>
       class R632Plus {
       private:
 
       	LOSS loss;
       	unsigned int nb_sets;
       	bool verbose;
+	RANDOM_DEVICE& rd;
 
       public:
 
-      	R632Plus(const LOSS& l, unsigned int nb_bootstrapped_sets, bool verbosity) 
-      	  : loss(l), nb_sets(nb_bootstrapped_sets), verbose(verbosity) {}
-      	R632Plus(const R632Plus& other)
-      	  : loss(other.loss), nb_sets(other.nb_sets), verbose(other.verbose) {}
+      	R632Plus(const LOSS& l, unsigned int nb_bootstrapped_sets, RANDOM_DEVICE& rd, bool verbosity) 
+      	  : loss(l), nb_sets(nb_bootstrapped_sets), verbose(verbosity), rd(rd) {}
+      	R632Plus(const R632Plus& other) = default;
 	
       	template<typename Learner, typename DataIterator, typename InputOf, typename OutputOf> 
       	double operator()(const Learner& learner,const DataIterator& begin, const DataIterator& end,
@@ -253,7 +254,7 @@ namespace gaml {
 	  auto predictor = learner(begin,end,inputOf,outputOf);
       	  auto empirical = gaml::risk::empirical(loss);
       	  double Rn      = empirical(predictor,begin,end,inputOf,outputOf);
-      	  auto estimated = gaml::risk::bootstrap::leave_one_out(loss,nb_sets,false);
+      	  auto estimated = gaml::risk::bootstrap::leave_one_out(loss,nb_sets,rd,false);
       	  double R       = estimated(learner,begin,end,inputOf,outputOf);
       	  unsigned int N = end-begin;
       
@@ -285,9 +286,9 @@ namespace gaml {
       	}
       };
 
-      template<typename LOSS>
-      R632Plus<LOSS> r632plus(const LOSS& l, unsigned int nb_sets, bool verbosity) {
-      	return R632Plus<LOSS>(l,nb_sets,verbosity);
+      template<typename LOSS, typename RANDOM_DEVICE>
+      R632Plus<LOSS, RANDOM_DEVICE> r632plus(const LOSS& l, unsigned int nb_sets, RANDOM_DEVICE& rd, bool verbosity) {
+      	return R632Plus<LOSS, RANDOM_DEVICE>(l,nb_sets, rd, verbosity);
       }
     }
   }
