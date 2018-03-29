@@ -169,7 +169,7 @@ namespace gaml {
 
     public:
 
-      inline DownloadedDataset(std::string url,
+      DownloadedDataset(std::string url,
 		      const PARSER& parser) {
 	std::string filename = download(url);
 	
@@ -181,19 +181,19 @@ namespace gaml {
 	ifile.close();
       }
       
-      inline auto begin() const {
+      auto begin() const {
 	return dataset.begin();
       }
 
-      inline auto end() const {
+      auto end() const {
 	return dataset.end();
       }
 
-      inline const input_type& input_of_data(const data_type& data) const {
+      const input_type& input_of_data(const data_type& data) const {
 	return data.first;
       }
 
-      inline const output_type& output_of_data(const data_type& data) const {
+      const output_type& output_of_data(const data_type& data) const {
 	return data.second;
       }      
     };
