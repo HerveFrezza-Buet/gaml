@@ -138,6 +138,7 @@ namespace gaml {
       mutable projected_input_type projectedInput_;
       internal_predictor_type projectedPredictor_;
 
+      WrappingPredictor(WrappingPredictor&&) = default;
       WrappingPredictor(const AttrIterator& begin, const AttrIterator& end,
 			const Predictor& projectedPredictor) :
 	projectedInput_(begin, end), projectedPredictor_(

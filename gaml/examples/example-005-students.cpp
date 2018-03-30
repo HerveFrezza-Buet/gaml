@@ -256,7 +256,7 @@ int main(int argc, char* argv[]) {
   std::cout << " Done." << std::endl;
 
   // In order to reduce the file accesses, let us implement a cache.
-  auto cached_dataset = gaml::cache(dataset.begin(),dataset.end(), CACHE_PAGE_SIZE, CACHE_NB_PAGES); 
+  auto cached_dataset = gaml::cache(dataset.begin(),dataset.end(), CACHE_PAGE_SIZE, CACHE_NB_PAGES);
 
   // Let us use learn from the whole dataset.
   MetaLearner learner;
@@ -265,6 +265,7 @@ int main(int argc, char* argv[]) {
   Report test_report;
   std::uniform_real_distribution<double> uniform(0, 1);
   for(auto& mark : test_report) mark = uniform(gen);
+
   std::cout << std::endl << "Report " << test_report << " will be scored " << pred(test_report) << std::endl << std::endl;
 
   // Let us cross-validate the variable selection algorithm
