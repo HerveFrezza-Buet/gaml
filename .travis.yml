@@ -30,13 +30,13 @@ addons:
     packages:
     - g++-7
     - gcc-7
+    - libgsl-dev
 
 #env:
 #  - CC=gcc-7 CXX=g++-7  # For some reasons this is overwritten
 compiler:
   - gcc
   - clang
-
 
 
 install:
