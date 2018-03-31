@@ -31,8 +31,8 @@ addons:
     - g++-7
     - gcc-7
 
-env:
-  - CC=gcc-7 CXX=g++-7
+#env:
+#  - CC=gcc-7 CXX=g++-7  # For some reasons this is overwritten
 compiler:
   - gcc
   - clang
@@ -40,6 +40,7 @@ compiler:
 
 
 install:
+  - export CC=gcc-7 CXX=g++-7
 
 script:
   - echo "Building gaml"
