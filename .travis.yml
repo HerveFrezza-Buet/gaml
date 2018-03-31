@@ -23,12 +23,14 @@ before_install:
 install:
 
 script:
+  - echo "Building gaml"
   - cd gaml
   - mkdir build
   - cd build
   - cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   - sudo make install
   - cd ../..
+  - echo "Building gaml-linear"
   - cd gaml-linear
   - mkdir build
   - cd build
