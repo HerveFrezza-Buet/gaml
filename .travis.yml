@@ -1,24 +1,44 @@
 language: cpp
 
-matrix:
-  include:
-    # works on Precise and Trusty
-    - os: linux
-      sudo: required
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-7
-      env:
-        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
-      compiler:
-        - gcc
-	- clang
+# matrix:
+#   include:
+#     # works on Precise and Trusty
+#     - os: linux
+#       sudo: required
+#       addons:
+#         apt:
+#           sources:
+#             - ubuntu-toolchain-r-test
+#           packages:
+#             - g++-7
+#       env:
+#         - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+#       compiler:
+#         - gcc
+# 	- clang
 
-before_install:
-    - eval "${MATRIX_EVAL}"
+# before_install:
+#     - eval "${MATRIX_EVAL}"
+
+
+os: linux
+sudo: required
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-7
+    - gcc-7
+
+env:
+  - CC=gcc-7
+  - CXX=g++-7
+compiler:
+  - gcc
+  - clang
+
+
 
 install:
 
