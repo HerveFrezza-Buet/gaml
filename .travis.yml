@@ -23,6 +23,7 @@ language: cpp
 
 os: linux
 sudo: required
+dist: trusty
 addons:
   apt:
     sources:
@@ -45,15 +46,15 @@ install:
 script:
   - echo "Building gaml"
   - cd gaml
-  - mkdir build
+  - mkdir -p build
   - cd build
   - cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-  - sudo make install
+  - sudo make install -j2
   - cd ../..
   - echo "Building gaml-linear"
   - cd gaml-linear
-  - mkdir build
+  - mkdir -p build
   - cd build
   - cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-  - sudo make install
+  - sudo make install -j2
   - cd ../..
