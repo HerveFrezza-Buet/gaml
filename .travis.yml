@@ -95,7 +95,7 @@ install:
     && sudo make install -j$NB_JOBS       
     && cd ../..
   - >
-    echo "Building gaml-libsvm
+    echo "Building gaml-libsvm"
     && cd gaml-libsvm 
     && mkdir -p build
     && cd build
@@ -107,3 +107,11 @@ install:
 script:
   - echo "That's all folks for now"
   - echo "we should execute every provided example"
+  - echo "Testing gaml"
+  - >
+    cd gaml/build
+    && ./examples/gaml-example-000-000-overview
+    && ./examples/gaml-example-001-001-handcrafted-parser
+    && ./examples/gaml-example-001-001-JSON-parser
+    && cd ../..
+  - echo "Done"
