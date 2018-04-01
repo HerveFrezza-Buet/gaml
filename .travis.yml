@@ -56,52 +56,52 @@ install:
   - cd easykf && mkdir -p build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=/usr && sudo make install -j$NB_JOBS && cd ../..
   - >
     echo "Building gaml"                  
-    cd gaml                              
-    mkdir -p build                       
-    cd build                             
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-    sudo make install -j$NB_JOBS
-    cd ../..
+    && cd gaml                              
+    && mkdir -p build                       
+    && cd build                             
+    && cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+    && sudo make install -j$NB_JOBS
+    && cd ../..
   - >
     echo "Building gaml-linear"
-    cd gaml-linear                      
-    mkdir -p build                      
-    cd build                           
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-    sudo make install -j$NB_JOBS              
-    cd ../..
+    && cd gaml-linear                      
+    && mkdir -p build                      
+    && cd build                           
+    && cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+    && sudo make install -j$NB_JOBS              
+    && cd ../..
   - >
     echo "Building gaml-xtree"
-    cd gaml-xtree                    
-    mkdir -p build                    
-    cd build				
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-    sudo make install -j$NB_JOBS
-    cd ../..
+    && cd gaml-xtree                    
+    && mkdir -p build                    
+    && cd build				
+    && cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+    && sudo make install -j$NB_JOBS
+    && cd ../..
   - >
     echo "Building gaml-kvq"
-    cd gaml-kvq
-    mkdir -p build
-    cd build  
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-    sudo make install -j$NB_JOBS   
-    cd ../..
+    && cd gaml-kvq
+    && mkdir -p build
+    && cd build  
+    && cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+    && sudo make install -j$NB_JOBS   
+    && cd ../..
   - >
     echo "Building gaml-mlp"
-    cd gaml-mlp
-    mkdir -p build
-    cd build               
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-    sudo make install -j$NB_JOBS       
-    cd ../..
+    && cd gaml-mlp
+    && mkdir -p build
+    && cd build               
+    && cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+    && sudo make install -j$NB_JOBS       
+    && cd ../..
   - >
     echo "Building gaml-libsvm
-    cd gaml-libsvm 
-    mkdir -p build
-    cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-    sudo make install -j$NB_JOBS  
-    cd ../..
+    && cd gaml-libsvm 
+    && mkdir -p build
+    && cd build
+    && cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+    && sudo make install -j$NB_JOBS  
+    && cd ../..
 
 script:
   - echo "That's all folks for now"
