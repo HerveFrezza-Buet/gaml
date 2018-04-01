@@ -106,33 +106,29 @@ install:
 
 script:
   - echo "Running all the examples"
-  - cd gaml/travis
-  - ls
-  - pwd
-  - bash ./test.sh
   - >
     echo "Testing gaml"
-    cd gaml/travis
+    && cd gaml/travis
     && bash ./test.sh
     && cd ../..
   - >
     echo "Testing gaml-libsvm"
-    cd gaml-libsvm/travis
+    && cd gaml-libsvm/travis
     && bash ./test.sh
     && cd ../..  
   - >
     echo "Testing gaml-linear"
-    cd gaml-linear/travis
+    && cd gaml-linear/travis
     && bash ./test.sh
     && cd ../..  
   - >
     echo "Testing gaml-xtree"
-    cd gaml-xtree/travis
+    && cd gaml-xtree/travis
     && bash ./test.sh
     && cd ../..  
   - >
     echo "Testing gaml-mlp"
-    cd gaml-mlp/travis
+    && cd gaml-mlp/travis
     && bash ./test.sh
     && cd ../..  
   - echo "Done"

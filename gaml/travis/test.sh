@@ -25,4 +25,5 @@
 # These two examples request a choice in std::cin
 #../build/examples/example-004-002-filter-based-selection
 #../build/examples/example-004-003-wrapper-based-selection
-../build/examples/example-005-students
+../build/examples/example-005-students generate
+../build/examples/example-005-students run
