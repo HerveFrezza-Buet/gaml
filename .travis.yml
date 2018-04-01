@@ -48,6 +48,7 @@ install:
   - cd libsvm && make lib
   - sudo mkdir /usr/include/libsvm && sudo cp svm.h /usr/include/libsvm/
   - sudo cp libsvm.so /usr/lib/
+  - cd ..
   - git clone https://github.com/HerveFrezza-Buet/vq2.git # Dependency for gaml-kvq
   - cd vq2 && mkdir -p build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=/usr && sudo make install -j$NB_JOBS && cd ../..
   - git clone https://github.com/jeremyfix/easykf.git # Dependencies for gaml-mlp
