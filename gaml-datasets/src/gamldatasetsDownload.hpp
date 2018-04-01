@@ -131,15 +131,16 @@ namespace gaml {
       
       void read(std::istream& is, value_type & data) const {
 	char sep;
+	
 	for(auto& v: data.first) {
-	  if(expected_sep == ' ')
-	    is >> v ;
-	  else {
-	    is >> v >> sep;
+	  is >> v ;
+	  if(expected_sep != ' ') {
+	    is >> sep;
 	    if(sep != expected_sep) 
 	      throw std::runtime_error("I was expecting the separator '" + std::string(1, expected_sep) + "' but got '" + std::string(1, sep) + "'");
 	  }
 	}
+	 
 	LABEL_TYPE l;
 	is >> l;
 	data.second = output_of_label(l);
