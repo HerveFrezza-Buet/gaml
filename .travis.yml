@@ -109,26 +109,26 @@ script:
   - >
     echo "Testing gaml"
     cd gaml/travis
-    && sh test.sh
+    && bash test.sh
     && cd ../..
   - >
     echo "Testing gaml-libsvm"
     cd gaml-libsvm/travis
-    && sh test.sh
+    && bash test.sh
     && cd ../..  
   - >
     echo "Testing gaml-linear"
     cd gaml-linear/travis
-    && sh test.sh
+    && bash test.sh
     && cd ../..  
   - >
     echo "Testing gaml-xtree"
     cd gaml-xtree/travis
-    && sh test.sh
+    && bash test.sh
     && cd ../..  
   - >
     echo "Testing gaml-mlp"
     cd gaml-mlp/travis
-    && sh test.sh
+    && bash test.sh
     && cd ../..  
   - echo "Done"
