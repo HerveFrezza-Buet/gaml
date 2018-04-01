@@ -102,6 +102,8 @@ install:
     && cmake .. -DCMAKE_INSTALL_PREFIX=/usr
     && sudo make install -j$NB_JOBS  
     && cd ../..
+  - echo "Installation finished"
 
 script:
   - echo "That's all folks for now"
+  - echo "we should execute every provided example"
