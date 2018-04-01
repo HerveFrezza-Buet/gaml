@@ -25,7 +25,7 @@
  *
  */
 
-#include <gamlDimensions.hpp>
+#include <gamlProjection.hpp>
 #include <vector>
 #include <algorithm>
 #include <limits>

@@ -30,7 +30,6 @@
 #include <gamlBootstrap.hpp>
 #include <gamlCache.hpp>
 #include <gamlConfusion.hpp>
-#include <gamlDimensions.hpp>
 #include <gamlException.hpp>
 #include <gamlFilter.hpp>
 #include <gamlFilters.hpp>
@@ -41,6 +40,7 @@
 #include <gamlMultiClass.hpp>
 #include <gamlMultiDim.hpp>
 #include <gamlPartition.hpp>
+#include <gamlProjection.hpp>
 #include <gamlScore.hpp>
 #include <gamlSearch.hpp>
 #include <gamlSpan.hpp>
