@@ -32,6 +32,7 @@ addons:
     - g++-7
     - gcc-7
     - libgsl0-dev # on trusty
+    - libboost-python-dev # for easykf
 
 #env:
 #  - CC=gcc-7 CXX=g++-7  # For some reasons this is overwritten
