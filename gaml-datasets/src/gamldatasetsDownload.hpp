@@ -76,22 +76,28 @@ namespace gaml {
       return outfilename;
     }
 
-    template<int NB_INPUT_ATTRIBUTES,
-	     typename LABEL_TYPE,
-	     typename OUTPUT_OF_LABEL>
+    template<typename INPUT,
+	     typename OUTPUT,
+	     typename PARSE_FIELD>
     class CSVParser : public gaml::BasicParser {
     private:
       char expected_sep;
       unsigned int skiprows;
-      OUTPUT_OF_LABEL output_of_label;
+      unsigned int nb_fields;
+      PARSE_FIELD parse_field;
     public:
-      using input_type = std::array<double, NB_INPUT_ATTRIBUTES>;
-      using output_type = std::invoke_result_t<OUTPUT_OF_LABEL, LABEL_TYPE>;
+      using input_type = INPUT;
+      using output_type = OUTPUT;
       using value_type = std::pair<input_type, output_type>;
 
       
-      CSVParser(char expected_sep, unsigned int skiprows, const OUTPUT_OF_LABEL& output_of_label):
-	gaml::BasicParser(), expected_sep(expected_sep), skiprows(skiprows), output_of_label(output_of_label) {}
+      CSVParser(char expected_sep,
+		unsigned int skiprows, unsigned int nb_fields,
+		const PARSE_FIELD& parse_field):
+	gaml::BasicParser(),
+	expected_sep(expected_sep),
+	skiprows(skiprows), nb_fields(nb_fields),
+	parse_field(parse_field) {}
       
       void writeBegin(std::ostream& os) const {
 	// Nope
@@ -131,28 +137,25 @@ namespace gaml {
       
       void read(std::istream& is, value_type & data) const {
 	char sep;
-	for(auto& v: data.first) {
-	  if(expected_sep == ' ')
-	    is >> v ;
-	  else {
-	    is >> v >> sep;
+	for(unsigned int i = 0 ; i < nb_fields; ++i) {
+	  parse_field(is, i, data);
+	  if(expected_sep != ' ' && ((i+1) != nb_fields)) { 
+	    is >> sep;
 	    if(sep != expected_sep) 
 	      throw std::runtime_error("I was expecting the separator '" + std::string(1, expected_sep) + "' but got '" + std::string(1, sep) + "'");
 	  }
 	}
-	LABEL_TYPE l;
-	is >> l;
-	data.second = output_of_label(l);
       }
     };
 
-    template<int NB_INPUT_ATTRIBUTES,
-	     typename LABEL_TYPE,
-	     typename OUTPUT_OF_LABEL>
-    CSVParser<NB_INPUT_ATTRIBUTES, LABEL_TYPE, OUTPUT_OF_LABEL> make_csv_parser(char expected_sep,
-										unsigned int skip_rows,
-										const OUTPUT_OF_LABEL& output_of_label) {
-      return CSVParser<NB_INPUT_ATTRIBUTES, LABEL_TYPE, OUTPUT_OF_LABEL>(expected_sep, skip_rows, output_of_label);
+    template<typename INPUT,
+	     typename OUTPUT,
+	     typename PARSE_FIELD>
+    CSVParser<INPUT, OUTPUT, PARSE_FIELD> make_csv_parser(char expected_sep,
+							  unsigned int skip_rows,
+							  unsigned int nb_fields,
+							  const PARSE_FIELD& parse_field) {
+      return CSVParser<INPUT, OUTPUT, PARSE_FIELD>(expected_sep, skip_rows, nb_fields, parse_field);
     }
     
     
@@ -208,26 +211,40 @@ namespace gaml {
 
   inline auto make_iris_dataset() {
     std::string url("https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data");
-    auto output_of_label = [](std::string label) {
-      if(label == std::string("Iris-setosa"))
-	  return 0;
-      else if(label == std::string("Iris-versicolor"))
-	return 1;
-      else
-	return 2;
+    // Fields : a b c d label
+    using input_type = std::array<double, 4>;
+    using output_type = int;
+    auto parse_field = [](std::istream& is, unsigned int field_idx, std::pair<input_type, output_type>& data) {
+      if(field_idx < 4) 
+	is >> data.first[field_idx];
+      else if(field_idx == 4) {
+	std::string label;
+	is >> label;
+	if(label == std::string("Iris-setosa"))
+	  data.second = 0;
+	else if(label == std::string("Iris-versicolor"))
+	  data.second = 1;
+	else
+	  data.second = 2;
+      }
     };
     
-    auto parser = gaml::datasets::make_csv_parser<4, std::string>(',', 0, output_of_label);
+    auto parser = gaml::datasets::make_csv_parser<input_type, output_type>(',', 0, 5, parse_field);
     return gaml::datasets::make_downloaded_dataset(url, parser);
   }
 
   inline auto make_diabetes_dataset() {
     std::string url("https://www4.stat.ncsu.edu/~boos/var.select/diabetes.tab.txt");
-    auto output_of_label = [](int label) {
-      return label;
+    using input_type = std::array<double, 10>;
+    using output_type = int;
+    auto parse_field = [](std::istream& is, unsigned int field_idx, std::pair<input_type, output_type>& data) {
+      if(field_idx < 10) 
+	is >> data.first[field_idx];
+      else
+	is >> data.second;
     };
     
-    auto parser = gaml::datasets::make_csv_parser<10, int>(' ', 1, output_of_label);
+    auto parser = gaml::datasets::make_csv_parser<input_type, output_type>(' ', 1, 11, parse_field);
     return gaml::datasets::make_downloaded_dataset(url, parser);
   }
 
@@ -248,11 +265,16 @@ namespace gaml {
   
  inline auto make_boston_housing_dataset() {
    std::string url("https://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data");
-     auto output_of_label = [](double label) {
-     return label;
+   using input_type = std::array<double, 13>;
+   using output_type = double;
+   auto parse_field = [](std::istream& is, unsigned int field_idx, std::pair<input_type, output_type>& data) {
+     if(field_idx < 13) 
+       is >> data.first[field_idx];
+     else
+       is >> data.second;
    };
    
-   auto parser = gaml::datasets::make_csv_parser<13, double>(' ', 0, output_of_label);
+   auto parser = gaml::datasets::make_csv_parser<input_type, output_type>(' ', 0, 14, parse_field); 
    return gaml::datasets::make_downloaded_dataset(url, parser);
  }
   
