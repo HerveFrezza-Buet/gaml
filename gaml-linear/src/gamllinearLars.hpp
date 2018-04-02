@@ -201,7 +201,7 @@ namespace gaml {
 	    phitphi = gsl_matrix_alloc(active_dim.size(), active_dim.size());
 	    current_dim = 0;
 	    for(auto act: active_dim) { 
-	      for(unsigned int si = 0 ; si < nb_samples; ++si)
+	      for(int si = 0 ; si < nb_samples; ++si)
 		gsl_matrix_set(Phi_act, si, current_dim, gsl_matrix_get(Phi, si, act));
 	      current_dim++;
 	    }
@@ -415,7 +415,7 @@ namespace gaml {
 			       std::set<unsigned int>& active_dim) const {
 	  int nb_samples = Phi->size1;
 	  double risk = 0.0;
-	  for(unsigned int i = 0 ; i < nb_samples; ++i) {
+	  for(int i = 0 ; i < nb_samples; ++i) {
 	    double ypred = 0.0;
 	    for(auto di: active_dim) 
 	      ypred += gsl_matrix_get(Phi, i, di) * w[di];

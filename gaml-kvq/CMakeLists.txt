@@ -26,7 +26,7 @@ set(PKG_CONFIG_DEPENDS "gaml vq2")
 #######################################
 
 # cflags added by the package
-SET(PROJECT_CFLAGS "-Wall -std=c++14")
+SET(PROJECT_CFLAGS "-Wall")
 
 # cflags added by the pkg-config dependencies contains ';' as separator. This is a fix.
 string(REPLACE ";" " " GAML_CFLAGS "${GAML_CFLAGS}")
@@ -44,7 +44,7 @@ SET(PROJECT_LDFLAGS "-lm")
 
 # Gathering of all flags
 # (e.g. for compiling examples)
-SET(PROJECT_ALL_CFLAGS  "${PROJECT_CFLAGS} ${GAML_CFLAGS} ${VQ2_CFLAGS}")
+SET(PROJECT_ALL_CFLAGS  "${PROJECT_CFLAGS} ${VQ2_CFLAGS} ${GAML_CFLAGS} ")
 SET(PROJECT_ALL_LDFLAGS "${PROJECT_LIBS} ${PROJECT_LDFLAGS} -L${CMAKE_BINARY_DIR}/src ${GAML_LDFLAGS} ${VQ2_LDFLAGS}")
 
 # Gathering of all flags from dependancies flags
