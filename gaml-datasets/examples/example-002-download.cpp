@@ -31,7 +31,13 @@ int main(int argc, char* argv[]) {
     auto dataset = gaml::make_diabetes_dataset();
     print_dataset(dataset, 2);
   }
-
+  
+  {
+    std::cout << std::string(100, '*') << "Wine classification Dataset" << std::endl;
+    auto dataset = gaml::make_wine_dataset();
+    print_dataset(dataset, 2);
+  }
+  
   {
     std::cout << std::string(100, '*') << "Boston housing regression Dataset" << std::endl;
     auto dataset = gaml::make_boston_housing_dataset();
