@@ -33,6 +33,7 @@ addons:
     - gcc-7
     - libgsl0-dev # on trusty
     - libboost-python-dev # for easykf
+    - libcurl3 # for gaml-datasets
 
 #env:
 #  - CC=gcc-7 CXX=g++-7  # For some reasons this is overwritten
@@ -102,6 +103,14 @@ install:
     && cmake .. -DCMAKE_INSTALL_PREFIX=/usr
     && sudo make install -j$NB_JOBS  
     && cd ../..
+  - >
+    echo "Building gaml-datasets"
+    && cd gaml-datasets 
+    && mkdir -p build
+    && cd build
+    && cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+    && sudo make install -j$NB_JOBS  
+    && cd ../..
   - echo "Installation finished"
 
 script:
@@ -129,6 +138,11 @@ script:
   - >
     echo "Testing gaml-mlp"
     && cd gaml-mlp/travis
+    && bash ./test.sh
+    && cd ../..  
+  - >
+    echo "Testing gaml-datasets"
+    && cd gaml-datasets/travis
     && bash ./test.sh
     && cd ../..  
   - echo "Done"
