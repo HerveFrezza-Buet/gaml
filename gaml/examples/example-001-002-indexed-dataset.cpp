@@ -61,11 +61,12 @@ int main(int argc, char** argv) {
     // This displays customers on the standard output.
     auto output_stream = gaml::make_output_data_stream(std::cout, parser);
 
+
     // Now we can set up an indexed dataset easily...
     auto indexed = gaml::make_indexed_dataset(parser, 
 					      CUSTOMERS_DATA_FILE, 
 					      CUSTOMERS_INDEX_FILE);
-
+    
     // ... and have an efficient random access to the elements in the file.
     {
       const auto& customer_3 = indexed[3];

@@ -29,6 +29,7 @@
 #include <vector>
 #include <iterator>
 #include <algorithm>
+#include <optional>
 
 namespace gaml {
   
@@ -38,36 +39,31 @@ namespace gaml {
   class CacheIterator 
     : public std::iterator<std::random_access_iterator_tag,
 			   typename std::iterator_traits<Iterator>::value_type>{
-  private:
+  public:
+    typedef typename std::iterator_traits<Iterator>::value_type  value_type;
+    typedef int                                                  index_type;
+    typedef index_type                                           difference_type;
 
-    typedef int index_type;
+  private:
 
     index_type idx;
     Cache<Iterator>* cache;
+    // mutable std::optional<value_type> value;
     friend class Cache<Iterator>;
 
     CacheIterator(index_type index, Cache<Iterator>* c) 
-      : idx(index), cache(c) {}
+      : idx(index), cache(c) /*, value() */ {}
 
-  public:
-    typedef typename std::iterator_traits<Iterator>::value_type  value_type;
-    typedef index_type                                           difference_type;
+  public:                                  
 
-    CacheIterator(void) : idx(), cache((Cache<Iterator>*)0) {}
-    CacheIterator(const CacheIterator& cp) : idx(cp.idx), cache(cp.cache) {}
+    CacheIterator(void)                               = default;
+    CacheIterator(const CacheIterator& cp)            = default;
+    CacheIterator& operator=(const CacheIterator& cp) = default;  
 
-    CacheIterator& operator=(const CacheIterator& cp)   {
-      if(this != &cp) {
-	idx    = cp.idx;
-	cache = cp.cache;
-      }
-      return *this;
-    }
-
-    CacheIterator& operator++()                       {++idx; return *this;}
-    CacheIterator& operator--()                       {--idx; return *this;}
-    CacheIterator& operator+=(difference_type diff)   {idx+=diff; return *this;}
-    CacheIterator& operator-=(int diff)               {idx-=diff; return *this;}
+    CacheIterator& operator++()                       {++idx;     /* value.reset();*/ return *this;}
+    CacheIterator& operator--()                       {--idx;     /* value.reset();*/ return *this;}
+    CacheIterator& operator+=(difference_type diff)   {idx+=diff; /* value.reset();*/ return *this;}
+    CacheIterator& operator-=(int diff)               {idx-=diff; /* value.reset();*/ return *this;}
 
     CacheIterator  operator++(int) {
       CacheIterator res = *this;
@@ -81,14 +77,19 @@ namespace gaml {
       return res;
     }
 
-    difference_type   operator-(const CacheIterator& i) const {return idx - i.idx;}
-    CacheIterator     operator+(difference_type i) const {return CacheIterator(idx+i,cache);}
-    CacheIterator     operator-(difference_type i) const {return CacheIterator(idx-i,cache);}
-    const value_type& operator*() const {return cache->at(idx);}
+    difference_type   operator- (const CacheIterator& i) const {return idx - i.idx;}
+    CacheIterator     operator+ (difference_type i)      const {return CacheIterator(idx+i,cache);}
+    CacheIterator     operator- (difference_type i)      const {return CacheIterator(idx-i,cache);}
     bool              operator==(const CacheIterator& i) const {return cache == i.cache && idx == i.idx;}
     bool              operator!=(const CacheIterator& i) const {return cache != i.cache || idx != i.idx;}
 
 
+    const value_type& operator*() const {
+      /* if(!value)
+	value = cache->at(idx);
+	return value.value(); */
+      return cache->at(idx);
+    }
   };
 
 
@@ -154,9 +155,9 @@ namespace gaml {
       for(page_not_found=true,pi=pages.begin(),pe=pages.end();
 	  pi != pe;
 	  (*pi).noHit(),++pi)
-	if((*pi).has(i)) {
+	if(page_not_found && (*pi).has(i)) {
 	  page_not_found = false;
-	  pfound = pi;
+	  pfound = pi; // Do not break here, since noHit has to be called.
 	}
 
 #ifdef mlDEBUG_CACHE

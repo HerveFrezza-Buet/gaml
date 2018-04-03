@@ -1,9 +1,8 @@
 #include <gaml.hpp>
 #include <iostream>
-#include <ctime>
-#include <cstdlib>
 #include <vector>
 #include <utility>
+#include <random>
 
 typedef unsigned int Label;
 typedef std::vector<Label> Basis;
@@ -12,11 +11,15 @@ Label output_of(const Label& l) {return l;}
 
 #define BASIS_SIZE 50
 int main(int argc, char* argv[]) {
+  
   // random seed initialization
-  std::srand(std::time(0));
+  std::random_device rd;
+  std::mt19937 gen(rd());
 
+  
+  std::uniform_int_distribution<unsigned int> uniform(0,9);
   Basis basis(BASIS_SIZE);
-  for(auto& data : basis) data = gaml::random::uniform((unsigned int)10);
+  for(auto& data : basis) data = uniform(gen);
   
   std::cout << std::endl
 	    << "Basis : ";

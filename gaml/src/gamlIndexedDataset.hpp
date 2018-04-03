@@ -127,7 +127,7 @@ namespace gaml {
       std::streampos position = dataFile_.tellg();
       while(true) {
 	parser_.read(dataFile_, value);
-	if(parser_.readSeparator(dataFile_)) break;
+	if(!parser_.readSeparator(dataFile_)) break;
 	indexFile_.write((const char*) &position, sizeof(position));
 	size_ += 1;
 	position = dataFile_.tellg();

@@ -286,7 +286,7 @@ namespace gaml {
       auto projectedPredictor = learner(begin(), end(), inputOf, outputOf);
       return wrapping_predictor_type(attrBegin_, attrEnd_, projectedPredictor);
     }
-  };
+		    };
 
   template<typename DataIterator, typename AttrIterator, typename InputOf,
 	   typename OutputOf>

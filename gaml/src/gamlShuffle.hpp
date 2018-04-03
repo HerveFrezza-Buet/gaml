@@ -29,24 +29,23 @@
 #include <iterator>
 #include <algorithm>
 #include <gamlTabular.hpp>
-#include <gamlAlgorithms.hpp>
 
 namespace gaml {
     
-  template<typename Iterator>
-  Tabular<Iterator, typename is_secondary_iterator<Iterator>::type> shuffle(const Iterator& begin, const Iterator& end) {
-    auto init = [begin,end](std::vector<tabular_index_type>& indices) -> void {
+  template<typename Iterator, typename RANDOM_DEVICE>
+  Tabular<Iterator, typename is_secondary_iterator<Iterator>::type> shuffle(const Iterator& begin, const Iterator& end, RANDOM_DEVICE& rd) {
+    auto init = [begin,end,&rd](std::vector<tabular_index_type>& indices) -> void {
       unsigned int i=0;
       indices.resize(std::distance(begin,end));
       for(auto& idx : indices) idx = i++;
-      std::shuffle(indices.begin(), indices.end(), gaml::random::gen);
+      std::shuffle(indices.begin(), indices.end(), rd);
     };
     return Tabular<Iterator, typename is_secondary_iterator<Iterator>::type> (begin,init);
   }
     
-  template<typename Iterator>
-  Tabular<Iterator, typename is_secondary_iterator<Iterator>::type> packed_shuffle(const Iterator& begin, const Iterator& end, unsigned int pack_size) {
-    auto init = [begin,end, pack_size](std::vector<tabular_index_type>& indices) -> void {
+  template<typename Iterator, typename RANDOM_DEVICE>
+  Tabular<Iterator, typename is_secondary_iterator<Iterator>::type> packed_shuffle(const Iterator& begin, const Iterator& end, unsigned int pack_size, RANDOM_DEVICE& rd) {
+    auto init = [begin,end, pack_size, &rd](std::vector<tabular_index_type>& indices) -> void {
       unsigned int nb_blocks;
       unsigned int i,j,k;
 
@@ -66,7 +65,7 @@ namespace gaml {
       sizes.resize(nb_blocks);
 
       k = 0; for(auto& b : blocks) b = k++;
-      std::shuffle(blocks.begin(),blocks.end(), gaml::random::gen);
+      std::shuffle(blocks.begin(),blocks.end(), rd);
 
       i = 0; for(auto& idx : idxs) idx = i++;
       
@@ -79,7 +78,7 @@ namespace gaml {
 	begins[k] = i;
 	ends  [k] = j;
 	sizes [k] = j-i;
-	std::shuffle(start+i,start+j, gaml::random::gen);
+	std::shuffle(start+i,start+j, rd);
       }
 
       auto out = indices.begin();

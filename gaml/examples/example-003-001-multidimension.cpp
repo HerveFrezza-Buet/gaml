@@ -1,6 +1,7 @@
 #include <gaml.hpp>
 #include <utility>
 #include <array>
+#include <random>
 
 
 // This example shows how to deal with multi-dimensional output when
@@ -94,17 +95,19 @@ public:
 #define DATA_SIZE 100
 int main(int argc, char* argv[]) {
 
-  // random seed initialization
-  std::srand(std::time(0));
-
   // Database initialization.
+  std::random_device rd;
+  std::mt19937 gen(rd());
+
+  
+  std::uniform_real_distribution<double> uniform(-1, 1);
   DataSet basis(DATA_SIZE);
   int i=0;
   for(auto& data : basis) {
     data.first    = i++;
-    data.second.x = 1 + gaml::random::uniform(-1,1);
-    data.second.y = 2 + gaml::random::uniform(-1,1);
-    data.second.z = 3 + gaml::random::uniform(-1,1);
+    data.second.x = 1 + uniform(rd);
+    data.second.y = 2 + uniform(rd);
+    data.second.z = 3 + uniform(rd);
   }
 
   auto kfold_evaluator = gaml::risk::cross_validation(Loss(), gaml::partition::kfold(6), true);

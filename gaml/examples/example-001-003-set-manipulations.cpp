@@ -2,8 +2,6 @@
 #include <iostream>
 #include <iomanip>
 #include <iterator>
-#include <ctime>
-#include <cstdlib>
 #include <array>
 #include <tuple>
 #include <utility>
@@ -49,7 +47,8 @@ int main(int argc, char* argv[]) {
   std::cout << std::endl << std::endl;
 
   // random seed initialization
-  std::srand(std::time(0));
+  std::random_device rd;
+  std::mt19937 gen(rd());
 
   // Let us build some fake data.
   std::vector<int> data(50);
@@ -99,20 +98,20 @@ int main(int argc, char* argv[]) {
   // The bootstrap consists in taking 20 samples randomly from [begin,
   // begin+10[.
   
-  auto bootstrap = gaml::bootstrap(begin, begin+10, 20);
+  auto bootstrap = gaml::bootstrap(begin, begin+10, 20, gen);
   display("Bootstrap [0, 10]", bootstrap.begin(), bootstrap.end());
   
   // This computes an acces to the elements as if the initial set were
   // shuffled.
   
-  auto shuffle = gaml::shuffle(begin, begin+20);
+  auto shuffle = gaml::shuffle(begin, begin+20, gen);
   display("Shuffle", shuffle.begin(), shuffle.end());
   
   // This performs a shuffle tkat keeps some kind of locality, for
   // memory efficiency reasons. This may be needed if some cache
   // mecanism is involved.
   
-  auto packed_shuffle = gaml::packed_shuffle(begin, begin+45, 10);
+  auto packed_shuffle = gaml::packed_shuffle(begin, begin+45, 10, gen);
   display("Packed shuffle", packed_shuffle.begin(), packed_shuffle.end());
 
   // We can filter the data according to a boolean function. The
@@ -145,7 +144,7 @@ int main(int argc, char* argv[]) {
   // not allow for instantaneous (end-begin) size computation.
   auto sq   = gaml::map     (begin,       begin+20,  [] (int x) -> int  {return x*x;       });
   auto fsq  = gaml::reject  (sq.begin(),  sq.end(),  [] (int i) -> bool {return i % 4 != 0;});
-  auto fsqs = gaml::shuffle (fsq.begin(), fsq.end()                                         );
+  auto fsqs = gaml::shuffle (fsq.begin(), fsq.end(), gen                                    );
   display("Intrication",fsqs.begin(),fsqs.end());
   
   // The following implements a cache. Values within pages are

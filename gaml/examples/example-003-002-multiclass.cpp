@@ -1,5 +1,6 @@
 #include <gaml.hpp>
 #include <cmath>
+#include <random>
 
 
 // Let us use a scorer from this file (read it).
@@ -20,26 +21,31 @@ Y        class_of_label(Y label)       {return label;   } // for the confusion m
 // The oracle
 #define NB_CLASSES          5
 #define NOISE_PROBABILITY   0.01
-Y oracle(const X& x) {
-  if(gaml::random::proba(NOISE_PROBABILITY)) return gaml::random::uniform(NB_CLASSES);
-  else                                       return (Y)(NB_CLASSES*x);
-    
+
+template<typename RANDOM_DEVICE>
+Y oracle(const X& x, RANDOM_DEVICE& rd) {
+  if(std::bernoulli_distribution(NOISE_PROBABILITY)(rd))
+    return std::uniform_int_distribution<Y>(0, NB_CLASSES-1)(rd);
+  else
+    return (Y)(NB_CLASSES*x);
 }
 
 
 int main(int argc, char* argv[]) {
 
   // random seed initialization
-  std::srand(std::time(0));
+  std::random_device rd;
+  std::mt19937 gen(rd());
 
   // Making the dataset
 
   Dataset dataset;
   auto out = std::back_inserter(dataset);
- 
+  
+ std::uniform_real_distribution<double> uniform(0, 1);
   for(unsigned int i=0; i < 1000; ++i) {
-    X x        = gaml::random::uniform(0,1);
-    *(out++)   = {x,oracle(x)};
+    X x        = uniform(gen);
+    *(out++)   = {x,oracle(x, gen)};
   }
 
   // This is an instance of our learning algorithm. It learns a

@@ -50,59 +50,6 @@
 
 namespace gaml {
 
-  namespace random {
-
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    
-    /**
-     * @return a random value in [min,max[
-     */
-    inline double uniform(double min,double max) {
-      std::uniform_real_distribution<> dis(min, max);
-      return dis(gen);
-    }
-
-    /**
-     * @return a random integer in [0,max[
-     */
-    template<typename VALUE,
-	     typename = std::enable_if_t<std::is_integral<VALUE>::value> >
-    inline VALUE uniform(VALUE max) {
-      std::uniform_int_distribution<> dis(0, max-1);
-      return dis(gen);
-    }
-
-    /**
-     * @return a random double in [0,max[
-     */
-    template<typename VALUE,
-	     typename = std::enable_if_t<std::is_floating_point<VALUE>::value> >
-    inline double uniform(double max) {
-      std::uniform_real_distribution<> dis(0, max);
-      return dis(gen);
-    }    
-
-    /**
-     * @param mu : the mean
-     * @param std : the standard deviation
-     * @return a double sampled from a normal distribution of parameters (mu, std)
-     */
-    inline double normal(double mean, double std) {
-      std::normal_distribution<> dis{mean,std};
-      return dis(gen);
-    }
-    
-    /**
-     * @param p in [0,1]
-     * @return true with the probability proba.
-     */
-    inline bool proba(double p) {
-      return gaml::random::uniform(0,1)<p;
-    }
-
-    
-  }
 
   namespace concept {
 
@@ -309,29 +256,28 @@ namespace gaml {
     bool operator!=(const integer& i) const {return j != i.j;}
   };
 
-  /**
-   * Functor
-   */
-  class Average {
-  public:
-    typedef double output_type;
-    template<typename DataIterator,typename ValueOf> 
-    double operator()(const DataIterator& begin, const DataIterator& end, const ValueOf& value_of) const {
-      if(begin == end)
-	throw std::runtime_error("Average called on an empty collection");
+  namespace functor {
+    class average {
+    public:
+      typedef double output_type;
+      template<typename DataIterator,typename ValueOf> 
+      double operator()(const DataIterator& begin, const DataIterator& end, const ValueOf& value_of) const {
+	if(begin == end)
+	  throw std::runtime_error("Average called on an empty collection");
 
-      // std::accumulate does not work... Is there a problem in map iterator définition ?
+	// std::accumulate does not work... Is there a problem in map iterator définition ?
     
-      // auto values = gaml::map(begin,end,value_of);
-      // return (Y)(std::accumulate(values.begin(),values.end(),0)/(double)nb);
+	// auto values = gaml::map(begin,end,value_of);
+	// return (Y)(std::accumulate(values.begin(),values.end(),0)/(double)nb);
 
-      // The version without std::accumulate does not require nb.
-      double sum = 0;
-      unsigned int nb = 0;
-      for(auto it = begin; it != end; ++it, ++nb) sum += (double)(value_of(*it));
-      return sum/(double)nb;
-    }
-  };
+	// The version without std::accumulate does not require nb.
+	double sum = 0;
+	unsigned int nb = 0;
+	for(auto it = begin; it != end; ++it, ++nb) sum += (double)(value_of(*it));
+	return sum/(double)nb;
+      }
+    };
+  }
 
   /**
    * @returns The average of the values in the collection. Error in
@@ -339,32 +285,30 @@ namespace gaml {
    */
   template<typename DataIterator,typename ValueOf> 
   double average(const DataIterator& begin, const DataIterator& end, const ValueOf& value_of) {
-    Average avg;
+    functor::average avg;
     return avg(begin,end,value_of);
   }
 
-
-  /**
-   * Functor
-   */ 
-  class Variance {
-  public:
-    typedef double output_type;
-    template<typename DataIterator,typename ValueOf> 
-    double operator()(const DataIterator& begin, const DataIterator& end, const ValueOf& value_of) const {
-      double n    = 0;
-      double mean = 0;
-      double M2   = 0;
-      for(auto it = begin; it != end; ++it) {
-	double x =  (double)(value_of(*it));
-	double delta = x - mean;
-	mean = mean + delta/(++n);
-	M2 = M2 + delta*(x - mean);
+  namespace functor {
+    class variance {
+    public:
+      typedef double output_type;
+      template<typename DataIterator,typename ValueOf> 
+      double operator()(const DataIterator& begin, const DataIterator& end, const ValueOf& value_of) const {
+	double n    = 0;
+	double mean = 0;
+	double M2   = 0;
+	for(auto it = begin; it != end; ++it) {
+	  double x =  (double)(value_of(*it));
+	  double delta = x - mean;
+	  mean = mean + delta/(++n);
+	  M2 = M2 + delta*(x - mean);
+	}
+	if (n < 2) return 0;
+	return M2/(n - 1);
       }
-      if (n < 2) return 0;
-      return M2/(n - 1);
-    }
-  };
+    };
+  }
 
   /**
    * @returns The variance of the values in the collection. Error in
@@ -372,7 +316,7 @@ namespace gaml {
    */
   template<typename DataIterator,typename ValueOf> 
   double variance(const DataIterator& begin, const DataIterator& end, const ValueOf& value_of) {
-    Variance var;
+    functor::variance var;
     return var(begin,end,value_of);
   }
 
@@ -385,40 +329,39 @@ namespace gaml {
     };
   }
 
-  /**
-   * Functor
-   */ 
-  template<typename VALUE, typename COMP = by_default::LesserThan<VALUE>>
-  class Frequencies {
-  public:
-    template<typename DataIterator, typename ValueOf>
-    std::map<VALUE,double,COMP> operator()(const DataIterator& begin, const DataIterator& end, const ValueOf& value_of) const {
+  namespace functor {
+    template<typename VALUE, typename COMP = by_default::LesserThan<VALUE> > 
+    class frequencies {
+    public:
+      template<typename DataIterator, typename ValueOf>
+      std::map<VALUE,double,COMP> operator()(const DataIterator& begin, const DataIterator& end, const ValueOf& value_of) const {
 
-      if(begin == end)
-	throw std::runtime_error("Frequencies called on an empty collection");
+	if(begin == end)
+	  throw std::runtime_error("Frequencies called on an empty collection");
 
-      std::map<VALUE,double,COMP> frequencies;
-      for(auto it = begin; it != end; ++it) {
-	auto value = value_of(*it);
-	auto mapit = frequencies.find(value);
-	if(mapit == frequencies.end())
-	  frequencies[value] = 1;
-	else
-	  ++(mapit->second);
+	std::map<VALUE,double,COMP> frequencies;
+	for(auto it = begin; it != end; ++it) {
+	  auto value = value_of(*it);
+	  auto mapit = frequencies.find(value);
+	  if(mapit == frequencies.end())
+	    frequencies[value] = 1;
+	  else
+	    ++(mapit->second);
+	}
+
+	double size = (double)(std::distance(begin,end));
+	for(auto& kv : frequencies) kv.second /= size;
+	return frequencies;
       }
-
-      double size = (double)(std::distance(begin,end));
-      for(auto& kv : frequencies) kv.second /= size;
-      return frequencies;
-    }
-  };
+    };
+  }
 
   /**
    * @returns The map of (value,frequency) pairs.
    */
   template<typename VALUE, typename COMP = by_default::LesserThan<VALUE>, typename DataIterator, typename ValueOf> 
   std::map<VALUE,double,COMP> frequencies(const DataIterator& begin, const DataIterator& end, const ValueOf& value_of) {
-    Frequencies<VALUE,COMP> f;
+    functor::frequencies<VALUE,COMP> f;
     return f(begin,end,value_of);
   }
   
@@ -436,18 +379,17 @@ namespace gaml {
   }
   
 
-  /**
-   * Functor
-   */ 
-  template<typename VALUE, typename COMP = by_default::LesserThan<VALUE>>
-  class MostFrequent {
-  public:
-    typedef VALUE output_type;
-    template<typename DataIterator, typename ValueOf>
-    VALUE operator()(const DataIterator& begin, const DataIterator& end, const ValueOf& value_of) const {
-      return (VALUE)(most_frequent(frequencies<VALUE,COMP>(begin,end,value_of)));
-    }
-  };
+  namespace functor {
+    template<typename VALUE, typename COMP = by_default::LesserThan<VALUE>>
+      class most_frequent {
+      public:
+	typedef VALUE output_type;
+	template<typename DataIterator, typename ValueOf>
+	VALUE operator()(const DataIterator& begin, const DataIterator& end, const ValueOf& value_of) const {
+	  return (VALUE)(gaml::most_frequent(gaml::frequencies<VALUE,COMP>(begin,end,value_of)));
+	}
+      };
+  }
 
   /**
    * @returns The (value,frequency) pair of the most frequent value from values in the collection. Error in
@@ -455,33 +397,32 @@ namespace gaml {
    */
   template<typename VALUE, typename COMP = by_default::LesserThan<VALUE>, typename DataIterator, typename ValueOf> 
   VALUE most_frequent(const DataIterator& begin, const DataIterator& end, const ValueOf& value_of) {
-    MostFrequent<VALUE,COMP> mf;
+    functor::most_frequent<VALUE,COMP> mf;
     return mf(begin,end,value_of);
   }
   
 
-  /**
-   * Functor
-   */ 
-  template<typename VALUE>
-  class HighestCumulatedFrequency {
-  public:
-    typedef VALUE output_type;
-    template<typename DataIterator, typename ValueOf>
-    VALUE operator()(const DataIterator& begin, const DataIterator& end, const ValueOf& value_of) const {
-      auto it = begin;
-      auto cumulated_frequencies = value_of(*it);
-      for(++it; it != end; ++it)
-	for(auto& kv : value_of(*it)) {
-	  auto fit = cumulated_frequencies.find(kv.first);
-	  if(fit == cumulated_frequencies.end())
-	    cumulated_frequencies[kv.first] = kv.second;
-	  else
-	    fit->second += kv.second;
-	}
-      return (VALUE)(most_frequent(cumulated_frequencies));
-    }
-  };
+  namespace functor {
+    template<typename VALUE>
+    class highest_cumulated_frequency {
+    public:
+      typedef VALUE output_type;
+      template<typename DataIterator, typename ValueOf>
+      VALUE operator()(const DataIterator& begin, const DataIterator& end, const ValueOf& value_of) const {
+	auto it = begin;
+	auto cumulated_frequencies = value_of(*it);
+	for(++it; it != end; ++it)
+	  for(auto& kv : value_of(*it)) {
+	    auto fit = cumulated_frequencies.find(kv.first);
+	    if(fit == cumulated_frequencies.end())
+	      cumulated_frequencies[kv.first] = kv.second;
+	    else
+	      fit->second += kv.second;
+	  }
+	return (VALUE)(most_frequent(cumulated_frequencies));
+      }
+    };
+  }
 
   /**
    * @param begin,end iterates on a collection of frequencies (i.e label/freq maps).
@@ -489,7 +430,7 @@ namespace gaml {
    */
   template<typename VALUE, typename DataIterator, typename ValueOf> 
   VALUE highest_cumulated_frequency(const DataIterator& begin, const DataIterator& end, const ValueOf& value_of) {
-    HighestCumulatedFrequency<VALUE> hcf;
+    functor::highest_cumulated_frequency<VALUE> hcf;
     return hcf(begin,end,value_of);
   }
 

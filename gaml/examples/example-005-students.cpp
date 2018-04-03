@@ -62,9 +62,11 @@ std::ostream& operator<<(std::ostream& os, const Report& r) {
 // school report mark. If one mark is below the pass mark, the global
 // score is 0 (elimination). The noise models an extra modulation by a
 // panel of university professors.
-#define PANEL_EVALUATION_NOISE .1
-#define PASS_MARK              .3
-Mark university_mark(const Report& report) {
+#define PANEL_NOISE .1
+#define PASS_MARK   .3
+
+template<typename RANDOM_DEVICE>
+Mark university_mark(const Report& report, RANDOM_DEVICE& rd) {
   Mark mark;
 
   if(   report[Discipline::Biology    ] < PASS_MARK
@@ -78,8 +80,7 @@ Mark university_mark(const Report& report) {
       + report[Discipline::Mathematics]
       + report[Discipline::Physics    ];
     mark /= 4.0;
-    mark += gaml::random::uniform(-PANEL_EVALUATION_NOISE,
-				  PANEL_EVALUATION_NOISE);
+    mark += std::uniform_real_distribution<double>(-PANEL_NOISE, PANEL_NOISE)(rd);
   }
   return std::max(std::min(mark, 1.), 0.);
 }
@@ -214,6 +215,10 @@ int main(int argc, char* argv[]) {
 	      << "  " << argv[0] << " run       <-- process the file. " << std::endl;
     return 0;
   }
+  
+  // random seed initialization
+  std::random_device rd;
+  std::mt19937 gen(rd());
 
   bool generate_mode = std::string(argv[1]) == "generate";
 
@@ -221,8 +226,6 @@ int main(int argc, char* argv[]) {
   auto parser = gaml::make_JSON_parser<Data>();
 
   if(generate_mode) {
-    std::random_device rd;
-    std::mt19937 gen(rd());
     std::normal_distribution<> d(.6,.15);
  
     std::ofstream ofile(DATA_FILE);
@@ -232,7 +235,7 @@ int main(int argc, char* argv[]) {
     for(unsigned int i=0; i< NB_DATA_IN_DATAFILE; ++i) {
       Report r;
       for(auto& mark : r) mark = std::max(std::min(d(gen),1.),0.);
-      *(out++) = Data(r,university_mark(r));
+      *(out++) = Data(r,university_mark(r, gen));
     }
     ofile.close();
     std::cout << " Done." << std::endl;
@@ -258,7 +261,8 @@ int main(int argc, char* argv[]) {
   learner.verbosity = true;
   auto pred = learner(cached_dataset.begin(), cached_dataset.end(), report_of, mark_of);
   Report test_report;
-  for(auto& mark : test_report) mark = gaml::random::uniform(0,1);
+  std::uniform_real_distribution<double> uniform(0,1);
+  for(auto& mark : test_report) mark = uniform(gen);
   std::cout << std::endl << "Report " << test_report << " will be scored " << pred(test_report) << std::endl << std::endl;
 
   // Let us cross-validate the variable selection algorithm

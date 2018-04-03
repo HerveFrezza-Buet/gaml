@@ -1,5 +1,5 @@
 #include <gaml.hpp>
-#include <cstdlib>
+#include <random>
 #include <vector>
 #include <utility>
 #include <set>
@@ -25,13 +25,24 @@ U class_of_label(U label)          {return label;}
 // This is our classifier. It makes a confusion : an odd class is
 // confused with some other odd class, and the same stands for even
 // classes. It fits gaml::concept::Predictor.
+
+template<typename RANDOM_DEVICE>
 class Classifier {
+private:
+  
+  RANDOM_DEVICE& rd;
+  mutable std::bernoulli_distribution proba;
+  mutable std::uniform_int_distribution<int> uniform;
+  
 public:
+  
   typedef X input_type;
   typedef U output_type;
 
+  Classifier(RANDOM_DEVICE& rd) : rd(rd), proba(CONFUSION_PROBABILITY), uniform(0, 4) {}
+
   output_type operator() (const input_type &x) const {
-    bool confused = gaml::random::proba(CONFUSION_PROBABILITY);
+    bool confused = proba(rd);
     U lbl = (int)x;
     U tmp;
 
@@ -40,11 +51,11 @@ public:
       switch(tmp) {
       case 0:case 2:case 4:case 6:case 8:  // Even labels
 	while(lbl==tmp)
-	  lbl = 2*((int)(gaml::random::uniform(0,5)));
+	  lbl = 2 * uniform(rd); 
 	break;
       default: // Odd labels
 	while(lbl==tmp)
-	  lbl = 2*((int)(gaml::random::uniform(0,5)))+1;
+	  lbl = 2 * uniform(rd) + 1;
 	break;
       };
     }
@@ -52,14 +63,21 @@ public:
   }
 };
 
+template<typename RANDOM_DEVICE>
+Classifier<RANDOM_DEVICE> make_classifier(RANDOM_DEVICE& rd) {return Classifier<RANDOM_DEVICE>(rd);}
+
+
 
 // This generates a sample basis according to our labelling rules.
-Basis generate_data() {
+template<typename RANDOM_DEVICE>
+Basis generate_data(RANDOM_DEVICE& rd) {
   Basis basis;
   basis.resize(BASIS_SIZE);
-
+  
+  std::uniform_real_distribution<double> uniform(0,10);
+  
   for(auto& data : basis) {
-    double  tmp = gaml::random::uniform(0,10);
+    double  tmp = uniform(rd);
     data.first  = tmp;
     data.second = (int)tmp;
   }
@@ -68,11 +86,16 @@ Basis generate_data() {
 }
 
 int main(int argc, char* argv[]) {
-  Basis basis = generate_data();
+
+  // random seed initialization
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  
+  Basis basis = generate_data(gen);
 
   try {
     // Let us set up a classifier and its confusion matrix.
-    Classifier                         classifier;
+    auto classifier = make_classifier(gen);
     gaml::classification::Confusion<U> matrix;
     matrix.clear();
     matrix.update(classifier,
