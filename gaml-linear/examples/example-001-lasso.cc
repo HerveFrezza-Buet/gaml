@@ -24,13 +24,14 @@ typedef std::vector<Data> Basis;
 X input_of(const Data& d) {return d.first;}
 Y label_of(const Data& d) {return d.second;}
 
-Y oracle(X x) {
+template<typename RND_FUNC>
+Y oracle(X x, RND_FUNC& rnd_func) {
   double res;
   if(x != 0)
     res = std::sin(x)/x;
   else 
     res = 1;
-  return res + gaml::random::uniform(-.1,.1);
+  return res + rnd_func();
 }
 
 #define NB_SAMPLES 200
@@ -59,8 +60,13 @@ void phi(gsl_vector* phi_x, const X& x) {
 }
 
 int main(int agrc, char* argv[]) {
-  std::srand(std::time(0));
 
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  auto rnd_uniform = std::uniform_real_distribution<>(-1.0, 1.0);
+  auto rnd_dis_input = [&gen,&rnd_uniform]() { return 10.0 * rnd_uniform(gen);};
+  auto rnd_dis_noise = [&gen,&rnd_uniform]() { return rnd_uniform(gen);};
+  
   // Feature initialization.
   unsigned int i = 0;
   for(auto& c : centers) c = -10 + (i++)*20/(double)(NB_CENTERS-1);
@@ -68,8 +74,8 @@ int main(int agrc, char* argv[]) {
 
   Basis b;
   for(unsigned int i = 0; i < NB_SAMPLES; ++i) {
-    X x = gaml::random::uniform(-10,10);
-    b.push_back({x,oracle(x)});
+    X x = rnd_dis_input();
+    b.push_back({x,oracle(x, rnd_dis_noise)});
   }
 
 

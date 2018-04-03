@@ -55,7 +55,6 @@ void phi(gsl_vector* phi_x, const X& x) {
 }
 
 int main(int argc, char* argv[]) {
-  std::srand(std::time(0));
 
   if(argc != 2) {
     std::cerr << "Usage : " << argv[0] << " lambda" << std::endl;
@@ -63,6 +62,13 @@ int main(int argc, char* argv[]) {
   }
   double lambda = atof(argv[1]);
 
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  
+  auto rnd_uniform_idx = std::uniform_int_distribution<>(0, NB_FEATURES);
+  auto rnd_uniform_weight = std::uniform_real_distribution<>();
+  auto rnd_uniform_input = std::uniform_real_distribution<>(-10., 10.);
+  
   // Feature initialization.
   unsigned int i = 0;
   for(auto& c : centers) c = -10 + (i++)*20/(double)(NB_CENTERS-1);
@@ -71,7 +77,7 @@ int main(int argc, char* argv[]) {
   // The output will be a linear combination of the features
   std::map<unsigned int, double> weights;
   for(unsigned int i = 0 ; i < 5; ++i) {
-    weights[int(gaml::random::uniform(0, NB_FEATURES))] = gaml::random::uniform(0, 1.0);
+    weights[rnd_uniform_idx(gen)] = rnd_uniform_weight(gen);
   }
   
   std::cout << "I will use the following linear combination : " << std::endl;
@@ -81,7 +87,7 @@ int main(int argc, char* argv[]) {
   Basis b;
   gsl_vector* phi_x = gsl_vector_alloc(NB_FEATURES);
   for(unsigned int i = 0; i < NB_SAMPLES; ++i) {
-    X x = gaml::random::uniform(-10,10);
+    X x = rnd_uniform_input(gen);
     // Let us compute all the features at x
     phi(phi_x, x);
     // The output is a linear combination of these features;
