@@ -11,8 +11,6 @@ file(
 # Flags for the data files, plot scripts, ..
 SET(SHARE_PATH_CFLAGS "-DML_MLP_SHAREDIR=\"\\\"${CMAKE_INSTALL_PREFIX}/share/${CMAKE_PROJECT_NAME}\\\"\"")
 
-MESSAGE("!!!!!!! ${PROJECT_ALL_CFLAGS}")
-
 # loop over the list to compile them
 foreach(f ${usage_examples})
     get_filename_component(exampleName ${f} NAME_WE) 

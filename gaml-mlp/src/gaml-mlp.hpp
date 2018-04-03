@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <easykf.h>
 #include <exception>
+#include <random>
 
 /**
  * @example example-001-basics.cpp
@@ -255,7 +256,7 @@ namespace gaml {
 	template<typename input_type, typename function_type, typename dfunction_type>
 	value_type deriv(const input_type& x, const values_type& target, 
 			 const values_type& forward_sweep, const function_type& f, const dfunction_type& df, 
-			 unsigned int parameter_dim) const {
+			 int parameter_dim) const {
 	  value_type res = 0;
 	  auto ittarget = target.begin();
 	  // The forward sweep contains the values of all the units
@@ -288,7 +289,7 @@ namespace gaml {
 	template<typename input_type, typename function_type, typename dfunction_type>
 	value_type deriv(const input_type& x, const values_type& target, 
 			 const values_type& forward_sweep, const function_type& f, const dfunction_type& df, 
-			 unsigned int parameter_dim) const {
+			 int parameter_dim) const {
 	  value_type res = 0;
 	  auto ittarget = target.begin();
 	  auto itoutput = forward_sweep.end() - target.size();
@@ -444,7 +445,7 @@ namespace gaml {
       void deriv(const input_type& input, 
 		 const parameters_type& params, 
 		 const values_type& forward_sweep, // This contains the output of all the layers from the forward sweep
-		 unsigned int parameter_dim,
+		 int parameter_dim,
 		 values_type& derivative) const {
 	auto iter_end = end(derivative);
 	for(auto it = begin(derivative); it != iter_end ; ++it) 
@@ -470,7 +471,8 @@ namespace gaml {
 
 
 
-    template<typename LAYER>
+    template<typename LAYER,
+	     typename RANDOM_DEVICE>
     class Layer
     {
       
@@ -486,13 +488,17 @@ namespace gaml {
       int _params_end; //!< The index after the next parameter this layer needs
       int _values_end; //!< The index after the last value this layer sets, it sets _size values
 
+      RANDOM_DEVICE& _random_device;
+
       Layer(const layer_type& previous, typename values_type::size_type size, 
 	    LayerTransferFunction transferFunction,
-	    LayerDTransferFunction dtransferFunction) :
+	    LayerDTransferFunction dtransferFunction,
+	    RANDOM_DEVICE& random_device) :
 	_previous(previous), 
 	_size(size),
 	_tf(transferFunction),
-	_dtf(dtransferFunction) {
+	_dtf(dtransferFunction),
+	_random_device(random_device) {
 	_nb_params = size * (_previous._size + 1);
 	_params_end = _previous._params_end + _nb_params;
 	_values_end = _previous._values_end + _size;
@@ -505,7 +511,8 @@ namespace gaml {
 	_dtf(other._dtf),
 	_nb_params(other._nb_params),
 	_params_end(other._params_end),
-	_values_end(other._values_end)
+	_values_end(other._values_end),
+	_random_device(other._random_device)
       {}
 
 
@@ -520,6 +527,7 @@ namespace gaml {
 	    _nb_params = other._nb_params;
 	    _params_end = other._params_end;
 	    _values_end = other._values_end;
+	    _random_device = other._random_device;
 	  }
 	return *this;
       }
@@ -531,7 +539,8 @@ namespace gaml {
 	_dtf(other._dtf),
 	_nb_params(other._nb_params),
 	_params_end(other._params_end),
-	_values_end(other._values_end)
+	_values_end(other._values_end),
+	_random_device(other._random_device)
       {}
 
       Layer& operator=(const Layer&& other)
@@ -545,6 +554,7 @@ namespace gaml {
 	    _nb_params = other._nb_params;
 	    _params_end = other._params_end;
 	    _values_end = other._values_end;
+	    _random_device = other._random_device;
 	  }
 	return *this;
       }
@@ -573,14 +583,16 @@ namespace gaml {
       void init_params(parameters_type& params) const {
 	// This layer deals with the parameters
 	// [ params[_params_end - _nb_params] ; params[_params_end-1] ]
-	// We initialize their values randomly in [-1/sqrt(_previous.size); 1/sqrt(_previous._size)]
+	// We initialize their values randomly in [-1/sqrt(_previous.size); 1/sqrt(_previous._size)[
 	_previous.init_params(params);
 
+	std::uniform_real_distribution<> dis(-1.0, 1.0);
+	
 	auto iter = params.begin()+_previous._params_end;
 	auto iter_end = iter + _nb_params;
 	double ssize = sqrt(_previous._size);
 	for(; iter != iter_end; ++iter)
-	  *iter = gaml::random::uniform(-1,1) / ssize;
+	  *iter = dis(_random_device) / ssize;
 
       }
       
@@ -663,7 +675,7 @@ namespace gaml {
       void deriv(const input_type& input, 
 		 const parameters_type& params, 
 		 const values_type& forward_sweep, // This contains the output of all the layers from the forward sweep
-		 unsigned int parameter_dim,
+		 int parameter_dim,
 		 values_type& derivative) const {
 	// This layer deals with the parameters
 	// [ params[_params_end - _nb_params] ; params[_params_end-1] ]
@@ -755,7 +767,7 @@ namespace gaml {
 
 
 	  double dyk_dtheta = 0.0;
-	  if(involved_activity_index_previous == _previous._size) 
+	  if(involved_activity_index_previous == int(_previous._size)) 
 	    // If we derivate according to the bias, dyk/dtheta = dyk/dbk = d/dbk \sum_i w_ki z_i + b_k = 1
 	    dyk_dtheta = 1.0; // where k = involved_activity_index
 	  else 
@@ -792,9 +804,10 @@ namespace gaml {
     };
 
     //! Builder of a layer
-    template<typename INPUT>
-    Layer<INPUT> layer(INPUT& input, values_type::size_type size, LayerTransferFunction tf, LayerDTransferFunction dtf) {
-      return Layer<INPUT>(input, size, tf, dtf);
+    template<typename INPUT,
+	     typename RANDOM_DEVICE>
+    Layer<INPUT, RANDOM_DEVICE> layer(INPUT& input, values_type::size_type size, LayerTransferFunction tf, LayerDTransferFunction dtf, RANDOM_DEVICE& random_device) {
+      return Layer<INPUT, RANDOM_DEVICE>(input, size, tf, dtf, random_device);
     }
 
 
@@ -953,7 +966,7 @@ namespace gaml {
       values_type deriv(const typename layer_type::input_type& input, 
 			const parameters_type& params, 
 			const values_type& forward_sweep, // This contains the output of all the layers from the forward sweep
-			unsigned int parameter_dim) const {
+			int parameter_dim) const {
 	values_type derivative(this->size());
 	_last_layer.deriv(input, params, forward_sweep, parameter_dim, derivative);
 	return derivative;
@@ -973,7 +986,7 @@ namespace gaml {
     Perceptron<layer_type, output_of_type> perceptron(const layer_type& last_layer, const output_of_type& output_of) {
       return Perceptron<layer_type, output_of_type>(last_layer, output_of);
     }
-
+    /*
     namespace type {
       
 
@@ -1001,7 +1014,7 @@ namespace gaml {
       };
 
     }
-    
+    */
 
     //! A predictor, which gives the operator(input)
     template<typename MLP>
@@ -1069,7 +1082,8 @@ namespace gaml {
 
 
 	template<typename mlp_type,
-		 typename loss_function_type>
+		 typename loss_function_type,
+		 typename RANDOM_DEVICE>
 	class Algorithm {
 
 	public:
@@ -1080,18 +1094,21 @@ namespace gaml {
 	  parameter _gradient_parameters;
 	  loss_function_type _loss;
 	  fill_output_function_type _fillOutput;
+	  RANDOM_DEVICE& _rd;
 
-	  Algorithm(const mlp_type& mlp, const parameter& gradient_parameters, const loss_function_type& loss, const fill_output_function_type& fillOutput):
+	  Algorithm(const mlp_type& mlp, const parameter& gradient_parameters, const loss_function_type& loss, const fill_output_function_type& fillOutput, RANDOM_DEVICE& rd):
 	    _mlp(mlp),
 	    _gradient_parameters(gradient_parameters),
 	    _loss(loss),
-	    _fillOutput(fillOutput){}
+	    _fillOutput(fillOutput),
+	    _rd(rd) {}
       
 	  Algorithm(const Algorithm& other):
 	    _mlp(other._mlp),
 	    _gradient_parameters(other._gradient_parameters),
 	    _loss(other._loss),
-	    _fillOutput(other._fillOutput){}
+	    _fillOutput(other._fillOutput),
+	    _rd(other._rd) {}
       
 	  Algorithm& operator=(const Algorithm& other) {
 	    if(&other != this)
@@ -1100,6 +1117,7 @@ namespace gaml {
 		_gradient_parameters = other._gradient_parameters;
 		_loss = other._loss;
 		_fillOutput = other._fillOutput;
+		_rd = other._rd;
 	      }
 	    return *this;
 	  }
@@ -1126,7 +1144,7 @@ namespace gaml {
 	    // and not an element of the type mlp_type::output_type
 	    auto f = [this, &params] (const typename mlp_type::input_type& x) -> values_type { auto output = this->_mlp(x, params); values_type voutput(this->_mlp.output_size()); this->_fillOutput(voutput.begin(), output); return voutput;};
 	    auto df = [this, &forward_sweep, &params] (const typename mlp_type::input_type& x,
-						       unsigned int parameter_dim) -> values_type { 
+						       int parameter_dim) -> values_type { 
 	      return this->_mlp.deriv(x, params, forward_sweep, parameter_dim);};
 
 	    int epoch;
@@ -1139,7 +1157,7 @@ namespace gaml {
 		// At each iteration, we shuffle the training base
 		// as learning is done online
 		//std::random_shuffle(begin, end);
-		auto shuffled = gaml::shuffle(begin, end);
+		auto shuffled = gaml::shuffle(begin, end, _rd);
 
 
 		for(auto iter = shuffled.begin(); iter != shuffled.end() ; ++iter)
@@ -1201,13 +1219,14 @@ namespace gaml {
 
 	//! Builder of a perceptron learner with the Gradient descent
 	template<typename mlp_type, 
-		 typename loss_function_type>
-	Algorithm<mlp_type, loss_function_type> algorithm(const mlp_type& mlp,
+		 typename loss_function_type,
+		 typename RANDOM_DEVICE>
+	Algorithm<mlp_type, loss_function_type, RANDOM_DEVICE> algorithm(const mlp_type& mlp,
 							  const parameter& gradient_params,
 							  const loss_function_type& loss,
-							  const typename Algorithm<mlp_type, loss_function_type>::fill_output_function_type& fill_output)
+									 const typename Algorithm<mlp_type, loss_function_type, RANDOM_DEVICE>::fill_output_function_type& fill_output, RANDOM_DEVICE& rd)
 	{
-	  return Algorithm<mlp_type, loss_function_type>(mlp, gradient_params, loss, fill_output);
+	  return Algorithm<mlp_type, loss_function_type, RANDOM_DEVICE>(mlp, gradient_params, loss, fill_output, rd);
 	}    
       }
 
@@ -1228,21 +1247,26 @@ namespace gaml {
 	};
 
 	//! Learner of a perceptron with the Unscented Kalman Filter
-	template<typename mlp_type>
+	template<typename mlp_type,
+		 typename RANDOM_DEVICE>
 	class Algorithm
 	{
 	public:
 	  typedef Predictor<mlp_type> predictor_type;
 	  mlp_type _mlp;
 	  parameter _ukf_params;
+
+	  RANDOM_DEVICE& _rd;
       
-	  Algorithm(const mlp_type& mlp, const parameter& ukf_params): 
+	  Algorithm(const mlp_type& mlp, const parameter& ukf_params, RANDOM_DEVICE& rd): 
 	    _mlp(mlp), 
-	    _ukf_params(ukf_params) {}
+	    _ukf_params(ukf_params),
+	    _rd(rd) {}
 
 	  Algorithm(const Algorithm& other):
 	    _mlp(other._mlp),
-	    _ukf_params(other._ukf_params)
+	    _ukf_params(other._ukf_params),
+	    _rd(other._rd)
 	  {}
 
 	  Algorithm& operator=(const Algorithm& other)
@@ -1251,6 +1275,7 @@ namespace gaml {
 	      {
 		_mlp= other._mlp;
 		_ukf_params = other._ukf_params;
+		_rd = other._rd;
 	      }
 	    return *this;
 	  }
@@ -1337,7 +1362,7 @@ namespace gaml {
 	      {
 		// At each iteration, we shuffle the training base
 		// as learning is done online
-		auto shuffle = gaml::shuffle(begin, end);
+		auto shuffle = gaml::shuffle(begin, end, _rd);
 		for(auto iter = shuffle.begin(); iter != shuffle.end() ; ++iter)
 		  {
 		    auto x = input_of(*iter);
@@ -1387,10 +1412,10 @@ namespace gaml {
 	};
 
 	//! Builder of a perceptron learner with the Unscented Kalman Filter
-	template<typename mlp_type>
-	Algorithm<mlp_type> algorithm(const mlp_type& mlp, const parameter& ukf_params)
+	template<typename mlp_type, typename RANDOM_DEVICE>
+	Algorithm<mlp_type, RANDOM_DEVICE> algorithm(const mlp_type& mlp, const parameter& ukf_params, RANDOM_DEVICE& rd)
 	{
-	  return Algorithm<mlp_type>(mlp, ukf_params);
+	  return Algorithm<mlp_type, RANDOM_DEVICE>(mlp, ukf_params, rd);
 	}
       }
     }

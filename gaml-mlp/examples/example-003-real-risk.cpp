@@ -36,6 +36,7 @@ const Y& output_of_data(const Data& data) { return data.second;}
 // Let us define a procedure for finding an architecture
 // minimizing the real risk estimated with kfold cross validation
 
+template<typename RANDOM_DEVICE>
 class MetaLearner
 { 
 
@@ -44,15 +45,17 @@ private:
 
 public:  
   typedef gaml::mlp::InputLayer<X> input_layer_type;
-  typedef gaml::mlp::Layer<input_layer_type> hidden_layer_type;
-  typedef gaml::mlp::Layer<hidden_layer_type> output_layer_type;
+  typedef gaml::mlp::Layer<input_layer_type, RANDOM_DEVICE> hidden_layer_type;
+  typedef gaml::mlp::Layer<hidden_layer_type, RANDOM_DEVICE> output_layer_type;
   typedef decltype(gaml::mlp::perceptron(std::declval<output_layer_type>(), output_of_mlp)) mlp_type;
   typedef gaml::mlp::Predictor<mlp_type> predictor_type; 
 
   bool verbosity;
+  RANDOM_DEVICE& rd;
   
-  MetaLearner(bool verbose) :
-    verbosity(verbose) {
+  MetaLearner(bool verbose, RANDOM_DEVICE& rd) :
+    verbosity(verbose),
+    rd(rd) {
     
     // Set up the parameters for learning the MLP with UKF
     ukf_params.alpha = 1e-1;
@@ -72,7 +75,8 @@ public:
 
   MetaLearner(const MetaLearner& other):
     ukf_params(other.ukf_params),
-    verbosity(other.verbosity) {}
+    verbosity(other.verbosity),
+    rd(other.rd) {}
 
 
   MetaLearner& operator=(const MetaLearner& other)
@@ -81,6 +85,7 @@ public:
       {
 	ukf_params = other.ukf_params;
 	verbosity = other.verbosity;
+	rd = other.rd; 
       }
     return *this;
   }
@@ -102,12 +107,12 @@ public:
       // Let us define an architecture with hidden_size units
       // in the hidden layer
       auto input = input_layer_type(INPUT_DIM, fillInput);
-      auto l1 = hidden_layer_type(input, hidden_size, gaml::mlp::mlp_sigmoid(), gaml::mlp::mlp_dsigmoid());
-      auto output = output_layer_type(l1, OUTPUT_DIM, gaml::mlp::mlp_identity(), gaml::mlp::mlp_didentity());
+      auto l1 = hidden_layer_type(input, hidden_size, gaml::mlp::mlp_sigmoid(), gaml::mlp::mlp_dsigmoid(), rd);
+      auto output = output_layer_type(l1, OUTPUT_DIM, gaml::mlp::mlp_identity(), gaml::mlp::mlp_didentity(), rd);
       auto mlp = mlp_type(output, output_of_mlp);
       
       // Create the learner
-      auto learning_algorithm = gaml::mlp::learner::ukf::algorithm(mlp, ukf_params);
+      auto learning_algorithm = gaml::mlp::learner::ukf::algorithm(mlp, ukf_params, rd);
       
       // We will use a 6-fold cross-validation
       auto kfold_evaluator = gaml::risk::cross_validation(gaml::mlp::loss::Quadratic(),
@@ -135,11 +140,11 @@ public:
 
     // Let us train the optimal architecture on the whole data basis
     auto input = input_layer_type(INPUT_DIM, fillInput);
-    auto l1 = hidden_layer_type(input, optimal_hidden_size, gaml::mlp::mlp_sigmoid(), gaml::mlp::mlp_dsigmoid());
-    auto output = output_layer_type(l1, OUTPUT_DIM, gaml::mlp::mlp_identity(), gaml::mlp::mlp_didentity());
+    auto l1 = hidden_layer_type(input, optimal_hidden_size, gaml::mlp::mlp_sigmoid(), gaml::mlp::mlp_dsigmoid(), rd);
+    auto output = output_layer_type(l1, OUTPUT_DIM, gaml::mlp::mlp_identity(), gaml::mlp::mlp_didentity(), rd);
     auto mlp = mlp_type(output, output_of_mlp);
 
-    auto learning_algorithm = gaml::mlp::learner::ukf::algorithm(mlp, ukf_params);
+    auto learning_algorithm = gaml::mlp::learner::ukf::algorithm(mlp, ukf_params, rd);
     
     return learning_algorithm(begin, end,
 			      input_of,
@@ -150,20 +155,24 @@ public:
 
 int main(int argc, char * argv[])
 {
-  srand(time(NULL));
+  std::random_device rd;
+  std::mt19937 gen(rd()); 
 
+  auto uniform_real = std::uniform_real_distribution<>(-1.0, 1.0);
+  auto noise_func = [&gen, &uniform_real]() { return uniform_real(gen);};
+  
   // Create a training base
   // Let us try to fit a noisy sinc function
   Basis basis;
   basis.resize(NB_SAMPLES);
   for(auto& d: basis)
     {
-      d.first = {{ -10.0 + 20.0 * gaml::random::uniform(0.0, 1.0) }} ;
-      d.second = {{ sin(d.first[0])/d.first[0] + gaml::random::uniform(-0.1, 0.1) }};
+      d.first = {{ 10.0 * noise_func() }} ;
+      d.second = {{ sin(d.first[0])/d.first[0] + 0.1 * noise_func() }};
     }
   
   // Create the learner
-  MetaLearner learning_algorithm(true);
+  MetaLearner learning_algorithm(true, gen);
   
   std::cout << "Finding the optimal perceptron for the basis and train it..." << std::endl;
 

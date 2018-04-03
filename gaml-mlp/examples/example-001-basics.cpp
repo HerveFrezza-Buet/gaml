@@ -40,16 +40,18 @@ Attributes output_of(gaml::mlp::values_type::const_iterator iter)
 
 int main(int argc, char* argv[])
 {
-  srand(time(NULL));
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  
   
   //* We first define the architecture of the MLP
   // Create the input layer
   // When giving the size of the layers, you don't need to add an extra neuron for the bias 
   auto input = gaml::mlp::input<Complex>(2, fillInput);
   // The hidden layer on top of the input layer
-  auto l1 = gaml::mlp::layer(input, 10, gaml::mlp::mlp_sigmoid(), gaml::mlp::mlp_dsigmoid());
+  auto l1 = gaml::mlp::layer(input, 10, gaml::mlp::mlp_sigmoid(), gaml::mlp::mlp_dsigmoid(), gen);
   // The output layer
-  auto output = gaml::mlp::layer(l1, 2, gaml::mlp::mlp_identity(), gaml::mlp::mlp_didentity());
+  auto output = gaml::mlp::layer(l1, 2, gaml::mlp::mlp_identity(), gaml::mlp::mlp_didentity(), gen);
   //*                                            *//
 
   // The mlp is defined from the last layer and the helper to create 

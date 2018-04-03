@@ -50,32 +50,35 @@ Y oracle(X x)
   return y;
 }
 
-Y noisy_oracle(X x)
+Y noisy_oracle(X x, double noise_value)
 {
   Y y = oracle(x);
-  y[0] += gaml::random::uniform(-0.1, 0.1);
+  y[0] += noise_value;
   return y;
 }
 
 int main(int argc, char * argv[])
 {
-  srand(time(NULL));
+  std::random_device rd;
+  std::mt19937 gen(rd());
 
   // Let us define a 3 layer perceptron architecture
   auto input = gaml::mlp::input<X>(INPUT_DIM, fillInput);
-  auto l1 = gaml::mlp::layer(input, HIDDEN_LAYER_SIZE, gaml::mlp::mlp_sigmoid(), gaml::mlp::mlp_dsigmoid());
-  auto l2 = gaml::mlp::layer(l1, HIDDEN_LAYER_SIZE, gaml::mlp::mlp_sigmoid(), gaml::mlp::mlp_dsigmoid());
-  auto output = gaml::mlp::layer(l2, OUTPUT_DIM, gaml::mlp::mlp_identity(), gaml::mlp::mlp_didentity());
+  auto l1 = gaml::mlp::layer(input, HIDDEN_LAYER_SIZE, gaml::mlp::mlp_sigmoid(), gaml::mlp::mlp_dsigmoid(), gen);
+  auto l2 = gaml::mlp::layer(l1, HIDDEN_LAYER_SIZE, gaml::mlp::mlp_sigmoid(), gaml::mlp::mlp_dsigmoid(), gen);
+  auto output = gaml::mlp::layer(l2, OUTPUT_DIM, gaml::mlp::mlp_identity(), gaml::mlp::mlp_didentity(), gen);
   auto mlp = gaml::mlp::perceptron(output, output_of);
 
   // Create a training base
   // Let us try to fit a noisy sinc function
+  auto uniform_real = std::uniform_real_distribution<>(-1.0, 1.0);
+  auto rnd_func = [&gen, &uniform_real]() { return uniform_real(gen);};
   Basis basis;
   basis.resize(NB_SAMPLES);
   for(auto& d: basis)
     {
-      d.first = {{ -10.0 + 20.0 * gaml::random::uniform(0.0, 1.0) }} ;
-      d.second = noisy_oracle(d.first);
+      d.first = {{ 10.0*rnd_func() }} ;
+      d.second = noisy_oracle(d.first, 0.1 * rnd_func());
     }
 
   // Set up the parameters for learning the MLP with a gradient descent
@@ -89,7 +92,7 @@ int main(int argc, char * argv[])
   gradient_params.min_dparams = 1e-7;
 
   // Create the learner
-  auto learning_algorithm = gaml::mlp::learner::gradient::algorithm(mlp, gradient_params, gaml::mlp::loss::Quadratic(), fillOutput);
+  auto learning_algorithm = gaml::mlp::learner::gradient::algorithm(mlp, gradient_params, gaml::mlp::loss::Quadratic(), fillOutput, gen);
 
   // Call the learner on the basis and get the learned predictor
   auto predictor = learning_algorithm(basis.begin(),

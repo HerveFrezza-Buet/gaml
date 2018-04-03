@@ -61,30 +61,33 @@ const Y& output_of_data(const Data& data) { return data.second;}
 
 int main(int argc, char * argv[])
 {
-  srand(time(NULL));
+  std::random_device rd;
+  std::mt19937 gen(rd()); 
 
   // Let us define a 3 layer perceptron architecture
   auto input = gaml::mlp::input<X>(INPUT_DIM, fillInput);
-  auto l1 = gaml::mlp::layer(input, HIDDEN_LAYER_SIZE, gaml::mlp::mlp_sigmoid(), gaml::mlp::mlp_dsigmoid());
-  auto output = gaml::mlp::layer(l1, K, gaml::mlp::mlp_softmax(), gaml::mlp::mlp_dsoftmax());
+  auto l1 = gaml::mlp::layer(input, HIDDEN_LAYER_SIZE, gaml::mlp::mlp_sigmoid(), gaml::mlp::mlp_dsigmoid(), gen);
+  auto output = gaml::mlp::layer(l1, K, gaml::mlp::mlp_softmax(), gaml::mlp::mlp_dsoftmax(), gen);
   auto mlp = gaml::mlp::perceptron(output, output_of);
 
   // Create a training base with 2 classes
   // The first class is the domain  [0, 0.5] x [0, 1]
   // The second class it the domain [0.5, 1] x [0, 1]
   // We add some jitter on this position in [-0.1, 0.1]
+  auto uniform_real = std::uniform_real_distribution<>(0.0, 1.0);
+  auto rnd_func = [&gen, &uniform_real]() { return uniform_real(gen);};
   Basis basis;
   for(unsigned int i = 0 ; i < NB_SAMPLES_PER_CLASS; ++i)
     {
       Data d;
-      d.first = {{ gaml::random::uniform(0, 0.5) + gaml::random::uniform(-0.1, 0.1), gaml::random::uniform(0, 1.0) }};
+      d.first = {{ 0.5*rnd_func() + (-0.1 + 0.2 * rnd_func()), rnd_func() }};
       d.second = {{ 0.0, 1.0 }};
       basis.push_back(d);
     }
   for(unsigned int i = 0 ; i < NB_SAMPLES_PER_CLASS; ++i)
     {
       Data d;
-      d.first = {{ gaml::random::uniform(0.5, 1.0) + gaml::random::uniform(-0.1, 0.1), gaml::random::uniform(0, 1.0) }};
+      d.first = {{ 0.5 + 0.5*rnd_func() + (-0.1 + 0.2 * rnd_func()), rnd_func() }};
       d.second = {{ 1.0, 0.0 }};
       basis.push_back(d);
     }
@@ -100,7 +103,7 @@ int main(int argc, char * argv[])
   gradient_params.min_dparams = 1e-4;
 
   // Create the learner
-  auto learning_algorithm = gaml::mlp::learner::gradient::algorithm(mlp, gradient_params, gaml::mlp::loss::CrossEntropy(), fillOutput);
+  auto learning_algorithm = gaml::mlp::learner::gradient::algorithm(mlp, gradient_params, gaml::mlp::loss::CrossEntropy(), fillOutput, gen);
 
   // Call the learner on the basis and get the learned predictor
   auto predictor = learning_algorithm(basis.begin(),

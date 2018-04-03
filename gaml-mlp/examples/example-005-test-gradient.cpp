@@ -49,18 +49,19 @@ int main(int argc, char* argv[]) {
 
   bool quadratic_loss = (atoi(argv[1]) == 0);
 
-  srand(time(NULL));
-
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  
   // We compare our computation of the gradient to 
   // a finite difference approximation
   // The loss is also involved
   std::cout << "---------------------------------" << std::endl;
   std::cout << "Comparing the analytical gradient and numerical approximation " << std::endl;
   auto input = gaml::mlp::input<X>(INPUT_DIM, fillInput);
-  auto l1 = gaml::mlp::layer(input, HIDDEN_LAYER_SIZE, gaml::mlp::mlp_sigmoid(), gaml::mlp::mlp_dsigmoid());
-  auto l2 = gaml::mlp::layer(l1, HIDDEN_LAYER_SIZE, gaml::mlp::mlp_identity(), gaml::mlp::mlp_didentity());
-  auto l3 = gaml::mlp::layer(l2, HIDDEN_LAYER_SIZE, gaml::mlp::mlp_tanh(), gaml::mlp::mlp_dtanh());
-  auto l4 = gaml::mlp::layer(l3, OUTPUT_DIM, gaml::mlp::mlp_sigmoid(), gaml::mlp::mlp_dsigmoid());
+  auto l1 = gaml::mlp::layer(input, HIDDEN_LAYER_SIZE, gaml::mlp::mlp_sigmoid(), gaml::mlp::mlp_dsigmoid(), gen);
+  auto l2 = gaml::mlp::layer(l1, HIDDEN_LAYER_SIZE, gaml::mlp::mlp_identity(), gaml::mlp::mlp_didentity(), gen);
+  auto l3 = gaml::mlp::layer(l2, HIDDEN_LAYER_SIZE, gaml::mlp::mlp_tanh(), gaml::mlp::mlp_dtanh(), gen);
+  auto l4 = gaml::mlp::layer(l3, OUTPUT_DIM, gaml::mlp::mlp_sigmoid(), gaml::mlp::mlp_dsigmoid(), gen);
   auto mlp = gaml::mlp::perceptron(l4, output_of);
 
   std::cout << "We use the following architecture : " << std::endl;
