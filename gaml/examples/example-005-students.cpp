@@ -12,36 +12,36 @@
 // Let us consider students applying to some university. The
 // university gives a mark to each student, from the school report of
 // high school last year.
-enum class Discipline : int {
-  Art=0,
-    Biology,
-    Chemistry,
-    ForeignLanguage,
-    Geography,
-    History,
-    Literature,
-    Mathematics,
-    Music,
-    Physics,
-    Sports
-    };
 
+enum Discipline {
+  Art,
+  Biology,
+  Chemistry,
+  ForeignLanguage,
+  Geography,
+  History,
+  Literature,
+  Mathematics,
+  Music,
+  Physics,
+  Sports
+};
 #define NB_DISCPIPLINES 11
 
 std::string toString(int d) {
-  switch(static_cast<Discipline>(d)) {
-  case Discipline::Art:             return "Art";
-  case Discipline::Biology:         return "Biology";
-  case Discipline::Chemistry:       return "Chemistry";
-  case Discipline::ForeignLanguage: return "Foreign Language";
-  case Discipline::Geography:       return "Geography";
-  case Discipline::History:         return "History";
-  case Discipline::Literature:      return "Literature";
-  case Discipline::Mathematics:     return "Mathematics";
-  case Discipline::Music:           return "Music";
-  case Discipline::Physics:         return "Physics";
-  case Discipline::Sports:          return "Sports";
-  default:                          return "???";
+  switch((Discipline)d) {
+  case Art:             return "Art";
+  case Biology:         return "Biology";
+  case Chemistry:       return "Chemistry";
+  case ForeignLanguage: return "Foreign Language";
+  case Geography:       return "Geography";
+  case History:         return "History";
+  case Literature:      return "Literature";
+  case Mathematics:     return "Mathematics";
+  case Music:           return "Music";
+  case Physics:         return "Physics";
+  case Sports:          return "Sports";
+  default:              return "???";
   }
 }
 
@@ -63,21 +63,22 @@ std::ostream& operator<<(std::ostream& os, const Report& r) {
 // score is 0 (elimination). The noise models an extra modulation by a
 // panel of university professors.
 #define PANEL_NOISE .1
-#define PASS_MARK              .3
+#define PASS_MARK   .3
+
 template<typename RANDOM_DEVICE>
 Mark university_mark(const Report& report, RANDOM_DEVICE& rd) {
   Mark mark;
 
-  if(report   [static_cast<int>(Discipline::Biology    )] < PASS_MARK
-     || report[static_cast<int>(Discipline::Chemistry  )] < PASS_MARK
-     || report[static_cast<int>(Discipline::Mathematics)] < PASS_MARK
-     || report[static_cast<int>(Discipline::Physics    )] < PASS_MARK)
+  if(   report[Discipline::Biology    ] < PASS_MARK
+	|| report[Discipline::Chemistry  ] < PASS_MARK
+	|| report[Discipline::Mathematics] < PASS_MARK
+	|| report[Discipline::Physics    ] < PASS_MARK)
     mark = 0;
   else {
-    mark = report[static_cast<int>(Discipline::Biology    )]
-      +    report[static_cast<int>(Discipline::Chemistry  )]
-      +    report[static_cast<int>(Discipline::Mathematics)]
-      +    report[static_cast<int>(Discipline::Physics    )];
+    mark =   report[Discipline::Biology    ]
+      + report[Discipline::Chemistry  ]
+      + report[Discipline::Mathematics]
+      + report[Discipline::Physics    ];
     mark /= 4.0;
     mark += std::uniform_real_distribution<double>(-PANEL_NOISE, PANEL_NOISE)(rd);
   }
@@ -154,7 +155,7 @@ struct GenericLearner {
 
 class MetaLearner {
   typedef std::vector<int> indices_type;
-  typedef gaml::wrapper_traits<Sample, Label, indices_type::const_iterator, GenericLearner> traits;
+  typedef gaml::wrapper_traits<Sample, Label, indices_type::iterator, GenericLearner> traits;
 
 public:
   typedef typename traits::wrapping_predictor_type predictor_type;
@@ -225,26 +226,23 @@ int main(int argc, char* argv[]) {
   auto parser = gaml::make_JSON_parser<Data>();
 
   if(generate_mode) {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::normal_distribution<> normal(.6,.15);
-    
-    {
-      std::ofstream ofile(DATA_FILE);
-      auto ostr = gaml::make_output_data_stream(ofile, parser);
-      auto out  = gaml::make_output_iterator(ostr);
-      std::cout << "Generating students in \"" <<  DATA_FILE << "\"..." << std::flush;
-      for(unsigned int i=0; i< NB_DATA_IN_DATAFILE; ++i) {
-	Report r;
-	for(auto& mark : r) mark = std::max(std::min(normal(gen),1.),0.);
-	*(out++) = Data(r,university_mark(r,gen));
-      }
+    std::normal_distribution<> d(.6,.15);
+ 
+    std::ofstream ofile(DATA_FILE);
+    auto ostr = gaml::make_output_data_stream(ofile, parser);
+    auto out  = gaml::make_output_iterator(ostr);
+    std::cout << "Generating students in \"" <<  DATA_FILE << "\"..." << std::flush;
+    for(unsigned int i=0; i< NB_DATA_IN_DATAFILE; ++i) {
+      Report r;
+      for(auto& mark : r) mark = std::max(std::min(d(gen),1.),0.);
+      *(out++) = Data(r,university_mark(r, gen));
     }
+    ofile.close();
     std::cout << " Done." << std::endl;
     std::cout << "Removing old index file." << std::endl;
     std::remove(INDEX_FILE);
     return 0;
-    }
+  }
 
   // Here, we do not know how the university mark is given, and we
   // will try to predict it from a student report.
@@ -256,16 +254,15 @@ int main(int argc, char* argv[]) {
   std::cout << " Done." << std::endl;
 
   // In order to reduce the file accesses, let us implement a cache.
-  auto cached_dataset = gaml::cache(dataset.begin(),dataset.end(), CACHE_PAGE_SIZE, CACHE_NB_PAGES);
+  auto cached_dataset = gaml::cache(dataset.begin(),dataset.end(), CACHE_PAGE_SIZE, CACHE_NB_PAGES); 
 
   // Let us use learn from the whole dataset.
   MetaLearner learner;
   learner.verbosity = true;
   auto pred = learner(cached_dataset.begin(), cached_dataset.end(), report_of, mark_of);
   Report test_report;
-  std::uniform_real_distribution<double> uniform(0, 1);
+  std::uniform_real_distribution<double> uniform(0,1);
   for(auto& mark : test_report) mark = uniform(gen);
-
   std::cout << std::endl << "Report " << test_report << " will be scored " << pred(test_report) << std::endl << std::endl;
 
   // Let us cross-validate the variable selection algorithm
@@ -274,7 +271,7 @@ int main(int argc, char* argv[]) {
   // cross-validation...
   
   auto evaluator = gaml::risk::cross_validation(gaml::loss::Quadratic<double>(),
-						gaml::partition::kfold(5), true);
+						gaml::partition::kfold(10), true);
   learner.verbosity = false;
 
   double risk = evaluator(learner, cached_dataset.begin(), cached_dataset.end(), report_of, mark_of);

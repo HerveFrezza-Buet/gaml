@@ -9,8 +9,8 @@ file(
 )
 
 # loop over the list to compile them
-#foreach(f ${USAGE_EXAMPLES})
-foreach(f example-005-students.cpp)
+foreach(f ${USAGE_EXAMPLES})
+#foreach(f example-005-students.cpp)
     get_filename_component(exampleName ${f} NAME_WE) 
     add_executable (${exampleName} ${f})
     set_target_properties(${exampleName} PROPERTIES LINKER_LANGUAGE CXX)
