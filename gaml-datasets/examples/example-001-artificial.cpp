@@ -18,8 +18,11 @@ void dump_samples(std::string filename, const SAMPLER& sampler) {
 
 int main(int argc, char* argv[]) {
 
+  std::random_device rd{};
+  std::mt19937 gen{rd()};
+  
   {
-    auto sampler = gaml::datasets::make_circles(10, 0.1, 0.8);
+    auto sampler = gaml::datasets::make_circles(10, 0.1, 0.8, gen);
     // The sampler provides iterators to
     // go through the samples :
     std::cout << "Samples : " << std::endl;
@@ -35,8 +38,13 @@ int main(int argc, char* argv[]) {
   }
 
   {
-    auto sampler = gaml::datasets::make_circles(500, 0.05, 0.8);
+    auto sampler = gaml::datasets::make_circles(500, 0.05, 0.8, gen);
     dump_samples("circles.data", sampler);
+  }
+  
+  {
+    auto sampler = gaml::datasets::make_moons(500, 0.05, gen);
+    dump_samples("moons.data", sampler);
   }
 
 

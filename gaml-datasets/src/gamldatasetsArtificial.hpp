@@ -115,20 +115,24 @@ namespace gaml {
      * @param noise_std Warning : not yet implemented !
      * @param factor the radius of the second circle
      */
-    auto make_circles(unsigned int nb_samples, double noise_std, double factor) {
+    template<typename RANDOM_DEVICE>
+    auto make_circles(unsigned int nb_samples, double noise_std, double factor, RANDOM_DEVICE& rd) {
 
-      auto sampler = [noise_std, factor]() {
-	double theta = gaml::random::uniform(0.0, 2.0 * M_PI);
+      auto sampler = [noise_std, factor, &rd]() {
+	std::uniform_real_distribution<> dis_uni(0.0, 1.0);
+	std::normal_distribution<> dis_noise{0.0,noise_std};
+	
+	double theta = 2.0 * M_PI * dis_uni(rd);
 	std::array<double, 2> input;
 	int output;
-	if(gaml::random::proba(0.5)) {
-	  input = {cos(theta) + gaml::random::normal(0.0, noise_std),
-		   sin(theta) + gaml::random::normal(0.0, noise_std)};
+	if(dis_uni(rd) < 0.5) {
+	  input = {cos(theta) + dis_noise(rd),
+		   sin(theta) + dis_noise(rd)};
 	  output = 0;
 	}
 	else {
-	  input = {factor * cos(theta) + gaml::random::normal(0.0, noise_std),
-		   factor * sin(theta) + gaml::random::normal(0.0, noise_std)};
+	  input = {factor * cos(theta) + dis_noise(rd),
+		   factor * sin(theta) + dis_noise(rd)};
 	  output = 1;
 	}
 	return std::make_pair(input, output);
@@ -136,6 +140,38 @@ namespace gaml {
       
       return make_func_sampler<std::array<double,2>, int>(sampler, nb_samples);
     }
+
+    /**
+     * This creates the moon classification dataset
+     * two interleaving half circles
+     * @param noise_std Warning : not yet implemented !
+     */
+    template<typename RANDOM_DEVICE>
+    auto make_moons(unsigned int nb_samples, double noise_std, RANDOM_DEVICE& rd) {
+
+      auto sampler = [noise_std, &rd]() {
+	std::uniform_real_distribution<> dis_uni(0.0, 1.0);
+	std::normal_distribution<> dis_noise{0.0,noise_std};
+	
+	double theta = M_PI * dis_uni(rd);
+	std::array<double, 2> input;
+	int output;
+	if(dis_uni(rd) < 0.5) {
+	  input = {cos(theta) + dis_noise(rd),
+		   sin(theta) + dis_noise(rd)};
+	  output = 0;
+	}
+	else {
+	  input = {1.0 - cos(theta) + dis_noise(rd),
+		   1.0 - sin(theta) + dis_noise(rd) - 0.5};
+	  output = 1;
+	}
+	return std::make_pair(input, output);
+      };
+      
+      return make_func_sampler<std::array<double,2>, int>(sampler, nb_samples);
+    }
+
     
   }
 }
