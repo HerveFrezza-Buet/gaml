@@ -72,7 +72,7 @@ namespace gaml {
 							       const InputOf& input_of, const OutputOf& output_of,
 							       unsigned int nmin,
 							       unsigned int k,
-							       const RANDOM_DEVICE& rd) {
+							       RANDOM_DEVICE& rd) {
 	  return xtree::internal::build_tree<X,Y,
 					     SCORE, RANDOM_DEVICE,
 					     MakeLeaf>(begin,end,input_of,output_of,nmin,k,rd);

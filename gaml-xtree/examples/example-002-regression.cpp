@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
   Basis basis(NB_SAMPLES);
   for(auto& xy : basis) xy = sample(gen);
 
-  auto learner = gaml::xtree::regression::learner<X,Y,gaml::score::RelativeVarianceReduction>(N_MIN, DIM, gen);
+  auto learner = gaml::xtree::regression::learner<X, Y, gaml::score::RelativeVarianceReduction>(N_MIN, DIM, gen);
   std::cout << "Learning a single tree... " << std::flush;
   auto predictor = learner(basis.begin(), basis.end(), input_of, output_of);
   std::cout << "done." << std::endl;
@@ -68,7 +68,10 @@ int main(int argc, char* argv[]) {
   ifile.close();
 
   // Now, let us set up a forest rather than a single tree.
-  auto forest_learner = gaml::bag::learner(learner,gaml::Average(),gaml::bag::set::Identity(),forest_size,true);
+  auto forest_learner = gaml::bag::learner(learner,
+					   gaml::functor::average(),
+					   gaml::bag::functor::identity(),
+					   forest_size,true);
   std::cout << "Learning a forest... " << std::flush;
   auto forest = forest_learner(basis.begin(), basis.end(), input_of, output_of);
   std::cout << "done." << std::endl;

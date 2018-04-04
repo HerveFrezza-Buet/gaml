@@ -419,7 +419,7 @@ namespace gaml {
 	    else
 	      fit->second += kv.second;
 	  }
-	return (VALUE)(most_frequent(cumulated_frequencies));
+	return (VALUE)(gaml::most_frequent(cumulated_frequencies));
       }
     };
   }
