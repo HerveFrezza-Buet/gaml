@@ -92,7 +92,7 @@ int main(int argc, char* argv[]) {
   Basis basis(NB_SAMPLES);
   for(auto& xy : basis) xy = sample(gen);
 
-  auto learner = gaml::xtree::classification::learner<X,Y,gaml::score::NormalizedInformationGain>(N_MIN, DIM, gen);
+  auto learner = gaml::xtree::classification::learner<X, Y, gaml::score::NormalizedInformationGain>(N_MIN, DIM, gen);
   std::cout << "Learning a single tree... " << std::flush;
   auto predictor = learner(basis.begin(), basis.end(), input_of, output_of);
   std::cout << "done." << std::endl;
