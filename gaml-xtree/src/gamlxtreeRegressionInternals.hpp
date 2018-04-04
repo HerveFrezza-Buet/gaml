@@ -66,14 +66,16 @@ namespace gaml {
 	
 	template<typename X, typename Y, 
 		 template<typename,typename,typename> class SCORE,
+		 typename RANDOM_DEVICE,
 		 typename DataIterator, typename InputOf, typename OutputOf>
 	std::shared_ptr<xtree::internal::Tree<X,Y>> build_tree(const DataIterator& begin, const DataIterator& end,
 							       const InputOf& input_of, const OutputOf& output_of,
 							       unsigned int nmin,
-							       unsigned int k) {
+							       unsigned int k,
+							       const RANDOM_DEVICE& rd) {
 	  return xtree::internal::build_tree<X,Y,
-					     SCORE, 
-					     MakeLeaf>(begin,end,input_of,output_of,nmin,k);
+					     SCORE, RANDOM_DEVICE,
+					     MakeLeaf>(begin,end,input_of,output_of,nmin,k,rd);
 	}
       }
     }

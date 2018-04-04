@@ -60,32 +60,37 @@ namespace gaml {
 
       template<typename X, typename Y, 
 	       template<typename,typename,typename> class SCORE,
-	       typename COMP = gaml::by_default::LesserThan<Y>>
+	       typename RANDOM_DEVICE,
+	       typename COMP>
       class Learner {
       public:
 	typedef classification::Predictor<X,Y,COMP> predictor_type;
 	unsigned int nmin;
 	unsigned int k;
+	mutable RANDOM_DEVICE rd;
 
-	Learner(void) {}
-	Learner(const Learner& other) : nmin(other.nmin), k(other.k) {}
+	Learner() = delete;
+	Learner(const Learner&)  = default;
 
 	Learner(unsigned int min_set_size,
-		unsigned int nb_attr_test) : nmin(min_set_size), k(nb_attr_test)  {}
+		unsigned int nb_attr_test,
+		const RANDOM_DEVICE& rd) : nmin(min_set_size), k(nb_attr_test), rd(rd)  {}
 	
 
 	template<typename DataIterator, typename InputOf, typename OutputOf>
 	predictor_type operator()(const DataIterator& begin, const DataIterator& end,
 				  const InputOf& input_of, const OutputOf& output_of) const {
-	  return predictor_type(classification::internal::build_tree<X,Y,SCORE,COMP>(begin,end,input_of,output_of,nmin,k));
+	  return predictor_type(classification::internal::build_tree<X,Y,SCORE,RANDOM_DEVICE,COMP>(begin,end,input_of,output_of,nmin,k,rd));
 	}
       };
 
       template<typename X, typename Y, template<typename,typename,typename> class SCORE,
+	       typename RANDOM_DEVICE,
 	       typename COMP = gaml::by_default::LesserThan<Y>>
-      Learner<X,Y, SCORE> learner(unsigned int min_set_size,
-				  unsigned int nb_attr_test) {
-	return Learner<X,Y,SCORE,COMP>(min_set_size,nb_attr_test);
+	Learner<X,Y, SCORE, RANDOM_DEVICE, COMP> learner(unsigned int min_set_size,
+				  unsigned int nb_attr_test,
+				  const RANDOM_DEVICE& rd) {
+	return Learner<X,Y,SCORE, RANDOM_DEVICE, COMP>(min_set_size,nb_attr_test, rd);
       }
       
     }

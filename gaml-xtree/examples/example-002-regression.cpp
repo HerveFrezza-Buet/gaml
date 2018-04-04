@@ -6,6 +6,7 @@
 #include <array>
 #include <utility>
 #include <cmath>
+#include <random>
 
 #define N_MIN          10
 #define DIM             2
@@ -27,10 +28,12 @@ Y oracle(const X& x) {
   return std::sin(x[0])*std::sin(x[1]);
 }
 
-Data sample() {
-  X x = {{gaml::random::uniform(XMIN,XMAX),
-	  gaml::random::uniform(XMIN,XMAX)}};
-  return {x, oracle(x)+gaml::random::uniform(-NOISE,NOISE)};
+template<typename RANDOM_DEVICE>
+Data sample(RANDOM_DEVICE& rd) {
+  std::uniform_real_distribution<double> uniform(  XMIN,  XMAX);
+  std::uniform_real_distribution<double> noise  (-NOISE, NOISE);
+  X x = {{uniform(rd), uniform(rd)}};
+  return {x, oracle(x) + noise(rd)};
 }
 	      
 
@@ -41,11 +44,15 @@ int main(int argc, char* argv[]) {
     return 0;
   }
   
+  // random seed initialization
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  
   unsigned int forest_size = (unsigned int)(atoi(argv[1]));
   Basis basis(NB_SAMPLES);
-  for(auto& xy : basis) xy = sample();
+  for(auto& xy : basis) xy = sample(gen);
 
-  auto learner = gaml::xtree::regression::learner<X,Y,gaml::score::RelativeVarianceReduction>(N_MIN,DIM);
+  auto learner = gaml::xtree::regression::learner<X,Y,gaml::score::RelativeVarianceReduction>(N_MIN, DIM, gen);
   std::cout << "Learning a single tree... " << std::flush;
   auto predictor = learner(basis.begin(), basis.end(), input_of, output_of);
   std::cout << "done." << std::endl;

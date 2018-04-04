@@ -7,6 +7,7 @@
 #include <utility>
 #include <cmath>
 #include <string>
+#include <random>
 
 #define N_MIN          50
 #define DIM             2
@@ -29,18 +30,21 @@ Y oracle(const X& x) {
   return (Y)(1.99999*(1+std::sin(x[0])*std::sin(x[1])));
 }
 
-Y noisify(Y y) {
+template<typename RANDOM_DEVICE>
+Y noisify(Y y, RANDOM_DEVICE& rd) {
   Y res = y;
-  if(gaml::random::proba(NOISE_PROBA))
+  std::uniform_int_distribution<Y> uniform(0,3);
+  if(std::bernoulli_distribution(NOISE_PROBA)(rd))
     while(res == y)
-      res = gaml::random::uniform(4);
+      res = uniform(rd);
   return res;
 }
 
-Data sample() {
-  X x = {{gaml::random::uniform(XMIN,XMAX),
-	  gaml::random::uniform(XMIN,XMAX)}};
-  return {x, noisify(oracle(x))};
+template<typename RANDOM_DEVICE>
+Data sample(RANDOM_DEVICE& rd) {
+  std::uniform_real_distribution<double> uniform(XMIN,XMAX);
+  X x = {{uniform(rd), uniform(rd)}};
+  return {x, noisify(oracle(x), rd)};
 }
 
 template<typename Fun, typename ClassOf>
@@ -79,12 +83,16 @@ int main(int argc, char* argv[]) {
     return 0;
   }
   
+  // random seed initialization
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  
   unsigned int forest_size = (unsigned int)(atoi(argv[1]));
 
   Basis basis(NB_SAMPLES);
-  for(auto& xy : basis) xy = sample();
+  for(auto& xy : basis) xy = sample(gen);
 
-  auto learner = gaml::xtree::classification::learner<X,Y,gaml::score::NormalizedInformationGain>(N_MIN,DIM);
+  auto learner = gaml::xtree::classification::learner<X,Y,gaml::score::NormalizedInformationGain>(N_MIN, DIM, gen);
   std::cout << "Learning a single tree... " << std::flush;
   auto predictor = learner(basis.begin(), basis.end(), input_of, output_of);
   std::cout << "done." << std::endl;
@@ -104,7 +112,10 @@ int main(int argc, char* argv[]) {
 
 
   // Now, let us set up a forest rather than a single tree.
-  auto forest_learner = gaml::bag::learner(learner,gaml::HighestCumulatedFrequency<Y>(),gaml::bag::set::Identity(),forest_size,true);
+  auto forest_learner = gaml::bag::learner(learner,
+					   gaml::functor::highest_cumulated_frequency<Y>(),
+					   gaml::bag::functor::identity(),
+					   forest_size,true);
   std::cout << "Learning a forest... " << std::flush;
   auto forest = forest_learner(basis.begin(), basis.end(), input_of, output_of);
   std::cout << "done." << std::endl;

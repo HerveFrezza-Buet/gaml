@@ -35,6 +35,7 @@
 #include <algorithm>
 #include <vector>
 #include <iterator>
+#include <random>
 #include <gaml.hpp>
 
 namespace gaml {
@@ -261,12 +262,14 @@ namespace gaml {
 
       template<typename X, typename Y,
 	       template<typename,typename,typename>                   class SCORE,
+	       typename RANDOM_DEVICE,
 	       template<typename,typename,typename,typename,typename> class MakeLeaf,
 	       typename DataIterator, typename InputOf, typename OutputOf>
       std::shared_ptr<xtree::internal::Tree<X,Y>> build_tree(const DataIterator& begin, const DataIterator& end,
 							     const InputOf& input_of, const OutputOf& output_of,
 							     unsigned int nmin,
-							     unsigned int k) {
+							     unsigned int k,
+							     RANDOM_DEVICE& rd) {
 
 	std::vector<unsigned int> non_constant_attr;
 	auto out_attr = std::back_inserter(non_constant_attr);
@@ -274,7 +277,7 @@ namespace gaml {
 	if(should_split(begin,end,input_of,output_of,nmin,out_attr)) {
 
 	  unsigned int K = std::min(k,(unsigned int)non_constant_attr.size());
-	  std::random_shuffle(non_constant_attr.begin(),non_constant_attr.end());
+	  std::shuffle(non_constant_attr.begin(),non_constant_attr.end(), rd);
 	  auto attr_begin = non_constant_attr.begin();
 	  auto attr_end   = attr_begin+K;
 
@@ -307,11 +310,12 @@ namespace gaml {
 	    auto values = gaml::map(begin,end,value_of);
 
 	    auto bounds = std::minmax_element(values.begin(),values.end());
-	    double threshold = gaml::random::uniform(*(bounds.first),*(bounds.second));
+	    std::uniform_real_distribution<double> uniform(*(bounds.first),*(bounds.second));
+	    double threshold = uniform(rd);
 	    // We need to ensure that threshold > min(bounds) in order
 	    // to have non empty collections when splitting the values
 	    while(threshold == *(bounds.first))
-	      threshold = gaml::random::uniform(*(bounds.first),*(bounds.second));
+	      threshold = uniform(rd);
 
 	    ThresholdTest<X> test(threshold, a);
 
@@ -331,8 +335,8 @@ namespace gaml {
 	  auto left        = split.true_values;
 	  auto right       = split.false_values;
 	  return make_node(best_test,
-			   build_tree<X,Y,SCORE,MakeLeaf>(left.begin(),  left.end(),  input_of, output_of, nmin, k),
-			   build_tree<X,Y,SCORE,MakeLeaf>(right.begin(), right.end(), input_of, output_of, nmin, k));
+			   build_tree<X,Y,SCORE,RANDOM_DEVICE,MakeLeaf>(left.begin(),  left.end(),  input_of, output_of, nmin, k, rd),
+			   build_tree<X,Y,SCORE,RANDOM_DEVICE,MakeLeaf>(right.begin(), right.end(), input_of, output_of, nmin, k, rd));
 	}
 	else {
 	  MakeLeaf<X,Y,DataIterator,InputOf,OutputOf> make_leaf;
