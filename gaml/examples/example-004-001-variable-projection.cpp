@@ -107,7 +107,18 @@ int main(int argc, char* argv[]) {
   for (auto& val : initialInput) std::cout << ' ' << val;
   std::cout << " ), label is " << initialOutput << ", input dimension is " << initialInput.size() << std::endl << std::endl;
 
-  const ProjectedData& projectedData   = *(projection.begin());      // Get the first projected data.
+  // ***********
+  // * Warning *
+  // ***********
+  //
+  // The projected data lives inside the projection iterator.
+  // Therefore the following line makes a memory access error since projection.begin() is destructed just after its reference is accessed
+  // const ProjectedData& projectedData   = *(projection.begin());
+  //
+  // Instead creates explicitely the iterator as a local variable before accessing its data, like with the following example:
+  
+  auto it = projection.begin();                    // Create a projection iterator storing the projected data of the first initial data
+  const ProjectedData& projectedData   = *it;      // Then gets the first projected data.
   const ProjectedInput& projectedInput  = Projection::inputOf(projectedData);  // Retrieve the input from it.
   const Output& projectedOutput = Projection::outputOf(projectedData); // Retrieve the output from it.
 
