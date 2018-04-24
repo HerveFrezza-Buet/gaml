@@ -88,7 +88,7 @@ int main(int argc, char* argv[]) {
   // Making a projection implies using internal types, defined by
   // gaml. They can be manipulated by dedicated type traits, enabling
   // to retrieve the types.
-  typedef gaml::projection_traits<X, U, Idx::const_iterator> Traits;
+  typedef gaml::projection_traits<X, U> Traits;
 
   typedef Traits::input_type           Input;          // This is X here.
   typedef Traits::output_type          Output;         // This is the initial U which is the same before and after projection

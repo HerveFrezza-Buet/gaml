@@ -155,7 +155,7 @@ struct GenericLearner {
 
 class MetaLearner {
   typedef std::vector<int> indices_type;
-  typedef gaml::wrapper_traits<Sample, Label, indices_type::iterator, GenericLearner> traits;
+  typedef gaml::wrapper_traits<Sample, Label, GenericLearner> traits;
 
 public:
   typedef typename traits::wrapping_predictor_type predictor_type;

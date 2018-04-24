@@ -42,34 +42,33 @@ namespace gaml {
     return dimensionsNumber;
   }
 
-  template<typename AttrIterator, typename Input>
+  template<typename Input>
   struct ProjectedInput {
 
     typedef typename std::remove_reference<Input>::type base_input_type;
 
-    const AttrIterator begin_, end_;
+    using index_sequence = std::vector<size_t>;
+    using index_iterator = index_sequence::const_iterator;
+
+    index_sequence indexes_;
     const base_input_type* input_;
     size_t size_;
 
     typedef decltype(input_->begin()) attribute_iterator;
     typedef decltype(*(input_->begin())) attribute_type;
 
-    class Iterator: public std::iterator<std::input_iterator_tag,
-					 std::remove_reference<attribute_type>> {
-      AttrIterator index_;
+    class Iterator: public std::iterator<std::input_iterator_tag, std::remove_reference<attribute_type>> {
+      index_iterator index_;
       attribute_iterator attr_;
       size_t lastIndex_;
       bool toUpdate_;
 
     public:
-      Iterator(const AttrIterator& index, const attribute_iterator& begin) :
+      Iterator(const index_iterator& index, const attribute_iterator& begin) :
 	index_(index), attr_(begin), lastIndex_(0), toUpdate_(true) {
       }
 
-      Iterator(const Iterator& other) :
-	index_(other.index_), attr_(other.attr_), lastIndex_(
-							     other.lastIndex_), toUpdate_(other.toUpdate_) {
-      }
+      Iterator(const Iterator& other) = default;
 
       const attribute_type& operator*() const {
 	Iterator& it = const_cast<Iterator&>(*this);
@@ -97,15 +96,12 @@ namespace gaml {
     };
 
   public:
+    template<typename AttrIterator>
     ProjectedInput(const AttrIterator& begin, const AttrIterator& end) :
-      begin_(begin), end_(end), input_(nullptr), size_(
-						       std::distance(begin, end)) {
+      indexes_(begin, end), input_(nullptr), size_(std::distance(begin, end)) {
     }
 
-    ProjectedInput(const ProjectedInput& other) :
-      begin_(other.begin_), end_(other.end_), input_(other.input_), size_(
-									  other.size_) {
-    }
+    ProjectedInput(const ProjectedInput& other) = default;
 
     void setInput(const Input& input) {
       input_ = &input;
@@ -115,10 +111,10 @@ namespace gaml {
       return size_;
     }
     Iterator begin() const {
-      return Iterator(begin_, input_->begin());
+      return Iterator(indexes_.begin(), input_->begin());
     }
     Iterator end() const {
-      return Iterator(end_, input_->end());
+      return Iterator(indexes_.end(), input_->end());
     }
     Iterator cbegin() const {
       return begin();
@@ -138,10 +134,10 @@ namespace gaml {
       mutable projected_input_type projectedInput_;
       internal_predictor_type projectedPredictor_;
 
+      template<typename AttrIterator>
       WrappingPredictor(const AttrIterator& begin, const AttrIterator& end,
 			const Predictor& projectedPredictor) :
-	projectedInput_(begin, end), projectedPredictor_(
-							 projectedPredictor) {
+	projectedInput_(begin, end), projectedPredictor_(projectedPredictor) {
       }
 
       output_type operator()(const input_type& input) const {
@@ -151,18 +147,17 @@ namespace gaml {
     };
   };
 
-  template<typename INPUT, typename OUTPUT, typename ATTR_ITERATOR>
+  template<typename INPUT, typename OUTPUT>
   struct projection_traits {
     typedef INPUT input_type;
     typedef OUTPUT output_type;
-    typedef ProjectedInput<ATTR_ITERATOR, input_type> projected_input_type;
+    typedef ProjectedInput<input_type> projected_input_type;
     typedef std::pair<projected_input_type, output_type> projected_data_type;
   };
 
-  template<typename INPUT, typename OUTPUT, typename ATTR_ITERATOR,
-	   class GENERIC_LEARNER>
-  struct wrapper_traits: public projection_traits<INPUT, OUTPUT, ATTR_ITERATOR> {
-    typedef projection_traits<INPUT, OUTPUT, ATTR_ITERATOR> parent_type;
+  template<typename INPUT, typename OUTPUT, typename GENERIC_LEARNER>
+  struct wrapper_traits: public projection_traits<INPUT, OUTPUT> {
+    typedef projection_traits<INPUT, OUTPUT> parent_type;
     typedef decltype(GENERIC_LEARNER().template make<typename parent_type::projected_input_type>()) projected_learner_type;
     typedef typename projected_learner_type::predictor_type projected_predictor_type;
     typedef typename parent_type::projected_input_type::template WrappingPredictor<
@@ -182,7 +177,7 @@ namespace gaml {
 
   public:
 
-    typedef ProjectedInput<AttrIterator, internal_input_type> input_type;
+    typedef ProjectedInput<internal_input_type> input_type;
     typedef typename std::remove_const<
       typename std::remove_reference<decltype(outputOf_(*dataBegin_))>::type>::type output_type;
     typedef std::pair<input_type, output_type> data_type;
@@ -204,14 +199,10 @@ namespace gaml {
     public:
 
       iterator(const Projection& projection, const DataIterator& inputDataIt) :
-	projection_(projection), inputDataIt_(inputDataIt), outputData_(input_type(projection.attrBegin_, projection.attrEnd_),
-									output_type()), toUpdate_(true) {
+	projection_(projection), inputDataIt_(inputDataIt), outputData_(input_type(projection.attrBegin_, projection.attrEnd_), output_type{}), toUpdate_(true) {
       }
-      iterator(const iterator& other) :
-	projection_(other.projection_), inputDataIt_(
-						     other.inputDataIt_), outputData_(other.outputData_), toUpdate_(
-														    other.toUpdate_) {
-      }
+      iterator(const iterator&) = default;
+      
       const data_type& operator*() const {
 	if (toUpdate_) {
 	  iterator& it = const_cast<iterator&>(*this);
@@ -275,13 +266,9 @@ namespace gaml {
     };
 
     template<typename GenericLearner>
-    auto teach(
-	       const GenericLearner& genericLearner) const ->
-      typename gaml::wrapper_traits<internal_input_type, output_type, AttrIterator, GenericLearner>::wrapping_predictor_type
-
-    {
-      typedef typename wrapper_traits<internal_input_type, output_type,
-				      AttrIterator, GenericLearner>::wrapping_predictor_type wrapping_predictor_type;
+    auto teach(const GenericLearner& genericLearner) const ->
+      typename gaml::wrapper_traits<internal_input_type, output_type, GenericLearner>::wrapping_predictor_type {
+      typedef typename wrapper_traits<internal_input_type, output_type, GenericLearner>::wrapping_predictor_type wrapping_predictor_type;
       auto learner = genericLearner.template make<input_type>();
       auto projectedPredictor = learner(begin(), end(), inputOf, outputOf);
       return wrapping_predictor_type(attrBegin_, attrEnd_, projectedPredictor);
@@ -290,10 +277,11 @@ namespace gaml {
 
   template<typename DataIterator, typename AttrIterator, typename InputOf,
 	   typename OutputOf>
-  Projection<DataIterator, AttrIterator, InputOf, OutputOf> project(
-								    const DataIterator& dataBegin, const DataIterator& dataEnd,
-								    const AttrIterator& attrBegin, const AttrIterator& attrEnd,
-								    const InputOf& inputOf, const OutputOf& outputOf) {
+  Projection<DataIterator, AttrIterator, InputOf, OutputOf>
+  project(
+	  const DataIterator& dataBegin, const DataIterator& dataEnd,
+	  const AttrIterator& attrBegin, const AttrIterator& attrEnd,
+	  const InputOf& inputOf, const OutputOf& outputOf) {
     return Projection<DataIterator, AttrIterator, InputOf, OutputOf>(dataBegin,
 								     dataEnd, attrBegin, attrEnd, inputOf, outputOf);
   }
