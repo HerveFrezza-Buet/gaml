@@ -237,7 +237,6 @@ int main(int argc, char* argv[]) {
       for(auto& mark : r) mark = std::max(std::min(d(gen),1.),0.);
       *(out++) = Data(r,university_mark(r, gen));
     }
-    ofile.close();
     std::cout << " Done." << std::endl;
     std::cout << "Removing old index file." << std::endl;
     std::remove(INDEX_FILE);
