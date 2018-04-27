@@ -51,8 +51,6 @@ install:
   - sudo mkdir /usr/include/libsvm && sudo cp svm.h /usr/include/libsvm/
   - sudo cp libsvm.so.2 /usr/lib/ && sudo ln -s /usr/lib/libsvm.so.2 /usr/lib/libsvm.so
   - cd ..
-  - git clone https://github.com/HerveFrezza-Buet/vq2.git # Dependency for gaml-kvq
-  - cd vq2 && mkdir -p build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=/usr && sudo make install -j$NB_JOBS && cd ../..
   - git clone https://github.com/jeremyfix/easykf.git # Dependencies for gaml-mlp
   - cd easykf && mkdir -p build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=/usr && sudo make install -j$NB_JOBS && cd ../..
   - >
@@ -78,14 +76,6 @@ install:
     && cd build				
     && cmake .. -DCMAKE_INSTALL_PREFIX=/usr
     && sudo make install -j$NB_JOBS
-    && cd ../..
-  - >
-    echo "Building gaml-kvq"
-    && cd gaml-kvq
-    && mkdir -p build
-    && cd build  
-    && cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-    && sudo make install -j$NB_JOBS   
     && cd ../..
   - >
     echo "Building gaml-mlp"
