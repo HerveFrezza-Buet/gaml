@@ -1,12 +1,11 @@
 #include <gaml-libsvm.hpp>
 #include <cmath>
-#include <cstdlib>
 #include <array>
 #include <vector>
 #include <utility>
 #include <string>
 #include <iostream>
-#include <ctime>
+#include <random>
 #include <limits>
 
 typedef std::pair<double,double> X;
@@ -142,8 +141,10 @@ int main(int argc, char* argv[]) {
 
   // Let us make libsvm quiet
   gaml::libsvm::quiet();
+  
   // random seed initialization
-  std::srand(std::time(0));
+  std::random_device rd;
+  std::mt19937 gen(rd());
 
   DataSet basis;
 
@@ -151,8 +152,9 @@ int main(int argc, char* argv[]) {
 
   // Let us fill some databasis.
   basis.resize(1000);
+  auto range = std::uniform_real_distribution<double>(-5,5);
   for(auto& data : basis) {
-    X x = {gaml::random::uniform(-5,5),gaml::random::uniform(-5,5)};
+    X x = {range(gen), range(gen)};
     data = {x, oracle(x)};
   }
 

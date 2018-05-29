@@ -1,14 +1,13 @@
 #include <gaml-libsvm.hpp>
 #include <cmath>
-#include <cstdlib>
 #include <vector>
 #include <utility>
 #include <string>
 #include <fstream>
 #include <iostream>
-#include <ctime>
 #include <array>
 #include <list>
+#include <random>
 
 // This examples shows how to predict 3D values from mono-dimensional regressors.
 
@@ -37,10 +36,12 @@ typedef std::vector<Data>        DataSet;
 // Let us redefine the oracle with our types
 #define NOISE_LEVEL .1
 
-Point oracle(double theta) {
-  return {(.5-NOISE_LEVEL)*(1+cos(2*theta))            + gaml::random::uniform(-NOISE_LEVEL,NOISE_LEVEL),  // x(theta)
-          (.5-NOISE_LEVEL)*(1+sin(2*theta))            + gaml::random::uniform(-NOISE_LEVEL,NOISE_LEVEL),  // y(theta)
-          NOISE_LEVEL+(1-2*NOISE_LEVEL)*theta/(2*M_PI) + gaml::random::uniform(-NOISE_LEVEL,NOISE_LEVEL)}; // z(theta)
+template<typename RANDOM_DEVICE>
+Point oracle(double theta, RANDOM_DEVICE& rd) {
+  auto noise = std::uniform_real_distribution<double>(-NOISE_LEVEL,NOISE_LEVEL);
+  return {(.5-NOISE_LEVEL)*(1+cos(2*theta))            + noise(rd),  // x(theta)
+          (.5-NOISE_LEVEL)*(1+sin(2*theta))            + noise(rd),  // y(theta)
+          NOISE_LEVEL+(1-2*NOISE_LEVEL)*theta/(2*M_PI) + noise(rd)}; // z(theta)
 }
 
 
@@ -83,8 +84,10 @@ int main(int argc, char* argv[]) {
 
   // Let us make libsvm quiet
   gaml::libsvm::quiet();
+  
   // random seed initialization
-  std::srand(std::time(0));
+  std::random_device rd;
+  std::mt19937 gen(rd());
 
   try {
 
@@ -93,9 +96,10 @@ int main(int argc, char* argv[]) {
     DataSet basis;
 
     basis.resize(100);
+    auto range = std::uniform_real_distribution<double>(0, 6.283185307179586);
     for(auto& data : basis) {
-      double theta = gaml::random::uniform(0,2*M_PI);
-      data = Data(theta,oracle(theta));
+      double theta = range(gen);
+      data = Data(theta, oracle(theta, gen));
     }
 
     // Let us set configure a svm

@@ -1,13 +1,12 @@
 
 #include <gaml-libsvm.hpp>
 #include <cmath>
-#include <cstdlib>
 #include <vector>
 #include <utility>
 #include <string>
 #include <fstream>
 #include <iostream>
-#include <ctime>
+#include <random>
 
 
 
@@ -66,8 +65,10 @@ int main(int argc, char* argv[]) {
 
   // Let us make libsvm quiet
   gaml::libsvm::quiet();
+  
   // random seed initialization
-  std::srand(std::time(0));
+  std::random_device rd;
+  std::mt19937 gen(rd());
 
 
   if(argc != 2) {
@@ -88,10 +89,12 @@ int main(int argc, char* argv[]) {
     DataSet basis;
 
     basis.resize(nb_samples);
+    auto range = std::uniform_real_distribution<double>(-1,1);
+    auto noise = std::uniform_real_distribution<double>(-.2, .2);
     for(auto& data : basis) {
-      double x = gaml::random::uniform(-1,1);
-      data = XY(x,                                           // x
-		.5*(3*x*x-1)+gaml::random::uniform(-.2,.2)); // y
+      double x = range(gen);
+      data = XY(x,                        // x
+		.5*(3*x*x-1)+noise(gen)); // y
     }
 
     // Let us set configure a svm

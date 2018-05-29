@@ -1,20 +1,25 @@
 
 #include <gaml-libsvm.hpp>
 #include <cmath>
-#include <cstdlib>
 #include <vector>
 #include <utility>
 #include <string>
 #include <fstream>
 #include <iostream>
-#include <ctime>
+#include <random>
 
 
 
-double oracle(double x, double y, double noise_level) {
+double oracle(double x, double y) {
   double r = x*x+y*y;
-  return exp(-2.5*r)*cos(8*sqrt(r)) + gaml::random::uniform(-noise_level,noise_level);
+  return exp(-2.5*r)*cos(8*sqrt(r));
 }
+
+template<typename RANDOM_DEVICE>
+double oracle(double x, double y, double noise_level, RANDOM_DEVICE& rd) {
+  return oracle(x, y) + std::uniform_real_distribution<double>(-noise_level,noise_level)(rd);
+}
+
 
 typedef std::pair<double,double> XY;
 typedef double                   Z;
@@ -26,13 +31,13 @@ typedef std::vector<Data>        DataSet;
 #define NOISE_VARIANCE (4*(NOISE_LEVEL)*(NOISE_LEVEL)/12.0)  
 
 // Let us redefine the oracle with our types
-Z Oracle(const XY& xy) {
-  return oracle(xy.first,xy.second,NOISE_LEVEL);
+template<typename RANDOM_DEVICE>
+Z Oracle(const XY& xy, RANDOM_DEVICE& rd) {
+  return oracle(xy.first,xy.second,NOISE_LEVEL, rd);
 }
 
-// This is the same, without noise
 Z CleanOracle(const XY& xy) {
-  return oracle(xy.first,xy.second,0);
+  return oracle(xy.first,xy.second);
 }
 
 
@@ -95,8 +100,10 @@ int main(int argc, char* argv[]) {
 
   // Let us make libsvm quiet
   gaml::libsvm::quiet();
+  
   // random seed initialization
-  std::srand(std::time(0));
+  std::random_device rd;
+  std::mt19937 gen(rd());
 
 
   if(argc != 2) {
@@ -117,11 +124,12 @@ int main(int argc, char* argv[]) {
     DataSet basis;
 
     basis.resize(nb_samples);
+    auto range = std::uniform_real_distribution<double>(-1,1);
     for(auto& data : basis) {
-      XY xy(gaml::random::uniform(-1,1),  // x
-	    gaml::random::uniform(-1,1)); // y
-      data = Data(xy,          // (x,y)
-		  Oracle(xy)); // z = f(x,y)
+      XY xy(range(gen),  // x
+	    range(gen)); // y
+      data = Data(xy,              // (x,y)
+		  Oracle(xy,gen)); // z = f(x,y)
     }
 
     // Let us set configure a svm
@@ -143,9 +151,9 @@ int main(int argc, char* argv[]) {
     auto f = learner(basis.begin(),basis.end(),input_of,output_of);
 
     // Let us plot the result.
-    gnuplot("clean-oracle.plot","Clean oracle",CleanOracle);
-    gnuplot("oracle.plot","Oracle",Oracle);
-    gnuplot("prediction.plot","SVM prediction",f);
+    gnuplot("clean-oracle.plot","Clean oracle",   CleanOracle);
+    gnuplot("oracle.plot",      "Oracle",         [&gen](const XY& xy){return Oracle(xy,gen);});
+    gnuplot("prediction.plot",  "SVM prediction", f);
 
     // All libsvm functions related to svm models are implemented.
     std::cout << std::endl
