@@ -81,6 +81,11 @@ namespace gaml {
 	}
       };
 
+      /**
+       * This builds a extreme tree learner for classification.
+       * @param min_set_size If a split leads to a leaf with less that this amount of samples, it will not be splitted further.
+       * @param nb_attr_test At each split we test some of the attributes (with a single random threshold). This is the number of tested attributes.
+       */
       template<typename X, typename Y, template<typename,typename,typename> class SCORE,
 	       typename RANDOM_DEVICE>
       Learner<X,Y, SCORE, RANDOM_DEVICE> learner(unsigned int min_set_size,

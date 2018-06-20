@@ -8,12 +8,10 @@
 #include <cmath>
 #include <random>
 
-#define N_MIN          10
 #define DIM             2
 #define XMIN            0
 #define XMAX           10
 #define PLOT_STEP      .1
-#define NB_SAMPLES   1000
 #define NOISE          .2
 
 typedef std::array<double,DIM> X;
@@ -39,20 +37,27 @@ Data sample(RANDOM_DEVICE& rd) {
 
 int main(int argc, char* argv[]) {
 
-  if(argc != 2) {
-    std::cout << "Usage : " << argv[0] << " <forest-size>" << std::endl;
-    return 0;
+  if(argc != 4) {
+    std::cout << "Usage : " << argv[0]
+	      << " <forest-size> <nb-samples> <max-leaf-size>" << std::endl
+	      << "  e.g : " << argv[0] << " 100 1000 50" << std::endl;
+      return 0;
   }
   
   // random seed initialization
   std::random_device rd;
   std::mt19937 gen(rd());
   
-  unsigned int forest_size = (unsigned int)(atoi(argv[1]));
-  Basis basis(NB_SAMPLES);
+  unsigned int forest_size   = (unsigned int)(atoi(argv[1]));
+  unsigned int nb_samples    = (unsigned int)(atoi(argv[2]));
+  unsigned int max_leaf_size = (unsigned int)(atoi(argv[3]));
+
+
+  
+  Basis basis(nb_samples);
   for(auto& xy : basis) xy = sample(gen);
 
-  auto learner = gaml::xtree::regression::learner<X, Y, gaml::score::RelativeVarianceReduction>(N_MIN, DIM, gen);
+  auto learner = gaml::xtree::regression::learner<X, Y, gaml::score::RelativeVarianceReduction>(max_leaf_size, DIM, gen);
   std::cout << "Learning a single tree... " << std::flush;
   auto predictor = learner(basis.begin(), basis.end(), input_of, output_of);
   std::cout << "done." << std::endl;
