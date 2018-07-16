@@ -31,7 +31,7 @@ addons:
     packages:
     - g++-7
     - gcc-7
-    - libgsl-dev # on trusty
+    - libgsl-dev libgsl23 # on bionic
     - libboost-python-dev # for easykf
     - libcurl3 # for gaml-datasets
 
