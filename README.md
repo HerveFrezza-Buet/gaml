@@ -1,6 +1,6 @@
 # gaml
 
-[![Build Status](https://travis-ci.org/HerveFrezza-Buet/gaml.svg?branch=master)](https://travis-ci.org/HerveFrezza-Buet/gaml)
+[![Build Status](https://travis-ci.org/HerveFrezza-Buet/gaml.svg?branch=master)](https://travis-ci.org/HerveFrezza-Buet/gaml)  Our dev machines have Ubuntu 18.04 which is not supported by travis for now..
 
 A C++ generic programming library for machine learning, developped by <a href="https://github.com/P-Fred">Frédéric Pennerath</a>, <a href="https://github.com/jeremyfix">Jérémy Fix</a> and <a href="https://github.com/HerveFrezza-Buet">Hervé Frezza-Buet</a>.
 
