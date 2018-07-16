@@ -43,7 +43,6 @@ compiler:
 
 
 install:
-  - export CC=gcc-7 CXX=g++-7
   - export NB_JOBS=2
   - echo "Installing dependencies"
   - git clone https://github.com/cjlin1/libsvm.git # Dependency for libsvm
