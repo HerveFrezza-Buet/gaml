@@ -23,7 +23,7 @@ language: cpp
 
 os: linux
 sudo: required
-dist: trusty
+dist: bionic
 addons:
   apt:
     sources:
@@ -31,7 +31,7 @@ addons:
     packages:
     - g++-7
     - gcc-7
-    - libgsl0-dev # on trusty
+    - libgsl-dev # on trusty
     - libboost-python-dev # for easykf
     - libcurl3 # for gaml-datasets
 
