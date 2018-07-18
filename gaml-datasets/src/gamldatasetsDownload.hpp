@@ -42,12 +42,7 @@ namespace gaml {
      * @return the path to the downloaded file
      */
     inline std::string download(std::string url) {
-      
-      auto write_data = [] (void *ptr, size_t size, size_t nmemb, FILE *stream) -> size_t {
-	size_t written = fwrite(ptr, size, nmemb, stream);
-	return written;
-      };
-      
+           
       CURL *curl;
       FILE *fp;
       CURLcode res;
@@ -56,18 +51,26 @@ namespace gaml {
       while(std::experimental::filesystem::exists(outfilename))
 	outfilename = std::tmpnam(nullptr);
      
-      
       curl = curl_easy_init();
       if (curl) {
 	std::cout << "Downloading " << url << std::endl;
         fp = fopen(outfilename.c_str(),"wb");
+
+	/* Set the URL */
         curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
+
+	/* Set where to write the data */
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp);
+	
 	/* enable progress meter */
 	curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0L);
+
+	/* enable verbosity ?*/
+	//curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
+	
         res = curl_easy_perform(curl);
 	std::cout << std::endl;
+	
         /* always cleanup */
         curl_easy_cleanup(curl);
         fclose(fp);
@@ -249,7 +252,7 @@ namespace gaml {
    * @return An iteratable collection of samples (double,4) -> int
    */
   inline auto make_iris_dataset() {
-    std::string url("https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data");
+    std::string url("http://mlr.cs.umass.edu/ml/machine-learning-databases/iris/iris.data");
 
     using input_type = std::array<double, 4>;
     using output_type = int;
@@ -298,7 +301,7 @@ namespace gaml {
    * @return An iteratable collection of samples (double,13) -> int
    */
   inline auto make_wine_dataset() {
-    std::string url("https://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data");
+    std::string url("http://mlr.cs.umass.edu/ml/machine-learning-databases/wine/wine.data");
 
     using input_type = std::array<double, 13>;
     using output_type = int;
@@ -320,7 +323,7 @@ namespace gaml {
    * @return An iteratable collection of samples (double,13) -> double
    */
   inline auto make_boston_housing_dataset() {
-    std::string url("https://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data");
+    std::string url("http://mlr.cs.umass.edu/ml/machine-learning-databases/housing/housing.data");
     using input_type = std::array<double, 13>;
     using output_type = double;
     auto parse_field = [](std::istream& is, unsigned int field_idx, std::pair<input_type, output_type>& data) {

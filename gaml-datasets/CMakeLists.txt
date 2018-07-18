@@ -6,7 +6,7 @@ project (gaml-datasets)
 SET(PACKAGE_VERSION "0.1")
 SET(PACKAGE_LICENSE "GPL")
 
-SET(CMAKE_BUILD_TYPE Release)
+SET(CMAKE_BUILD_TYPE Debug)
 
 SET(PROJECT_DESCRIPTION_SUMMARY "This provides easy access to popular datasets for gaml")
 
