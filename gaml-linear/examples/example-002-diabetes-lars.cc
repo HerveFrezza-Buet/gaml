@@ -11,44 +11,41 @@
 
 #include <gaml.hpp>
 #include <gaml-linear.hpp>
+#include <gaml-datasets.hpp>
 #include <gsl/gsl_vector.h>
 #include <gsl/gsl_matrix.h>
 
-#include "diabetes-parser.hpp"
+#define FILE_PREFIX "diabetes-lars"
 #define PLOT_PATH_FILE FILE_PREFIX"_path.plot"
 #define DATA_PATH_FILE FILE_PREFIX"_path.data"
-#define DIABETES_DATA_FILE "/usr/share/gaml-linear/diabetes.data"
-#define FILE_PREFIX "diabetes-lars"
+
+using Dataset = decltype(gaml::make_diabetes_dataset());
+using input_type = Dataset::input_type;
+
+void phi(gsl_vector* phi_x, const input_type& x) {
+    unsigned int i = 0;
+    for(auto& xi: x)
+        gsl_vector_set(phi_x, i++, xi);
+}
 
 int main(int argc, char* argv[]) {
 
-  // Let us parse the diabetes.sdata datafile
-  std::ifstream ifile;
-  
-  ifile.exceptions(std::ios::failbit | std::ios::badbit | std::ios::eofbit);
-  try {
-    ifile.open(DIABETES_DATA_FILE);
-  }
-  catch(std::exception) {
-    std::cerr << "Cannot open " << DIABETES_DATA_FILE << " for reading " << std::endl;
-  }
-
-  diabetes::Parser parser;
-  auto input_customer_stream = gaml::make_input_data_stream(ifile, parser);
-  auto begin = gaml::make_input_data_begin(input_customer_stream);
-  auto end = gaml::make_input_data_end (input_customer_stream);
-  
-  diabetes::Basis b(diabetes::nb_samples);
-  std::copy(begin, end, b.begin());
+  auto dataset = gaml::make_diabetes_dataset();
+    using Dataset = decltype(dataset);
 
   // Let us see what the data look like
-  //for(auto it = b.begin() ; it != b.end() ; ++it)
-  //  diabetes::print(*it);
+  for(const auto& s: dataset) {
+      for(const auto& v: Dataset::input_of_data(s))
+          std::cout << v << " ";
+      std::cout << " -> " << Dataset::output_of_data(s) << std::endl;
+  }
   
+  int nb_features = Dataset::input_dim;
+
   // We can now learn our regressor on the data
   // We ask the algorithm to normalize the data and to disable verbosity
-  auto learner = gaml::linear::lars::target_lambda_learner<diabetes::X>(diabetes::phi, diabetes::nb_features, 1e-15, true, false);
-  auto pred = learner(b.begin(), b.end(), diabetes::input_of, diabetes::label_of);
+  auto learner = gaml::linear::lars::target_lambda_learner<Dataset::input_type>(phi, nb_features, 1e-15, true, false);
+  auto pred = learner(dataset.begin(), dataset.end(), Dataset::input_of_data, Dataset::output_of_data);
 
   // Create the files for plotting the regularization path
   std::ofstream data;
@@ -74,7 +71,7 @@ int main(int argc, char* argv[]) {
   plot << "set parametric" << std::endl;
   plot << "set trange [-1000:1000]" << std::endl;
   plot << "plot " ;
-  for(unsigned int i = 0 ; i < diabetes::nb_features; ++i) 
+  for(unsigned int i = 0 ; i < nb_features; ++i) 
     plot << "\"" << DATA_PATH_FILE << "\" using 1:" << i+2 << " with lines notitle,";
   for(unsigned int i = 0 ; i < xbreaks.size(); ++i) {
     plot << xbreaks[i] << ",t with lines notitle lt 2 lc 7 ";

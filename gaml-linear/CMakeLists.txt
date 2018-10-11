@@ -1,7 +1,7 @@
 
 CMAKE_MINIMUM_REQUIRED( VERSION 2.8.4 )
 
-project (gaml-linear) 
+project (gaml-linear)
 
 SET(PACKAGE_VERSION "1.12")
 SET(PACKAGE_LICENSE "GPL")
@@ -18,8 +18,9 @@ find_package(PkgConfig)
 
 pkg_check_modules(GSL gsl REQUIRED)
 pkg_check_modules(GAML gaml REQUIRED)
+pkg_check_modules(GAMLDATASETS gaml-datasets REQUIRED)
 
-set(PKG_CONFIG_DEPENDS "gsl gaml")
+set(PKG_CONFIG_DEPENDS "gsl gaml gaml-datasets")
 
 #######################################
 # Setting the compilation flags
@@ -31,6 +32,7 @@ SET(PROJECT_CFLAGS "")
 # cflags added by the pkg-config dependencies contains ';' as separator. This is a fix.
 string(REPLACE ";" " " GSL_CFLAGS "${GSL_CFLAGS}")
 string(REPLACE ";" " " GAML_CFLAGS "${GAML_CFLAGS}")
+string(REPLACE ";" " " GAMLDATASETS_CFLAGS "${GAMLDATASETS_CFLAGS}")
 
 # lib flags added by the package
 SET(PROJECT_LIBS "-Wl,--no-as-needed ")
@@ -38,18 +40,19 @@ SET(PROJECT_LIBS "-Wl,--no-as-needed ")
 # libs added by the pkg-config dependencies contains ';' as separator. This is a fix.
 string(REPLACE ";" " " GSL_LDFLAGS "${GSL_LDFLAGS}")
 string(REPLACE ";" " " GAML_LDFLAGS "${GAML_LDFLAGS}")
+string(REPLACE ";" " " GAMLDATASETS_LDFLAGS "${GAMLDATASETS_LDFLAGS}")
 
 # ldflags required, but not provided by pkg-config
 SET(PROJECT_LDFLAGS "")
 
 # Gathering of all flags
 # (e.g. for compiling examples)
-SET(PROJECT_ALL_CFLAGS  "${PROJECT_CFLAGS} ${GSL_CFLAGS} ${GAML_CFLAGS}")
-SET(PROJECT_ALL_LDFLAGS "${PROJECT_LIBS} ${PROJECT_LDFLAGS} -L${CMAKE_BINARY_DIR}/src ${GSL_LDFLAGS} ${GAML_LDFLAGS}")
+SET(PROJECT_ALL_CFLAGS  "${PROJECT_CFLAGS} ${GSL_CFLAGS} ${GAML_CFLAGS} ${GAMLDATASETS_CFLAGS}")
+SET(PROJECT_ALL_LDFLAGS "${PROJECT_LIBS} ${PROJECT_LDFLAGS} -L${CMAKE_BINARY_DIR}/src ${GSL_LDFLAGS} ${GAML_LDFLAGS} ${GAMLDATASETS_LDFLAGS}")
 
 # Gathering of all flags from dependancies flags
 # (e.g. for compiling libraries)
-SET(PROJECT_ALL_DEP_LDFLAGS "${PROJECT_LDFLAGS} ${GSL_LDFLAGS} ${GAML_LDFLAGS}")
+SET(PROJECT_ALL_DEP_LDFLAGS "${PROJECT_LDFLAGS} ${GSL_LDFLAGS} ${GAML_LDFLAGS} ${GAMLDATASETS_LDFLAGS}")
 
 ###################################
 # Some prefix definitions
@@ -102,10 +105,10 @@ add_subdirectory(share)
 ###################################
 
 SET(DIST_DIR "${CMAKE_PROJECT_NAME}-${PACKAGE_VERSION}")
-ADD_CUSTOM_TARGET(dist 
+ADD_CUSTOM_TARGET(dist
 		  COMMAND rm -rf ${DIST_DIR}
 		  COMMAND mkdir  ${DIST_DIR}
-		  COMMAND cp -r ${CMAKE_SOURCE_DIR}/* ${DIST_DIR} || true 
+		  COMMAND cp -r ${CMAKE_SOURCE_DIR}/* ${DIST_DIR} || true
 		  COMMAND rm -rf ${DIST_DIR}/build
 		  COMMAND mkdir ${DIST_DIR}/build
   		  COMMAND tar --exclude="*~" --exclude="._*" --exclude=".svn" -zcvf ${DIST_DIR}.tar.gz ${DIST_DIR}
@@ -133,7 +136,7 @@ ELSEIF(MYBUILDTYPE STREQUAL "devel")
 ENDIF()
 
 # Custom target for building the packages
-# we do it inside 
+# we do it inside
 execute_process(COMMAND getconf _NPROCESSORS_ONLN
                 OUTPUT_VARIABLE NB_PROCESSOR)
 ADD_CUSTOM_TARGET(packages
@@ -165,12 +168,12 @@ IF(NOT RPMBUILD STREQUAL "RPMBUILD-NOTFOUND")
   ENDIF()
 
   IF(MYBUILDTYPE STREQUAL "binary")
-    SET(CPACK_RPM_PACKAGE_REQUIRES "gsl, gaml")
+      SET(CPACK_RPM_PACKAGE_REQUIRES "gsl, gaml, gaml-datasets")
   ENDIF()
 
   IF(MYBUILDTYPE STREQUAL "devel")
     SET(CPACK_RPM_PACKAGE_NAME ${CMAKE_PROJECT_NAME}-devel)
-    SET(CPACK_RPM_PACKAGE_REQUIRES "gsl-devel, gaml-devel, ${CMAKE_PROJECT_NAME}")
+    SET(CPACK_RPM_PACKAGE_REQUIRES "gsl-devel, gaml-devel, gaml-datasets-devel, ${CMAKE_PROJECT_NAME}")
   ENDIF()
 
   SET(CPACK_PACKAGE_FILE_NAME ${CPACK_RPM_PACKAGE_NAME}-${PACKAGE_VERSION}-${CMAKE_SYSTEM_PROCESSOR})
@@ -197,12 +200,12 @@ IF(NOT DPKGDEB STREQUAL  "DPKGDEB-NOTFOUND")
   ENDIF()
 
   IF(MYBUILDTYPE STREQUAL "binary")
-    SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libgsl23, gaml")
+    SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libgsl23, gaml, gaml-datasets")
   ENDIF()
 
   IF(MYBUILDTYPE STREQUAL "devel")
     SET(CPACK_DEBIAN_PACKAGE_NAME ${CMAKE_PROJECT_NAME}-dev)
-    SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libgsl-dev, gaml-dev, ${CMAKE_PROJECT_NAME}")
+    SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libgsl-dev, gaml-dev, gaml-datasets-dev, ${CMAKE_PROJECT_NAME}")
   ENDIF()
 
   SET(CPACK_PACKAGE_FILE_NAME ${CPACK_DEBIAN_PACKAGE_NAME}-${PACKAGE_VERSION}-${CMAKE_SYSTEM_PROCESSOR})
