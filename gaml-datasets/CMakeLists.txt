@@ -16,6 +16,8 @@ SET(PROJECT_DESCRIPTION_SUMMARY "This provides easy access to popular datasets f
 
 find_package(PkgConfig)
 
+SET(PKG_CONFIG_DEPENDS "gaml libcurl")
+
 pkg_check_modules(GAML gaml REQUIRED)
 pkg_check_modules(CURL libcurl REQUIRED)
 
@@ -31,7 +33,7 @@ string(REPLACE ";" " " GAML_CFLAGS "${GAML_CFLAGS}")
 string(REPLACE ";" " " CURL_CFLAGS "${CURL_CFLAGS}")
 
 # lib flags added by the package
-SET(PROJECT_LIBS "-Wl,--no-as-needed ")
+SET(PROJECT_LIBS "-Wl,--no-as-needed -lstdc++fs")
 
 # libs added by the pkg-config dependencies contains ';' as separator. This is a fix.
 string(REPLACE ";" " " GAML_LDFLAGS "${GAML_LDFLAGS}")
