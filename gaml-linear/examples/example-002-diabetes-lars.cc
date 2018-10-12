@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
       std::cout << " -> " << Dataset::output_of_data(s) << std::endl;
   }
   
-  int nb_features = Dataset::input_dim;
+  unsigned int nb_features = Dataset::input_dim;
 
   // We can now learn our regressor on the data
   // We ask the algorithm to normalize the data and to disable verbosity
