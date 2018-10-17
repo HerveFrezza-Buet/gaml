@@ -11,7 +11,7 @@ RUN apt update
 
 RUN apt install -y software-properties-common 
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
-RUN apt install -y g++-7 gcc-7 libgsl-dev libgsl23 
+RUN apt install -y g++-7 gcc-7 libgsl-dev libgsl23 doxygen
 
 # Deps for easykf
 RUN apt install -y libboost-python-dev 
