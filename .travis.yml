@@ -6,4 +6,9 @@ services:
 
 before_install:
     - docker build -t gaml/latest .
-    - docker run gaml/latest /bin/sh -c "gaml-datasets-example-001-artificial"
+    - docker run gaml /bin/sh -c "cd gaml/gaml/travis; ./test.sh"
+    - docker run gaml /bin/sh -c "cd gaml/gaml-linear/travis; ./test.sh"
+    - docker run gaml /bin/sh -c "cd gaml/gaml-libsvm/travis; ./test.sh"
+    - docker run gaml /bin/sh -c "cd gaml/gaml-datasets/travis; ./test.sh"
+    - docker run gaml /bin/sh -c "cd gaml/gaml-xtree/travis; ./test.sh"
+    - docker run gaml /bin/sh -c "cd gaml/gaml-mlp/travis; ./test.sh"
