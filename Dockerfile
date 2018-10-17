@@ -33,9 +33,9 @@ RUN cd easykf; mkdir -p build ; cd build ; cmake .. -DCMAKE_INSTALL_PREFIX=/usr 
 
 # GAML
 RUN git clone https://github.com/HerveFrezza-Buet/gaml
-RUN cd gaml; mkdir -p build; cd build ; cmake .. -DCMAKE_INSTALL_PREFIX=/usr ; sudo make install    
-RUN cd gaml-datasets; mkdir -p build; cd build ; cmake .. -DCMAKE_INSTALL_PREFIX=/usr ; sudo make install  
-RUN cd gaml-xtree; mkdir -p build; cd build ; cmake .. -DCMAKE_INSTALL_PREFIX=/usr ; sudo make install  
-RUN cd gaml-mlp; mkdir -p build; cd build ; cmake .. -DCMAKE_INSTALL_PREFIX=/usr ; sudo make install  
-RUN cd gaml-libsvm; mkdir -p build; cd build ; cmake .. -DCMAKE_INSTALL_PREFIX=/usr ; sudo make install  
-RUN cd gaml-linear; mkdir -p build; cd build ; cmake .. -DCMAKE_INSTALL_PREFIX=/usr ; sudo make install  
+RUN cd gaml/gaml; mkdir -p build; cd build ; cmake .. -DCMAKE_INSTALL_PREFIX=/usr ; sudo make install    
+RUN cd gaml/gaml-datasets; mkdir -p build; cd build ; cmake .. -DCMAKE_INSTALL_PREFIX=/usr ; sudo make install  
+RUN cd gaml/gaml-xtree; mkdir -p build; cd build ; cmake .. -DCMAKE_INSTALL_PREFIX=/usr ; sudo make install  
+RUN cd gaml/gaml-mlp; mkdir -p build; cd build ; cmake .. -DCMAKE_INSTALL_PREFIX=/usr ; sudo make install  
+RUN cd gaml/gaml-libsvm; mkdir -p build; cd build ; cmake .. -DCMAKE_INSTALL_PREFIX=/usr ; sudo make install  
+RUN cd gaml/gaml-linear; mkdir -p build; cd build ; cmake .. -DCMAKE_INSTALL_PREFIX=/usr ; sudo make install  
