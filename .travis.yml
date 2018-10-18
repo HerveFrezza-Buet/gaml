@@ -5,7 +5,7 @@ services:
     - docker
 
 before_install:
-    - docker build -t gaml/latest .
+    - docker build -t gaml:latest .
     - docker run gaml /bin/sh -c "cd gaml/gaml/travis; ./test.sh"
     - docker run gaml /bin/sh -c "cd gaml/gaml-linear/travis; ./test.sh"
     - docker run gaml /bin/sh -c "cd gaml/gaml-libsvm/travis; ./test.sh"
