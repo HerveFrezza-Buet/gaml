@@ -72,6 +72,7 @@
  * @example example-002-006-scorer.cpp
  * @example example-003-001-multidimension.cpp
  * @example example-003-002-multiclass.cpp
+ * @example example-003-003-multiclass.cpp
  * @example example-004-001-variable-projection.cpp
  * @example example-004-002-filter-based-selection.cpp
  * @example example-004-003-wrapper-based-selection.cpp
