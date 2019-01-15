@@ -133,7 +133,7 @@ namespace gaml {
     InputDataStream& operator>>(value_type& data) {
       try {
 	Parser::read(*is_, data);
-      } catch (std::istream::failure e) {
+      } catch (const std::istream::failure&) {
       }
       return *this;
     }

@@ -122,14 +122,13 @@ namespace gaml {
 
       value_type value;
       size_ = 0;
-      
       parser_.readBegin(dataFile_);
       std::streampos position = dataFile_.tellg();
       while(true) {
 	parser_.read(dataFile_, value);
-	if(!parser_.readSeparator(dataFile_)) break;
-	indexFile_.write((const char*) &position, sizeof(position));
 	size_ += 1;
+	indexFile_.write((const char*) &position, sizeof(position));
+	if(!parser_.readSeparator(dataFile_)) break;
 	position = dataFile_.tellg();
       }
       dataFile_.close();
@@ -201,8 +200,7 @@ namespace gaml {
       }
 
       iterator(const iterator& other) :
-	fileDataset_(other.fileDataset_), dataFile_(), indexFile_(), currentIndex_(
-										   other.currentIndex_), lastAccessedIndex_(other.lastAccessedIndex_), value_(other.value_), opened_(false) {
+	fileDataset_(other.fileDataset_), dataFile_(), indexFile_(), currentIndex_(other.currentIndex_), lastAccessedIndex_(other.lastAccessedIndex_), value_(other.value_), opened_(false) {
       }
 
       iterator(iterator&& other) :
@@ -210,6 +208,19 @@ namespace gaml {
 										   other.currentIndex_), lastAccessedIndex_(other.lastAccessedIndex_), value_(std::move(other.value_)), opened_(false) {
       }
 
+      iterator& operator=(const iterator& other) {
+	if(opened_) {
+	  dataFile_.close();
+	  indexFile_.close();
+	}
+	fileDataset_ = other.fileDataset_;
+	currentIndex_ = other.currentIndex_;
+	lastAccessedIndex_ = other.lastAccessedIndex_;
+	value_ = other.value_;
+	opened_ = false;
+	return *this;
+      }
+      
       ~iterator() {
 	if(opened_) {
 	  dataFile_.close();

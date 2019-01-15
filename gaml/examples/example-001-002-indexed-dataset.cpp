@@ -53,7 +53,7 @@ int main(int argc, char** argv) {
       std::ofstream ofile(CUSTOMERS_DATA_FILE);
       auto output_stream = gaml::make_output_data_stream(ofile, parser);
       {
-	auto out           = gaml::make_output_iterator   (output_stream);
+	auto out           = gaml::make_output_iterator(output_stream);
 	std::copy(data.begin(), data.end(), out);
       }
     }
