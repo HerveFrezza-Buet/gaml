@@ -5,6 +5,8 @@
 #include <array>
 #include <tuple>
 #include <utility>
+#include <sstream>
+#include <string>
 
 /*
   This example shows how the use of iterators allows a convenient
@@ -76,6 +78,34 @@ int main(int argc, char* argv[]) {
   auto merge = gaml::merge(begin +  2, begin + 10,
   			   begin + 23, begin + 47);
   display("Merging non overlapping subsets", merge.begin(), merge.end());
+
+  // This splits a dataset into pieces.
+
+  // gaml::partition::kfold (with lower case) is what you provide to cross-validation.
+  // Use upper case class name here.
+  unsigned int nb_pieces = 4;
+  auto kfold             = gaml::partition::KFold(begin, end, nb_pieces); 
+  for(unsigned int piece = 0; piece < kfold.size(); ++piece) {
+    std::ostringstream ostr;
+    ostr << "kfold(" << nb_pieces << ") : chunck #" << piece+1;
+    display(ostr.str(), kfold.begin(piece), kfold.end(piece));
+  }
+
+  // gaml::partition::chunk (with lower case) is what you provide to cross-validation.
+  // Use upper case class name here.
+  unsigned int chunk_size = 8;
+  auto chunk             = gaml::partition::Chunk(begin, end, chunk_size); 
+  for(unsigned int piece = 0; piece < chunk.size(); ++piece) {
+    std::ostringstream ostr;
+    ostr << "chunk(" << nb_pieces << ") : chunck #" << piece+1;
+    display(ostr.str(), chunk.begin(piece), chunk.end(piece));
+  }
+
+  // A partition enables complementation (thanks to an inner merge).
+  display("Complement of chunk #2", chunk.complement_begin(1), chunk.complement_end(1));
+    
+
+  
 
   
   // This is lazy, since the function is applied only when *iter is
