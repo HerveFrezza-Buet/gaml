@@ -39,7 +39,7 @@ namespace gaml {
     auto init = [begin,end](std::vector<tabular_index_type>& indices) -> void {
       auto size = std::distance(begin,end);
       auto out = std::back_inserter(indices);
-      for(tabular_index_type i = 0; i < size; ++i) *(out++) = i;
+      for(tabular_index_type i = 0; i < (std::size_t)size; ++i) *(out++) = i;
     };
     return Tabular<Iterator, typename is_secondary_iterator<Iterator>::type> (begin,init);
   }
