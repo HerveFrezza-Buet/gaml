@@ -77,6 +77,6 @@ The available packages are :
 <dl>
 <dt><a href="http://www.csie.ntu.edu.tw/~cjlin/libsvm">Libsvm</a></dt> <dd>SVM algorithms.</dd>
 <dt><a href="https://github.com/jeremyfix/easykf">easykf</a></dt> <dd>C++ kalman filtering</dd>
-<dt><a href="https://github.com/HerveFrezza-Buet/vq3">vq2</a></dt> <dd>C++ generic vector quantization</dd>
+<dt><a href="https://github.com/HerveFrezza-Buet/vq3">vq3</a></dt> <dd>C++ generic vector quantization</dd>
 <dt><a href="https://github.com/HerveFrezza-Buet/rllib">RLlib</a></dt> <dd>C++ generic reinforcement learning</dd>
 </dl>
