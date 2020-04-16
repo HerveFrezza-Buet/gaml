@@ -30,6 +30,7 @@
 #include <gamlBootstrap.hpp>
 #include <gamlCache.hpp>
 #include <gamlConfusion.hpp>
+#include <gamlCustom.hpp>
 #include <gamlException.hpp>
 #include <gamlFilter.hpp>
 #include <gamlFilters.hpp>

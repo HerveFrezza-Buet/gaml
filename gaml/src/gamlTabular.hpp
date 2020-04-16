@@ -154,6 +154,12 @@ namespace gaml {
       for(auto i : indices) if(i == idx) return true;
       return false;
     }
+
+    /**
+     * @returns a vector of indices. They are the one mapping the
+     * current iteration order to the primary collection order.
+     */
+    const std::vector<tabular_index_type>& index_table() const {return indices;}
   };
 
   

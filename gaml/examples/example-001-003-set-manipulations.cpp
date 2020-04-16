@@ -24,6 +24,14 @@ std::ostream& operator<<(std::ostream& os,
   return os;
 }
 
+// For use of zip, we define a serialization operator for
+// a std::tuple<int, int, int >
+std::ostream& operator<<(std::ostream& os,
+			 const std::tuple<int, int, int>& elem) {
+  os << "(" << std::get<0>(elem) << ", "  << std::get<1>(elem) << ", "  << std::get<2>(elem) << ")";
+  return os;
+}
+
 // This template function displays values from begin to end.
 template<typename Iterator>
 void display(const std::string& title, Iterator begin, Iterator end) {
@@ -87,7 +95,7 @@ int main(int argc, char* argv[]) {
   auto kfold             = gaml::partition::KFold(begin, end, nb_pieces); 
   for(unsigned int piece = 0; piece < kfold.size(); ++piece) {
     std::ostringstream ostr;
-    ostr << "kfold(" << nb_pieces << ") : chunck #" << piece+1;
+    ostr << "kfold(" << nb_pieces << ") : chunck #" << piece + 1;
     display(ostr.str(), kfold.begin(piece), kfold.end(piece));
   }
 
@@ -97,21 +105,17 @@ int main(int argc, char* argv[]) {
   auto chunk             = gaml::partition::Chunk(begin, end, chunk_size); 
   for(unsigned int piece = 0; piece < chunk.size(); ++piece) {
     std::ostringstream ostr;
-    ostr << "chunk(" << nb_pieces << ") : chunck #" << piece+1;
+    ostr << "chunk(" << nb_pieces << ") : chunck #" << piece + 1;
     display(ostr.str(), chunk.begin(piece), chunk.end(piece));
   }
 
   // A partition enables complementation (thanks to an inner merge).
   display("Complement of chunk #2", chunk.complement_begin(1), chunk.complement_end(1));
-    
-
-  
-
-  
+      
   // This is lazy, since the function is applied only when *iter is
   // invoked.
   
-  auto map = gaml::map(begin, begin+10,
+  auto map = gaml::map(begin, begin + 10,
   		       [] (const int& x) -> int {return x*x;});
   display("Mapping a function", map.begin(), map.end());
 
@@ -128,20 +132,20 @@ int main(int argc, char* argv[]) {
   // The bootstrap consists in taking 20 samples randomly from [begin,
   // begin+10[.
   
-  auto bootstrap = gaml::bootstrap(begin, begin+10, 20, gen);
+  auto bootstrap = gaml::bootstrap(begin, begin + 10, 20, gen);
   display("Bootstrap [0, 10]", bootstrap.begin(), bootstrap.end());
   
   // This computes an acces to the elements as if the initial set were
   // shuffled.
   
-  auto shuffle = gaml::shuffle(begin, begin+20, gen);
+  auto shuffle = gaml::shuffle(begin, begin + 20, gen);
   display("Shuffle", shuffle.begin(), shuffle.end());
   
   // This performs a shuffle tkat keeps some kind of locality, for
   // memory efficiency reasons. This may be needed if some cache
   // mecanism is involved.
   
-  auto packed_shuffle = gaml::packed_shuffle(begin, begin+45, 10, gen);
+  auto packed_shuffle = gaml::packed_shuffle(begin, begin + 45, 10, gen);
   display("Packed shuffle", packed_shuffle.begin(), packed_shuffle.end());
 
   // We can filter the data according to a boolean function. The
@@ -172,8 +176,8 @@ int main(int argc, char* argv[]) {
   // the shuffle here, when it is created, has to iterate explicitly
   // all the fsq content, since gaml::filter/gaml::reject iterator do
   // not allow for instantaneous (end-begin) size computation.
-  auto sq   = gaml::map     (begin,       begin+20,  [] (int x) -> int  {return x*x;       });
-  auto fsq  = gaml::reject  (sq.begin(),  sq.end(),  [] (int i) -> bool {return i % 4 != 0;});
+  auto sq   = gaml::map     (begin,       begin + 20,  [] (int x) -> int  {return x*x;       });
+  auto fsq  = gaml::reject  (sq.begin(),  sq.end(),    [] (int i) -> bool {return i % 4 != 0;});
   auto fsqs = gaml::shuffle (fsq.begin(), fsq.end(), gen                                    );
   display("Intrication",fsqs.begin(),fsqs.end());
   
@@ -183,7 +187,7 @@ int main(int argc, char* argv[]) {
   // Let us define a mapped collection, the mapped function being
   // verbose, so that one can see when the computation is actually
   // invoked.
-  auto squares = gaml::map(begin,begin+20,
+  auto squares = gaml::map(begin,begin + 20,
   			   [] (int x) -> int {
   			     std::cout << " (" << x*x << ')';
   			     return x*x;
@@ -200,6 +204,25 @@ int main(int argc, char* argv[]) {
   display("Cache demo [0..20[",  cached_squares.begin()     , cached_squares.end()       );
   display("Cache demo [10..20[", cached_squares.begin() + 10, cached_squares.begin() + 20);
   
+  // You can set up a custom transformation from one dataset to
+  // another. Its is based on an index map. This is convinent, for
+  // example, for having the same permutation on different
+  // datasets. The usage of custom transformations is more general,
+  // but let us illustrate this on the permutation example.
+  auto s_1               = gaml::identity(begin + 10, begin + 20);
+  auto s_2               = gaml::identity(begin + 20, begin + 30);
+  auto s_3               = gaml::identity(begin + 30, begin + 40);
+  auto s_1_shuffled      = gaml::shuffle(s_1.begin(), s_1.end(), gen);
+  auto permutation_table = s_1_shuffled.index_table(); // permutation_table[i] = j means that s_1_shuffled[i] = s_1[j].
+  auto s_2_shuffled      = gaml::custom(s_2.begin(), permutation_table.begin(), permutation_table.end());
+  auto s_3_shuffled      = gaml::custom(s_3.begin(), permutation_table.begin(), permutation_table.end());
+  auto s_123_shuffled    = gaml::zip(gaml::range(s_1_shuffled.begin(), s_1_shuffled.end()),  
+				     gaml::range(s_2_shuffled.begin(), s_2_shuffled.end()),
+				     gaml::range(s_3_shuffled.begin(), s_3_shuffled.end()));
+  display("Custom : shared permutation table",  permutation_table.begin(), permutation_table.end());
+  display("Customs", s_123_shuffled.begin(), s_123_shuffled.end());
+  
+
   
   return EXIT_SUCCESS;
 }
