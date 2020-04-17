@@ -89,8 +89,8 @@ namespace gaml {
       unsigned int dsize;
       unsigned int last_set_id;
       unsigned int K;
-      const iterator& begin_iter;
-      const iterator& end_iter;
+      iterator begin_iter;
+      iterator end_iter;
 
       gaml::Merge<DataIterator,DataIterator> complement(unsigned int i) const {
 	if(i==0) 
@@ -164,8 +164,8 @@ namespace gaml {
       unsigned int set_size;
       unsigned int nb_sets;
       unsigned int last_set_id;
-      const iterator& begin_iter;
-      const iterator& end_iter;
+      iterator begin_iter;
+      iterator end_iter;
 
       gaml::Merge<DataIterator,DataIterator> complement(unsigned int i) const {
 	if(i==0) 
