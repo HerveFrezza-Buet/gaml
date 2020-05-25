@@ -86,6 +86,9 @@ namespace gaml {
       : begin(begin), idx(idx) {
     }
     
+    /**
+     * This is the type of the iterator for the primary collection.
+     */
     typedef Iterator primary_type;
     
     TabularIterator()                                                       = default;
@@ -94,7 +97,14 @@ namespace gaml {
     TabularIterator(TabularIterator<Iterator>&&)                            = default;
     TabularIterator<Iterator>& operator=(TabularIterator<Iterator>&&)       = default;
     
+    /**
+     * @return the index in the primary collection
+     */
     tabular_index_type index()  const {return *idx;}
+    
+    /**
+     * @return the begin iterator in the primary collection.
+     */
     primary_type       origin() const {return begin;};
     
     TabularIterator<Iterator>& operator++()         {++idx;       return *this;}
