@@ -26,10 +26,12 @@ You may need to adapt the update-alternatives install depending on the versions 
 
 # Unix Installation
 
-First, get the files.
+First, get the files in some directory where you compile things.
 
-``` 
+```
+cd my_directory
 git clone https://github.com/HerveFrezza-Buet/gaml
+cd gaml
 ``` 
 
 Then, you can install all packages as follows. The commands below concern the installation of the gaml package, the installation of the other packages is similar. 
