@@ -41,6 +41,7 @@ For Ubuntu or a Fedora-32bit architecture:
 mkdir -p gaml/build
 cd gaml/build
 cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+make -j
 sudo make install
 cd ../..
 ```
@@ -51,6 +52,7 @@ For a Fedora-64bit architecture:
 mkdir -p gaml/build
 cd gaml/build
 cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DLIB_SUFFIX=64
+make -j
 sudo make install
 cd ../..
 ```
