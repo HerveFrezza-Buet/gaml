@@ -33,7 +33,7 @@ git clone https://github.com/HerveFrezza-Buet/gaml
 ``` 
 
 Then, you can install all packages as follows. The commands below concern the installation of the gaml package, the installation of the other packages is similar. 
-For a 32bit architecture: 
+For Ubuntu or a Fedora-32bit architecture: 
 
 ```
 mkdir -p gaml/build
