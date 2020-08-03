@@ -254,7 +254,7 @@ namespace gaml {
      * @return An iteratable collection of samples (double,4) -> int
      */
     inline auto make_iris_dataset() {
-        std::string url("http://mlr.cs.umass.edu/ml/machine-learning-databases/iris/iris.data");
+        std::string url("https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data");
 
         using input_type = std::array<double, 4>;
         using output_type = int;
@@ -303,7 +303,7 @@ namespace gaml {
      * @return An iteratable collection of samples (double,13) -> int
      */
     inline auto make_wine_dataset() {
-        std::string url("http://mlr.cs.umass.edu/ml/machine-learning-databases/wine/wine.data");
+        std::string url("https://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data");
 
         using input_type = std::array<double, 13>;
         using output_type = int;
@@ -325,7 +325,7 @@ namespace gaml {
      * @return An iteratable collection of samples (double,13) -> double
      */
     inline auto make_boston_housing_dataset() {
-        std::string url("http://mlr.cs.umass.edu/ml/machine-learning-databases/housing/housing.data");
+        std::string url("https://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data");
         using input_type = std::array<double, 13>;
         using output_type = double;
         auto parse_field = [](std::istream& is, unsigned int field_idx, std::pair<input_type, output_type>& data) {
