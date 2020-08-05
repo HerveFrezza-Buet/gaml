@@ -268,7 +268,7 @@ namespace gaml {
       /** This encapsulates svm_get_nr_class of libsvm. */
       int get_nr_class(void) const {return svm_get_nr_class(model.get());}
       /** This encapsulates svm_get_labels of libsvm. */
-      int get_labels(int* labels) const {return svm_get_labels(model.get(),labels);}
+      void get_labels(int* labels) const {svm_get_labels(model.get(),labels);}
       /** This encapsulates svm_get_sv_indices of libsvm. */
       void get_sv_indices(int* sv_indices) const {svm_get_sv_indices(model.get(),sv_indices);}
       /** This encapsulates svm_get_nr_sv of libsvm. */
