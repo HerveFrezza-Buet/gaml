@@ -58,6 +58,9 @@ int main(int argc, char* argv[]) {
   for(auto& xy : basis) xy = sample(gen);
 
   auto learner = gaml::xtree::regression::learner<X, Y, gaml::score::RelativeVarianceReduction>(max_leaf_size, DIM, gen);
+  std::cout << "At each split, " << DIM << " attribute (if not constant) are tested." << std::endl
+	    << "The impurity criterion is the relative variance reduction." << std::endl
+	    << std::endl;
   std::cout << "Learning a single tree... " << std::flush;
   auto predictor = learner(basis.begin(), basis.end(), input_of, output_of);
   std::cout << "done." << std::endl;
