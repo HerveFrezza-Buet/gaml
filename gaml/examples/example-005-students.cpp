@@ -14,17 +14,17 @@
 // high school last year.
 
 enum Discipline {
-  Art,
-  Biology,
-  Chemistry,
-  ForeignLanguage,
-  Geography,
-  History,
-  Literature,
-  Mathematics,
-  Music,
-  Physics,
-  Sports
+		 Art,
+		 Biology,
+		 Chemistry,
+		 ForeignLanguage,
+		 Geography,
+		 History,
+		 Literature,
+		 Mathematics,
+		 Music,
+		 Physics,
+		 Sports
 };
 #define NB_DISCPIPLINES 11
 
@@ -46,8 +46,8 @@ std::string toString(int d) {
 }
 
 // Marks are given in [0,1]
-typedef double                            Mark;
-typedef std::array<Mark, NB_DISCPIPLINES> Report;
+using Mark   = double;
+using Report = std::array<Mark, NB_DISCPIPLINES>;
 
 std::ostream& operator<<(std::ostream& os, const Report& r) {
   os << "["; 
@@ -69,16 +69,16 @@ template<typename RANDOM_DEVICE>
 Mark university_mark(const Report& report, RANDOM_DEVICE& rd) {
   Mark mark;
 
-  if(   report[Discipline::Biology    ] < PASS_MARK
-	|| report[Discipline::Chemistry  ] < PASS_MARK
-	|| report[Discipline::Mathematics] < PASS_MARK
-	|| report[Discipline::Physics    ] < PASS_MARK)
+  if(report[   Discipline::Biology    ] < PASS_MARK
+     || report[Discipline::Chemistry  ] < PASS_MARK
+     || report[Discipline::Mathematics] < PASS_MARK
+     || report[Discipline::Physics    ] < PASS_MARK)
     mark = 0;
   else {
-    mark =   report[Discipline::Biology    ]
-      + report[Discipline::Chemistry  ]
-      + report[Discipline::Mathematics]
-      + report[Discipline::Physics    ];
+    mark = report[Discipline::Biology    ]
+      +    report[Discipline::Chemistry  ]
+      +    report[Discipline::Mathematics]
+      +    report[Discipline::Physics    ];
     mark /= 4.0;
     mark += std::uniform_real_distribution<double>(-PANEL_NOISE, PANEL_NOISE)(rd);
   }
@@ -87,9 +87,9 @@ Mark university_mark(const Report& report, RANDOM_DEVICE& rd) {
 
 // Let us define supervised learning vocabulary.
 
-typedef Report                  Sample;
-typedef Mark                    Label;
-typedef std::pair<Sample,Label> Data;
+using Sample = Report;
+using Label  = Mark;
+using Data   = std::pair<Sample,Label>;
 
 const Report& report_of(const Data& d) {return d.first;}
 Mark          mark_of  (const Data& d) {return d.second;}
@@ -134,9 +134,9 @@ public:
     for(auto student = begin; student != end; ++student) {
       auto score = outputOf(*student);
       auto& marks = inputOf(*student);
-      auto min = std::min_element(marks.begin(),marks.end());
-      if(score == 0) min_pass_mark = std::max(*min,min_pass_mark);
-      else           max_pass_mark = std::min(*min,max_pass_mark);
+      auto min = std::min_element(marks.begin(), marks.end());
+      if(score == 0) min_pass_mark = std::max(*min, min_pass_mark);
+      else           max_pass_mark = std::min(*min, max_pass_mark);
     }
     
     return predictor_type((min_pass_mark+max_pass_mark)*.5);
