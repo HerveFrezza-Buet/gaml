@@ -55,7 +55,7 @@ namespace gaml {
 	  *(out_false++) = i++;
     };
     
-    auto false_init = [begin,end,&false_indices](std::vector<tabular_index_type>& indices) -> void {
+    auto false_init = [&false_indices](std::vector<tabular_index_type>& indices) -> void {
       indices = std::move(false_indices);
     };
 

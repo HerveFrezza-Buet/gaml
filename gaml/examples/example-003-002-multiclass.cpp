@@ -74,7 +74,7 @@ public:
     
     std::size_t nb_errors   = std::numeric_limits<std::size_t>::max(); 
     std::size_t nb_l1_below = 0;
-    std::size_t nb_l1_above = std::count_if(data.begin(), data.end(), [l1](auto& d) {return d.second == l1;});
+    std::size_t nb_l1_above = std::count_if(data.begin(), data.end(), [l=l1](auto& d) {return d.second == l;});
     std::size_t nb_l2_below = 0;
     std::size_t nb_l2_above = data.size() - nb_l1_above;
 

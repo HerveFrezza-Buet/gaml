@@ -35,7 +35,9 @@ string(REPLACE ";" " " GAML_CFLAGS "${GAML_CFLAGS}")
 string(REPLACE ";" " " GAMLDATASETS_CFLAGS "${GAMLDATASETS_CFLAGS}")
 
 # lib flags added by the package
-SET(PROJECT_LIBS "-Wl,--no-as-needed ")
+if(UNIX)
+  SET(PROJECT_LIBS "-Wl,--no-as-needed ")
+endif()
 
 # libs added by the pkg-config dependencies contains ';' as separator. This is a fix.
 string(REPLACE ";" " " GSL_LDFLAGS "${GSL_LDFLAGS}")
