@@ -49,12 +49,12 @@ int main(int argc, char* argv[]) {
 
 
   std::cout << std::endl;
-  std::cout << " To plot the generated datasets in gnuplot :" << std::endl;
+  std::cout << "To plot the generated datasets in gnuplot :" << std::endl;
   std::cout << "set palette defined (0 \"red\", 1 \"blue\")" << std::endl;
   std::cout << "set xrange [-1.5:1.5]" << std::endl;
   std::cout << "set yrange [-1.5:1.5]" << std::endl;
   std::cout << "plot 'dataset.data' using 1:2:3 w p lc palette" << std::endl;
     
-  
+  return 0;
   
 }

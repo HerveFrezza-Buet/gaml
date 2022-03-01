@@ -28,10 +28,12 @@
 
 #include "gamldatasetsArtificial.hpp"
 #include "gamldatasetsDownload.hpp"
+#include "gamldatasetsMNIST.hpp"
 
 /**
  * @example example-001-artificial.cpp
  * @example example-002-download.cpp
+ * @example example-003-MNIST.cpp
  */
 
 /**
