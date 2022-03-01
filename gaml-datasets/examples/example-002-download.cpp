@@ -1,9 +1,10 @@
 #include <gaml-datasets.hpp>
+#include <iomanip>
 #include <iostream>
 
 template<typename DATASET>
-void print_dataset(const DATASET& dataset,
-		   unsigned int nb_samples) {
+void print(const DATASET& dataset,
+	   unsigned int nb_samples) {
   unsigned int idx = 0;
   for(const auto& s: dataset) {
     for(const auto& v: dataset.input_of_data(s))
@@ -21,26 +22,30 @@ void print_dataset(const DATASET& dataset,
 int main(int argc, char* argv[]) {
   
   {
-    std::cout << std::string(100, '*') << "Iris classification Dataset" << std::endl;
-    auto dataset = gaml::make_iris_dataset();
-    print_dataset(dataset, 2);
+    std::cout << std::endl << std::endl
+	      << "***** " << std::setw(80) << std::setfill('*') << std::left << " Iris classification Dataset " << std::endl;
+    auto dataset = gaml::datasets::make_iris();
+    print(dataset, 2);
   }
   
   {
-    std::cout << std::string(100, '*') << "Diabetes regression Dataset" << std::endl;
-    auto dataset = gaml::make_diabetes_dataset();
-    print_dataset(dataset, 2);
+    std::cout << std::endl << std::endl
+	      << "***** " << std::setw(80) << std::setfill('*') << std::left << " Diabetes regression Dataset " << std::endl;
+    auto dataset = gaml::datasets::make_diabetes();
+    print(dataset, 2);
   }
   
   {
-    std::cout << std::string(100, '*') << "Wine classification Dataset" << std::endl;
-    auto dataset = gaml::make_wine_dataset();
-    print_dataset(dataset, 2);
+    std::cout << std::endl << std::endl
+	      << "***** " << std::setw(80) << std::setfill('*') << std::left << " Wine classification Dataset " << std::endl;
+    auto dataset = gaml::datasets::make_wine();
+    print(dataset, 2);
   }
   
   {
-    std::cout << std::string(100, '*') << "Boston housing regression Dataset" << std::endl;
-    auto dataset = gaml::make_boston_housing_dataset();
-    print_dataset(dataset, 2);
+    std::cout << std::endl << std::endl
+	      << "***** " << std::setw(80) << std::setfill('*') << std::left << " Boston housing regression Dataset " << std::endl;
+    auto dataset = gaml::datasets::make_boston_housing();
+    print(dataset, 2);
   }
 }

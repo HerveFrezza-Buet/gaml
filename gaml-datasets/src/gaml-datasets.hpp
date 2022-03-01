@@ -31,6 +31,7 @@
 
 /**
  * @example example-001-artificial.cpp
+ * @example example-002-download.cpp
  */
 
 /**
