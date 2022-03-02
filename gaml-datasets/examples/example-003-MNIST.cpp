@@ -22,13 +22,21 @@ int main(int argc, char* argv[]) {
   std::string samples_idx_filename = "samples.idx";
   std::string labels_idx_filename  = "labels.idx";
 
-  auto sample_parser = gaml::datasets::MNIST::make_input_parser();
-  auto label_parser  = gaml::datasets::MNIST::make_label_parser();
+  {
+    // This could be done to create the raw MNIST
+    // dataset. Nevertheless, we provide an integrated dataset type
+    // for that purpose (see after this block of code).
+    
+    auto sample_parser = gaml::datasets::MNIST::make_input_parser();
+    auto label_parser  = gaml::datasets::MNIST::make_label_parser();
+    auto raw_samples = gaml::make_indexed_dataset(sample_parser, samples_filename, samples_idx_filename);
+    auto raw_labels  = gaml::make_indexed_dataset(label_parser,  labels_filename,  labels_idx_filename );
+    auto raw_dataset = gaml::zip(gaml::range(raw_samples.begin(), raw_samples.end()),  
+				 gaml::range(raw_labels.begin(),  raw_labels.end() ));
+  }
 
-  auto raw_samples = gaml::make_indexed_dataset(sample_parser, samples_filename, samples_idx_filename);
-  auto raw_labels  = gaml::make_indexed_dataset(label_parser,  labels_filename,  labels_idx_filename );
-  auto raw_dataset = gaml::zip(gaml::range(raw_samples.begin(), raw_samples.end()),  
-			       gaml::range(raw_labels.begin(),  raw_labels.end() ));
+  auto raw_dataset = gaml::datasets::MNIST::dataset({samples_filename, samples_idx_filename},
+						    {labels_filename,  labels_idx_filename });
 
   // We have a {(input1, label1), ... } dataset.
 

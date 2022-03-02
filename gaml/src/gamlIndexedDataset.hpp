@@ -279,9 +279,6 @@ namespace gaml {
       bool operator<(const iterator& other) const {
 	return currentIndex_ < other.currentIndex_;
       }
-
-
-
     };
 
     iterator begin() {

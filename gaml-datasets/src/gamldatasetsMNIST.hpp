@@ -28,6 +28,7 @@
 #include <array>
 #include <tuple>
 #include <cstddef>
+#include <string>
 
 #include <gaml.hpp>
 
@@ -92,6 +93,48 @@ namespace gaml {
 	  while(it != line_end) *(img_pixel++) = 255 - *(it++);
 	}
       }
+
+      class dataset {
+      public:
+
+	using input_dataset_type = gaml::IndexedDataset<InputParser>;
+	using label_dataset_type = gaml::IndexedDataset<LabelParser>;
+	using dataset_type       = gaml::Zip<gaml::Range<typename input_dataset_type::iterator>,
+					     gaml::Range<typename label_dataset_type::iterator>>;
+	
+      private:
+	
+	InputParser input_parser;
+	LabelParser label_parser;
+
+	input_dataset_type input_dataset;
+	label_dataset_type label_dataset;
+	dataset_type       mnist_dataset;
+	
+
+      public:
+	
+	dataset()                           = default;
+	dataset(const dataset&)             = default;
+	dataset(dataset&&)                  = default;
+	dataset& operator=(const dataset&)  = default;
+	dataset& operator=(dataset&&)       = default;
+
+	/**
+	 * @param input_files : (input_data_filename, input_idx_filename).
+	 * @param label_files : (label_data_filename, label_idx_filename).
+	 */
+	dataset(const std::tuple<std::string, std::string>& input_files,
+		const std::tuple<std::string, std::string>& label_files)
+	  : input_parser(), label_parser(),
+	    input_dataset(input_parser, std::get<0>(input_files), std::get<1>(input_files)),
+	    label_dataset(label_parser, std::get<0>(label_files), std::get<1>(label_files)),
+	    mnist_dataset(gaml::range(input_dataset.begin(), input_dataset.end()),
+			  gaml::range(label_dataset.begin(), label_dataset.end())) {}
+
+	auto begin() const {return mnist_dataset.begin();}
+	auto end()   const {return mnist_dataset.end();  }
+      };
       
     }
   }
