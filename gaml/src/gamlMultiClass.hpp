@@ -39,7 +39,7 @@
 
 namespace gaml {
 
-  namespace concept {
+  namespace concepts {
     namespace score {
       
       /**
@@ -293,7 +293,7 @@ namespace gaml {
 
 
       /**
-       * SCORE_LEARNER must fit gaml::concept::score::learner
+       * SCORE_LEARNER must fit gaml::concepts::score::learner
        */
       template<typename SCORE_LEARNER, typename OUTPUT>
       class Learner {

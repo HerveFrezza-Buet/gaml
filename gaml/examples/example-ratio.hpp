@@ -11,7 +11,7 @@ namespace ratio {
   // Let us define a regressor, that uses a hypothesis set made y =
   // a*x functions.
 
-  // This fits the gaml::concept::Predictor concept.
+  // This fits the gaml::concepts::Predictor concept.
   class Predictor {
   public:
 
@@ -32,7 +32,7 @@ namespace ratio {
   // The learner class for this type of regressor consists in
   // computing the average of all the ratios.
 
-  // This fits the gaml::concept::Learner concept.
+  // This fits the gaml::concepts::Learner concept.
   class Learner {
 
   public:

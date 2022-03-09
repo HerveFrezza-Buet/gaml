@@ -36,7 +36,7 @@ int main(int argc, char* argv[]) {
   // partition. Such evaluators are learner evaluators (they evaluate
   // a learning algorithm, as opposed to predictor evaluators that
   // evaluate some predicting function). They fit
-  // gaml::concept::LearnerEvaluator.
+  // gaml::concepts::LearnerEvaluator.
 
   bool verbosity = true;
 

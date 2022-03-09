@@ -29,7 +29,7 @@
 #include <iterator>
 
 namespace gaml {
-  namespace concept {
+  namespace concepts {
     template<typename DataIterator>
     class Partition {
     public:
@@ -110,7 +110,7 @@ namespace gaml {
 	  end_iter(cp.end_iter) {}
 
       /**
-       * This fits gaml::concept::Partition
+       * This fits gaml::concepts::Partition
        * @param k The number of subsets.
        */
       KFold(const iterator& data_begin,
@@ -186,7 +186,7 @@ namespace gaml {
 	  end_iter(cp.end_iter) {}
 
       /**
-       * This fits gaml::concept::Partition
+       * This fits gaml::concepts::Partition
        * @param chunk_size The size of each chunk. The last one may be smaller.
        */
       Chunk(const iterator& data_begin,

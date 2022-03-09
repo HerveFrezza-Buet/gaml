@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
   // the basis. 
 
   // We use the quadratic loss to set up an predictor evaluator. It
-  // fits the concept gaml::concept::PredictorEvaluator.
+  // fits the concept gaml::concepts::PredictorEvaluator.
   auto predictor_evaluator = gaml::risk::empirical(gaml::loss::Quadratic<double>());
   
   // The evaluator can then evaluate our predictor on the data basis.

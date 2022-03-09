@@ -24,7 +24,7 @@ U class_of_label(U label)          {return label;}
 
 // This is our classifier. It makes a confusion : an odd class is
 // confused with some other odd class, and the same stands for even
-// classes. It fits gaml::concept::Predictor.
+// classes. It fits gaml::concepts::Predictor.
 
 template<typename RANDOM_DEVICE>
 class Classifier {

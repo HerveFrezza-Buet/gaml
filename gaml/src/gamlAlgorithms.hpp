@@ -51,7 +51,7 @@
 namespace gaml {
 
 
-  namespace concept {
+  namespace concepts {
 
     typedef int any;
     /**

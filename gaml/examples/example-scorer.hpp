@@ -18,7 +18,7 @@
 namespace scorer {
 
   /**
-   * This fits concept::score::Scorer
+   * This fits concepts::score::Scorer
    */
   class Scorer {
   private:
@@ -46,7 +46,7 @@ namespace scorer {
   };
 
   /**
-   * This fits concept::score::Learner
+   * This fits concepts::score::Learner
    */
   class Learner {
   public:
@@ -58,7 +58,7 @@ namespace scorer {
     Learner& operator=(const Learner& other) = default;
 
 
-    // As we fit concept::score::Learner, we can assume that output_of
+    // As we fit concepts::score::Learner, we can assume that output_of
     // returns a boolean telling which are positive class samples.
     template<typename DataIterator, typename InputOf, typename OutputOf> 
     scorer_type operator()(const DataIterator& begin, const DataIterator& end,

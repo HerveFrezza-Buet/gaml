@@ -26,7 +26,7 @@
 
 namespace gaml {
 
-  namespace concept {
+  namespace concepts {
     /**
      * @short Concept for the loss function.
      */

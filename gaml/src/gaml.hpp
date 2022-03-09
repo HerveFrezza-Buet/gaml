@@ -127,10 +127,10 @@
  * rather on inheritence mechanisms. A concept is a syntactical
  * requirement. In the gaml library, such requirement are documented
  * through the use of <b>fake</b> classes in the gaml::concept
- * namespace. Let us take the exemple of the gaml::concept::Predictor
+ * namespace. Let us take the exemple of the gaml::concepts::Predictor
  * concept.
  *
- * The gaml::concept::Predictor concept says that some predictor must define two types, names input_type and output_type, and that it should provide some defaut and copy constructors, as well as a operator() method. Let us propose some predictor (dummy...).
+ * The gaml::concepts::Predictor concept says that some predictor must define two types, names input_type and output_type, and that it should provide some defaut and copy constructors, as well as a operator() method. Let us propose some predictor (dummy...).
  * @code
 class Funny {
 public:
@@ -147,7 +147,7 @@ public:
 };
  * @endcode
  *
- * This Funny class fits the gaml::concept::Predictor concept while no inheritance is involved. If some algorithm in the documentation is such as it requires an argument whose type fits the gaml::concept::Predictor concept, this will be specified in the documentation. For example, let us suppose that the function foo is dedicated to the manipulation of some predictor. Its declaration in the gaml lib would be
+ * This Funny class fits the gaml::concepts::Predictor concept while no inheritance is involved. If some algorithm in the documentation is such as it requires an argument whose type fits the gaml::concept::Predictor concept, this will be specified in the documentation. For example, let us suppose that the function foo is dedicated to the manipulation of some predictor. Its declaration in the gaml lib would be
  * @code
  namespace gaml {
    template<typename Predictor>
@@ -161,7 +161,7 @@ public:
  double result = gaml::foo<Funny>(funny);
  * @endcode
  *
- * This is will compile fine as long as the Funny class fits the gaml::concept::Predictor concept. Moreover, when the compiler can guess the template parameter type from the function call, the template parameters can be removed. This leads to the following codes, that gives you the flavor of the gaml function calls.
+ * This is will compile fine as long as the Funny class fits the gaml::concepts::Predictor concept. Moreover, when the compiler can guess the template parameter type from the function call, the template parameters can be removed. This leads to the following codes, that gives you the flavor of the gaml function calls.
  * @code
  Funny funny;
  double result = gaml::foo(funny);

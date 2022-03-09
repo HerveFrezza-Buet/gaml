@@ -12,7 +12,7 @@ namespace silly {
   // constant functions. The predicted label is thus constant, whatever
   // the input. 
 
-  // This fits the gaml::concept::Predictor concept.
+  // This fits the gaml::concepts::Predictor concept.
   class Predictor {
   private:
   
@@ -37,7 +37,7 @@ namespace silly {
   // algorithm. It consists of computing the average of all the the
   // labels in the dataset.
 
-  // This fits the gaml::concept::Learner concept.
+  // This fits the gaml::concepts::Learner concept.
   class Learner {
 
   public:

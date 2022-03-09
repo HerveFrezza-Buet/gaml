@@ -16,7 +16,7 @@ typedef unsigned int      Y;
 typedef std::pair<X,Y>    Data;
 typedef std::vector<Data> Dataset;
 
-// Let us define a decision stump predictor, fitting  gaml::concept::Predictor
+// Let us define a decision stump predictor, fitting  gaml::concepts::Predictor
 
 class Predictor {
 private:
@@ -43,7 +43,7 @@ public:
 };
 
 // Let us define the learning algorithm that builds up decision stump
-// predictors from data. It fits gaml::concept::Learner.
+// predictors from data. It fits gaml::concepts::Learner.
 
 class Learner {
 

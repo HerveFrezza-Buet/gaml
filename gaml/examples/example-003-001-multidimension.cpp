@@ -42,7 +42,7 @@ std::array<double,3> array_of_output(const Y& output) {
   return {{output.x,output.y,output.z}};
 }
 
-// We need to define a loss for Y. It has to fit gaml::concept::Loss.
+// We need to define a loss for Y. It has to fit gaml::concepts::Loss.
 class Loss {
 public:
   typedef Y output_type;

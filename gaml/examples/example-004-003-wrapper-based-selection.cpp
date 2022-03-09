@@ -36,7 +36,7 @@ VALUE ask(const std::string& prompt, VALUE min, VALUE max) {
 // sequence like an array, a vector or a linked list) and applies a
 // multiplicative coefficient. That coefficient differs from one
 // predictor to the other, the learning aiming at adjusting it.  This
-// fits the gaml::concept::Predictor concept.
+// fits the gaml::concepts::Predictor concept.
 template<typename Input>
 class Predictor {
   double coef_;
@@ -55,7 +55,7 @@ public:
 // The learner needs to be parameterized by the type of input (i.e the
 // set of variables) since we intend to use it in a generic learner
 // (see below). The coefficient is the mean. This learner fits the
-// gaml::concept::Learner concept.
+// gaml::concepts::Learner concept.
 template<typename Input> 
 struct Learner {
   typedef Predictor<Input> predictor_type;
@@ -84,7 +84,7 @@ struct Learner {
 
 // A generic learner produces a learner for a given type of subset of
 // variables.  A generic learner is required by the variable subset
-// algorithm. It has to fit gaml::concept::GenericLearner.
+// algorithm. It has to fit gaml::concepts::GenericLearner.
 struct GenericLearner {
   template<typename Input>
   Learner<Input> make() const { return Learner<Input>(); }

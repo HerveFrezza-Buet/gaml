@@ -33,7 +33,7 @@ namespace gaml {
 
   typedef unsigned int tabular_index_type;
   
-  namespace concept {
+  namespace concepts {
 
     /**
      * This concept stands for iterator which iterate on data through
@@ -68,7 +68,7 @@ namespace gaml {
 
 
   /**
-   * Tabular iterator. It fits concept::SecondaryIterator.
+   * Tabular iterator. It fits concepts::SecondaryIterator.
    */
   template<typename Iterator>
   class TabularIterator : public std::iterator<std::random_access_iterator_tag,

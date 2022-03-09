@@ -21,7 +21,7 @@ SET(PROJECT_DESCRIPTION_SUMMARY "C++ tools for machine learning.")
 #######################################
 
 # cflags added by the package
-SET(PROJECT_CFLAGS "-Wall -std=c++17")
+SET(PROJECT_CFLAGS "-Wall -std=c++20")
 
 # lib flags added by the package
 if(UNIX)

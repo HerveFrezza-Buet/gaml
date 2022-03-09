@@ -34,12 +34,12 @@
 
 namespace gaml {
 
-namespace concept {
+namespace concepts {
 
 /**
  * Selection variable wrapper needs to compute learning algorithms
  * for different kind of inputs. The LearningAlgorithm type used by this
- * concept has to fit gaml::concept::Learner.
+ * concept has to fit gaml::concepts::Learner.
  */
 
 template<typename Input> class LearningAlgorithm;
