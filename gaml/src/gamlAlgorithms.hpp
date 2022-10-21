@@ -233,10 +233,18 @@ namespace gaml {
   /**
    * This iterator is not adapted to serve as a basis for tabular collections, since it do not refer to a value that exists independently from the iterator.
    */
-  class integer : public std::iterator<std::random_access_iterator_tag,int> {
+  class integer {
   private:
     int j;
   public:
+    
+    using difference_type   = long;
+    using value_type        = int
+    using pointer           = value_type*;
+    using reference         = value_type&;
+    using iterator_category = std::random_access_iterator_tag;
+
+    
     integer() : j(0) {}
     integer(const integer& cp) : j(cp.j) {}
     integer(int i) : j(i) {}
