@@ -33,14 +33,19 @@ namespace gaml {
 
 
   template<typename Iterator1, typename Iterator2>
-  class MergeIterator 
-    : public std::iterator<std::input_iterator_tag,
-			   typename std::iterator_traits<Iterator1>::value_type> {
+  class MergeIterator {
     Iterator1 it1_, end1_;
     Iterator2 it2_, begin2_;
 
   public:
-    typedef typename std::iterator_traits<Iterator1>::value_type value_type;
+
+    using difference_type = long;
+    using value_type        = typename Iterator1::value_type; 
+    using pointer           = value_type*;
+    using reference         = value_type&;
+    using iterator_category = std::input_iterator_tag;
+
+    
 
     MergeIterator() : it1_(), end1_(), it2_(), begin2_() {}
     MergeIterator(const Iterator1& it1, const Iterator1& end1, const Iterator2& it2, const Iterator2& begin2) : it1_(it1), end1_(end1), it2_(it2), begin2_(begin2) {

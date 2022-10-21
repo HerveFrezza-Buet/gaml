@@ -158,8 +158,7 @@ namespace gaml {
     }
 
     friend class iterator;
-    class iterator: public std::iterator<std::random_access_iterator_tag,
-					 value_type, std::ptrdiff_t, const value_type*, const value_type&> {
+    class iterator {
       IndexedDataset* fileDataset_;
       std::fstream dataFile_, indexFile_;
       std::ptrdiff_t currentIndex_, lastAccessedIndex_;
@@ -192,6 +191,15 @@ namespace gaml {
       }
 
     public:
+
+      using difference_type   = std::ptrdiff_t;
+      using value_type        = value_type; 
+      using pointer           = const value_type*;
+      using reference         = const value_type&;
+      using iterator_category = std::random_access_iterator_tag;
+
+
+      
       iterator() = default;
       
       iterator(IndexedDataset& fileDataset, size_t index) :

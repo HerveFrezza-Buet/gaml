@@ -259,8 +259,18 @@ namespace gaml {
     return OutputDataStream<Parser>(os, parser);
   }
 
-  template<class T, class InputDataStream, class Distance = std::ptrdiff_t> class istream_iterator: public std::iterator<
-    std::input_iterator_tag, T, Distance, const T*, const T&> {
+  template<class T, class InputDataStream, class Distance = std::ptrdiff_t> class istream_iterator {
+  public:
+
+    using difference_type   = Distance;
+    using value_type        = T; 
+    using pointer           = value_type*;
+    using reference         = value_type&;
+    using iterator_category = std::input_iterator_tag;
+
+    
+  private:
+    
     InputDataStream* stream_;
     T value_;
     
@@ -312,6 +322,8 @@ namespace gaml {
     }
 
   public:
+
+    
     istream_iterator() :
       stream_(), value_(), state_(new State()) {
     }
@@ -341,8 +353,20 @@ namespace gaml {
     }
   };
 
-  template<class T, class OutputDataStream, class Distance = std::ptrdiff_t> class ostream_iterator: public std::iterator<
-    std::output_iterator_tag, T, Distance, const T*, const T&> {
+  template<class T, class OutputDataStream, class Distance = std::ptrdiff_t> class ostream_iterator {
+
+  public:
+
+
+    using difference_type   = Distance;
+    using value_type        = T; 
+    using pointer           = value_type*;
+    using reference         = value_type&;
+    using iterator_category = std::output_iterator_tag;
+
+    
+  private:
+    
     OutputDataStream* stream_;
     T value_;
     bool changed_;
