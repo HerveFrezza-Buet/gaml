@@ -31,9 +31,7 @@
 namespace gaml {
   
   template<typename CATEGORY,typename Iterator, typename Function, typename Return>
-  class MapIterator 
-    : public std::iterator<typename std::iterator_traits<Iterator>::iterator_category,
-			   typename std::iterator_traits<Iterator>::value_type>{
+  class MapIterator {
   private:
 
     Iterator it;
@@ -41,8 +39,13 @@ namespace gaml {
     mutable Return  content;
 
   public:
-    typedef Return                                                   value_type;
-    typedef typename std::iterator_traits<Iterator>::difference_type difference_type;
+
+    using difference_type   = typename Iterator::difference_type ;
+    using value_type        = Return; 
+    using pointer           = value_type*;
+    using reference         = value_type&;
+    using iterator_category = typename Iterator::iterator_category;
+    
 
     MapIterator(void) : it(), f(), content() {}  
     MapIterator(const Iterator& iter, const Function& fun) : it(iter), f(fun), content() {}
@@ -75,9 +78,7 @@ namespace gaml {
 
   
   template<typename Iterator, typename Function, typename Return>
-  class MapIterator<std::random_access_iterator_tag,Iterator,Function,Return> 
-    : public std::iterator<typename std::iterator_traits<Iterator>::iterator_category,
-			   typename std::iterator_traits<Iterator>::value_type>{
+  class MapIterator<std::random_access_iterator_tag,Iterator,Function,Return> {
   private:
 
     Iterator it;
@@ -85,8 +86,13 @@ namespace gaml {
     mutable Return  content;
 
   public:
-    typedef Return                                                   value_type;
-    typedef typename std::iterator_traits<Iterator>::difference_type difference_type;
+    
+    using difference_type   = typename Iterator::difference_type ;
+    using value_type        = Return; 
+    using pointer           = value_type*;
+    using reference         = value_type&;
+    using iterator_category = typename Iterator::iterator_category;
+    
 
     MapIterator(void) : it(), f(), content() {}  
     MapIterator(const Iterator& iter, const Function& fun) : it(iter), f(fun), content() {}
@@ -140,10 +146,10 @@ namespace gaml {
     Iterator _begin, _end;
     Function* dummy_f; 
   public:
-    typedef typename std::iterator_traits<Iterator>::value_type  arg_type;
+    typedef Iterator::value_type  arg_type;
     typedef decltype((*dummy_f)(*_begin))                        value_type;
     typedef std::function<value_type (const arg_type&)>          function_type;
-    typedef MapIterator<typename std::iterator_traits<Iterator>::iterator_category,
+    typedef MapIterator<typename Iterator::iterator_category,
 			Iterator, function_type, value_type>     iterator;
 
   private:
