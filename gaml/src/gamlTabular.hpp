@@ -71,8 +71,7 @@ namespace gaml {
    * Tabular iterator. It fits concepts::SecondaryIterator.
    */
   template<typename Iterator>
-  class TabularIterator : public std::iterator<std::random_access_iterator_tag,
-					       typename Iterator::value_type> {
+  class TabularIterator {
   private:
     Iterator                                        begin;
     mutable Iterator                                itt;
@@ -81,6 +80,13 @@ namespace gaml {
     
 
   public:
+
+    
+    using difference_type = long;
+    using value_type        = typename Iterator::value_type; 
+    using pointer           = value_type*;
+    using reference         = value_type&;
+    using iterator_category = std::random_access_iterator_tag;
 
     TabularIterator(const Iterator& begin, const std::vector<tabular_index_type>::const_iterator& idx)
       : begin(begin), idx(idx) {
@@ -124,7 +130,7 @@ namespace gaml {
     
     const typename Iterator::value_type& operator*() const {
       itt = begin;
-      std::advance(itt,(typename std::iterator_traits<primary_type>::difference_type)(*idx));
+      std::advance(itt,(typename primary_type::difference_type)(*idx));
       return *itt;
     }
   };

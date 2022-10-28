@@ -57,13 +57,21 @@ namespace gaml {
     typedef decltype(input_->begin()) attribute_iterator;
     typedef decltype(*(input_->begin())) attribute_type;
 
-    class Iterator: public std::iterator<std::input_iterator_tag, std::remove_reference<attribute_type>> {
+    class Iterator{
       index_iterator index_;
       attribute_iterator attr_;
       size_t lastIndex_;
       bool toUpdate_;
 
     public:
+
+      using difference_type = long;
+      using value_type        = std::remove_reference<attribute_type>;
+      using pointer           = value_type*;
+      using reference         = value_type&;
+      using iterator_category = std::input_iterator_tag;
+      
+      
       Iterator(const index_iterator& index, const attribute_iterator& begin) :
 	index_(index), attr_(begin), lastIndex_(0), toUpdate_(true) {
       }
@@ -189,7 +197,7 @@ namespace gaml {
 										attrEnd), inputOf_(inputOf), outputOf_(outputOf) {
     }
 
-    class iterator: public std::iterator<std::input_iterator_tag, data_type> {
+    class iterator {
 
       const Projection& projection_;
       DataIterator inputDataIt_;
@@ -197,6 +205,12 @@ namespace gaml {
       bool toUpdate_;
 
     public:
+      
+      using difference_type = long;
+      using value_type        = data_type; 
+      using pointer           = value_type*;
+      using reference         = value_type&;
+      using iterator_category = std::input_iterator_tag;
 
       iterator(const Projection& projection, const DataIterator& inputDataIt) :
 	projection_(projection), inputDataIt_(inputDataIt), outputData_(input_type(projection.attrBegin_, projection.attrEnd_), output_type{}), toUpdate_(true) {
@@ -228,21 +242,6 @@ namespace gaml {
 	return inputDataIt_ == other.inputDataIt_;
       }
 
-      // iterator& operator+=(
-      // 			   typename std::iterator<std::input_iterator_tag, data_type>::difference_type i) {
-      // 	inputDataIt_ += i;
-      // 	return *this;
-      // }
-      // iterator operator+(
-      // 			 typename std::iterator<std::input_iterator_tag, data_type>::difference_type i) const {
-      // 	iterator it(*this);
-      // 	it += i;
-      // 	return it;
-      // }
-      // typename std::iterator<std::input_iterator_tag, data_type>::difference_type operator-(
-      // 											    const iterator& other) const {
-      // 	return inputDataIt_ - other.inputDataIt_;
-      // }
     };
 
     iterator begin() const {
@@ -273,7 +272,7 @@ namespace gaml {
       auto projectedPredictor = learner(begin(), end(), inputOf, outputOf);
       return wrapping_predictor_type(attrBegin_, attrEnd_, projectedPredictor);
     }
-		    };
+  };
 
   template<typename DataIterator, typename AttrIterator, typename InputOf,
 	   typename OutputOf>

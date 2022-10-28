@@ -33,9 +33,7 @@
 namespace gaml {
   
   template<typename Iterator>
-  class FilterIterator 
-    : public std::iterator<std::input_iterator_tag,
-			   typename std::iterator_traits<Iterator>::value_type> {
+  class FilterIterator {
   private:
 
     Iterator it;
@@ -43,8 +41,12 @@ namespace gaml {
 
   public:
 
-    typedef typename std::iterator_traits<Iterator>::value_type                                   value_type;
-    typedef typename std::iterator_traits<Iterator>::difference_type                              difference_type;
+    using difference_type = long;
+    using value_type        = typename Iterator::value_type; 
+    using pointer           = value_type*;
+    using reference         = value_type&;
+    using iterator_category = std::input_iterator_tag;
+
 
   private:
 

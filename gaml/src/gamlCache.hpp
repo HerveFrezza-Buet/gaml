@@ -36,13 +36,17 @@ namespace gaml {
   template<typename Iterator> class Cache;
 
   template<typename Iterator>
-  class CacheIterator 
-    : public std::iterator<std::random_access_iterator_tag,
-			   typename std::iterator_traits<Iterator>::value_type>{
+  class CacheIterator {
   public:
-    typedef typename std::iterator_traits<Iterator>::value_type  value_type;
-    typedef int                                                  index_type;
-    typedef index_type                                           difference_type;
+    
+    using difference_type = long;
+    using value_type        = typename Iterator::value_type; 
+    using pointer           = value_type*;
+    using reference         = value_type&;
+    using iterator_category = std::random_access_iterator_tag;
+
+    using index_type = difference_type;
+
 
   private:
 

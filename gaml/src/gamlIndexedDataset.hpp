@@ -40,7 +40,7 @@ namespace gaml {
   template<typename Parser>
   class IndexedDataset {
     typedef Parser data_file_parser_type;
-    typedef typename data_file_parser_type::value_type value_type;
+    using value_type = typename data_file_parser_type::value_type;
 
     data_file_parser_type parser_;
     mutable std::fstream dataFile_;
@@ -158,8 +158,17 @@ namespace gaml {
     }
 
     friend class iterator;
-    class iterator: public std::iterator<std::random_access_iterator_tag,
-					 value_type, std::ptrdiff_t, const value_type*, const value_type&> {
+    class iterator {
+    public:
+
+      using difference_type   = std::ptrdiff_t;
+      using value_type        = typename IndexedDataset<Parser>::value_type; 
+      using pointer           = const value_type*;
+      using reference         = const value_type&;
+      using iterator_category = std::random_access_iterator_tag;
+
+    private:
+      
       IndexedDataset* fileDataset_;
       std::fstream dataFile_, indexFile_;
       std::ptrdiff_t currentIndex_, lastAccessedIndex_;
@@ -191,7 +200,12 @@ namespace gaml {
 	  throw std::ios_base::failure("random access out of indexed file");
       }
 
+      
     public:
+
+
+
+      
       iterator() = default;
       
       iterator(IndexedDataset& fileDataset, size_t index) :
