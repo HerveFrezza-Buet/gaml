@@ -160,7 +160,7 @@ namespace gaml {
 
 	for(unsigned int dim = 0; dim < DIM; ++dim)
 	  preds.push_back(algo(begin,end,input_of,
-			       [&output_of,this,dim](const typename DataIterator::value_type& data) -> typename LEARNER::predictor_type::output_type {
+			       [&output_of,this,dim](const typename std::iterator_traits<DataIterator>::value_type& data) -> typename LEARNER::predictor_type::output_type {
 				 return to_array(output_of(data))[dim];
 			       }));
       

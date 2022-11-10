@@ -40,7 +40,7 @@ namespace gaml {
   public:
 
     using difference_type = long;
-    using value_type        = typename Iterator1::value_type; 
+    using value_type        = typename std::iterator_traits<Iterator1>::value_type; 
     using pointer           = value_type*;
     using reference         = value_type&;
     using iterator_category = std::input_iterator_tag;
@@ -74,8 +74,8 @@ namespace gaml {
     Iterator1 begin1_, end1_;
     Iterator2 begin2_, end2_;
   public:
-    typedef typename Iterator1::value_type value_type;
-    typedef MergeIterator<Iterator1, Iterator2> iterator;
+    using value_type = typename std::iterator_traits<Iterator1>::value_type;
+    using iterator = MergeIterator<Iterator1, Iterator2>;
 
     Merge(const Iterator1& begin1, const Iterator1& end1, const Iterator2& begin2, const Iterator2& end2) : begin1_(begin1), end1_(end1), begin2_(begin2), end2_(end2) {}
     Merge(const Merge& other) : begin1_(other.begin1_), end1_(other.end1_), begin2_(other.begin2_), end2_(other.end2_) {}

@@ -522,9 +522,9 @@ namespace gaml {
 	     typename _Generator>
     double search(int n, _SolutionOutputIterator& outputIt,
 		  _Evaluator& evaluator) const {
-      typedef std::multimap<double, elts_set_type, std::less<double>> queue_type;
-      typedef typename queue_type::iterator iterator;
-      typedef typename queue_type::value_type queue_entry;
+      using queue_type = std::multimap<double, elts_set_type, std::less<double>>;
+      using iterator = typename queue_type::iterator;
+      using queue_entry = typename queue_type::value_type;
 
       queue_type queue;
       elts_set_type bestSubset, previousInsertedSubset;

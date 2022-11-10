@@ -40,7 +40,7 @@ namespace gaml {
   public:
     
     using difference_type = long;
-    using value_type        = typename Iterator::value_type; 
+    using value_type        = typename std::iterator_traits<Iterator>::value_type; 
     using pointer           = value_type*;
     using reference         = value_type&;
     using iterator_category = std::random_access_iterator_tag;

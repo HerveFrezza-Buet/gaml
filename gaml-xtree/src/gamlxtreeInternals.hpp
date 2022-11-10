@@ -298,14 +298,14 @@ namespace gaml {
 	    // The following code make a bug when input_of(data) is an
 	    // array and when g++ optimization is invoked. 
 	    //
-	    auto value_of = [a,&input_of](const typename DataIterator::value_type& data) -> double {
+	    auto value_of = [a,&input_of](const typename std::iterator_traits<DataIterator>::value_type& data) -> double {
 	      auto input = input_of(data);
 	      auto it = input.begin();
 	      std::advance(it,a);
 	      return *it;
 	    };
 
-	    //auto value_of = lambda_value_of<X,const typename DataIterator::value_type>(a,input_of);
+	    //auto value_of = lambda_value_of<X,const typename std::iterator_traits<DataIterator>::value_type>(a,input_of);
 
 	    auto values = gaml::map(begin,end,value_of);
 
@@ -319,7 +319,7 @@ namespace gaml {
 
 	    ThresholdTest<X> test(threshold, a);
 
-	    auto score_test = [&test,&input_of](const typename DataIterator::value_type& data) -> bool {
+	    auto score_test = [&test,&input_of](const typename std::iterator_traits<DataIterator>::value_type& data) -> bool {
 	      return test(input_of(data));
 	    };
 
@@ -330,7 +330,7 @@ namespace gaml {
 	    }
 	  }
 
-	  auto filter_function = [&input_of,&best_test](const typename DataIterator::value_type& data) -> bool {return best_test(input_of(data));};
+	  auto filter_function = [&input_of,&best_test](const typename std::iterator_traits<DataIterator>::value_type& data) -> bool {return best_test(input_of(data));};
 	  auto split       = gaml::split(begin, end, filter_function);
 	  auto left        = split.true_values;
 	  auto right       = split.false_values;

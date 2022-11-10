@@ -83,7 +83,7 @@ namespace gaml {
 
     
     using difference_type = long;
-    using value_type        = typename Iterator::value_type; 
+    using value_type        = typename std::iterator_traits<Iterator>::value_type; 
     using pointer           = value_type*;
     using reference         = value_type&;
     using iterator_category = std::random_access_iterator_tag;
@@ -128,7 +128,7 @@ namespace gaml {
     bool operator==(const TabularIterator<Iterator>& i) const {return idx == i.idx && begin == i.begin;}
     bool operator!=(const TabularIterator<Iterator>& i) const {return idx != i.idx || begin != i.begin;}
     
-    const typename Iterator::value_type& operator*() const {
+    const typename std::iterator_traits<Iterator>::value_type& operator*() const {
       itt = begin;
       std::advance(itt,(typename primary_type::difference_type)(*idx));
       return *itt;

@@ -34,12 +34,12 @@ namespace gaml {
     class Partition {
     public:
 
-      typedef typename DataIterator::value_type value_type;
+      using value_type = typename std::iterator_traits<DataIterator>::value_type ;
 
       Partition(const Partition& copy);
 
-      typedef DataIterator iterator;
-      typedef DataIterator complement_iterator;
+      using iterator = DataIterator;
+      using complement_iterator = DataIterator;
 
       /**
        * This gives the number of subsets in the parition.
@@ -80,9 +80,9 @@ namespace gaml {
     class KFold {
     public:
 
-      typedef typename DataIterator::value_type value_type;
-      typedef DataIterator iterator;
-      typedef gaml::MergeIterator<DataIterator,DataIterator> complement_iterator;
+      using value_type = typename std::iterator_traits<DataIterator>::value_type ;
+      using iterator = DataIterator;
+      using complement_iterator = gaml::MergeIterator<DataIterator,DataIterator>;
 
     private:
 
@@ -154,9 +154,9 @@ namespace gaml {
     class Chunk {
     public:
 
-      typedef typename DataIterator::value_type value_type;
-      typedef DataIterator iterator;
-      typedef gaml::MergeIterator<DataIterator,DataIterator> complement_iterator;
+      using value_type = typename std::iterator_traits<DataIterator>::value_type;
+      using iterator = DataIterator;
+      using complement_iterator = gaml::MergeIterator<DataIterator,DataIterator>;
 
     private:
 

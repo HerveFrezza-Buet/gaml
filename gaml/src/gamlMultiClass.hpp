@@ -230,7 +230,7 @@ namespace gaml {
 	// lambda capture block. We use std::bind to solve this.
 	auto get_output = std::bind(output_of,std::placeholders::_1);
 	auto scorer  = algo(begin, end, input_of,
-			    [get_output, pc = this->pos_class](const typename DataIterator::value_type& elem) -> bool {return get_output(elem) == pc;});
+			    [get_output, pc = this->pos_class](const typename std::iterator_traits<DataIterator>::value_type& elem) -> bool {return get_output(elem) == pc;});
 	return predictor(pos_class, neg_class, scorer, decision);
       }
     };
@@ -425,7 +425,7 @@ namespace gaml {
 	    auto l2 = l1;
 	    for(++l2; l2 != labels.end(); ++l2) {
 	      auto dataset = gaml::filter(begin,end,
-					  [get_output, a=*l1, b=*l2](const typename DataIterator::value_type& elem) -> bool {
+					  [get_output, a=*l1, b=*l2](const typename std::iterator_traits<DataIterator>::value_type& elem) -> bool {
 					    return get_output(elem) == a || get_output(elem) == b;
 					  });
 	      res += {algo(dataset.begin(),dataset.end(),input_of,output_of),{*l1,*l2}};

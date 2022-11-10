@@ -34,7 +34,7 @@ namespace gaml {
 
   template<typename T>
   struct Range {
-    using value_type = typename T::value_type;
+    using value_type = typename std::iterator_traits<T>::value_type;
     using iterator_type = T;
 
     T begin;
