@@ -146,7 +146,7 @@ namespace gaml {
     Iterator _begin, _end;
     Function* dummy_f; 
   public:
-    using arg_type = std::iterator_traits<Iterator>::value_type;
+    using arg_type = typename std::iterator_traits<Iterator>::value_type;
     using value_type = decltype((*dummy_f)(*_begin));
     using function_type = std::function<value_type (const arg_type&)>;
     using iterator = MapIterator<typename std::iterator_traits<Iterator>::iterator_category,
